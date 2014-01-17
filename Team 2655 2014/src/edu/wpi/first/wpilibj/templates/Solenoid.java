@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  *
- * @author Zephan
+ * @author Josh
  */
 public class Solenoid {
     DoubleSolenoid my_solenoid;
@@ -28,6 +28,8 @@ public class Solenoid {
     }
     
     void retract() {
-        
+        my_solenoid.set(DoubleSolenoid.Value.kReverse);
+        //thread.sleep(extendTime);
+        my_solenoid.set(DoubleSolenoid.Value.kOff);
     }
 }
