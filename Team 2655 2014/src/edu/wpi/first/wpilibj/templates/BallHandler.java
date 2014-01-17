@@ -1,0 +1,47 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package edu.wpi.first.wpilibj.templates;
+
+import edu.wpi.first.wpilibj.Compressor;
+
+/**
+ *
+ * @author Zephan
+ */
+public class BallHandler {
+    Compressor compressor;
+    public  final int pressureSwitchChannel = 1;
+    public final int compressorRelayChannel = 2;
+    
+    Solenoid shooter;
+    Solenoid sideArm;
+    Solenoid anchor;
+
+    public BallHandler () {
+        compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
+        
+        shooter = new Solenoid(1, 1, 2, 100);
+        sideArm = new Solenoid(1, 1, 2, 100);
+        anchor = new Solenoid(1, 1, 2, 100);
+    }
+    void arm_the_shooter() {
+        
+    }
+    void shootTheBall() {
+        shooter.extend();
+        shooter.retract();
+    }
+    void loadTheBall() {
+        
+    }
+    void catchTheBall() {
+        
+    }
+    void passTheBall() {
+        
+    }
+}

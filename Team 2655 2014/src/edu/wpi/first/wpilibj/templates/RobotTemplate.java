@@ -7,34 +7,46 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-
-
 import edu.wpi.first.wpilibj.IterativeRobot;
-
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotTemplate extends IterativeRobot {
 
-    int ni;
+    DriveStation driveStation;
+    BallHandler ballHandler;
+    
+    Joystick joyStick;
+    JoystickButton shootButton;
+    JoystickButton armButton;
+    JoystickButton loadButton;
+    JoystickButton passButton;
+    JoystickButton catchButton;
+    
     
     public void robotInit() {
-
+        
+        ballHandler = new BallHandler();
+        
+        joyStick = new Joystick(1);
+        shootButton = new JoystickButton(joyStick,1);
+        armButton = new JoystickButton(joyStick,2);
+        loadButton = new JoystickButton(joyStick,3);
+        passButton = new JoystickButton(joyStick,4);
+        catchButton = new JoystickButton(joyStick,5);
+        
+        shootButton.whenPressed(ballHandler.shootTheBall() );
     }
-
 
     public void autonomousPeriodic() {
-
     }
-
 
     public void teleopPeriodic() {
-        
-        
-        
     }
-    
 
     public void testPeriodic() {
-    
+       
     }
-    
 }
+
