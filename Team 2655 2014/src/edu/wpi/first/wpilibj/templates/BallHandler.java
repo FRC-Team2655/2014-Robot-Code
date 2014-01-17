@@ -28,7 +28,7 @@ public class BallHandler {
         sideArm = new Solenoid(1, 1, 2, 100);
         anchor = new Solenoid(1, 1, 2, 100);
     }
-    void arm_the_shooter() {
+    void armTheShooter() {
         
     }
     void shootTheBall() {
