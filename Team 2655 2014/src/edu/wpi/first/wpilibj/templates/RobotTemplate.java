@@ -36,7 +36,7 @@ public class RobotTemplate extends IterativeRobot {
         passButton = new JoystickButton(joyStick,4);
         catchButton = new JoystickButton(joyStick,5);
         
-        shootButton.whenPressed(ballHandler.shootTheBall()); //Zephan broke it.
+        //shootButton.whenPressed(ballHandler.shootTheBall()); //Zephan broke it.
     }
 
     
