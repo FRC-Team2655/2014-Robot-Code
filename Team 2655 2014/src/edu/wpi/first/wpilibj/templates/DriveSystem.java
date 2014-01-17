@@ -10,8 +10,9 @@ package edu.wpi.first.wpilibj.templates;
  *
  * @author Zephan
  */
-public class DriveStation {
-    public DriveStation() {
+public class DriveSystem {
+    
+    public DriveSystem() {
         
     }
 }

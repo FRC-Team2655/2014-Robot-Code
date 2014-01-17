@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotTemplate extends IterativeRobot {
 
-    DriveStation driveStation;
+    DriveSystem driveStation;
     BallHandler ballHandler;
     
     Joystick joyStick;
@@ -39,6 +39,7 @@ public class RobotTemplate extends IterativeRobot {
         shootButton.whenPressed(ballHandler.shootTheBall()); //Zephan broke it.
     }
 
+    
     public void autonomousPeriodic() {
     }
 
