@@ -21,6 +21,7 @@ public class BallHandler {
     Solenoid shooter;
     Solenoid sideArm;
     Solenoid anchor;
+    
 
     public BallHandler () {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
@@ -30,17 +31,27 @@ public class BallHandler {
         anchor = new Solenoid(1, 1, 2, 100);
     }
     void armTheShooter() {
+        sideArm.extend();
+        anchor.extend();
+        
         
     }
     void shootTheBall() {
         shooter.extend();
         shooter.retract();
+        sideArm.retract();
+        anchor.retract();
     }
+    
     void loadTheBall() {
         
+                
     }
     void catchTheBall() {
+        sideArm.extend();
+        //the side arm extending is making the arms open or flower.
         
+                       
     }
     void passTheBall() {
         
