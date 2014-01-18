@@ -30,11 +30,6 @@ public class RobotTemplate extends IterativeRobot {
 
     Ultrasonic rangeFinderSensor;
 
-    boolean shootButtonIsPressed = joyStick.getRawButton(1);
-    boolean armButtonIsPressed = joyStick.getRawButton(2);
-    boolean loadButtonIsPressed = joyStick.getRawButton(3);
-    boolean passButtonIsPressed = joyStick.getRawButton(4);
-    boolean catchButtonIsPressed = joyStick.getRawButton(5);
     boolean shootingInProgress = false; 
     boolean armButtonInProgres = false;
     boolean loadButtonInProgres = false;
@@ -66,19 +61,28 @@ public class RobotTemplate extends IterativeRobot {
         //blank for now
     }
 
+    /*
+    boolean last state = off;
+    
+    if(button is pressed){
+        if(last state was off)
+            if(turn on){Turn off}
+        else{ {turn on}
+    }
+    */
     //Gandalf = 100pts
     public void teleopPeriodic() {
-        if (shootButtonIsPressed && shootingInProgress == false) {
+        if (joyStick.getRawButton(1) && shootingInProgress == false) {
             shootingInProgress = true;
             ballHandler.shootTheBall();
             shootingInProgress = false;
-        } else if (armButtonIsPressed) {
+        } else if (joyStick.getRawButton(2)) { 
             ballHandler.catchTheBall();
-        } else if (loadButtonIsPressed) {
+        } else if (joyStick.getRawButton(3)) {
             ballHandler.loadTheBall();
-        } else if (passButtonIsPressed) {
+        } else if (joyStick.getRawButton(4)) {
             ballHandler.armTheShooter();
-        } else if (catchButtonIsPressed) {
+        } else if (joyStick.getRawButton(5)) {
             ballHandler.passTheBall();
         }
     }
