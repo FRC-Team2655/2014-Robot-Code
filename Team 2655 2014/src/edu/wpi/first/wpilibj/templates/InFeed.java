@@ -17,7 +17,7 @@ public class InFeed {
         leftArmMotorControl = new Relay(HardwarePortsEnum.leftArmMotorControlChannel);
         rightArmMotorControl = new Relay(HardwarePortsEnum.rightArmMotorControlChannel);
         
-        liftArmControl = new DoubleSolenoid(HardwarePortsEnum.inFeedLowerChannel, HardwarePortsEnum.inFeedRaiseChannel );
+        liftArmControl = new DoubleSolenoid(HardwarePortsEnum.inFeedlowerChannel, HardwarePortsEnum.inFeedRaiseChannel );
         
     
         //make sure to change relays and channels later
