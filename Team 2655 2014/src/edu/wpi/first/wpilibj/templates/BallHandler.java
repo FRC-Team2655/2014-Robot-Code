@@ -54,6 +54,8 @@ public class BallHandler {
                        
     }
     void passTheBall() {
+        sideArm.extend();
+        
         
     }
 }
