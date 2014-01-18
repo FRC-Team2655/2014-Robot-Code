@@ -13,24 +13,24 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveSystem implements Runnable {
     
     
-    Joystick driveStick;
-    Gyro greg;
+    Joystick driveStick; 
+    Gyro gyro;
     int driveType;
-    RobotDrive mainDrive = new RobotDrive(1,2,3,4);
+    
+    RobotDrive mainDrive = new RobotDrive(1,2,3,4); //change motors later
     
     
-    public DriveSystem(Joystick driveStick, Gyro greg, int driveType) {
+    public DriveSystem(Joystick driveStick, Gyro gyro) {
         this.driveStick = driveStick;
-        this.greg = greg;
+        this.gyro = gyro;
         this.driveType = driveType;
     }
     public void teleopDrive(){
-        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX), driveStick.getAxis(Joystick.AxisType.kY), 
-                driveStick.getAxis(Joystick.AxisType.kZ),greg.getAngle() * driveType);
+       
     }
     
     public void run() {
-//        throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     
