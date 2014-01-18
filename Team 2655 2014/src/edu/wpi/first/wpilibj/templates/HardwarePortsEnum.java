@@ -32,5 +32,7 @@ public class HardwarePortsEnum {
     public static int rangeFinderEchoPort = 12;
     public static int rangeFinderPingPort = 13;
     
+    public static int ballInMittLimitSwitch = 14;
+    
     
 }
