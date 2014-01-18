@@ -14,9 +14,10 @@ public class InFeed {
     public InFeed() {
             //change arguments later
         
-        leftArmMotorControl = new Relay(1);
-        rightArmMotorControl = new Relay(2);
-        liftArmControl = new DoubleSolenoid(PublicEnumHardwarePorts.inFeedlowerChannel, PublicEnumHardwarePorts.inFeedraiseChannel );
+        leftArmMotorControl = new Relay(HardwarePortsEnum.leftArmMotorControlChannel);
+        rightArmMotorControl = new Relay(HardwarePortsEnum.rightArmMotorControlChannel);
+        
+        liftArmControl = new DoubleSolenoid(HardwarePortsEnum.inFeedLowerChannel, HardwarePortsEnum.inFeedRaiseChannel );
         
     
         //make sure to change relays and channels later

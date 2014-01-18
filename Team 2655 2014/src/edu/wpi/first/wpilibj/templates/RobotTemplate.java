@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Ultrasonic;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -26,8 +27,10 @@ public class RobotTemplate extends IterativeRobot {
     JoystickButton loadButton;
     JoystickButton passButton;
     JoystickButton catchButton;
-    
-    boolean shootButtonIsPressed = joyStick.getRawButton(1);
+
+    Ultrasonic rangeFinderSensor;
+
+    boolean shootButtonIsPressed = joyStick.getRawButton(HardwarePortsEnum.shootButtonNumber);
     boolean armButtonIsPressed = joyStick.getRawButton(2);
     boolean loadButtonIsPressed = joyStick.getRawButton(3);
     boolean passButtonIsPressed = joyStick.getRawButton(4);
@@ -36,13 +39,13 @@ public class RobotTemplate extends IterativeRobot {
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
-
+        joyStick = new Joystick(1);
+        rangeFinderSensor = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
+        
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-
-        joyStick = new Joystick(1);
-
-        driveSystem.run();//Runs Drivetrain -- Do we need to pass the joystick here???
+        
+        driveSystem.run();
     }
 
     public void robotInit() {
@@ -50,7 +53,7 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-        
+        //go farward
         ballHandler.shootTheBall();
     }
 
@@ -58,17 +61,19 @@ public class RobotTemplate extends IterativeRobot {
         //blank for now
     }
 
+    //Gandalf = 100pts
     public void teleopPeriodic() {
-        if (shootButtonIsPressed)
+        if (shootButtonIsPressed) {
             ballHandler.shootTheBall();
-        else if (armButtonIsPressed) 
+        } else if (armButtonIsPressed) {
             ballHandler.catchTheBall();
-        else if (loadButtonIsPressed) 
+        } else if (loadButtonIsPressed) {
             ballHandler.loadTheBall();
-        else if (passButtonIsPressed) 
+        } else if (passButtonIsPressed) {
             ballHandler.armTheShooter();
-        else if (catchButtonIsPressed) 
+        } else if (catchButtonIsPressed) {
             ballHandler.passTheBall();
+        }
     }
 
     public void testPeriodic() {
