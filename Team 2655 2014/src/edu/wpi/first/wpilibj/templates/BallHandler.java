@@ -16,9 +16,7 @@ import edu.wpi.first.wpilibj.DigitalInput;
  */
 public class BallHandler {
     Compressor compressor;
-    public  final int pressureSwitchChannel = 1;
-    public final int compressorRelayChannel = 2;
-    
+
     Shooter shooter;
     SideArm sideArm;
     Anchor anchor;
@@ -29,16 +27,15 @@ public class BallHandler {
     private final boolean notInMitt = false;
     
     public BallHandler () {
-        compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
+        compressor = new Compressor(HardwarePortsEnum.pressureSwitchChannel, HardwarePortsEnum.compressorRelayChannel);
         
         shooter = new Shooter();
-        sideArm = new SideArm(1, 2);
-        anchor = new Anchor(1, 2);
+        sideArm = new SideArm(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmClosedArmChannel);
+        anchor = new Anchor(HardwarePortsEnum.anchorDropChannel,HardwarePortsEnum.anchorRaiseChannel);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }
-
     
     void armTheShooter() {
         sideArm.open();
