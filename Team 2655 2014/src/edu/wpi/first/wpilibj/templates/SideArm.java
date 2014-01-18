@@ -8,11 +8,11 @@ public class SideArm {
     public SideArm() {
     }
     
-    void extend() {
+    void open() {
         
     }
     
-    void retract() {
+    void close() {
         
     }
 }

@@ -11,7 +11,7 @@ public class Shooter {
         
     }
     
-    void retract() {
+    void reload() {
         
     }
 }

@@ -41,15 +41,15 @@ public class BallHandler {
 
     
     void armTheShooter() {
-        sideArm.extend();
+        sideArm.open();
         anchor.drop();
         
         
     }
     void shootTheBall() {
         shooter.shoot();
-        shooter.retract();
-        sideArm.retract();
+        shooter.reload();
+        sideArm.close();
         anchor.raise();
     }
     
@@ -64,16 +64,16 @@ public class BallHandler {
     }
     
     void catchTheBall() {
-        sideArm.extend();
+        sideArm.open();
         if (ballInMittLimitSwitch.get() == notInMitt ){
-            sideArm.retract();
+            sideArm.close();
         }
         //the side arm extending is making the arms open or flower.
         
                        
     }
     void passTheBall() {
-        sideArm.extend();
+        sideArm.open();
         //can try a pwm 
         //or turning it on only for a short amount of time
         //put wait statement in here
