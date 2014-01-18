@@ -25,7 +25,8 @@ public class BallHandler {
     LoadArms loadArms;
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
-
+    boolean loadArmsAreExtended = true;
+    
     public BallHandler () {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
         
@@ -49,6 +50,9 @@ public class BallHandler {
     }
     
     void loadTheBall() {
+        if (loadArmsAreExtended == true){
+            loadArms.retract();
+        }
         if (ballInMittLimitSwitch.get() != InMitt){
             loadArms.extend();
             loadArms.retract();

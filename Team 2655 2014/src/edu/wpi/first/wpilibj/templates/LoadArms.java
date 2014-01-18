@@ -15,9 +15,11 @@ public class LoadArms {
     public LoadArms() {
     }
         void extend(){
-            
+            //spin motors
+            //put arms down
         }
         void retract(){
-            
+            //turn the motors off 
+            //retract arms
         }
 }
