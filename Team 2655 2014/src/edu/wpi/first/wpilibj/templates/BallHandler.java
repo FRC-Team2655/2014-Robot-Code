@@ -72,9 +72,11 @@ public class BallHandler {
     }
     void passTheBall() {
         sideArm.extend();
+        wait(1000);
         //can try a pwm 
         //or turning it on only for a short amount of time
-        
+        //put wait statement in here
+                
         
     }
 }
