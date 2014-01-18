@@ -23,8 +23,8 @@ public class BallHandler {
     Solenoid sideArm;
     Solenoid anchor;
     LoadArms loadArms;
-    DigitalInput limitSwitch;
-    
+    DigitalInput ballInMittLimitSwitch;
+    private final boolean InMitt = true;
 
     public BallHandler () {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
@@ -33,7 +33,7 @@ public class BallHandler {
         sideArm = new Solenoid(1, 1, 2, 100);
         anchor = new Solenoid(1, 1, 2, 100);
         loadArms = new LoadArms();
-        limitSwitch = new DigitalInput(1);
+        ballInMittLimitSwitch = new DigitalInput(1);
     }
     void armTheShooter() {
         sideArm.extend();
@@ -49,14 +49,12 @@ public class BallHandler {
     }
     
     void loadTheBall() {
-        if (ballIsInMitt == true){
-            
-        
+        if (ballInMittLimitSwitch.get() != InMitt){
+            loadArms.extend();
+            loadArms.retract();
         }
-        loadArms.extend();
-        loadArms.retract();
-                
     }
+    
     void catchTheBall() {
         sideArm.extend();
         //the side arm extending is making the arms open or flower.
