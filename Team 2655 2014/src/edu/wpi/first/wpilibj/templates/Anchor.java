@@ -6,19 +6,26 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DoubleSolenoid;
+
 /**
  *
  * @author Seth
  */
 public class Anchor {
+    DoubleSolenoid anchors;
 
     public Anchor(int dropChannel, int raiseChannel) {
-        
+        anchors = new DoubleSolenoid(dropChannel, raiseChannel);
+        anchors.set(DoubleSolenoid.Value.kOff);
     }
     void drop(){
+        anchors.set(DoubleSolenoid.Value.kForward);
+        //Find if we need to stop the solenoid when it reaches the bottom position.
         
     }
     void raise(){
-        
+        anchors.set(DoubleSolenoid.Value.kReverse);
+        //Find if we need to stop the solenoid when it reaches th top position.
     }
 }
