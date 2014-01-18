@@ -1,19 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package edu.wpi.first.wpilibj.templates;
+    // Author Alex Senneville
 
-/**
- *
- * @author tronage gaming
- */
 public class motorForBallHandler {
+    motorForBallHandler motorForBallHHandler;
 
     public motorForBallHandler() {
+        motorForBallHandler motorForBallHandler = new motorForBallHandler();
     }
     
+    void start(){
+    
+}
+    void stop(){
+        
+    }
     
 }
