@@ -34,7 +34,7 @@ public class RobotTemplate extends IterativeRobot {
     public RobotTemplate() {
 
         ballHandler = new BallHandler();
-        driveSystem = new DriveSystem(joyStick, gyro);
+        driveSystem = new DriveSystem(joyStick);
 
         joyStick = new Joystick(1);
 
