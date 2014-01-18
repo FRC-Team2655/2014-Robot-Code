@@ -6,18 +6,31 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveSystem implements Runnable {
     
-
     
-    public DriveSystem(Joystick joyStick) {
-        
+    Joystick driveStick; 
+    Gyro gyro;
+    int driveType;
+    
+    RobotDrive mainDrive = new RobotDrive(1,2,3,4); //change motors later
+    
+    
+    public DriveSystem(Joystick driveStick, Gyro gyro) {
+        this.driveStick = driveStick;
+        this.gyro = gyro;
+        this.driveType = driveType;
     }
-
+    public void teleopDrive(){
+       
+    }
+    
     public void run() {
-//        throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     
