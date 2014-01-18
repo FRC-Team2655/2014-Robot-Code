@@ -34,7 +34,6 @@ public class DriveSystem implements Runnable {
         
         mainDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
         
-        
     }
 
     //should we add a reset button for the gyro?
@@ -65,6 +64,10 @@ public class DriveSystem implements Runnable {
         } else {
             driveMode = mode;
         }
+    }
+    
+    public void autonomousMoving(int x, int y, int z){
+        mainDrive.mecanumDrive_Cartesian(x, y, z, 0);
     }
 
 }
