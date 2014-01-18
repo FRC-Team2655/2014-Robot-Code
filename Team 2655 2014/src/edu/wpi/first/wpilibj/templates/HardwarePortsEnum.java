@@ -32,5 +32,10 @@ public class HardwarePortsEnum {
     public static int rangeFinderEchoPort = 12;
     public static int rangeFinderPingPort = 13;
     
+    public static int frontLeftMotorChannel = 1;
+    public static int backLeftMotorChannel = 2;
+    public static int frontRightMotorChannel = 3;
+    public static int backRightMotorChannel = 4;
+    
     
 }

@@ -8,14 +8,17 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Talon;
 
 public class DriveSystem implements Runnable {
 
     Joystick driveStick;
     Gyro gyro;
     public static int useGyro = 1;
+    
+    Talon frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
 
-    RobotDrive mainDrive = new RobotDrive(1, 2, 3, 4); //change motors later
+    RobotDrive mainDrive;
 
     int driveMode;
 
@@ -24,7 +27,14 @@ public class DriveSystem implements Runnable {
         this.gyro = gyro;
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
-
+        frontLeftMotor = new Talon(HardwarePortsEnum.frontLeftMotorChannel);
+        backLeftMotor = new Talon(HardwarePortsEnum.backLeftMotorChannel);
+        frontRightMotor = new Talon(HardwarePortsEnum.frontRightMotorChannel);
+        backRightMotor = new Talon(HardwarePortsEnum.backRightMotorChannel);
+        
+        mainDrive = new RobotDrive(frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor);
+        
+        
     }
 
     //should we add a reset button for the gyro?
