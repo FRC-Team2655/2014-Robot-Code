@@ -27,11 +27,11 @@ public class RobotTemplate extends IterativeRobot {
     JoystickButton passButton;
     JoystickButton catchButton;
     
-    boolean shootButtonIsPressed = true;
-    boolean armButtonIsPressed = true;
-    
-
-    Gyro gyro;
+    boolean shootButtonIsPressed = joyStick.getRawButton(1);
+    boolean armButtonIsPressed = joyStick.getRawButton(2);
+    boolean loadButtonIsPressed = joyStick.getRawButton(3);
+    boolean passButtonIsPressed = joyStick.getRawButton(4);
+    boolean catchButtonIsPressed = joyStick.getRawButton(5);
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -43,9 +43,6 @@ public class RobotTemplate extends IterativeRobot {
         joyStick = new Joystick(1);
 
         driveSystem.run();//Runs Drivetrain -- Do we need to pass the joystick here???
-
-       shootButton = new JoystickButton(joyStick,PublicEnumHardwarePorts.shootButtonNumber);
-
     }
 
     public void robotInit() {
@@ -53,7 +50,7 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-        //drive Foward...
+        
         ballHandler.shootTheBall();
     }
 
@@ -62,22 +59,16 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
-        if (shootButton.get()) {
+        if (shootButtonIsPressed)
             ballHandler.shootTheBall();
-        }
-        if (joyStick.getRawButton(2)) {
+        else if (armButtonIsPressed) 
             ballHandler.catchTheBall();
-        }
-        if (joyStick.getRawButton(3)) {
+        else if (loadButtonIsPressed) 
             ballHandler.loadTheBall();
-        }
-        if (joyStick.getRawButton(4)) {
+        else if (passButtonIsPressed) 
             ballHandler.armTheShooter();
-        }
-        if (joyStick.getRawButton(5)) {
+        else if (catchButtonIsPressed) 
             ballHandler.passTheBall();
-        }
-
     }
 
     public void testPeriodic() {
