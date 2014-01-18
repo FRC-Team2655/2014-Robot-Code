@@ -19,7 +19,7 @@ public class BallHandler {
     public  final int pressureSwitchChannel = 1;
     public final int compressorRelayChannel = 2;
     
-    Solenoid shooter;
+    Shooter shooter;
     Solenoid sideArm;
     Anchor anchor;
     InFeed loadArms;
@@ -31,13 +31,15 @@ public class BallHandler {
     public BallHandler () {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
         
-        shooter = new Solenoid(1, 1, 2, 100);
+        shooter = new Shooter();
         sideArm = new Solenoid(1, 1, 2, 100);
         anchor = new Anchor(1, 2);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }
+
+    
     void armTheShooter() {
         sideArm.extend();
         anchor.drop();
@@ -45,7 +47,7 @@ public class BallHandler {
         
     }
     void shootTheBall() {
-        shooter.extend();
+        shooter.shoot();
         shooter.retract();
         sideArm.retract();
         anchor.raise();
@@ -72,7 +74,6 @@ public class BallHandler {
     }
     void passTheBall() {
         sideArm.extend();
-        wait(1000);
         //can try a pwm 
         //or turning it on only for a short amount of time
         //put wait statement in here
