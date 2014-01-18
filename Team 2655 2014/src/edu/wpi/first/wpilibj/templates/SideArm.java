@@ -2,10 +2,11 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-// Author Alex Senneville
+// Author Seth
 public class SideArm {
+    DoubleSolenoid sideArms;
 
-    public SideArm() {
+    public SideArm(int openArmChannel, int closedArmChannel) {
     }
     
     void open() {
