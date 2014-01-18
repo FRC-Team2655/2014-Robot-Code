@@ -6,13 +6,14 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-/**
- *
- * @author Zephan
- */
+import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.RobotDrive;
+
 public class DriveSystem {
     
-    public DriveSystem() {
+
+    
+    public DriveSystem(Joystick joyStick) {
         
     }
 }
