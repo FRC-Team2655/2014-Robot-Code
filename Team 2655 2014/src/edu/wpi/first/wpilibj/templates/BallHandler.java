@@ -35,6 +35,7 @@ public class BallHandler {
         anchor = new Solenoid(1, 1, 2, 100);
         loadArms = new LoadArms();
         ballInMittLimitSwitch = new DigitalInput(1);
+        compressor.start();
     }
     void armTheShooter() {
         sideArm.extend();

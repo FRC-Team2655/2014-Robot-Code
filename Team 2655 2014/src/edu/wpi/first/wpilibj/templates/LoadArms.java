@@ -12,6 +12,7 @@ public class LoadArms {
     }
 
     void extend() {
+        
             //spin motors
         //put arms down
     }
