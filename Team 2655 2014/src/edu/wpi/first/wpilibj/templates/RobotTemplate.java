@@ -30,7 +30,7 @@ public class RobotTemplate extends IterativeRobot {
 
     Ultrasonic rangeFinderSensor;
 
-    boolean shootButtonIsPressed = joyStick.getRawButton(1);
+    boolean shootButtonIsPressed = joyStick.getRawButton(HardwarePortsEnum.shootButtonNumber);
     boolean armButtonIsPressed = joyStick.getRawButton(2);
     boolean loadButtonIsPressed = joyStick.getRawButton(3);
     boolean passButtonIsPressed = joyStick.getRawButton(4);
@@ -40,7 +40,7 @@ public class RobotTemplate extends IterativeRobot {
 
     public RobotTemplate() {
         joyStick = new Joystick(1);
-        rangeFinderSensor = new Ultrasonic(PublicEnumHardwarePorts.rangeFinderPingPort, PublicEnumHardwarePorts.rangeFinderEchoPort);
+        rangeFinderSensor = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
         
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
