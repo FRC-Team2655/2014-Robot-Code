@@ -26,6 +26,10 @@ public class RobotTemplate extends IterativeRobot {
     JoystickButton loadButton;
     JoystickButton passButton;
     JoystickButton catchButton;
+    
+    boolean shootButtonIsPressed = true;
+    boolean armButtonIsPressed = true;
+    
 
     Gyro gyro;
 
@@ -40,20 +44,12 @@ public class RobotTemplate extends IterativeRobot {
 
         driveSystem.run();//Runs Drivetrain -- Do we need to pass the joystick here???
 
-        // WE DON'T NEED THIS STUFF. IT'S FOR A DIFFERENT PROGRAM STRUCTURE. --Josh
        shootButton = new JoystickButton(joyStick,PublicEnumHardwarePorts.shootButtonNumber);
-//        armButton = new JoystickButton(joyStick,2);
-//        loadButton = new JoystickButton(joyStick,3);
-//        passButton = new JoystickButton(joyStick,4);
-//        catchButton = new JoystickButton(joyStick,5);
-//        
-//        shootButton.whenPressed();
-        //shootButton.whenPressed(ballHandler.shootTheBall()); //Zephan broke it.
+
     }
 
     public void robotInit() {
         //blank for now
-
     }
 
     public void autonomousPeriodic() {
