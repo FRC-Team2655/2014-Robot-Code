@@ -20,7 +20,7 @@ public class BallHandler {
     public final int compressorRelayChannel = 2;
     
     Shooter shooter;
-    Solenoid sideArm;
+    SideArm sideArm;
     Anchor anchor;
     InFeed loadArms;
     DigitalInput ballInMittLimitSwitch;
@@ -32,7 +32,7 @@ public class BallHandler {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
         
         shooter = new Shooter();
-        sideArm = new Solenoid(1, 1, 2, 100);
+        sideArm = new SideArm();
         anchor = new Anchor(1, 2);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
