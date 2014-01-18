@@ -16,8 +16,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotTemplate extends IterativeRobot {
 
-    RobotDrive drive;
-
     DriveSystem driveSystem;
     BallHandler ballHandler;
 
@@ -29,12 +27,6 @@ public class RobotTemplate extends IterativeRobot {
     JoystickButton catchButton;
 
     Ultrasonic rangeFinderSensor;
-
-    boolean shootButtonIsPressed = joyStick.getRawButton(HardwarePortsEnum.shootButtonNumber);
-    boolean armButtonIsPressed = joyStick.getRawButton(2);
-    boolean loadButtonIsPressed = joyStick.getRawButton(3);
-    boolean passButtonIsPressed = joyStick.getRawButton(4);
-    boolean catchButtonIsPressed = joyStick.getRawButton(5);
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -63,15 +55,15 @@ public class RobotTemplate extends IterativeRobot {
 
     //Gandalf = 100pts
     public void teleopPeriodic() {
-        if (shootButtonIsPressed) {
+        if (joyStick.getRawButton(HardwarePortsEnum.shootButtonNumber)) {
             ballHandler.shootTheBall();
-        } else if (armButtonIsPressed) {
+        } else if (joyStick.getRawButton(2)) {
             ballHandler.catchTheBall();
-        } else if (loadButtonIsPressed) {
+        } else if (joyStick.getRawButton(3)) {
             ballHandler.loadTheBall();
-        } else if (passButtonIsPressed) {
+        } else if (joyStick.getRawButton(4)) {
             ballHandler.armTheShooter();
-        } else if (catchButtonIsPressed) {
+        } else if (joyStick.getRawButton(5)) {
             ballHandler.passTheBall();
         }
     }
