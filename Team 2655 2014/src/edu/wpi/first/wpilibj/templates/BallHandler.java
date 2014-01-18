@@ -22,7 +22,7 @@ public class BallHandler {
     Solenoid shooter;
     Solenoid sideArm;
     Solenoid anchor;
-    LoadArms loadArms;
+    InFeed loadArms;
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
     boolean loadArmsAreExtended = true;
@@ -33,7 +33,7 @@ public class BallHandler {
         shooter = new Solenoid(1, 1, 2, 100);
         sideArm = new Solenoid(1, 1, 2, 100);
         anchor = new Solenoid(1, 1, 2, 100);
-        loadArms = new LoadArms();
+        loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }

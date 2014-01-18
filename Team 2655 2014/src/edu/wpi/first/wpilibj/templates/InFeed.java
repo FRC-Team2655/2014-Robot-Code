@@ -3,12 +3,12 @@
 package edu.wpi.first.wpilibj.templates;
 
 // Author Alex Senneville
-public class LoadArms {
+public class InFeed {
 
-    LoadArms loadArms;
+    InFeed InFeed;
 
-    public LoadArms() {
-        loadArms = new LoadArms();
+    public InFeed() {
+        InFeed = new InFeed();
     }
 
     void extend() {
