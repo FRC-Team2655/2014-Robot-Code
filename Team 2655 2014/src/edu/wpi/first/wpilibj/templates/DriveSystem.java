@@ -17,7 +17,7 @@ public class DriveSystem implements Runnable {
     public static int useGyro = 1;
     
     Talon frontLeftMotor, backLeftMotor, frontRightMotor, backRightMotor;
-
+    
     RobotDrive mainDrive;
 
     int driveMode;
@@ -42,11 +42,17 @@ public class DriveSystem implements Runnable {
 
         while (true) {
             try {
-
+                if(driveMode == DriveModeEnum.Autonomous){
+                    
+                }
+                else if(driveMode == DriveModeEnum.Teleop){
                 mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                         driveStick.getAxis(Joystick.AxisType.kY),
                         driveStick.getAxis(Joystick.AxisType.kZ),
                         gyro.getAngle() * useGyro);
+                }else if(driveMode == DriveModeEnum.Disabled){
+                    
+                }
 
                 Thread.sleep(1);
             } catch (InterruptedException ex) {
