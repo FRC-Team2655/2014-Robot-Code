@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -11,10 +10,10 @@ import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  *
- * @author Zephan
- * edited by Alex
+ * @author Zephan edited by Alex
  */
 public class BallHandler {
+
     Compressor compressor;
 
     Shooter shooter;
@@ -23,58 +22,61 @@ public class BallHandler {
     InFeed loadArms;
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
-    boolean loadArmsAreExtended = true;
     private final boolean notInMitt = false;
-    
-    public BallHandler () {
+    boolean loadArmsAreExtended = true;
+
+    public BallHandler() {
         compressor = new Compressor(HardwarePortsEnum.pressureSwitchChannel, HardwarePortsEnum.compressorRelayChannel);
-        
+
         shooter = new Shooter();
         sideArm = new SideArm(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmClosedArmChannel);
-        anchor = new Anchor(HardwarePortsEnum.anchorDropChannel,HardwarePortsEnum.anchorRaiseChannel);
+        anchor = new Anchor(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }
-    
+
     void armTheShooter() {
         sideArm.open();
         anchor.drop();
-        
-        
+
     }
+
     void shootTheBall() {
         shooter.shoot();
         shooter.reload();
         sideArm.close();
         anchor.raise();
     }
-    
+
     void loadTheBall() {
-        if (loadArmsAreExtended == true){
+        if (loadArmsAreExtended == true) {
             loadArms.raise();
         }
-        if (ballInMittLimitSwitch.get() != InMitt){
+        if (ballInMittLimitSwitch.get() != InMitt) {
             loadArms.lower();
             loadArms.raise();
         }
     }
-    
+
     void catchTheBall() {
-        sideArm.open();
-        if (ballInMittLimitSwitch.get() == notInMitt ){
-            sideArm.close();
+
+        if (ballInMittLimitSwitch.get() != InMitt) {
+
+            sideArm.open();
+
         }
-        //the side arm extending is making the arms open or flower.
-        
-                       
+        if (ballInMittLimitSwitch.get() == InMitt) {
+            sideArm.close();
+        } //the side arm extending is making the arms open or flower.
+
     }
+
     void passTheBall() {
         sideArm.open();
         //can try a pwm 
         //or turning it on only for a short amount of time
         //put wait statement in here
-                
-        
+
     }
 }

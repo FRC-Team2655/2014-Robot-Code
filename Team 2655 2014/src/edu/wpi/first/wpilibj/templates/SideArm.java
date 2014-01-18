@@ -2,13 +2,13 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-// Author Seth
+// Author Zephan
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class SideArm {
     DoubleSolenoid sideArms;
-
+    
     public SideArm(int openArmChannel, int closedArmChannel) {
     }
     

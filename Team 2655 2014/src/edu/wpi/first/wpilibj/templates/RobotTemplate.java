@@ -30,11 +30,16 @@ public class RobotTemplate extends IterativeRobot {
 
     Ultrasonic rangeFinderSensor;
 
-    boolean shootButtonIsPressed = joyStick.getRawButton(HardwarePortsEnum.shootButtonNumber);
+    boolean shootButtonIsPressed = joyStick.getRawButton(1);
     boolean armButtonIsPressed = joyStick.getRawButton(2);
     boolean loadButtonIsPressed = joyStick.getRawButton(3);
     boolean passButtonIsPressed = joyStick.getRawButton(4);
     boolean catchButtonIsPressed = joyStick.getRawButton(5);
+    boolean shootingInProgress = false; 
+    boolean armButtonInProgres = false;
+    boolean loadButtonInProgres = false;
+    boolean passButtonInProgres = false;
+    boolean catchButtonIsInProgres = false;
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -63,8 +68,10 @@ public class RobotTemplate extends IterativeRobot {
 
     //Gandalf = 100pts
     public void teleopPeriodic() {
-        if (shootButtonIsPressed) {
+        if (shootButtonIsPressed && shootingInProgress == false) {
+            shootingInProgress = true;
             ballHandler.shootTheBall();
+            shootingInProgress = false;
         } else if (armButtonIsPressed) {
             ballHandler.catchTheBall();
         } else if (loadButtonIsPressed) {
