@@ -21,4 +21,5 @@ public class PublicEnumHardwarePorts {
     public static int extendchannel = 4;
     public static int retractchannel = 5;
     public static int timeToExtend = 566;
+    public static int shootButtonNumber = 1;
 }

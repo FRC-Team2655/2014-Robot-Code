@@ -29,9 +29,12 @@ public class DriveSystem implements Runnable {
     //should we add a reset button for the gyro?
     //should we also add another button to automatically point to zero
     public void run() {
+        
+        
         while(true){ 
             try {
                 //make a sleep mode in the smart dash? should the thread sleep?
+                //create and if statement to determine if we are in teleop or auto
                 mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                         driveStick.getAxis(Joystick.AxisType.kY),
                         driveStick.getAxis(Joystick.AxisType.kZ),
