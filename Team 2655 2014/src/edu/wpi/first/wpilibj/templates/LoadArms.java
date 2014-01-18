@@ -8,11 +8,16 @@ package edu.wpi.first.wpilibj.templates;
 
 /**
  *
- * @author tronage gaming
+ * @author Alex Senneille
  */
 public class LoadArms {
 
     public LoadArms() {
     }
-        
+        void extract(){
+            
+        }
+        void retract(){
+            
+        }
 }
