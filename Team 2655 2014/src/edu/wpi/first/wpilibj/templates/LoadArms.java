@@ -1,25 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package edu.wpi.first.wpilibj.templates;
 
-/**
- *
- * @author Alex Senneille
- */
+// Author Alex Senneville
 public class LoadArms {
 
+    LoadArms loadArms;
+
     public LoadArms() {
+        loadArms = new LoadArms();
     }
-        void extend(){
+
+    void extend() {
             //spin motors
-            //put arms down
-        }
-        void retract(){
+        //put arms down
+    }
+
+    void retract() {
             //turn the motors off 
-            //retract arms
-        }
+        //retract arms
+    }
 }
