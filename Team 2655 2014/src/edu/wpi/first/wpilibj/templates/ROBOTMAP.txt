@@ -1,0 +1,10 @@
+Joystick Buttons:
+1. Shoot
+2. Catch
+3. Load
+4. Arm
+5. Pass
+
+Digital Inputs:
+
+Digital Outputs:

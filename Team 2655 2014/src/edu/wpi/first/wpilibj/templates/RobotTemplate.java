@@ -15,7 +15,9 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class RobotTemplate extends IterativeRobot {
 
-    DriveSystem driveStation;
+    RobotDrive drive;
+    
+    DriveSystem driveSystem;
     BallHandler ballHandler;
     
     Joystick joyStick;
@@ -29,12 +31,19 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
         
         ballHandler = new BallHandler();
+        driveSystem = new DriveSystem(joyStick);
+        
         joyStick = new Joystick(1);
-        shootButton = new JoystickButton(joyStick,1);
-        armButton = new JoystickButton(joyStick,2);
-        loadButton = new JoystickButton(joyStick,3);
-        passButton = new JoystickButton(joyStick,4);
-        catchButton = new JoystickButton(joyStick,5);
+        
+        // WE DON'T NEED THIS STUFF. IT'S FOR A DIFFERENT PROGRAM STRUCTURE. --Josh
+//        shootButton = new JoystickButton(joyStick,1);
+//        armButton = new JoystickButton(joyStick,2);
+//        loadButton = new JoystickButton(joyStick,3);
+//        passButton = new JoystickButton(joyStick,4);
+//        catchButton = new JoystickButton(joyStick,5);
+//        
+//        shootButton.whenPressed();
+        
         
         
         //shootButton.whenPressed(ballHandler.shootTheBall()); //Zephan broke it.
@@ -42,9 +51,29 @@ public class RobotTemplate extends IterativeRobot {
 
     
     public void autonomousPeriodic() {
+       //drive Foward...
+        ballHandler.shootTheBall();
     }
 
     public void teleopPeriodic() {
+        driveSystem.run(); //Runs Drivetrain -- Do we need to pass the joystick here???
+        if(joyStick.getRawButton(1))
+            ballHandler.shootTheBall();
+        if(joyStick.getRawButton(2))
+            ballHandler.catchTheBall();
+        if(joyStick.getRawButton(3))
+            ballHandler.loadTheBall();
+        if(joyStick.getRawButton(4))
+            ballHandler.armTheShooter();
+        if(joyStick.getRawButton(5))
+            ballHandler.passTheBall();
+            
+            
+        
+        
+        
+        
+        
     }
 
     public void testPeriodic() {
