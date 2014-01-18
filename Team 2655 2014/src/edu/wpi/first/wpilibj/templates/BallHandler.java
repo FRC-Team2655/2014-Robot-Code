@@ -21,7 +21,7 @@ public class BallHandler {
     
     Solenoid shooter;
     Solenoid sideArm;
-    Solenoid anchor;
+    Anchor anchor;
     InFeed loadArms;
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
@@ -32,14 +32,14 @@ public class BallHandler {
         
         shooter = new Solenoid(1, 1, 2, 100);
         sideArm = new Solenoid(1, 1, 2, 100);
-        anchor = new Solenoid(1, 1, 2, 100);
+        anchor = new Anchor(1, 2);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }
     void armTheShooter() {
         sideArm.extend();
-        anchor.extend();
+        anchor.drop();
         
         
     }
@@ -47,7 +47,7 @@ public class BallHandler {
         shooter.extend();
         shooter.retract();
         sideArm.retract();
-        anchor.retract();
+        anchor.raise();
     }
     
     void loadTheBall() {
