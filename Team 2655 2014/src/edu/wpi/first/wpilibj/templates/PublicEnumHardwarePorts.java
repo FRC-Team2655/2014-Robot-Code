@@ -22,4 +22,8 @@ public class PublicEnumHardwarePorts {
     public static int inFeedraiseChannel = 7;
     public static int pressureSwitchChannel = 1;
     public static int compressorRelayChannel = 2; 
+    public static int leftArmMotorControlChannel = 3;
+    public static int rightArmMotorControlChannel = 8;
+    public static int sideArmOpenArmChannel = 3;
+    public static int sideArmClosedArmChannel = 4;
 }
