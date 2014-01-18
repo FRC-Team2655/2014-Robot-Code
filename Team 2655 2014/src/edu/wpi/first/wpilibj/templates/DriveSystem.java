@@ -20,7 +20,7 @@ public class DriveSystem implements Runnable {
     RobotDrive mainDrive = new RobotDrive(1,2,3,4); //change motors later
     
     
-    public DriveSystem(Joystick driveStick, Gyro gyro) {
+    public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
         this.gyro = gyro;
         gyro.reset();
