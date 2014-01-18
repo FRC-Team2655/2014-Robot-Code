@@ -15,7 +15,7 @@ public class DriveSystem implements Runnable {
     
     Joystick driveStick; 
     Gyro gyro;
-    int driveType;
+    public static int useGyro = 1;
     
     RobotDrive mainDrive = new RobotDrive(1,2,3,4); //change motors later
     
@@ -23,14 +23,25 @@ public class DriveSystem implements Runnable {
     public DriveSystem(Joystick driveStick, Gyro gyro) {
         this.driveStick = driveStick;
         this.gyro = gyro;
-        this.driveType = driveType;
+        gyro.reset();
     }
-    public void teleopDrive(){
-       
-    }
-    
+   
+    //should we add a reset button for the gyro?
+    //should we also add another button to automatically point to zero
     public void run() {
-    
+        while(true){ 
+            try {
+                //make a sleep mode in the smart dash? should the thread sleep?
+                mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
+                        driveStick.getAxis(Joystick.AxisType.kY),
+                        driveStick.getAxis(Joystick.AxisType.kZ),
+                        gyro.getAngle() * useGyro);
+                Thread.sleep(1);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+       
+        }
     }
 
     
