@@ -14,7 +14,8 @@ public class InFeed {
             //change arguments later
         leftArmMotorControl = new Relay(1);
         rightArmMotorControl = new Relay(2);
-        liftArmControl = new Solenoid(3,4);
+        liftArmControl = new Solenoid(3, 4, 5, 566);
+        //make sure to change relays and channels later
     }
 
     void extend() {

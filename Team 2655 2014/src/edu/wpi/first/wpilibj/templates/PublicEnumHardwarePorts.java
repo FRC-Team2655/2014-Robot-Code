@@ -15,5 +15,8 @@ public class PublicEnumHardwarePorts {
     public static int encoder1Channel2 = 6;
     public static int encoder2Channel1 = 7;
     public static int encoder2Channel2 = 8;
-    
+    public static int sidecarmodule = 3;
+    public static int extendchannel = 4;
+    public static int retractchannel = 5;
+    public static int timeToExtend = 566;
 }
