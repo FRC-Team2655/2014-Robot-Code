@@ -3,12 +3,18 @@
 package edu.wpi.first.wpilibj.templates;
 
 // Author Alex Senneville
+
+import edu.wpi.first.wpilibj.Relay;
+
 public class InFeed {
-
-    InFeed InFeed;
-
+    Solenoid liftArmControl;
+    Relay leftArmMotorControl;
+    Relay rightArmMotorControl;
     public InFeed() {
-        InFeed = new InFeed();
+            //change arguments later
+        leftArmMotorControl = new Relay(1);
+        rightArmMotorControl = new Relay(2);
+        liftArmControl = new Solenoid(3,4);
     }
 
     void extend() {
