@@ -12,7 +12,7 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class Anchor {
 
-    public Anchor() {
+    public Anchor(int dropChannel, int raiseChannel) {
         
     }
     void drop(){
