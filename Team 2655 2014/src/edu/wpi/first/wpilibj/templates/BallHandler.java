@@ -26,6 +26,7 @@ public class BallHandler {
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
     boolean loadArmsAreExtended = true;
+    private final boolean notInMitt = false;
     
     public BallHandler () {
         compressor = new Compressor(pressureSwitchChannel, compressorRelayChannel);
@@ -62,12 +63,17 @@ public class BallHandler {
     
     void catchTheBall() {
         sideArm.extend();
+        if (ballInMittLimitSwitch.get() == notInMitt ){
+            sideArm.retract();
+        }
         //the side arm extending is making the arms open or flower.
         
                        
     }
     void passTheBall() {
         sideArm.extend();
+        //can try a pwm 
+        //or turning it on only for a short amount of time
         
         
     }
