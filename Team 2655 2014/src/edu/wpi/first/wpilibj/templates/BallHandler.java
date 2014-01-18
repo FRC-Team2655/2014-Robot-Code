@@ -7,6 +7,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  *
@@ -21,6 +22,8 @@ public class BallHandler {
     Solenoid shooter;
     Solenoid sideArm;
     Solenoid anchor;
+    LoadArms loadArms;
+    DigitalInput limitSwitch;
     
 
     public BallHandler () {
@@ -29,6 +32,8 @@ public class BallHandler {
         shooter = new Solenoid(1, 1, 2, 100);
         sideArm = new Solenoid(1, 1, 2, 100);
         anchor = new Solenoid(1, 1, 2, 100);
+        loadArms = new LoadArms();
+        limitSwitch = new DigitalInput(1);
     }
     void armTheShooter() {
         sideArm.extend();
@@ -44,7 +49,12 @@ public class BallHandler {
     }
     
     void loadTheBall() {
+        if (ballIsInMitt == true){
+            
         
+        }
+        loadArms.extend();
+        loadArms.retract();
                 
     }
     void catchTheBall() {

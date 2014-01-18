@@ -14,7 +14,7 @@ public class LoadArms {
 
     public LoadArms() {
     }
-        void extract(){
+        void extend(){
             
         }
         void retract(){
