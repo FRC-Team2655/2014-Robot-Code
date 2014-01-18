@@ -7,13 +7,19 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 
-public class DriveSystem {
+public class DriveSystem implements Runnable {
     
 
     
     public DriveSystem(Joystick joyStick) {
         
     }
+
+    public void run() {
+//        throw new java.lang.UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    
+
 }
