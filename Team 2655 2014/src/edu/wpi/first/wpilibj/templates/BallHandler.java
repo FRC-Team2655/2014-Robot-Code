@@ -55,11 +55,11 @@ public class BallHandler {
     
     void loadTheBall() {
         if (loadArmsAreExtended == true){
-            loadArms.retract();
+            loadArms.raise();
         }
         if (ballInMittLimitSwitch.get() != InMitt){
-            loadArms.extend();
-            loadArms.retract();
+            loadArms.lower();
+            loadArms.raise();
         }
     }
     
