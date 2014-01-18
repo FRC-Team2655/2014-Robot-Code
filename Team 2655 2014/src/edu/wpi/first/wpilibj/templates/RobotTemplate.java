@@ -7,6 +7,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -27,11 +28,16 @@ public class RobotTemplate extends IterativeRobot {
     JoystickButton passButton;
     JoystickButton catchButton;
     
+    Gyro gyro;
+    
+    
+    int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
+    
     
     public void robotInit() {
         
         ballHandler = new BallHandler();
-        driveSystem = new DriveSystem(joyStick);
+        driveSystem = new DriveSystem(joyStick, gyro, driveType);
         
         joyStick = new Joystick(1);
         
@@ -56,7 +62,7 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopPeriodic() {
-        driveSystem.run(); //Runs Drivetrain -- Do we need to pass the joystick here???
+        driveSystem.teleopDrive();//Runs Drivetrain -- Do we need to pass the joystick here???
         if(joyStick.getRawButton(1))
             ballHandler.shootTheBall();
         if(joyStick.getRawButton(2))
