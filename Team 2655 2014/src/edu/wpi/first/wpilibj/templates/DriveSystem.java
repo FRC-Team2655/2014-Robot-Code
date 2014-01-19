@@ -59,8 +59,8 @@ public class DriveSystem implements Runnable {
     
     
     
-    public void moveAutonomous(double x, double y, double z){
-        mainDrive.mecanumDrive_Cartesian(x, y, z, 0);
+    public void moveAutonomous(double magnitude, double direction, double rotation){
+        mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
 
 }
