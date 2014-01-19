@@ -17,25 +17,31 @@ public class RobotTemplate extends IterativeRobot {
     BallHandler ballHandler;
 
     Joystick joyStick;
-    JoystickButton shootButton;
-    JoystickButton armButton;
-    JoystickButton loadButton;
-    JoystickButton passButton;
-    JoystickButton catchButton;
-
-    Ultrasonic rangeFinderSensor;
+    
+    Ultrasonic frontRightRangeFinder;
+    Ultrasonic frontLeftRangeFinder;
 
     boolean shootingInProgress = false; 
     boolean armButtonInProgres = false;
     boolean loadButtonInProgres = false;
     boolean passButtonInProgres = false;
     boolean catchButtonIsInProgres = false;
+    
+    boolean lastShootButtonState = false;
+    boolean lastArmButtonState = false;
+    boolean lastLoadButtonState = false;
+    boolean lastPassButtonState = false;
+    boolean lastCatchButtonState = false;
+    boolean pressed = true;
+    boolean notPressed = false;
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
         joyStick = new Joystick(1);
-        rangeFinderSensor = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
+        
+        frontRightRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
+        frontLeftRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
         
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
@@ -45,10 +51,27 @@ public class RobotTemplate extends IterativeRobot {
 
     public void robotInit() {
         //blank for now
+        //Replaced by the Constructor
     }
 
     public void autonomousPeriodic() {
+        frontLeftRangeFinder.setAutomaticMode(true);
+        frontRightRangeFinder.setAutomaticMode(true);
         
+        while(frontRightRangeFinder.getRangeInches() != frontLeftRangeFinder.getRangeInches())
+        {
+            if(frontLeftRangeFinder.getRangeInches() > frontRightRangeFinder.getRangeInches()){
+                //TODO rotate right
+            }
+            if(frontRightRangeFinder.getRangeInches() > frontLeftRangeFinder.getRangeInches()){
+                //TODO rotate left  
+            }
+        }
+        driveSystem.gyro.reset();
+        
+        while(frontRightRangeFinder.getRangeInches() > 60){
+            //move forward
+        }
         ballHandler.shootTheBall();
     }
 
@@ -56,30 +79,59 @@ public class RobotTemplate extends IterativeRobot {
         //blank for now
     }
 
-    /*
-    boolean last state = off;
-    
-    if(button is pressed){
-        if(last state was off)
-            if(turn on){Turn off}
-        else{ {turn on}
-    }
-    */
     //Gandalf = 100pts
     public void teleopPeriodic() {
-        if (joyStick.getRawButton(1) && shootingInProgress == false) {
-            shootingInProgress = true;
-            ballHandler.shootTheBall();
-            shootingInProgress = false;
-        } else if (joyStick.getRawButton(2)) { 
-            ballHandler.catchTheBall();
-        } else if (joyStick.getRawButton(3)) {
-            ballHandler.loadTheBall();
-        } else if (joyStick.getRawButton(4)) {
-            ballHandler.armTheShooter();
-        } else if (joyStick.getRawButton(5)) {
-            ballHandler.passTheBall();
-        }
+        
+        // "Rising Edge" button logic
+          //Shoot Button
+          if (joyStick.getRawButton(1)){ //Shoot button
+              if(lastShootButtonState == notPressed){
+                  ballHandler.shootTheBall();
+                  lastShootButtonState = pressed;
+              }
+          }else{
+              lastShootButtonState = notPressed;
+          }
+ 
+          //Catch Button
+          if(joyStick.getRawButton(2)){ 
+              if(lastCatchButtonState == notPressed){
+                  ballHandler.catchTheBall();
+                  lastCatchButtonState = pressed;
+              }
+          }else{
+           lastCatchButtonState = notPressed;   
+          }
+          
+          //Load Button
+          if(joyStick.getRawButton(3)){
+              if(lastLoadButtonState == notPressed){
+                  ballHandler.loadTheBall();
+                  lastLoadButtonState = pressed;
+              }
+          }else{
+           lastLoadButtonState = notPressed;   
+          }
+          
+          //Arm Button
+          if(joyStick.getRawButton(4)){
+              if(lastArmButtonState == notPressed){
+                  ballHandler.armTheShooter();
+                  lastArmButtonState = pressed;
+              }
+          }else{
+           lastArmButtonState = notPressed;   
+          }
+          
+          //Poop (Pass) Button
+          if(joyStick.getRawButton(5)){
+              if(lastPassButtonState == notPressed){
+                  ballHandler.passTheBall();
+                  lastArmButtonState = pressed;
+              }
+          }else{
+           lastArmButtonState = notPressed;   
+          }
     }
 
     public void testPeriodic() {
