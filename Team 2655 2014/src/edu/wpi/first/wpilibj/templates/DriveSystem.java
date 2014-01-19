@@ -56,5 +56,11 @@ public class DriveSystem implements Runnable {
             driveMode = mode;
         }
     }
+    
+    
+    
+    public void moveAutonomous(int x, int y, int z){
+        mainDrive.mecanumDrive_Cartesian(x, y, z, 0);
+    }
 
 }
