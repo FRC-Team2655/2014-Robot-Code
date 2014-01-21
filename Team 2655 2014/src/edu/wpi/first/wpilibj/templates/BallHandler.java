@@ -44,7 +44,7 @@ public class BallHandler {
 
     void shootTheBall() {
         shooter.shoot();
-        shooter.reload();
+        shooter.reset();
         sideArm.close();
         anchor.raise();
     }

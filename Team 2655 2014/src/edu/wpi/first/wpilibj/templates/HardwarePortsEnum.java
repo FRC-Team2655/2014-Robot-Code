@@ -33,10 +33,11 @@ public class HardwarePortsEnum {
     public static int rangeFinderPingPort = 13;
     
     public static int ballInMittLimitSwitch = 14;
-    
-    public static int frontLeftMotorChannel = 15;
-    public static int backLeftMotorChannel = 16;
-    public static int frontRightMotorChannel = 17;
-    public static int backRightMotorChannel = 18;
+
+    public static int frontLeftMotorChannel = 1;
+    public static int backLeftMotorChannel = 2;
+    public static int frontRightMotorChannel = 3;
+    public static int backRightMotorChannel = 4;
+
     
 }
