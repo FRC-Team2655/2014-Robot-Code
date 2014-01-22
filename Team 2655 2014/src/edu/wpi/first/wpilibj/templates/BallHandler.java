@@ -43,8 +43,8 @@ public class BallHandler {
     }
 
     void shootTheBall() {
+        sideArm.open();
         shooter.shoot();
-        shooter.reset();
         sideArm.close();
         anchor.raise();
     }
