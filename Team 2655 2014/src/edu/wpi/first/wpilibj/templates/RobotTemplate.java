@@ -47,7 +47,6 @@ public class RobotTemplate extends IterativeRobot {
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
 
-
     }
 
     public void robotInit() {
@@ -55,6 +54,12 @@ public class RobotTemplate extends IterativeRobot {
         //Replaced by the Constructor
     }
 
+    public void autonomousInit(){
+
+    driveSystem.run(); // "Beause you are morons...lol" by Nick :D
+    
+    }
+    
     public void autonomousPeriodic() {
         frontLeftRangeFinder.setAutomaticMode(true); //enable left sonic sensor
         frontRightRangeFinder.setAutomaticMode(true); //enable right sonic sensor
@@ -85,18 +90,19 @@ public class RobotTemplate extends IterativeRobot {
 
     //Gandalf = 100pts
     public void teleopPeriodic() {
-        driveSystem.run(); // "Beause you are morons...lol" by Nick :D
+     
         // "Rising Edge" button logic
         //Shoot Button -------------------------------------------------------
         
         
         if (joyStick.getRawButton(1)) { //Shoot button
-            if (lastShootButtonState == notPressed) {
+            if (lastShootButtonState == notPressed && lastArmButtonState == pressed) {
                 ballHandler.shootTheBall();
                 lastShootButtonState = pressed;
             }
-        } else {
-            lastShootButtonState = notPressed;
+            else {
+                lastShootButtonState = notPressed;
+          }       
         }
 
         //Catch Button -------------------------------------------------------

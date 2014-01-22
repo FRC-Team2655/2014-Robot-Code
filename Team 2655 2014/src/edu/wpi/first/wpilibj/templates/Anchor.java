@@ -3,29 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 /**
  *
- * @author Seth
+ * @author Seth - edited by Zephan
  */
 public class Anchor {
+
     DoubleSolenoid anchors;
 
     public Anchor(int dropChannel, int raiseChannel) {
+
         anchors = new DoubleSolenoid(dropChannel, raiseChannel);
-        anchors.set(DoubleSolenoid.Value.kOff);
+//      anchors.set(DoubleSolenoid.Value.kOff); - checking if anchors are off?
+
     }
-    void drop(){
+
+    void drop() {
+
         anchors.set(DoubleSolenoid.Value.kForward);
         //Find if we need to stop the solenoid when it reaches the bottom position.
-        
+
     }
-    void raise(){
+
+    void raise() {
+
         anchors.set(DoubleSolenoid.Value.kReverse);
         //Find if we need to stop the solenoid when it reaches th top position.
+        
     }
 }

@@ -50,13 +50,7 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-        if (loadArmsAreExtended == true) {
-            loadArms.raise();
-        }
-        if (ballInMittLimitSwitch.get() != InMitt) {
-            loadArms.lower();
-            loadArms.raise();
-        }
+
     }
 
     void catchTheBall() {

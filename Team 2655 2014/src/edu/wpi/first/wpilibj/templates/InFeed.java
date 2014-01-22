@@ -2,43 +2,35 @@
 
 package edu.wpi.first.wpilibj.templates;
 
-// Author Alex Senneville
+// Author Alex Senneville - edited by Zephan
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
 
 public class InFeed {
-    DoubleSolenoid liftArmControl;
+    
     Relay leftArmMotorControl;
     Relay rightArmMotorControl;
     public InFeed() {
-            //change arguments later
+            // Change arguments later.
         
         leftArmMotorControl = new Relay(HardwarePortsEnum.leftArmMotorControlChannel);
-        rightArmMotorControl = new Relay(HardwarePortsEnum.rightArmMotorControlChannel);
-        
-        liftArmControl = new DoubleSolenoid(HardwarePortsEnum.inFeedLowerChannel, HardwarePortsEnum.inFeedRaiseChannel );
-        
+        rightArmMotorControl = new Relay(HardwarePortsEnum.rightArmMotorControlChannel);        
     
-        //make sure to change relays and channels later
+        // Make sure to change relays and channels later.
     }
 
-    void lower() {
+    void on() {
         leftArmMotorControl.set(Relay.Value.kOn);
-        leftArmMotorControl.set(Relay.Value.kForward);
         rightArmMotorControl.set(Relay.Value.kOn);
-        rightArmMotorControl.set(Relay.Value.kForward);
-        liftArmControl.set(DoubleSolenoid.Value.kForward);
-        //check forward and reverse
-            //spin motors
-        //put arms down
+//      rightArmMotorControl.set(Relay.Value.kForward); - not sure why this is here.
+        // Turns motors on.
+
     }
 
-    void raise() {
+    void off() {
         leftArmMotorControl.set(Relay.Value.kOff);
         rightArmMotorControl.set(Relay.Value.kOff);
-        liftArmControl.set(DoubleSolenoid.Value.kReverse);
-            //turn the motors off 
-        //retract arms
+            // Turns the motors off. 
     }
 }
