@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class PublicEnumHardwarePorts {
+//  Hardware ports are incorrect and/or temporary.
     
     public static int anchorDropChannel = 1; 
     public static int anchorRaiseChannel = 2;

@@ -11,7 +11,8 @@ package edu.wpi.first.wpilibj.templates;
  * @author magic_000
  */
 public class HardwarePortsEnum {
-    
+//  Hardware ports are incorrect and/or temporary.
+   
     public static int anchorDropChannel = 1; 
     public static int anchorRaiseChannel = 2;
     
@@ -25,7 +26,8 @@ public class HardwarePortsEnum {
     
     public static int leftArmMotorControlChannel = 8;
     public static int rightArmMotorControlChannel = 9;
-    
+  
+
     public static int sideArmOpenArmChannel = 10;
     public static int sideArmCloseArmChannel = 11;
     
@@ -33,11 +35,14 @@ public class HardwarePortsEnum {
     public static int rangeFinderPingPort = 13;
     
     public static int ballInMittLimitSwitch = 14;
-
+   
+    public static int shooterExtendChannel = 15;
+    public static int shooterRetractChannel = 16;
+    
     public static int frontLeftMotorChannel = 1;
     public static int backLeftMotorChannel = 2;
     public static int frontRightMotorChannel = 3;
     public static int backRightMotorChannel = 4;
-
+    
     
 }
