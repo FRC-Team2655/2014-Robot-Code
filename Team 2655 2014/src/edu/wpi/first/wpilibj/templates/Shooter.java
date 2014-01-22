@@ -5,17 +5,16 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class Shooter {
 
-    DoubleSolenoid shooterPiston1;
-    DoubleSolenoid shooterPiston2;
+    DoubleSolenoid shooterSolenoid;
 
     public Shooter() {
-        shooterPiston1 = new DoubleSolenoid(HardwarePortsEnum.ShooterExtendChannel, HardwarePortsEnum.ShooterRetractChannel);
+        shooterSolenoid = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
         //may need to change channels and may need to add spike to conttrol multiple channels
-        shooterPiston2 = new DoubleSolenoid(HardwarePortsEnum.ShooterExtendChannel, HardwarePortsEnum.ShooterRetractChannel);
+        shooterPiston2 = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
     }
 
     void shoot() {
-        shooterPiston1.set(DoubleSolenoid.Value.kForward);
+        shooterSolenoid.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
         //after the ball is shot we might need a timer in there to make the piston extend
         //wait until piston completly extends 
@@ -25,13 +24,13 @@ public class Shooter {
 
         } finally {
             shooterPiston2.set(DoubleSolenoid.Value.kOff);
-            shooterPiston1.set(DoubleSolenoid.Value.kOff);
+            shooterSolenoid.set(DoubleSolenoid.Value.kOff);
         }
 
     }
 
     void reset() {
-        shooterPiston1.set(DoubleSolenoid.Value.kReverse);
+        shooterSolenoid.set(DoubleSolenoid.Value.kReverse);
         shooterPiston2.set(DoubleSolenoid.Value.kReverse);
         //wait until piston completly retracts wait(timeout);
         try {
@@ -40,7 +39,7 @@ public class Shooter {
 
         } finally {
             shooterPiston2.set(DoubleSolenoid.Value.kOff);
-            shooterPiston1.set(DoubleSolenoid.Value.kOff);
+            shooterSolenoid.set(DoubleSolenoid.Value.kOff);
         }
 
     }
