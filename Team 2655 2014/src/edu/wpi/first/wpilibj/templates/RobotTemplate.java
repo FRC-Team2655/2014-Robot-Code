@@ -47,7 +47,7 @@ public class RobotTemplate extends IterativeRobot {
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
 
-        driveSystem.run();
+
     }
 
     public void robotInit() {
@@ -85,9 +85,11 @@ public class RobotTemplate extends IterativeRobot {
 
     //Gandalf = 100pts
     public void teleopPeriodic() {
-
+        driveSystem.run(); // "Beause you are morons...lol" by Nick :D
         // "Rising Edge" button logic
         //Shoot Button -------------------------------------------------------
+        
+        
         if (joyStick.getRawButton(1)) { //Shoot button
             if (lastShootButtonState == notPressed) {
                 ballHandler.shootTheBall();
