@@ -14,12 +14,10 @@ public class Shooter {
 
     void shoot() {
        
-        shooterSolenoid.set(DoubleSolenoid.Value.kForward);
-        //after the ball is shot we might need a timer in there to make the piston extend
-      
-        // Wait until piston completly extends 
+        shooterSolenoid.set(DoubleSolenoid.Value.kForward);      
+         
         try {
-            wait(100);
+            wait(100);// Wait until piston completly extends
         } catch (Exception e) {
 
         } finally {
@@ -36,6 +34,10 @@ public class Shooter {
        }
 
     }
-
-   }
+    
+    void pass(){
+//  Will add code later. Should be similar to shoot.
+    
+    }
+}
 

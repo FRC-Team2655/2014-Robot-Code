@@ -20,16 +20,19 @@ public class RobotTemplate extends IterativeRobot {
     Ultrasonic frontRightRangeFinder;
     Ultrasonic frontLeftRangeFinder;
     
-//  Variables for the joystick buttons
+//  Variables for the joystick buttons.
+  
     boolean shootingInProgress = false;
     boolean armButtonInProgres = false;
     boolean loadButtonInProgres = false;
     boolean passButtonInProgres = false;
     boolean catchButtonIsInProgres = false;
-
+  
+//  Variables for possible button states.
+   
     boolean lastShootButtonState = false;
     boolean lastArmButtonState = false;
-    boolean lastLoadButtonState = false;
+    public static boolean lastLoadButtonState = false;
     boolean lastPassButtonState = false;
     boolean lastCatchButtonState = false;
     boolean pressed = true;

@@ -19,7 +19,7 @@ public class BallHandler {
     Shooter shooter;
     SideArms sideArm;
     Anchor anchor;
-    InFeed loadArms;
+    InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
     private final boolean InMitt = true;
     private final boolean notInMitt = false;
@@ -31,7 +31,7 @@ public class BallHandler {
         shooter = new Shooter();
         sideArm = new SideArms(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmCloseArmChannel);
         anchor = new Anchor(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
-        loadArms = new InFeed();
+        inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
         compressor.start();
     }
@@ -39,7 +39,6 @@ public class BallHandler {
     void armTheShooter() {
         sideArm.open();
         anchor.drop();
-
     }
 
     void shootTheBall() {
@@ -50,20 +49,25 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-
-    }
+           
+        if(RobotTemplate.lastLoadButtonState == true){
+            inFeed.off();
+        }
+        
+        else{
+            inFeed.on();    
+        }  
+    }   
 
     void catchTheBall() {
 
         if (ballInMittLimitSwitch.get() != InMitt) {
-
             sideArm.open();
-
         }
+        
         if (ballInMittLimitSwitch.get() == InMitt) {
             sideArm.close();
         } //the side arm extending is making the arms open or flower.
-
     }
 
     void passTheBall() {
@@ -71,6 +75,5 @@ public class BallHandler {
         //can try a pwm 
         //or turning it on only for a short amount of time
         //put wait statement in here
-
     }
 }

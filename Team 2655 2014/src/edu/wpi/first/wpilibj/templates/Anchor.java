@@ -14,11 +14,11 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Anchor {
 
     DoubleSolenoid anchors;
-
+//  You will most likely need a timer.
     public Anchor(int dropChannel, int raiseChannel) {
 
         anchors = new DoubleSolenoid(dropChannel, raiseChannel);
-//      anchors.set(DoubleSolenoid.Value.kOff); - checking if anchors are off?
+//      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
 
     }
 
