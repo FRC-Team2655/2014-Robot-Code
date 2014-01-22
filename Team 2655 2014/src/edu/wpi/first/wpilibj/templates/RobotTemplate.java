@@ -19,7 +19,8 @@ public class RobotTemplate extends IterativeRobot {
 
     Ultrasonic frontRightRangeFinder;
     Ultrasonic frontLeftRangeFinder;
-
+    
+//  Variables for the joystick buttons
     boolean shootingInProgress = false;
     boolean armButtonInProgres = false;
     boolean loadButtonInProgres = false;
@@ -37,6 +38,7 @@ public class RobotTemplate extends IterativeRobot {
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
+        
         joyStick = new Joystick(1);
 
         frontRightRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);

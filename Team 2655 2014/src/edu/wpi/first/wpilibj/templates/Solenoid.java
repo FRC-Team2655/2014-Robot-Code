@@ -13,23 +13,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
  * @author Josh
  */
 public class Solenoid {
-    DoubleSolenoid my_solenoid;
-    int extendTime;
+
     
-    public Solenoid(int sidecarModule, int extendChannel, int retractChannel, int timeToExtend) {
-         my_solenoid = new DoubleSolenoid(sidecarModule, extendChannel, retractChannel);
-         extendTime = timeToExtend;
-    }
     
-    void extend() {
-        my_solenoid.set(DoubleSolenoid.Value.kForward);
-        //thread.sleep(extendTime);
-        my_solenoid.set(DoubleSolenoid.Value.kOff);
-    }
     
-    void retract() {
-        my_solenoid.set(DoubleSolenoid.Value.kReverse);
-        //thread.sleep(extendTime);
-        my_solenoid.set(DoubleSolenoid.Value.kOff);
-    }
 }

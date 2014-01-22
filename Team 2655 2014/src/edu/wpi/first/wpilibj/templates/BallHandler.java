@@ -17,7 +17,7 @@ public class BallHandler {
     Compressor compressor;
 
     Shooter shooter;
-    SideArm sideArm;
+    SideArms sideArm;
     Anchor anchor;
     InFeed loadArms;
     DigitalInput ballInMittLimitSwitch;
@@ -29,7 +29,7 @@ public class BallHandler {
         compressor = new Compressor(HardwarePortsEnum.pressureSwitchChannel, HardwarePortsEnum.compressorRelayChannel);
 
         shooter = new Shooter();
-        sideArm = new SideArm(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmClosedArmChannel);
+        sideArm = new SideArms(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmCloseArmChannel);
         anchor = new Anchor(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
         loadArms = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);

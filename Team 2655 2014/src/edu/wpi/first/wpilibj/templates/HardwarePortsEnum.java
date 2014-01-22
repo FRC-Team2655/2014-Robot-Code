@@ -27,7 +27,7 @@ public class HardwarePortsEnum {
     public static int rightArmMotorControlChannel = 9;
     
     public static int sideArmOpenArmChannel = 10;
-    public static int sideArmClosedArmChannel = 11;
+    public static int sideArmCloseArmChannel = 11;
     
     public static int rangeFinderEchoPort = 12;
     public static int rangeFinderPingPort = 13;
