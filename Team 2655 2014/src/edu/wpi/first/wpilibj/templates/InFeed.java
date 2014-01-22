@@ -19,11 +19,11 @@ public class InFeed {
     
         // Make sure to change relays and channels later.
     }
-
+//  This could be changed to Foward, reverse, and off.
     void on() {
         leftArmMotorControl.set(Relay.Value.kOn);
         rightArmMotorControl.set(Relay.Value.kOn);
-//      rightArmMotorControl.set(Relay.Value.kForward); - not sure why this is here.
+//      rightArmMotorControl.set(Relay.Value.kForward); - not sure if we need this.
         // Turns motors on.
 
     }
