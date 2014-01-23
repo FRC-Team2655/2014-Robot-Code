@@ -32,7 +32,6 @@ public class Anchor {
         
         anchors.set(DoubleSolenoid.Value.kForward);
         //Find if we need to stop the solenoid when it reaches the bottom position.
-
     }
     
     void raise() {

@@ -36,6 +36,7 @@ public class BallHandler {
 
     void shootTheBall() {
         sideArm.open();
+        //need to put the a timer on the verb open so i can shoot 
         shooter.shoot();
         sideArm.close();
         anchor.raise();
@@ -63,6 +64,9 @@ public class BallHandler {
 
     void passTheBall() {
         sideArm.open();
+        shooter.pass();
+        //add timer to pass verb 
+        sideArm.close();       
         //can try a pwm 
         //or turning it on only for a short amount of time
         //put wait statement in here
