@@ -3,9 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 // Author Zephan
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Gyro;
@@ -23,6 +21,8 @@ public class DriveSystem implements Runnable {
     int driveMode;
 
     public DriveSystem(Joystick driveStick) {
+        this.driveStick = driveStick;
+        gyro = new Gyro(useGyro);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
 
@@ -33,17 +33,17 @@ public class DriveSystem implements Runnable {
     public void run() {
 
         while (true) {
-//            try {
+            try {
 
                 mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                         driveStick.getAxis(Joystick.AxisType.kY),
                         driveStick.getAxis(Joystick.AxisType.kZ),
                         gyro.getAngle() * useGyro);
-//
-//                Thread.sleep(1);
-//            } catch (InterruptedException ex) {
-//                ex.printStackTrace();
-//            }
+
+                Thread.sleep(1);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
 
         }
     }
@@ -52,23 +52,22 @@ public class DriveSystem implements Runnable {
         if (mode < DriveModeEnum.Disabled) {
 
         } else if (mode > DriveModeEnum.Teleop) {
-            
+
         } else {
             driveMode = mode;
         }
     }
-    
-    
-    
-    public void moveAutonomous(double magnitude, double direction, double rotation){
+
+    public void moveAutonomous(double magnitude, double direction, double rotation) {
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
+
     //-----Josh---------------------------------------------------------------------------------------------------------
-    public void rotateToDegree(int degree){ //This is to rotate to a certain direction. This is just a start, I know it needs to be modified. --Josh
-        while(gyro.getAngle() != degree){
+    public void rotateToDegree(int degree) { //This is to rotate to a certain direction. This is just a start, I know it needs to be modified. --Josh
+        while (gyro.getAngle() != degree) {
             moveAutonomous(0.0, 0.0, 1.0); //Might want to add a kFactor to slow it down as it gets closer.
         }
-        moveAutonomous(0.0,0.0,0.0); //stops
+        moveAutonomous(0.0, 0.0, 0.0); //stops
     }
     //------------------------------------------------------------------------------------------------------------------
 }

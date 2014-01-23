@@ -16,7 +16,7 @@ public class HardwarePortsEnum {
     public static int anchorDropChannel = 1; 
     public static int anchorRaiseChannel = 2;
     
-    public static int shootButtonNumber = 3;
+//  public static int shootButtonNumber = 3;
     
     public static int inFeedLowerChannel = 4;
     public static int inFeedRaiseChannel = 5;
@@ -42,10 +42,12 @@ public class HardwarePortsEnum {
     public static int shooterExtendChannel = 15;
     public static int shooterRetractChannel = 16;
     
-    public static int frontLeftMotorChannel = 1;
-    public static int backLeftMotorChannel = 2;
-    public static int frontRightMotorChannel = 3;
-    public static int backRightMotorChannel = 4;
+    public static int gyroChannel = 17;
+    
+    public static int frontLeftMotorChannel = 18;
+    public static int backLeftMotorChannel = 19;
+    public static int frontRightMotorChannel = 20;
+    public static int backRightMotorChannel = 21;
     
     
 }
