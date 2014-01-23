@@ -1,17 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 
-/**
- *
- * @author Zephan edited by Alex
- */
+// edited by Alex
 public class BallHandler {
 
     Compressor compressor;
@@ -49,22 +42,20 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-           
-        if(RobotTemplate.lastLoadButtonState == true){
+
+        if (RobotTemplate.lastLoadButtonState == true) {
             inFeed.off();
+        } else {
+            inFeed.on();
         }
-        
-        else{
-            inFeed.on();    
-        }  
-    }   
+    }
 
     void catchTheBall() {
 
         if (ballInMittLimitSwitch.get() != InMitt) {
             sideArm.open();
         }
-        
+
         if (ballInMittLimitSwitch.get() == InMitt) {
             sideArm.close();
         } //the side arm extending is making the arms open or flower.

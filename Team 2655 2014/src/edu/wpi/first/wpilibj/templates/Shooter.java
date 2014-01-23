@@ -1,27 +1,33 @@
+
 package edu.wpi.first.wpilibj.templates;
 // Author Alex Senneville
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
+
+
 public class Shooter {
-
-    DoubleSolenoid shooterSolenoid;
-
+    //keep in mind that i might need to refactor names
+    DoubleSolenoid shooterPiston1;
+    DoubleSolenoid shooterPiston2;
+    
     public Shooter() {
-        shooterSolenoid = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
+        shooterPiston1 = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
+        shooterPiston2 = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
         //may need to change channels and may need to add spike to conttrol multiple channels
     }
 
     void shoot() {
        
-        shooterSolenoid.set(DoubleSolenoid.Value.kForward);      
-         
+        shooterPiston1.set(DoubleSolenoid.Value.kForward);      
+        shooterPiston2.set(DoubleSolenoid.Value.kForward);      
         try {
             wait(100);// Wait until piston completly extends
         } catch (Exception e) {
 
         } finally {
-             shooterSolenoid.set(DoubleSolenoid.Value.kReverse);
+             shooterPiston1.set(DoubleSolenoid.Value.kReverse);
+             shooterPiston2.set(DoubleSolenoid.Value.kReverse);
         }
 
         // Wait until piston completly retracts.
@@ -30,7 +36,8 @@ public class Shooter {
         } catch (Exception e) {
 
         } finally {
-             shooterSolenoid.set(DoubleSolenoid.Value.kOff);
+             shooterPiston1.set(DoubleSolenoid.Value.kOff);
+             shooterPiston2.set(DoubleSolenoid.Value.kOff);
        }
 
     }
@@ -40,4 +47,13 @@ public class Shooter {
     
     }
 }
+
+        
+   
+         
+         
+
+    
+   
+    
 
