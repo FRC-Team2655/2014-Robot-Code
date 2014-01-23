@@ -31,8 +31,11 @@ public class HardwarePortsEnum {
     public static int sideArmOpenArmChannel = 10;
     public static int sideArmCloseArmChannel = 11;
     
-    public static int rangeFinderEchoPort = 12;
-    public static int rangeFinderPingPort = 13;
+    public static int leftRangeFinderEchoPort = 12;
+    public static int leftRangeFinderPingPort = 13;
+    
+    public static int rightRangeFinderEchoPort = 17;
+    public static int rightRangeFinderPingPort = 18;
     
     public static int ballInMittLimitSwitch = 14;
    

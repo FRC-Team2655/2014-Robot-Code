@@ -44,8 +44,8 @@ public class RobotTemplate extends IterativeRobot {
         
         joyStick = new Joystick(1);
 
-        frontRightRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
-        frontLeftRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
+//        frontRightRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
+//        frontLeftRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
 
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);

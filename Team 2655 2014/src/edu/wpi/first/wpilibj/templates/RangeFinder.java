@@ -15,12 +15,15 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 public class RangeFinder {
     Ultrasonic rangeFinder;
     
-    RangeFinder(){
-        rangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort); //Initalize the sensor
+    RangeFinder(int beamInPort, int beamOutPort){
+        rangeFinder = new Ultrasonic(beamOutPort, beamInPort); //Initalize the sensor
         rangeFinder.setAutomaticMode(true); //Enable it.
     }
     
-    double getDistance(){
+    double getDistanceInches(){
         return rangeFinder.getRangeInches();//Get distance in inches.
+    }
+    double getDistanceFeet(){
+        return rangeFinder.getRangeInches() / 12; //Gets distance in inches, then devides by 12. Ergo, Feet.
     }
 }
