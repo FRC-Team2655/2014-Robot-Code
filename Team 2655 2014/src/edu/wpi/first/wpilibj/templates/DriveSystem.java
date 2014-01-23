@@ -62,5 +62,12 @@ public class DriveSystem implements Runnable {
     public void moveAutonomous(double magnitude, double direction, double rotation){
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
-
+    //-----Josh---------------------------------------------------------------------------------------------------------
+    public void rotateToDegree(int degree){ //This is to rotate to a certain direction. This is just a start, I know it needs to be modified. --Josh
+        while(gyro.getAngle() != degree){
+            moveAutonomous(0.0, 0.0, 1.0); //Might want to add a kFactor to slow it down as it gets closer.
+        }
+        moveAutonomous(0.0,0.0,0.0); //stops
+    }
+    //------------------------------------------------------------------------------------------------------------------
 }

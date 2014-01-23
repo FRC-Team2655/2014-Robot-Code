@@ -17,8 +17,9 @@ public class RobotTemplate extends IterativeRobot {
 
     Joystick joyStick;
 
-    Ultrasonic frontRightRangeFinder;
-    Ultrasonic frontLeftRangeFinder;
+    RangeFinder leftRangeFinder = new RangeFinder(HardwarePortsEnum.leftRangeFinderPingPort, HardwarePortsEnum.leftRangeFinderEchoPort);
+    RangeFinder rightRangeFinder = new RangeFinder(HardwarePortsEnum.rightRangeFinderPingPort, HardwarePortsEnum.rightRangeFinderEchoPort);//Default
+    StereoRangeFinder stereoRangeFinder = new StereoRangeFinder(leftRangeFinder, rightRangeFinder);
     
 //  Variables for the joystick buttons.
   
@@ -56,9 +57,6 @@ public class RobotTemplate extends IterativeRobot {
         
         joyStick = new Joystick(1);
 
-//        frontRightRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
-//        frontLeftRangeFinder = new Ultrasonic(HardwarePortsEnum.rangeFinderPingPort, HardwarePortsEnum.rangeFinderEchoPort);
-
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
         driveSystem.run();
@@ -75,27 +73,16 @@ public class RobotTemplate extends IterativeRobot {
     }
     
     public void autonomousPeriodic() {
-        frontLeftRangeFinder.setAutomaticMode(true); //enable left sonic sensor
-        frontRightRangeFinder.setAutomaticMode(true); //enable right sonic sensor
-
-        while (frontRightRangeFinder.getRangeInches() != frontLeftRangeFinder.getRangeInches()) { //checks if left & right distances are equivalent
-            if (frontLeftRangeFinder.getRangeInches() > frontRightRangeFinder.getRangeInches()) { //checks if it's rotated left
-                driveSystem.moveAutonomous(0.0, 0.0, 0.5); //this should rotate right at half speed.
-            }
-            if (frontRightRangeFinder.getRangeInches() > frontLeftRangeFinder.getRangeInches()) { // checks if it's rotated right
-                driveSystem.moveAutonomous(0.0, 0.0, -0.5); //this should rotate left at half speed.
-            }
-        }
+        driveSystem.rotateToDegree(stereoRangeFinder.degreesOffset());
         driveSystem.gyro.reset(); // zero the gyro
 
-        while (frontRightRangeFinder.getRangeInches() > 60) {
+        while (rightRangeFinder.getDistanceInches() > 60) {
             driveSystem.moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
         }
         ballHandler.shootTheBall();
         
-        while(driveSystem.gyro.getAngle() < 180){ //Turn around to get ready for battle
-            driveSystem.moveAutonomous(0.0, 0.0, 0.5); //this should turn right at half speed.
-        }
+        //There should be a method in DriveSystem to replace this.
+        driveSystem.rotateToDegree(180); //Rotates 180 degrees.
     }
 
     public void teleopInit() {

@@ -9,11 +9,17 @@ package edu.wpi.first.wpilibj.templates;
  *
  * @author Josh
  */
+
+//I KNOW THIS IS A LITTLE MESSY... I'LL FIX IT. --Josh
 public class StereoRangeFinder {
 
     //Initialize Rangefinders
-    RangeFinder left = new RangeFinder(HardwarePortsEnum.leftRangeFinderPingPort, HardwarePortsEnum.leftRangeFinderEchoPort);
-    RangeFinder right = new RangeFinder(HardwarePortsEnum.rightRangeFinderPingPort, HardwarePortsEnum.rightRangeFinderEchoPort);
+    RangeFinder left;
+    RangeFinder right;
+    StereoRangeFinder(RangeFinder leftIn, RangeFinder rightIn){
+        left = leftIn;
+        right = rightIn;
+    }
 
     public int degreesOffset() {
         int degreesOffset = 0; //Fill this in with Honest John's math.
