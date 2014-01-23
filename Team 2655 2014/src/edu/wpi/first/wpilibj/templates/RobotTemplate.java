@@ -35,9 +35,21 @@ public class RobotTemplate extends IterativeRobot {
     public static boolean lastLoadButtonState = false;
     boolean lastPassButtonState = false;
     boolean lastCatchButtonState = false;
+    
     boolean pressed = true;
     boolean notPressed = false;
 
+//Variables for possible mode states 
+   
+    boolean armModeEnabled = true;
+    boolean loadModeEnabled = true;
+    boolean catchModeEnabled = true;
+    
+    boolean armModeDisabled = false;
+    boolean loadModeDisabled = false;
+    boolean catchModeDisabled = false;
+    
+    //John Mode vs. Josh Mode (Starting to think that John mode might be better... --Josh
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
@@ -49,8 +61,8 @@ public class RobotTemplate extends IterativeRobot {
 
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-        driveSystem.run(); // "Beause Nick is a moron. --Josh
-        //Test mode won't run if we put it in the 
+        driveSystem.run();
+        //Test mode won't run if we put it in the autonomous init.
     }
 
     public void robotInit() {
@@ -97,24 +109,28 @@ public class RobotTemplate extends IterativeRobot {
         //Shoot Button -------------------------------------------------------
         
         
-        if (joyStick.getRawButton(1)) { //Shoot button
-            if (lastShootButtonState == notPressed && lastArmButtonState == pressed) {
-                ballHandler.shootTheBall();
-                lastShootButtonState = pressed;
+        if (joyStick.getRawButton(1)) { //Is the Button Pressed?
+            if (lastShootButtonState == notPressed) { //Was the last state "Not Pressed?"
+                ballHandler.shootTheBall();// Do said action
+                lastShootButtonState = pressed;//set the last state to "pressed"
             }
-            else {
-                lastShootButtonState = notPressed;
+            else {// So it ISN'T PRESSED!
+                lastShootButtonState = notPressed;//set the last state to "not pressed"
           }       
         }
 
         //Catch Button -------------------------------------------------------
-        if (joyStick.getRawButton(2)) {
-            if (lastCatchButtonState == notPressed) {
-                ballHandler.catchTheBall();
-                lastCatchButtonState = pressed;
+        if (joyStick.getRawButton(2)) { 
+            if (lastCatchButtonState == notPressed) { 
+                
+                if(catchModeEnabled)
+                ballHandler.catchTheBall(); 
+                
+                
+                lastCatchButtonState = pressed; 
             }
         } else {
-            lastCatchButtonState = notPressed;
+            lastCatchButtonState = notPressed; 
         }
 
         //Load Button --------------------------------------------------------
