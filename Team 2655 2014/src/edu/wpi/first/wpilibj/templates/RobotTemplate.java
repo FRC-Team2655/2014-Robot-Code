@@ -49,7 +49,8 @@ public class RobotTemplate extends IterativeRobot {
 
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-
+        driveSystem.run(); // "Beause Nick is a moron. --Josh
+        //Test mode won't run if we put it in the 
     }
 
     public void robotInit() {
@@ -58,8 +59,6 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousInit(){
-
-    driveSystem.run(); // "Beause you are morons...lol" by Nick :D
     
     }
     
