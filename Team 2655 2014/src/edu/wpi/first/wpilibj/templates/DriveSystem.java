@@ -3,6 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+// Author Zephan
+
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Gyro;
@@ -20,8 +23,6 @@ public class DriveSystem implements Runnable {
     int driveMode;
 
     public DriveSystem(Joystick driveStick) {
-        this.driveStick = driveStick;
-        this.gyro = gyro;
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
 
@@ -32,17 +33,17 @@ public class DriveSystem implements Runnable {
     public void run() {
 
         while (true) {
-            try {
+//            try {
 
                 mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                         driveStick.getAxis(Joystick.AxisType.kY),
                         driveStick.getAxis(Joystick.AxisType.kZ),
                         gyro.getAngle() * useGyro);
-
-                Thread.sleep(1);
-            } catch (InterruptedException ex) {
-                ex.printStackTrace();
-            }
+//
+//                Thread.sleep(1);
+//            } catch (InterruptedException ex) {
+//                ex.printStackTrace();
+//            }
 
         }
     }
