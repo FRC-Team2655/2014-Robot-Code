@@ -74,11 +74,12 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-
+        driveSystem.rotateToDegree(stereoRangeFinder.degreesOffset());
+        driveSystem.gyro.reset(); // zero the gyro
 //        ballHandler.shootTheBall();
 
         //There should be a method in DriveSystem to replace this.
-      //  driveSystem.rotateToDegree(180); //Rotates 180 degrees.
+        //  driveSystem.rotateToDegree(180); //Rotates 180 degrees.
     }
 
     public void teleopInit() {

@@ -59,9 +59,6 @@ public class DriveSystem implements Runnable {
 
                 } else if (driveMode == DriveModeEnum.Autonomous) {
                     // If the robot is in autonomous it will run autonomous
-                    rotateToDegree(stereoRangeFinder.degreesOffset());
-                    gyro.reset(); // zero the gyro
-
                     while (rightRangeFinder.getDistanceInches() > 60) {
                         moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
                     }
