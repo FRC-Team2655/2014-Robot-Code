@@ -74,6 +74,9 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
+        while (rightRangeFinder.getDistanceInches() > 60) {
+            driveSystem.moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
+        }
         driveSystem.rotateToDegree(stereoRangeFinder.degreesOffset());
         driveSystem.gyro.reset(); // zero the gyro
 //        ballHandler.shootTheBall();

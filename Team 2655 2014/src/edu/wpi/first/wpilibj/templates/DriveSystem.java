@@ -59,9 +59,6 @@ public class DriveSystem implements Runnable {
 
                 } else if (driveMode == DriveModeEnum.Autonomous) {
                     // If the robot is in autonomous it will run autonomous
-                    while (rightRangeFinder.getDistanceInches() > 60) {
-                        moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
-                    }
                 } else if (driveMode == DriveModeEnum.Teleop) {
                     // If the robot is in teleop it will accept input from the joysticks.
                     mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
