@@ -7,7 +7,7 @@ package edu.wpi.first.wpilibj.templates;
 
 /**
  *
- * @author Josh
+ * @author Josh / Honest John
  */
 public class StereoRangeFinder {
 
@@ -24,5 +24,15 @@ public class StereoRangeFinder {
         double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / globalVariables.stereoRangeFinderSeperation;
 
         return Math.atan(tanOfAngle);
+    }
+
+    public double getDistanceInches() {
+        // returns the average distance in inches
+        return (left.getDistanceInches() - right.getDistanceInches()) / 2;
+    }
+
+    public double getDistanceFeet() {
+        // returns the average distance in feet
+        return getDistanceInches() / 12;
     }
 }
