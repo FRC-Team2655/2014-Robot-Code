@@ -37,7 +37,8 @@ public class SideArms implements Runnable {
         while (true) {
 
             switch (sideArmMode) {
-                case SideArmEnum.open:
+                case SideArmEnum.open: 
+//set the solenoid to open, wait some time, then turn off. next go to no air state
                     sideArms.set(DoubleSolenoid.Value.kForward);
                     try {
                         Thread.sleep(sideArmOpenTime); //wait for the arm to open
@@ -50,6 +51,8 @@ public class SideArms implements Runnable {
                     sideArmMode = SideArmEnum.noAirState;
                     break;
                 case SideArmEnum.close:
+//set the solenoid to close, wait some time, then turn off. next go to no air state
+
                     sideArms.set(DoubleSolenoid.Value.kReverse);
                     try {
                         Thread.sleep(sideArmCloseTime); //wait for the arm to open
@@ -62,6 +65,8 @@ public class SideArms implements Runnable {
                     sideArmMode = SideArmEnum.noAirState;
                     break;
                 case SideArmEnum.noAirState:
+// wait some time
+                    
                     try {
                         Thread.sleep(sideArmIdleTime);
                     } catch (InterruptedException ex) {
