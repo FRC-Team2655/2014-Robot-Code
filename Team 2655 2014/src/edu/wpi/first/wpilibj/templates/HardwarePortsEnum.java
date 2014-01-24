@@ -18,8 +18,6 @@ public class HardwarePortsEnum {
     
 //  public static int shootButtonNumber = 3;
     
-    public static int inFeedLowerChannel = 4;
-    public static int inFeedRaiseChannel = 5;
     
     public static int pressureSwitchChannel = 6;
     public static int compressorRelayChannel = 7; 
@@ -49,5 +47,6 @@ public class HardwarePortsEnum {
     public static int frontRightMotorChannel = 20;
     public static int backRightMotorChannel = 21;
     
+    public static int infeedArmMotorControlChannel = 22;
     
 }
