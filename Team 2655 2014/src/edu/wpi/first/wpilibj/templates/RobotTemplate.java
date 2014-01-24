@@ -17,9 +17,7 @@ public class RobotTemplate extends IterativeRobot {
 
     Joystick joyStick;
 
-    RangeFinder leftRangeFinder = new RangeFinder(HardwarePortsEnum.leftRangeFinderPingPort, HardwarePortsEnum.leftRangeFinderEchoPort);
-    RangeFinder rightRangeFinder = new RangeFinder(HardwarePortsEnum.rightRangeFinderPingPort, HardwarePortsEnum.rightRangeFinderEchoPort);//Default
-    StereoRangeFinder stereoRangeFinder = new StereoRangeFinder(leftRangeFinder, rightRangeFinder);
+    StereoRangeFinder stereoRangeFinder;
 
 //  Variables for the joystick buttons.
     boolean shootingInProgress = false;
@@ -53,7 +51,7 @@ public class RobotTemplate extends IterativeRobot {
     public RobotTemplate() {
 
         joyStick = new Joystick(1);
-
+        stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
         driveSystem.run();
@@ -74,9 +72,9 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-        while (rightRangeFinder.getDistanceInches() > 60) {
-            driveSystem.moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
-        }
+        //while (rightRangeFinder.getDistanceInches() > 60) {
+        //    driveSystem.moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
+        //}
         driveSystem.rotateToDegree(stereoRangeFinder.degreesOffset());
         driveSystem.gyro.reset(); // zero the gyro
 //        ballHandler.shootTheBall();

@@ -11,5 +11,5 @@ package edu.wpi.first.wpilibj.templates;
  * @author bennettlewis
  */
 public class globalVariables {
-    
+    public static int stereoRangeFinderSeperation = 23; // 
 }
