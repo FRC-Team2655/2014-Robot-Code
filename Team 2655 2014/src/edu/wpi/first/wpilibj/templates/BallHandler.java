@@ -22,7 +22,7 @@ public class BallHandler {
         compressor = new Compressor(HardwarePortsEnum.pressureSwitchChannel, HardwarePortsEnum.compressorRelayChannel);
 
         shooter = new Shooter();
-        sideArm = new SideArms(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmCloseArmChannel);
+        sideArm = new SideArms();
         anchor = new Anchor(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
         inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(1);
