@@ -10,7 +10,7 @@ public class SideArms implements Runnable {
     int sideArmOpenTime = 100;
     int sideArmIdleTime = 100;//this is how long to wait in miliseconds before turning off
     int sideArmMode = SideArmEnum.noAirState;
-    boolean debugSideArmThreadException = false;
+    //   boolean debugSideArmThreadException = false;
 
     public SideArms() {
 
@@ -33,54 +33,42 @@ public class SideArms implements Runnable {
     }
 
     public void run() {
-        
+
         while (true) {
 
-            if (sideArmMode == SideArmEnum.open) {
-                
-                sideArms.set(DoubleSolenoid.Value.kForward);
+            switch (sideArmMode) {
+                case SideArmEnum.open:
+                    sideArms.set(DoubleSolenoid.Value.kForward);
+                    try {
+                        Thread.sleep(sideArmOpenTime); //wait for the arm to open
+                    } catch (Exception e) {
+                        /* if (debugSideArmThreadException) { 
+                         e.printStackTrace();
+                         }*/
+                    }
+                    sideArms.set(DoubleSolenoid.Value.kOff);
+                    sideArmMode = SideArmEnum.noAirState;
+                    break;
+                case SideArmEnum.close:
+                    sideArms.set(DoubleSolenoid.Value.kReverse);
+                    try {
+                        Thread.sleep(sideArmCloseTime); //wait for the arm to open
+                    } catch (Exception e) {
+                        /* if (debugSideArmThreadException) { 
+                         e.printStackTrace();
+                         }*/
+                    }
+                    sideArms.set(DoubleSolenoid.Value.kOff);
+                    sideArmMode = SideArmEnum.noAirState;
+                    break;
+                case SideArmEnum.noAirState:
+                    try {
+                        Thread.sleep(sideArmIdleTime);
+                    } catch (InterruptedException ex) {
+                        ex.printStackTrace();
+                    }
+                    break;
 
-                try {
-                    
-                    Thread.sleep(sideArmOpenTime); //wait for the arm to open
-                    
-                } catch (Exception e) {
-                    
-                   /* if (debugSideArmThreadException) {
-                        
-                        e.printStackTrace();
-                    }*/
-                }
-                sideArms.set(DoubleSolenoid.Value.kOff);
-        sideArmMode = SideArmEnum.noAirState;
-
-            } 
-            
-            else if (sideArmMode == SideArmEnum.close) {
-                sideArms.set(DoubleSolenoid.Value.kReverse);
-
-                try {
-                    
-                    Thread.sleep(sideArmCloseTime); //wait for the arm to close
-                    
-                } catch (Exception e) {
-                   /* if (debugSideArmThreadException) {
-                        
-                        e.printStackTrace();
-                        
-                    }*/
-                }
-                sideArms.set(DoubleSolenoid.Value.kOff);
-                        
-        sideArmMode = SideArmEnum.noAirState;
-            } 
-            
-            else if (sideArmMode == SideArmEnum.noAirState) {
-                try {
-                    Thread.sleep(sideArmIdleTime);
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
             }
 
         }
