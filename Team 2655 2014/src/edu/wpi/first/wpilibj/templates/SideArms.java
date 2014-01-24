@@ -6,7 +6,9 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class SideArms implements Runnable {
 
     DoubleSolenoid sideArms;
-    int armMoveTime = 100; //this is how long to wait in miliseconds before turning off
+    int sideArmCloseTime = 100;
+    int sideArmOpenTime = 100;
+    int sideArmIdleTime = 100;//this is how long to wait in miliseconds before turning off
     int sideArmMode = SideArmEnum.noAirState;
     boolean debugSideArmThreadException = false;
 
@@ -29,10 +31,6 @@ public class SideArms implements Runnable {
         sideArmMode = SideArmEnum.close;
 
     }
-//sleeps    
-    public void noAirState(){
-        sideArmMode = SideArmEnum.noAirState;
-    }
 
     public void run() {
         
@@ -44,17 +42,17 @@ public class SideArms implements Runnable {
 
                 try {
                     
-                    Thread.sleep(armMoveTime); //wait for the arm to open
+                    Thread.sleep(sideArmOpenTime); //wait for the arm to open
                     
                 } catch (Exception e) {
                     
-                    if (debugSideArmThreadException) {
+                   /* if (debugSideArmThreadException) {
                         
                         e.printStackTrace();
-                    }
+                    }*/
                 }
                 sideArms.set(DoubleSolenoid.Value.kOff);
-                noAirState();
+        sideArmMode = SideArmEnum.noAirState;
 
             } 
             
@@ -63,23 +61,23 @@ public class SideArms implements Runnable {
 
                 try {
                     
-                    Thread.sleep(armMoveTime); //wait for the arm to close
+                    Thread.sleep(sideArmCloseTime); //wait for the arm to close
                     
                 } catch (Exception e) {
-                    if (debugSideArmThreadException) {
+                   /* if (debugSideArmThreadException) {
                         
                         e.printStackTrace();
                         
-                    }
+                    }*/
                 }
                 sideArms.set(DoubleSolenoid.Value.kOff);
                         
-                noAirState(); //switch to the noAirState
+        sideArmMode = SideArmEnum.noAirState;
             } 
             
             else if (sideArmMode == SideArmEnum.noAirState) {
                 try {
-                    Thread.sleep(100);
+                    Thread.sleep(sideArmIdleTime);
                 } catch (InterruptedException ex) {
                     ex.printStackTrace();
                 }
