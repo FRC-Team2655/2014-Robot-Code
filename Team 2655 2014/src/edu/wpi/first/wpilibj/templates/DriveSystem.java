@@ -11,53 +11,77 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveSystem implements Runnable {
-
+    
     Joystick driveStick;
     Gyro gyro;
     public static int useGyro = 1;
-
+    
     RobotDrive mainDrive = new RobotDrive(1, 2, 3, 4); //change motors later
 
     int driveMode;
-
+    
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
         gyro = new Gyro(useGyro);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
-
+    }
+    
+    public void setDisabled() {
+        
+        driveMode = DriveModeEnum.Disabled;
+        
+    }
+    
+    public void setAutonomous() {
+        
+        driveMode = DriveModeEnum.Autonomous;
+        
+    }
+    
+    public void setTeleop() {
+        
+        driveMode = DriveModeEnum.Teleop;
+        
     }
 
     //should we add a reset button for the gyro?
     //should we also add another button to automatically point to zero
     public void run() {
-
+        
         while (true) {
+            
             try {
-
-                mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
-                        driveStick.getAxis(Joystick.AxisType.kY),
-                        driveStick.getAxis(Joystick.AxisType.kZ),
-                        gyro.getAngle() * useGyro);
-
-                Thread.sleep(1);
+                
+                if (driveMode == DriveModeEnum.Disabled) {
+                    
+                } else if (driveMode == DriveModeEnum.Autonomous) {
+                    
+                } else if (driveMode == DriveModeEnum.Teleop) {
+                    mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
+                            driveStick.getAxis(Joystick.AxisType.kY),
+                            driveStick.getAxis(Joystick.AxisType.kZ),
+                            gyro.getAngle() * useGyro);
+                } else {
+                    System.out.println("Something BAD very BAD has happened :(. Or you suck :D");
+                }
+                
+                Thread.sleep(100);
             } catch (InterruptedException ex) {
-                ex.printStackTrace();
             }
-
+            
         }
     }
 
-    public void setDriveMode(int mode) {
-        if (mode < DriveModeEnum.Disabled) {
-
-        } else if (mode > DriveModeEnum.Teleop) {
-
-        } else {
-            driveMode = mode;
-        }
-    }
-
+//    public void setDriveMode(int mode) {
+//        if (mode < DriveModeEnum.Disabled) {
+//            
+//        } else if (mode > DriveModeEnum.Teleop) {
+//
+//        } else {
+//            driveMode = mode;
+//        }
+//    }
     public void moveAutonomous(double magnitude, double direction, double rotation) {
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
