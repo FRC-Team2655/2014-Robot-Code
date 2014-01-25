@@ -21,4 +21,9 @@ public class GlobalVariables {
     public static int waitTimePass = 100;
     public static int timeForShooterToRetract = 250;
     public static int anchorDropTime = 600;
+
+//  Drive Modes  
+    public int johnMode = 1;
+    public int rcMode = 2;
+    
 }
