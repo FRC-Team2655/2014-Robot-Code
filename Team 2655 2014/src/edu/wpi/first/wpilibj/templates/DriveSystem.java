@@ -81,13 +81,29 @@ public class DriveSystem implements Runnable {
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
 
-    public void rotateToDegree(int degree) {
-        moveAutonomous(0, degree, 0);
+    public void moveFoward() {
+
+        moveAutonomous(0, 0, 0);
+
     }
 
-    public void rotate(int degree) {
+    public void rotateToDegree(int degree) { // Used only in autonomous
+        double rotationSpeed;
+//      Y = MX + B. So we have the angle(Y) 
+//      plus the degree multiplied by the slope(MX)
+//      Divided by 180(B) which gives us the rate that we need to turn.  
+        while (gyro.getAngle() != degree) {
+            rotationSpeed = (gyro.getAngle() - degree) / 180;
 
-        rotateToDegree((int) gyro.getAngle() + degree);
+            moveAutonomous(0, 0, rotationSpeed);
+
+        }
+
+    }
+
+    public void rotate(int degree) { // Used only in autonomous
+
+        rotateToDegree((int) (gyro.getAngle() + degree));
 
     }
 
