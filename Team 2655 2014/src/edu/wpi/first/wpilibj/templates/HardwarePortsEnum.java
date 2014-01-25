@@ -15,9 +15,9 @@ public class HardwarePortsEnum {
    
     public static int anchorDropChannel = 1; 
     public static int anchorRaiseChannel = 2;
-    
-//  public static int shootButtonNumber = 3;
-    
+    // no. 3 goes here
+    // no. 4 goes here
+    //  no. 5 goes here
     
     public static int pressureSwitchChannel = 6;
     public static int compressorRelayChannel = 7; 
@@ -35,7 +35,7 @@ public class HardwarePortsEnum {
     public static int rightRangeFinderEchoPort = 17;
     public static int rightRangeFinderPingPort = 18;
     
-    public static int ballInMittLimitSwitch = 14;
+    public static int ballInMittLimitSwitchChannel = 14;
    
     public static int shooterExtendChannel = 15;
     public static int shooterRetractChannel = 16;
