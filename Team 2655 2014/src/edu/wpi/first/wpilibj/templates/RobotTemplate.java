@@ -45,7 +45,7 @@ public class RobotTemplate extends IterativeRobot {
     boolean loadModeDisabled = false;
     boolean catchModeDisabled = false;
 
-    //John Mode vs. Josh Mode (Starting to think that John mode might be better... --Josh
+    //John Mode vs. R/C Mode (Starting to think that John mode might be better... --Josh
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
@@ -75,7 +75,7 @@ public class RobotTemplate extends IterativeRobot {
         //while (rightRangeFinder.getDistanceInches() > 60) {
         //    driveSystem.moveAutonomous(0.75, 0.0, 0.0); //this should move forward at 75% speed.
         //}
-        driveSystem.rotateToDegree(-stereoRangeFinder.degreesOffset());
+        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
         driveSystem.gyro.reset(); // zero the gyro
 //        ballHandler.shootTheBall();
 
