@@ -12,6 +12,14 @@ public class SideArms implements Runnable {
     int sideArmMode = SideArmStates.noAirState;
     //   boolean debugSideArmThreadException = false;
 
+    class SideArmStates {
+
+        public static final int noAirState = 0;
+        public static final int openState = 1;
+        public static final int closeState = 2;
+
+    }
+
     public SideArms() {
 
         sideArms = new DoubleSolenoid(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmClosedArmChannel);
