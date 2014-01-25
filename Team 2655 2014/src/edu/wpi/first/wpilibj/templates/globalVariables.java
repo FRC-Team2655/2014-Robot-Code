@@ -12,4 +12,7 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class globalVariables {
     public static int stereoRangeFinderSeperation = 23; // 
+    public static int waitTimeShoot = 1000;
+    public static int waitTimePass = 100;
+    public static int timeForShooterToRetract = 250;
 }

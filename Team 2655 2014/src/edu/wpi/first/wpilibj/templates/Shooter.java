@@ -8,6 +8,10 @@ public class Shooter {
     //keep in mind that i might need to refactor names
     DoubleSolenoid shooterPiston1;
     DoubleSolenoid shooterPiston2;
+    //change these later to the right time
+    int waitTimeShoot = 1000;
+    int waitTimePass = 100;
+    int timeForShooterToRetract = 250;
     
     public Shooter() {
         shooterPiston1 = new DoubleSolenoid(HardwarePortsEnum.shooterExtendChannel, HardwarePortsEnum.shooterRetractChannel);
@@ -20,7 +24,7 @@ public class Shooter {
         shooterPiston1.set(DoubleSolenoid.Value.kForward);      
         shooterPiston2.set(DoubleSolenoid.Value.kForward);      
         try {
-            wait(100);// Wait until piston completly extends
+            wait(waitTimeShoot);// Wait until piston completly extends
         } catch (Exception e) {
 
         } finally {
@@ -31,7 +35,7 @@ public class Shooter {
 
         // Wait until piston completly retracts.
         try {
-            wait(100);
+            wait(timeForShooterToRetract);
         } catch (Exception e) {
 
         } finally {
@@ -47,7 +51,7 @@ public class Shooter {
 //  Will add code later. Should be similar to shoot.
 //change the wait time for both
          try {
-            wait(100);// Wait until piston completly extends
+            wait(waitTimePass);// Wait until piston completly extends
         } catch (Exception e) {
 
         } finally {
@@ -57,7 +61,7 @@ public class Shooter {
         }
         
          try {
-            wait(100);
+            wait(timeForShooterToRetract);
         } catch (Exception e) {
 
         } finally {
