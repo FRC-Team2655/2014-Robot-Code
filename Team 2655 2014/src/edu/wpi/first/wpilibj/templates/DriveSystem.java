@@ -17,7 +17,7 @@ public class DriveSystem implements Runnable {
     StereoRangeFinder stereoRangeFinder;
     Joystick driveStick;
     Gyro gyro;
-    public static int useGyro = 1;
+    int johnMode = 1;
 
     RobotDrive mainDrive = new RobotDrive(1, 2, 3, 4); //change motors later
 
@@ -33,7 +33,7 @@ public class DriveSystem implements Runnable {
 
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
-        gyro = new Gyro(useGyro);// This is wrong.
+        gyro = new Gyro(HardwarePortsEnum.gyroChannel);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
     }
@@ -61,21 +61,12 @@ public class DriveSystem implements Runnable {
         while (true) {
 
             try {
-
-                if (driveMode == DriveModeEnum.Disabled) {
-                    // If the robot is disabled ot will do nothing.
-
-                } else if (driveMode == DriveModeEnum.Autonomous) {
-                    // If the robot is in autonomous it will run autonomous
-                } else if (driveMode == DriveModeEnum.Teleop) {
+                if (driveMode == DriveModeEnum.Teleop) {
                     // If the robot is in teleop it will accept input from the joysticks.
                     mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                             driveStick.getAxis(Joystick.AxisType.kY),
                             driveStick.getAxis(Joystick.AxisType.kZ),
-                            gyro.getAngle() * useGyro);
-                } else {
-                    // If this happens something very bad has happened.
-                    System.out.println("Something BAD very BAD has happened :(. Or you suck :D");
+                            gyro.getAngle() * johnMode);
                 }
 
                 Thread.sleep(100);
@@ -93,9 +84,13 @@ public class DriveSystem implements Runnable {
 //      The robot should move faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/5(0.2) X = 0.2 * distanceToMoveInFeet B = 0.
-        if(distanceToMoveInFeet > 5) distanceToMoveInFeet = 5;
-        if(distanceToMoveInFeet > - 5) distanceToMoveInFeet = -5;
-        
+        if (distanceToMoveInFeet > 5) {
+            distanceToMoveInFeet = 5;
+        }
+        if (distanceToMoveInFeet > - 5) {
+            distanceToMoveInFeet = -5;
+        }
+
         double speed = (GlobalVariables.speedSlopeMoving * distanceToMoveInFeet);
 
         moveAutonomous(speed, 0, 0);
