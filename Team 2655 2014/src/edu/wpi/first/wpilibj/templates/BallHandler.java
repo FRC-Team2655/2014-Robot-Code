@@ -1,4 +1,3 @@
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Compressor;
@@ -14,7 +13,7 @@ public class BallHandler {
     Anchor anchor;
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
-    private final boolean InMitt = true;
+    private final boolean inMitt = true;
     private final boolean notInMitt = false;
     boolean loadArmsAreExtended = true;
 
@@ -51,22 +50,20 @@ public class BallHandler {
         }
     }
 
-    void catchTheBall() {
-
-        if (ballInMittLimitSwitch.get() != InMitt) {
-            sideArm.open();
+    void openSideArmsForCatching() {
+        sideArm.open();
+        if (ballInMittLimitSwitch.get() == inMitt) {
+            sideArm.close();
         }
 
-        if (ballInMittLimitSwitch.get() == InMitt) {
-            sideArm.close();
-        } //the side arm extending is making the arms open or flower.
     }
-
+    
+    
     void passTheBall() {
         sideArm.open();
         shooter.pass();
         //add timer to pass verb 
-        sideArm.close();       
+        sideArm.close();
         //can try a duration difference
         //or turning it on only for a short amount of time
         //put wait statement in here
