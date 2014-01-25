@@ -81,14 +81,20 @@ public class DriveSystem implements Runnable {
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
 
-    public void moveFoward() {
+    public void moveFoward(double distanceInFeet) {
 
-        moveAutonomous(0, 0, 0);
+        if (GlobalVariables.wantedDistanceFromWall < distanceInFeet) {
+            moveAutonomous(.5, 0, 0);
+        } else if (GlobalVariables.wantedDistanceFromWall > distanceInFeet) {
+            moveAutonomous(-.25, 0, 0);
+        } else {
+            moveAutonomous(0, 0, 0);
+        }
 
     }
 
     public void rotateToDegree(int degree) { // Turns the robot to the degree that is passed into it. 
- 
+
         double rotationSpeed;
 //      The robot should turn faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.

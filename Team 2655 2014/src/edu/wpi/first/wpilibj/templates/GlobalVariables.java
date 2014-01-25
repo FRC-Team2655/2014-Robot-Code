@@ -10,7 +10,8 @@ package edu.wpi.first.wpilibj.templates;
  *
  * @author bennettlewis
  */
-public class globalVariables {
+public class GlobalVariables {
+    public static double wantedDistanceFromWall = 10.0;
     public static int stereoRangeFinderSeperation = 23; // 
     public static int waitTimeShoot = 1000;
     public static int waitTimePass = 100;
