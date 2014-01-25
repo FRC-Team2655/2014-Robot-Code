@@ -16,4 +16,5 @@ public class GlobalVariables {
     public static int waitTimeShoot = 1000;
     public static int waitTimePass = 100;
     public static int timeForShooterToRetract = 250;
+    public static int anchorDropTime = 600;
 }

@@ -3,11 +3,10 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 
-// edited by Alex
+// edited by Alex and Zephan
 public class BallHandler {
 
     Compressor compressor;
-
     Shooter shooter;
     SideArms sideArm;
     Anchor anchor;
@@ -19,7 +18,6 @@ public class BallHandler {
 
     public BallHandler() {
         compressor = new Compressor(HardwarePortsEnum.pressureSwitchChannel, HardwarePortsEnum.compressorRelayChannel);
-
         shooter = new Shooter();
         sideArm = new SideArms();
         anchor = new Anchor(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
