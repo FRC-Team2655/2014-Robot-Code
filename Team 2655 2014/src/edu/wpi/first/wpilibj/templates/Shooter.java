@@ -42,7 +42,28 @@ public class Shooter {
     }
     
     void pass(){
+         shooterPiston1.set(DoubleSolenoid.Value.kForward);      
+        shooterPiston2.set(DoubleSolenoid.Value.kForward);      
 //  Will add code later. Should be similar to shoot.
+//change the wait time for both
+         try {
+            wait(100);// Wait until piston completly extends
+        } catch (Exception e) {
+
+        } finally {
+             shooterPiston1.set(DoubleSolenoid.Value.kReverse);
+             shooterPiston2.set(DoubleSolenoid.Value.kReverse);
+             //can leave this in but remember in the future it can be in the catch itself
+        }
+        
+         try {
+            wait(100);
+        } catch (Exception e) {
+
+        } finally {
+             shooterPiston1.set(DoubleSolenoid.Value.kOff);
+             shooterPiston2.set(DoubleSolenoid.Value.kOff);
+       }
     
     }
 }

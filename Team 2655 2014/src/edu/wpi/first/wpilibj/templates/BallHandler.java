@@ -59,10 +59,7 @@ public class BallHandler {
      void passTheBall() {
         sideArm.open();
         shooter.pass();
-        //add timer to pass verb 
         sideArm.close();
-        //can try a duration difference
-        //or turning it on only for a short amount of time
-        //put wait statement in here
+       
     }
 }
