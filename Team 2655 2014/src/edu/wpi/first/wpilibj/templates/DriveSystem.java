@@ -17,7 +17,6 @@ public class DriveSystem implements Runnable {
     StereoRangeFinder stereoRangeFinder;
     Joystick driveStick;
     Gyro gyro;
-    int johnMode = 1;
 
     RobotDrive mainDrive = new RobotDrive(1, 2, 3, 4); //change motors later
 
@@ -66,7 +65,7 @@ public class DriveSystem implements Runnable {
                     mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                             driveStick.getAxis(Joystick.AxisType.kY),
                             driveStick.getAxis(Joystick.AxisType.kZ),
-                            gyro.getAngle() * johnMode);
+                            gyro.getAngle() * GlobalVariables.johnMode);
                 }
 
                 Thread.sleep(100);

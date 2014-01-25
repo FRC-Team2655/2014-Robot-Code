@@ -23,7 +23,7 @@ public class GlobalVariables {
     public static int anchorDropTime = 600;
 
 //  Drive Modes  
-    public int johnMode = 1;
-    public int rcMode = 2;
+    public static int johnMode = 1;
+    public static int rcMode = 2;
     
 }
