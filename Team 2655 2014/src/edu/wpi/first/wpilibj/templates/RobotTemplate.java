@@ -84,6 +84,7 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     //Gandalf = 100pts
+    //Frodo = 50pts
     public void teleopPeriodic() {
 
         // "Rising Edge" button logic

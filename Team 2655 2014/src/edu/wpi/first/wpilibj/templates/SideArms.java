@@ -4,6 +4,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class SideArms implements Runnable {
+    
 
     DoubleSolenoid sideArms;
     int sideArmCloseTime = 100;
@@ -19,7 +20,6 @@ public class SideArms implements Runnable {
         public static final int closeState = 2;
 
     }
-
     public SideArms() {
 
         sideArms = new DoubleSolenoid(HardwarePortsEnum.sideArmOpenArmChannel, HardwarePortsEnum.sideArmClosedArmChannel);

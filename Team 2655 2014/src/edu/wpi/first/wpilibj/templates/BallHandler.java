@@ -13,10 +13,10 @@ public class BallHandler {
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
     private final boolean inMitt = true;
-    private final boolean notInMitt = false;
     boolean loadArmsAreExtended = true;
 
     public BallHandler() {
+        //if we ever add or modify a timer do it in the  class itself
         ballHandlerCompressor = new CompressorSystem();
         shooter = new Shooter();
         sideArm = new SideArms();
