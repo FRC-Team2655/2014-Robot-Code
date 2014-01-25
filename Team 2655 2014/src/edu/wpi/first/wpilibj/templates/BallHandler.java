@@ -28,11 +28,6 @@ public class BallHandler {
         compressor.start();
     }
 
-    void armTheShooter() {
-        sideArm.open();
-        anchor.drop();
-    }
-
     void shootTheBall() {
         sideArm.open();
         //need to put the a timer on the verb open so i can shoot 
@@ -60,9 +55,8 @@ public class BallHandler {
      void closeSideArmsForCatching() {
         sideArm.close();
     }    
-    
-    
-    void passTheBall() {
+        
+     void passTheBall() {
         sideArm.open();
         shooter.pass();
         //add timer to pass verb 
