@@ -11,6 +11,10 @@ package edu.wpi.first.wpilibj.templates;
  * @author bennettlewis
  */
 public class GlobalVariables {
+//  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
+    public static double speedSlopeMoving = 0.2;
+    public static double speedSlopeRotate = 0.00555555;
+    
     public static double wantedDistanceFromWall = 10.0;
     public static int stereoRangeFinderSeperation = 23; // 
     public static int waitTimeShoot = 1000;

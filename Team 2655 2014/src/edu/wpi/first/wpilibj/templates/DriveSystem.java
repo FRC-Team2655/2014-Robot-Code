@@ -23,9 +23,17 @@ public class DriveSystem implements Runnable {
 
     int driveMode;
 
+    class DriveModeEnum {
+//      Possible states the robot can be in.  
+
+        static final int Disabled = 0;
+        static final int Autonomous = 1;
+        static final int Teleop = 2;
+    }
+
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
-        gyro = new Gyro(useGyro);
+        gyro = new Gyro(useGyro);// This is wrong.
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
     }
@@ -81,16 +89,16 @@ public class DriveSystem implements Runnable {
         mainDrive.mecanumDrive_Polar(magnitude, direction, rotation);
     }
 
-    public void moveFoward(double distanceInFeet) {
+    public void moveDistance(double distanceToMoveInFeet) {
+//      The robot should move faster the further it is away from it's goal so
+//      to find that we use the equation of a straight line which is Y = MX + B.
+//      M = 1/5(0.2) X = 0.2 * distanceToMoveInFeet B = 0.
+        if(distanceToMoveInFeet > 5) distanceToMoveInFeet = 5;
+        if(distanceToMoveInFeet > - 5) distanceToMoveInFeet = -5;
+        
+        double speed = (GlobalVariables.speedSlopeMoving * distanceToMoveInFeet);
 
-        if (GlobalVariables.wantedDistanceFromWall < distanceInFeet) {
-            moveAutonomous(.5, 0, 0);
-        } else if (GlobalVariables.wantedDistanceFromWall > distanceInFeet) {
-            moveAutonomous(-.25, 0, 0);
-        } else {
-            moveAutonomous(0, 0, 0);
-        }
-
+        moveAutonomous(speed, 0, 0);
     }
 
     public void rotateToDegree(int degree) { // Turns the robot to the degree that is passed into it. 
@@ -99,12 +107,10 @@ public class DriveSystem implements Runnable {
 //      The robot should turn faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/180 X = gyro.getAngle() - degree B = 0
-        while (gyro.getAngle() != degree) {
-            rotationSpeed = (gyro.getAngle() - degree) / 180;
+//      while (gyro.getAngle() != degree) {
+        rotationSpeed = (gyro.getAngle() - degree) * GlobalVariables.speedSlopeRotate;
 
-            moveAutonomous(0, 0, rotationSpeed);
-
-        }
+        moveAutonomous(0, 0, rotationSpeed);
 
     }
 
