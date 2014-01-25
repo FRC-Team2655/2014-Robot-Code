@@ -55,8 +55,11 @@ public class BallHandler {
         if (ballInMittLimitSwitch.get() == inMitt) {
             sideArm.close();
         }
-
     }
+    
+     void closeSideArmsForCatching() {
+        sideArm.close();
+    }    
     
     
     void passTheBall() {
