@@ -20,9 +20,9 @@ public class Anchor {
     //DigitalInput ballInMittLimitSwitch;
 //  You will most likely need a timer.
 
-    public Anchor(int dropChannel, int raiseChannel) {
+    public Anchor() {
         
-        anchors = new DoubleSolenoid(dropChannel, raiseChannel);
+        anchors = new DoubleSolenoid(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
         //ballInMittLimitSwitch = new DigitalInput(1);
 //      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
 
