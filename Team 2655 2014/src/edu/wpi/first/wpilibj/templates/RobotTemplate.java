@@ -122,14 +122,14 @@ public class RobotTemplate extends IterativeRobot {
         }
 
         //Arm Button ---------------------------------------------------------
-        if (joyStick.getRawButton(4)) {
-            if (lastArmButtonState == notPressed) {
-                ballHandler.armTheShooter();
-                lastArmButtonState = pressed;
-            }
-        } else {
-            lastArmButtonState = notPressed;
-        }
+//        if (joyStick.getRawButton(4)) {
+//            if (lastArmButtonState == notPressed) {
+//                ballHandler.armTheShooter();
+//                lastArmButtonState = pressed;
+//            }
+//        } else {
+//            lastArmButtonState = notPressed;
+//        }
 
         //Poop (Pass) Button -------------------------------------------------
         if (joyStick.getRawButton(5)) {

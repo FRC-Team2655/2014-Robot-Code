@@ -87,11 +87,12 @@ public class DriveSystem implements Runnable {
 
     }
 
-    public void rotateToDegree(int degree) { // Used only in autonomous
+    public void rotateToDegree(int degree) { // Turns the robot to the degree that is passed into it. 
+ 
         double rotationSpeed;
-//      Y = MX + B. So we have the angle(Y) 
-//      plus the degree multiplied by the slope(MX)
-//      Divided by 180(B) which gives us the rate that we need to turn.  
+//      The robot should turn faster the further it is away from it's goal so
+//      to find that we use the equation of a straight line which is Y = MX + B.
+//      M = 1/180 X = gyro.getAngle() - degree B = 0
         while (gyro.getAngle() != degree) {
             rotationSpeed = (gyro.getAngle() - degree) / 180;
 
