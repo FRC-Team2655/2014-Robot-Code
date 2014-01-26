@@ -22,39 +22,40 @@ public class OurMath {
 
     };
 
-    // returns arc tangent in degrees
+    // returns arc tangent in radians
     // the degree is the index in the tan array above where we found the tangent of the angle
     // (this function seems to be available in
     //      com.sun.squawk.util.MathUtils.atan(angdeg)
     // but not supported on this java platform. IDK. We write our own.
     public static double atan(double tangentOfAngle) {
-        int sign = 1;             // assume positive
-        
+        int originalSignOfTangentOfAngle = 1;             // assume positive
+
+        double answerInDegrees = (tan.length - 1) * originalSignOfTangentOfAngle;
+
         if (tangentOfAngle < 0) {
-            sign = -1;
+            originalSignOfTangentOfAngle = -1;
             tangentOfAngle = -tangentOfAngle;
         }
 
         if (tangentOfAngle >= 1.0) {
             // we don't do anything more than 45 degrees
             // so just return the highest degree value
-            return (tan.length - 1) * sign;
-        }
-
-        // search the tan array for a value
-        for (int i = 0; i < tan.length; i++) {
-            if (tangentOfAngle >= tan[i]) {
-                if (i == 0) {
-                    return 0;
+            answerInDegrees = (tan.length - 1) * originalSignOfTangentOfAngle;
+        } else {
+            // search the tan array for a value
+            for (int i = 0; i < tan.length; i++) {
+                if (tangentOfAngle >= tan[i]) {
+                    if (i == 0) {
+                        answerInDegrees = 0.0;
+                        break;
+                    }
+                    // we could interpolate between this and
+                    // the last array entry for a little better accuracy.
+                    answerInDegrees = --i * originalSignOfTangentOfAngle;
+                    break;
                 }
-                // we could interpolate between this and
-                // the last array entry for a little better accuracy.
-                return --i * sign;
             }
         }
-        
-        // we should never get here
-        // but just in case, we return 90.0
-        return (tan.length - 1) * sign;
+        return java.lang.Math.toRadians(answerInDegrees);
     }
 }
