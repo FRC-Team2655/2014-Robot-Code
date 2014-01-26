@@ -40,6 +40,8 @@ public class AAA_ThingsToDo {
     4. Need to develop camera code
     
     5. (DriveSystem) Need to add fudge factors where we use y=mx+b code
+       Need to add a variable for "b" (y offset). Hopefully the "m" slope
+       is already a variable.
     
     6. (Anchor) move anchorRaiseTime to GlobalVariables
     
@@ -69,7 +71,15 @@ public class AAA_ThingsToDo {
         and put code in to turn OFF a port at the end. Then we can monitor
         this with the oscilliscope.
     
-    16. 
+    16. I think we should change GlobalVariables to just "Globals".
+    
+    17. I would like to build a "test harness" to be able to run/debug this
+        code before we get hardware. Just need to figure out how to do it.
+    
+    18. Need to add Global variable for adjusting the gyro sensitivity.
+        Default is 0.007 (as per 2010 code).
+    
+    19. 
     
     */
     
