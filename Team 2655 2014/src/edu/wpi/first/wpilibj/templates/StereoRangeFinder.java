@@ -22,8 +22,10 @@ public class StereoRangeFinder {
 
     public int degreesOffset() {
         double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / GlobalVariables.stereoRangeFinderSeperation;
-
-        return Math.atan(tanOfAngle);
+        double angleInRadians = OurMath.atan(tanOfAngle);
+        
+        // degree = angleInRadians * 180 / PI
+        return (int)java.lang.Math.toDegrees(angleInRadians);
     }
 
     public double getDistanceInches() {
