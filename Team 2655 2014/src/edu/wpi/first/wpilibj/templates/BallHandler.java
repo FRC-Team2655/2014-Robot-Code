@@ -40,10 +40,12 @@ public class BallHandler {
             inFeed.off();
         sideArm.close();
     }    
-        
+    } 
      void passTheBall() {
         sideArm.open();
         shooter.pass();
         sideArm.close();
-       }
-
+     } 
+     
+}
+    
