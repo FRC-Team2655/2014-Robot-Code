@@ -30,6 +30,30 @@ public class DriveSystem implements Runnable {
         static final int Teleop = 2;
     }
 
+    private class DriveSystemThread extends Thread {
+
+        public void run() {
+//      Runs... Forever  
+            while (true) {
+
+                try {
+                    if (driveMode == DriveModeEnum.Teleop) {
+                        // If the robot is in teleop it will accept input from the joysticks.
+                        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
+                                driveStick.getAxis(Joystick.AxisType.kY),
+                                driveStick.getAxis(Joystick.AxisType.kZ),
+                                gyro.getAngle() * GlobalVariables.johnMode);
+                    }
+
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                }
+
+            }
+        }
+
+    }
+
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
         gyro = new Gyro(HardwarePortsEnum.gyroChannel);
@@ -53,26 +77,6 @@ public class DriveSystem implements Runnable {
 //  Sets the drive mode to Teleop.        
         driveMode = DriveModeEnum.Teleop;
 
-    }
-
-    public void run() {
-//      Runs... Forever  
-        while (true) {
-
-            try {
-                if (driveMode == DriveModeEnum.Teleop) {
-                    // If the robot is in teleop it will accept input from the joysticks.
-                    mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
-                            driveStick.getAxis(Joystick.AxisType.kY),
-                            driveStick.getAxis(Joystick.AxisType.kZ),
-                            gyro.getAngle() * GlobalVariables.johnMode);
-                }
-
-                Thread.sleep(100);
-            } catch (InterruptedException ex) {
-            }
-
-        }
     }
 
     void moveAutonomous(double magnitude, double direction, double rotation) {
