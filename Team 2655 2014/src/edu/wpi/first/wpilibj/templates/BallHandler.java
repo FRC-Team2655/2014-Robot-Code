@@ -38,19 +38,6 @@ public class BallHandler {
 
         if (RobotTemplate.lastLoadButtonState == true) {
             inFeed.off();
-        } else {
-            inFeed.on();
-        }
-    }
-
-    void openSideArmsForCatching() {
-        sideArm.open();
-        if (ballInMittLimitSwitch.get() == inMitt) {
-            sideArm.close();
-        }
-    }
-    
-     void closeSideArmsForCatching() {
         sideArm.close();
     }    
         
@@ -58,6 +45,5 @@ public class BallHandler {
         sideArm.open();
         shooter.pass();
         sideArm.close();
-       
-    }
-}
+       }
+
