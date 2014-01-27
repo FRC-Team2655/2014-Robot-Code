@@ -43,7 +43,7 @@ public class AAA_ThingsToDo {
        Need to add a variable for "b" (y offset). Hopefully the "m" slope
        is already a variable.
     
-    6. (Anchor) move anchorRaiseTime to GlobalVariables
+    
     
     7. Need to get LiveWindows or SmartDashboard working with all
        the variables we have in GlobalVariables

@@ -22,13 +22,14 @@ public class BallHandler {
         sideArm = new SideArms();
         anchor = new Anchor();
         inFeed = new InFeed();
-        ballInMittLimitSwitch = new DigitalInput(HardwarePortsEnum.ballInMittLimitSwitchChannel );
+        ballInMittLimitSwitch = new DigitalInput(HardwarePortsEnum.ballInMittLimitSwitchChannel);
         ballHandlerCompressor.start();
     }
 
     void shootTheBall() {
+        anchor.drop();
         sideArm.open();
-        //need to put the a timer on the verb open so i can shoot 
+        //need to put the a timer on the verb shoot so i can shoot 
         shooter.shoot();
         sideArm.close();
         anchor.raise();
@@ -38,14 +39,14 @@ public class BallHandler {
 
         if (RobotTemplate.lastLoadButtonState == true) {
             inFeed.off();
-        sideArm.close();
-    }    
-    } 
-     void passTheBall() {
+            sideArm.close();
+        }
+    }
+
+    void passTheBall() {
         sideArm.open();
         shooter.pass();
         sideArm.close();
-     } 
-     
+    }
+
 }
-    

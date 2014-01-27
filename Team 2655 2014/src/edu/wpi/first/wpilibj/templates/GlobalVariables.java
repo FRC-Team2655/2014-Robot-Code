@@ -26,4 +26,7 @@ public class GlobalVariables {
     public static int johnMode = 1;
     public static int rcMode = 2;
     
+//anchor raise time
+    public static int anchorRaiseTime = 600;
+    
 }
