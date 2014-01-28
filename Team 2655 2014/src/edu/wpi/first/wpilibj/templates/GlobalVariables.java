@@ -32,8 +32,8 @@ public class GlobalVariables {
     public static int anchorRaiseTime = 600;
 
 // drive system 
-    public static int distanceCapPositive = 5;
-    public static int distanceCapNegative = -5;
+    public static int distanceLimitPositive = 5;
+    public static int distanceLimitNegative = -5;
     
 // smart dash board 
     protected void smartDashBoardVariables() {
@@ -41,8 +41,8 @@ public class GlobalVariables {
         SmartDashboard.putNumber("speedSlopeRotate", speedSlopeRotate );
         SmartDashboard.putNumber("wantedDistanceFromWall", wantedDistanceFromWall);
         SmartDashboard.putNumber("stereoRangeFinderSeperation", stereoRangeFinderSeperation);
-        SmartDashboard.putNumber("distanceCapPositive", distanceCapPositive);
-        SmartDashboard.putNumber("distanceCapNegative", distanceCapNegative);
+        SmartDashboard.putNumber("distanceCapPositive", distanceLimitPositive);
+        SmartDashboard.putNumber("distanceCapNegative", distanceLimitNegative);
         SmartDashboard.putNumber("waitTimeShoot", waitTimeShoot);
         SmartDashboard.putNumber("waitTimePass", waitTimePass);
         SmartDashboard.putNumber("timeForShooterToRetract", timeForShooterToRetract);

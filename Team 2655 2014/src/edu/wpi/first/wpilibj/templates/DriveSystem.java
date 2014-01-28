@@ -91,11 +91,11 @@ public class DriveSystem {
 //      The robot should move faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/5(0.2) X = 0.2 * distanceToMoveInFeet B = 0.
-        if (distanceToMoveInFeet > GlobalVariables.distanceCapPositive) {
-            distanceToMoveInFeet = GlobalVariables.distanceCapPositive;
+        if (distanceToMoveInFeet > GlobalVariables.distanceLimitPositive) {
+            distanceToMoveInFeet = GlobalVariables.distanceLimitPositive;
         }
-        if (distanceToMoveInFeet < GlobalVariables.distanceCapNegative) {
-            distanceToMoveInFeet = GlobalVariables.distanceCapNegative;
+        if (distanceToMoveInFeet < GlobalVariables.distanceLimitNegative) {
+            distanceToMoveInFeet = GlobalVariables.distanceLimitNegative;
         }
 
         double speed = (GlobalVariables.speedSlopeMoving * distanceToMoveInFeet);
