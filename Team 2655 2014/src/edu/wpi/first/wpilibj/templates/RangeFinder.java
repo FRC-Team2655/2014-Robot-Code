@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 public class RangeFinder {
     //Ultrasonic rangeFinder;
     AnalogChannel rangeFinder;
-    double voltagePerInch = 512;
+    final double voltagePerInch = 512;
     
     RangeFinder(int port){
         rangeFinder = new AnalogChannel(port);
