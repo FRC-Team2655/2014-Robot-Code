@@ -45,7 +45,6 @@ public class RobotTemplate extends IterativeRobot {
     boolean loadModeDisabled = false;
     boolean catchModeDisabled = false;
 
-    //John Mode vs. R/C Mode (Starting to think that John mode might be better... --Josh
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
@@ -54,8 +53,6 @@ public class RobotTemplate extends IterativeRobot {
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-        driveSystem.run();
-        //Test mode won't run if we put it in the autonomous init.
     }
 
     public void robotInit() {
