@@ -22,23 +22,31 @@ public class GlobalVariables {
     public static int waitTimeShoot = 1000;
     public static int waitTimePass = 100;
     public static int timeForShooterToRetract = 250;
-    public static int anchorDropTime = 600;
 
 //  Drive Modes  
     public static int johnMode = 1;
     public static int rcMode = 2;
     
-//anchor raise time
+//anchor raise and drop times
+     public static int anchorDropTime = 600;
     public static int anchorRaiseTime = 600;
-    
+
+// drive system 
     public static int distanceCapPositive = 5;
     public static int distanceCapNegative = -5;
     
 // smart dash board 
     protected void smartDashBoardVariables() {
         SmartDashboard.putNumber("speedSlopeMoving" , speedSlopeMoving);
-        SmartDashboard.putNumber("speedSlopeRate", speedSlopeMoving);
-        SmartDashboard.putNumber("wantedDistanceFromWall", speedSlopeMoving);
-        SmartDashboard.putNumber("steroRangeFinderSeperation", speedSlopeMoving);
+        SmartDashboard.putNumber("speedSlopeRotate", speedSlopeRotate );
+        SmartDashboard.putNumber("wantedDistanceFromWall", wantedDistanceFromWall);
+        SmartDashboard.putNumber("stereoRangeFinderSeperation", stereoRangeFinderSeperation);
+        SmartDashboard.putNumber("distanceCapPositive", distanceCapPositive);
+        SmartDashboard.putNumber("distanceCapNegative", distanceCapNegative);
+        SmartDashboard.putNumber("waitTimeShoot", waitTimeShoot);
+        SmartDashboard.putNumber("waitTimePass", waitTimePass);
+        SmartDashboard.putNumber("timeForShooterToRetract", timeForShooterToRetract);
+        SmartDashboard.putNumber("anchorDropTime", anchorDropTime);
+        SmartDashboard.putNumber("anchorRaiseTime", anchorRaiseTime);
     }
 }
