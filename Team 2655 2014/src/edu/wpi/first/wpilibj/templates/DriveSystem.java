@@ -10,15 +10,12 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
-public class DriveSystem implements Runnable {
+public class DriveSystem {
 
-    RangeFinder rangeFinder;
-    RangeFinder rightRangeFinder = new RangeFinder(HardwarePortsEnum.rightRangeFinderPingPort, HardwarePortsEnum.rightRangeFinderEchoPort);//Default
-    StereoRangeFinder stereoRangeFinder;
     Joystick driveStick;
     Gyro gyro;
-
-    RobotDrive mainDrive = new RobotDrive(1, 2, 3, 4); //change motors later
+    private Thread thread;
+    RobotDrive mainDrive;
 
     int driveMode;
 
@@ -31,6 +28,10 @@ public class DriveSystem implements Runnable {
     }
 
     private class DriveSystemThread extends Thread {
+
+        public DriveSystemThread() {
+
+        }
 
         public void run() {
 //      Runs... Forever  
@@ -59,6 +60,10 @@ public class DriveSystem implements Runnable {
         gyro = new Gyro(HardwarePortsEnum.gyroChannel);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
+        mainDrive = new RobotDrive(1, 2, 3, 4);
+        thread = new DriveSystemThread();
+        thread.start();
+        
     }
 
     public void setDisabled() {
