@@ -16,8 +16,8 @@ public class StereoRangeFinder {
 
     StereoRangeFinder() {
 
-        left = new RangeFinder(HardwarePortsEnum.leftRangeFinderEchoPort, HardwarePortsEnum.leftRangeFinderPingPort);
-        right = new RangeFinder(HardwarePortsEnum.rightRangeFinderEchoPort, HardwarePortsEnum.rightRangeFinderPingPort);
+        left = new RangeFinder(HardwarePortsEnum.leftRangeFinderPort);
+        right = new RangeFinder(HardwarePortsEnum.rightRangeFinderPort);
     }
 
     public int degreesOffset() {

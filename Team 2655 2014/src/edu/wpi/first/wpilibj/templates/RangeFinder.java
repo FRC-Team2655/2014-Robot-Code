@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Ultrasonic;
 
 /**
@@ -13,17 +14,18 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  * @author Josh
  */
 public class RangeFinder {
-    Ultrasonic rangeFinder;
+    //Ultrasonic rangeFinder;
+    AnalogChannel rangeFinder;
+    double voltagePerInch = 512;
     
-    RangeFinder(int beamInPort, int beamOutPort){
-        rangeFinder = new Ultrasonic(beamOutPort, beamInPort); //Initalize the sensor
-        rangeFinder.setAutomaticMode(true); //Enable it.
+    RangeFinder(int port){
+        rangeFinder = new AnalogChannel(port);
     }
     
     double getDistanceInches(){
-        return rangeFinder.getRangeInches();//Get distance in inches.
+        return rangeFinder.getVoltage() / voltagePerInch; ///Get distance in inches.
     }
     double getDistanceFeet(){
-        return rangeFinder.getRangeInches() / 12; //Gets distance in inches, then devides by 12. Ergo, Feet.
+        return getDistanceInches() / 12; //Gets distance in inches, then devides by 12. Ergo, Feet.
     }
 }
