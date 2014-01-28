@@ -1,6 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 
 // edited by Alex and Zephan
@@ -24,6 +23,14 @@ public class BallHandler {
         inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(HardwarePortsEnum.ballInMittLimitSwitchChannel);
         ballHandlerCompressor.start();
+    }
+
+    void catchTheBall() {
+        sideArm.open();
+        if (ballInMittLimitSwitch.get() == true) {
+            sideArm.close();
+        }
+
     }
 
     void shootTheBall() {
