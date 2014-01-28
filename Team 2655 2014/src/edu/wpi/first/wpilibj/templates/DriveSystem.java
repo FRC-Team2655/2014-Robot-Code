@@ -63,7 +63,6 @@ public class DriveSystem {
         mainDrive = new RobotDrive(1, 2, 3, 4);
         thread = new DriveSystemThread();
         thread.start();
-        
     }
 
     public void setDisabled() {

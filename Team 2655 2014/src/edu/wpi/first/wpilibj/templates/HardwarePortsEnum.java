@@ -12,6 +12,8 @@ package edu.wpi.first.wpilibj.templates;
 public class HardwarePortsEnum {
 //  Hardware ports are incorrect and/or temporary.
 
+    
+    
     public static int frontLeftMotorChannel = 1;
     public static int backLeftMotorChannel = 2;
     public static int frontRightMotorChannel = 3;
