@@ -104,7 +104,7 @@ public class RobotTemplate extends IterativeRobot {
             if (lastCatchButtonState == notPressed) {
 
                 if (catchModeEnabled) {
-                    ballHandler.openSideArmsForCatching();
+                    ballHandler.catchTheBall();
                 }
 
                 lastCatchButtonState = pressed;
