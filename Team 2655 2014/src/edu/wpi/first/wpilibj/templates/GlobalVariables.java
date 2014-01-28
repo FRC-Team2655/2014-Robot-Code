@@ -24,8 +24,8 @@ public class GlobalVariables {
     public static int timeForShooterToRetract = 250;
 
 //  Drive Modes  
+    public static int rcMode = 0;
     public static int johnMode = 1;
-    public static int rcMode = 2;
     
 //anchor raise and drop times
      public static int anchorDropTime = 600;
