@@ -94,7 +94,7 @@ public class DriveSystem {
         if (distanceToMoveInFeet > 5) {
             distanceToMoveInFeet = 5;
         }
-        if (distanceToMoveInFeet > - 5) {
+        if (distanceToMoveInFeet < -5) {
             distanceToMoveInFeet = -5;
         }
 
