@@ -62,7 +62,6 @@ public class AAA_ThingsToDo {
     12. (RobotTemplate) IMHO -- don't use constants, define the joystick
         button numbers in GlobalVariables
     
-    13. (Shooter) put wait time constants in GlobalVariables
     
     14. (SideArms) put wait time constants in GlobalVariables
     
