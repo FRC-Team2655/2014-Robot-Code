@@ -31,6 +31,8 @@ public class GlobalVariables {
 //anchor raise time
     public static int anchorRaiseTime = 600;
     
+    public static int distanceCapPositive = 5;
+    public static int distanceCapNegative = -5;
     
 // smart dash board 
     protected void smartDashBoardVariables() {
