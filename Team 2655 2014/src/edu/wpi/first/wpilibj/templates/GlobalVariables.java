@@ -6,6 +6,8 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author bennettlewis
@@ -29,4 +31,12 @@ public class GlobalVariables {
 //anchor raise time
     public static int anchorRaiseTime = 600;
     
+    
+// smart dash board 
+    protected void smartDashBoardVariables() {
+        SmartDashboard.putNumber("speedSlopeMoving" , speedSlopeMoving);
+        SmartDashboard.putNumber("speedSlopeRate", speedSlopeMoving);
+        SmartDashboard.putNumber("wantedDistanceFromWall", speedSlopeMoving);
+        SmartDashboard.putNumber("steroRangeFinderSeperation", speedSlopeMoving);
+    }
 }
