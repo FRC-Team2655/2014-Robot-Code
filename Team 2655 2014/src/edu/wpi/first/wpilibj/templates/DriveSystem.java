@@ -60,7 +60,7 @@ public class DriveSystem {
         gyro = new Gyro(HardwarePortsEnum.gyroChannel);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
-        mainDrive = new RobotDrive(1, 2, 3, 4);
+        mainDrive = new RobotDrive(HardwarePortsEnum.frontLeftMotorChannel, HardwarePortsEnum.frontRightMotorChannel, HardwarePortsEnum.backLeftMotorChannel, HardwarePortsEnum.backRightMotorChannel);
         thread = new DriveSystemThread();
         thread.start();
     }
@@ -92,10 +92,10 @@ public class DriveSystem {
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/5(0.2) X = 0.2 * distanceToMoveInFeet B = 0.
         if (distanceToMoveInFeet > GlobalVariables.distanceCapPositive) {
-            distanceToMoveInFeet = 5;
+            distanceToMoveInFeet = GlobalVariables.distanceCapPositive;
         }
         if (distanceToMoveInFeet < GlobalVariables.distanceCapNegative) {
-            distanceToMoveInFeet = -5;
+            distanceToMoveInFeet = GlobalVariables.distanceCapNegative;
         }
 
         double speed = (GlobalVariables.speedSlopeMoving * distanceToMoveInFeet);
