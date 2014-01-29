@@ -12,8 +12,8 @@ package edu.wpi.first.wpilibj.templates;
 public class HardwarePorts {
 //  Hardware ports are incorrect and/or temporary.
 
-    public static int crioAnalogInput = 1;
-    public static int crioDigitalInput = 2;
+    public static int crioAnalogOutput = 1;
+    public static int crioDigitalOutput = 2;
     public static int crioSolenoidBreakout = 3;
     public static int crioPort4 = 4;
     
