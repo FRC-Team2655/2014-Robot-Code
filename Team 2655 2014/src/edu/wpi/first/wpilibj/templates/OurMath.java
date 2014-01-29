@@ -3,12 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.wpi.first.wpilibj.templates;
+//package edu.wpi.first.wpilibj.templates;
 
 /**
  *
  * @author magic_000
  */
+/*
+
+class not used anymore -- using MathUtils.atan()
+
 public class OurMath {
 
     // a table of sin(deg)
@@ -59,3 +63,4 @@ public class OurMath {
         return java.lang.Math.toRadians(answerInDegrees);
     }
 }
+*/

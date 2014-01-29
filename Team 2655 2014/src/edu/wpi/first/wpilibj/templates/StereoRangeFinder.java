@@ -5,6 +5,8 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
+import com.sun.squawk.util.MathUtils;
+
 /**
  *
  * @author Josh / Honest John
@@ -21,11 +23,12 @@ public class StereoRangeFinder {
     }
 
     public int degreesOffset() {
-        double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / GlobalVariables.stereoRangeFinderSeperation;
-        double angleInRadians = OurMath.atan(tanOfAngle);
-        
+        // double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / GlobalVariables.stereoRangeFinderSeperation;
+        //double angleInRadians = OurMath.atan(tanOfAngle);
+        double angleInRadians = MathUtils.atan2(left.getDistanceInches() - right.getDistanceInches(), GlobalVariables.stereoRangeFinderSeperation);
+
         // degree = angleInRadians * 180 / PI
-        return (int)java.lang.Math.toDegrees(angleInRadians);
+        return (int) java.lang.Math.toDegrees(angleInRadians);
     }
 
     public double getDistanceInches() {
