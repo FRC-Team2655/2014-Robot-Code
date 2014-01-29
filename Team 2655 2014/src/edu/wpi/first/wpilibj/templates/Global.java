@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author bennettlewis
  */
-public class GlobalVariables {
+public class Global {
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;
     public static double speedSlopeRotate = 0.00555555;

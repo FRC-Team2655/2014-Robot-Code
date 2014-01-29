@@ -70,7 +70,7 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousPeriodic() {
         
         driveSystem.rotate(-stereoRangeFinder.degreesOffset());
-        driveSystem.moveDistance(stereoRangeFinder.getDistanceFeet() - GlobalVariables.wantedDistanceFromWall);
+        driveSystem.moveDistance(stereoRangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall);
         driveSystem.rotate(-stereoRangeFinder.degreesOffset());
         driveSystem.gyro.reset(); // zero the gyro
     

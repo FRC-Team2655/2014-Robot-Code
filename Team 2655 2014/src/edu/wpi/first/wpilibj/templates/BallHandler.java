@@ -21,7 +21,7 @@ public class BallHandler {
         sideArm = new SideArms();
         anchor = new Anchor();
         inFeed = new InFeed();
-        ballInMittLimitSwitch = new DigitalInput(HardwarePortsEnum.ballInMittLimitSwitchChannel);
+        ballInMittLimitSwitch = new DigitalInput(HardwarePorts.ballInMittLimitSwitchChannel);
         ballHandlerCompressor.start();
     }
 

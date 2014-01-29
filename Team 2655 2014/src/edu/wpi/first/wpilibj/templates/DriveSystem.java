@@ -43,7 +43,7 @@ public class DriveSystem {
                         mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(Joystick.AxisType.kX),
                                 driveStick.getAxis(Joystick.AxisType.kY),
                                 driveStick.getAxis(Joystick.AxisType.kZ),
-                                gyro.getAngle() * GlobalVariables.johnMode);
+                                gyro.getAngle() * Global.johnMode);
                     }
 
                     Thread.sleep(100);
@@ -57,10 +57,10 @@ public class DriveSystem {
 
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
-        gyro = new Gyro(HardwarePortsEnum.gyroChannel);
+        gyro = new Gyro(HardwarePorts.gyroChannel);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
-        mainDrive = new RobotDrive(HardwarePortsEnum.frontLeftMotorChannel, HardwarePortsEnum.frontRightMotorChannel, HardwarePortsEnum.backLeftMotorChannel, HardwarePortsEnum.backRightMotorChannel);
+        mainDrive = new RobotDrive(HardwarePorts.frontLeftMotorChannel, HardwarePorts.frontRightMotorChannel, HardwarePorts.backLeftMotorChannel, HardwarePorts.backRightMotorChannel);
         thread = new DriveSystemThread();
         thread.start();
     }
@@ -91,14 +91,14 @@ public class DriveSystem {
 //      The robot should move faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/5(0.2) X = 0.2 * distanceToMoveInFeet B = 0.
-        if (distanceToMoveInFeet > GlobalVariables.distanceLimitPositive) {
-            distanceToMoveInFeet = GlobalVariables.distanceLimitPositive;
+        if (distanceToMoveInFeet > Global.distanceLimitPositive) {
+            distanceToMoveInFeet = Global.distanceLimitPositive;
         }
-        if (distanceToMoveInFeet < GlobalVariables.distanceLimitNegative) {
-            distanceToMoveInFeet = GlobalVariables.distanceLimitNegative;
+        if (distanceToMoveInFeet < Global.distanceLimitNegative) {
+            distanceToMoveInFeet = Global.distanceLimitNegative;
         }
 
-        double speed = (GlobalVariables.speedSlopeMoving * distanceToMoveInFeet);
+        double speed = (Global.speedSlopeMoving * distanceToMoveInFeet);
 
         moveAutonomous(speed, 0, 0);
     }
@@ -110,7 +110,7 @@ public class DriveSystem {
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/180 X = gyro.getAngle() - degree B = 0
 //      while (gyro.getAngle() != degree) {
-        rotationSpeed = (gyro.getAngle() - degree) * GlobalVariables.speedSlopeRotate;
+        rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
 
         moveAutonomous(0, 0, rotationSpeed);
 

@@ -18,14 +18,14 @@ public class StereoRangeFinder {
 
     StereoRangeFinder() {
 
-        left = new RangeFinder(HardwarePortsEnum.leftRangeFinderPort);
-        right = new RangeFinder(HardwarePortsEnum.rightRangeFinderPort);
+        left = new RangeFinder(HardwarePorts.leftRangeFinderPort);
+        right = new RangeFinder(HardwarePorts.rightRangeFinderPort);
     }
 
     public int degreesOffset() {
-        // double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / GlobalVariables.stereoRangeFinderSeperation;
+        // double tanOfAngle = (left.getDistanceInches() - right.getDistanceInches()) / Global.stereoRangeFinderSeperation;
         //double angleInRadians = OurMath.atan(tanOfAngle);
-        double angleInRadians = MathUtils.atan2(left.getDistanceInches() - right.getDistanceInches(), GlobalVariables.stereoRangeFinderSeperation);
+        double angleInRadians = MathUtils.atan2(left.getDistanceInches() - right.getDistanceInches(), Global.stereoRangeFinderSeperation);
 
         // degree = angleInRadians * 180 / PI
         return (int) java.lang.Math.toDegrees(angleInRadians);

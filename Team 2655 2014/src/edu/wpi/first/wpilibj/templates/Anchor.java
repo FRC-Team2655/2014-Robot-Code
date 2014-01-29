@@ -22,7 +22,7 @@ public class Anchor {
 
     public Anchor() {
         
-        anchors = new DoubleSolenoid(HardwarePortsEnum.anchorDropChannel, HardwarePortsEnum.anchorRaiseChannel);
+        anchors = new DoubleSolenoid(HardwarePorts.anchorDropChannel, HardwarePorts.anchorRaiseChannel);
         //ballInMittLimitSwitch = new DigitalInput(1);
 //      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
 

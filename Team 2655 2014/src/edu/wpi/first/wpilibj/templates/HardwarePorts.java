@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates;
  *
  * @author magic_000
  */
-public class HardwarePortsEnum {
+public class HardwarePorts {
 //  Hardware ports are incorrect and/or temporary.
 
     public static int crioAnalogInput = 1;
