@@ -43,11 +43,6 @@ public class AAA_ThingsToDo {
        Need to add a variable for "b" (y offset). Hopefully the "m" slope
        is already a variable.
     
-    
-    
-    7. Need to get LiveWindows or SmartDashboard working with all
-       the variables we have in GlobalVariables
-    
     8. Need to update User's Manual -- there have been lots of changes
        lately.
     
@@ -70,7 +65,6 @@ public class AAA_ThingsToDo {
         and put code in to turn OFF a port at the end. Then we can monitor
         this with the oscilliscope.
     
-    16. I think we should change GlobalVariables to just "Globals".
     
     17. I would like to build a "test harness" to be able to run/debug this
         code before we get hardware. Just need to figure out how to do it.

@@ -48,5 +48,7 @@ public class Global {
         SmartDashboard.putNumber("timeForShooterToRetract", timeForShooterToRetract);
         SmartDashboard.putNumber("anchorDropTime", anchorDropTime);
         SmartDashboard.putNumber("anchorRaiseTime", anchorRaiseTime);
+        SmartDashboard.putNumber("distanceLimitPositive",distanceLimitPositive );
+        SmartDashboard.putNumber("distanceLimitNegative", distanceLimitNegative );
     }
 }
