@@ -12,10 +12,10 @@ package edu.wpi.first.wpilibj.templates;
 public class HardwarePorts {
 //  Hardware ports are incorrect and/or temporary.
 
-    public static int crioAnalogOutput = 1;
-    public static int crioDigitalOutput = 2;
-    public static int crioSolenoidBreakout = 3;
-    public static int crioPort4 = 4;
+    public static int crioSlot1 = 1;
+    public static int crioSlot2 = 2;
+    public static int crioSlot3 = 3;
+    public static int crioSlot4 = 4;
     
     public static int frontLeftMotorChannel = 1;
     public static int backLeftMotorChannel = 2;
