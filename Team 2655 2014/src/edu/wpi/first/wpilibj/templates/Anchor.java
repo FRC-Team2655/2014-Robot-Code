@@ -15,7 +15,6 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 public class Anchor {
     
     DoubleSolenoid anchors;
-    int anchorRaiseTime = 600;
     boolean debugRaiseException = false; //if this is true, then any exceptions in this class will be printed
     //DigitalInput ballInMittLimitSwitch;
 //  You will most likely need a timer.
@@ -37,7 +36,7 @@ public class Anchor {
         
         anchors.set(DoubleSolenoid.Value.kReverse);
         try {
-            wait(anchorRaiseTime);
+            wait(Global.anchorRaiseTime);
             //Find if we need to stop the solenoid when it reaches th top position.
         } catch (InterruptedException ex) {
             if (debugRaiseException) {
