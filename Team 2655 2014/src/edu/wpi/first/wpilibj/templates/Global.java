@@ -17,6 +17,7 @@ public class Global {
     public static double speedSlopeMoving = 0.2;
     public static double speedSlopeRotate = 0.00555555;
     
+//  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0;
     public static int stereoRangeFinderSeperation = 23; // 
     public static int waitTimeShoot = 1000;
@@ -28,7 +29,7 @@ public class Global {
     public static int johnMode = 1;
     
 //anchor raise and drop times
-     public static int anchorDropTime = 600;
+    public static int anchorDropTime = 600;
     public static int anchorRaiseTime = 600;
 
 // drive system 
@@ -40,7 +41,7 @@ public class Global {
     public static int sideArmOpenTime = 100;
     public static int sideArmIdleTime = 100;
     
-// gyro
+// Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
     
 // smart dash board 
