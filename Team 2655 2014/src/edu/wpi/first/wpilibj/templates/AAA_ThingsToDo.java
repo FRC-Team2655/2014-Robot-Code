@@ -57,9 +57,6 @@ public class AAA_ThingsToDo {
     12. (RobotTemplate) IMHO -- don't use constants, define the joystick
         button numbers in GlobalVariables
     
-    
-    14. (SideArms) put wait time constants in GlobalVariables
-    
     15. (all) figure out how to measure hardware execution speeds.
         Put code in to turn ON port at the beginning of a section of code
         and put code in to turn OFF a port at the end. Then we can monitor

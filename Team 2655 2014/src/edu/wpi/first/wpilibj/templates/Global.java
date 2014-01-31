@@ -35,6 +35,11 @@ public class Global {
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
     
+// side arms
+    public static int sideArmCloseTime = 100;
+    public static int sideArmOpenTime = 100;
+    public static int sideArmIdleTime = 100;
+    
 // smart dash board 
     protected void smartDashBoardVariables() {
         SmartDashboard.putNumber("speedSlopeMoving" , speedSlopeMoving);
@@ -48,7 +53,8 @@ public class Global {
         SmartDashboard.putNumber("timeForShooterToRetract", timeForShooterToRetract);
         SmartDashboard.putNumber("anchorDropTime", anchorDropTime);
         SmartDashboard.putNumber("anchorRaiseTime", anchorRaiseTime);
-        SmartDashboard.putNumber("distanceLimitPositive",distanceLimitPositive );
-        SmartDashboard.putNumber("distanceLimitNegative", distanceLimitNegative );
+        SmartDashboard.putNumber("sideArmCloseTime", sideArmCloseTime);
+        SmartDashboard.putNumber("sideArmOpenTime", sideArmOpenTime);
+        SmartDashboard.putNumber("sideArmIdleTime", sideArmIdleTime);
     }
 }
