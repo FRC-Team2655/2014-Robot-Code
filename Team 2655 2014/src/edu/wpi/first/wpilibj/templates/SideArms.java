@@ -22,7 +22,7 @@ public class SideArms implements Runnable {
     }
     public SideArms() {
 
-        sideArms = new DoubleSolenoid(HardwarePorts.sideArmOpenArmChannel,HardwarePorts.sideArmClosedArmChannel);
+        sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel,Ports.SolenoidModule.sideArmClosedArmChannel);
 //      extendTime = timeToExtend; 
 //      If you add extend time back make sure you add it to the constructor  
 //      Also add this back to the constructor if needed int sidecarModule, and the sidearms =. 

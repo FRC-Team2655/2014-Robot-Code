@@ -18,8 +18,8 @@ public class StereoRangeFinder {
 
     StereoRangeFinder() {
 
-        left = new RangeFinder(HardwarePorts.leftRangeFinderPort);
-        right = new RangeFinder(HardwarePorts.rightRangeFinderPort);
+        left = new RangeFinder(Ports.AnalogModule.leftRangeFinderPort);
+        right = new RangeFinder(Ports.AnalogModule.rightRangeFinderPort);
     }
 
     public int degreesOffset() {

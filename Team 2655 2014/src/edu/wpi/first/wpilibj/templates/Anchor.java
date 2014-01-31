@@ -21,7 +21,7 @@ public class Anchor {
 
     public Anchor() {
         
-        anchors = new DoubleSolenoid(HardwarePorts.crioSlot2, HardwarePorts.anchorDropChannel, HardwarePorts.anchorRaiseChannel);
+        anchors = new DoubleSolenoid(Ports.crioSlot2, Ports.anchorDropChannel, Ports.anchorRaiseChannel);
         //ballInMittLimitSwitch = new DigitalInput(1);
 //      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
 

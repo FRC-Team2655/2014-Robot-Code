@@ -52,9 +52,9 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void robotInit() {
-        SensorBase.setDefaultAnalogModule(HardwarePorts.crioSlot1);
-        SensorBase.setDefaultDigitalModule(HardwarePorts.crioSlot2);
-        SensorBase.setDefaultSolenoidModule(HardwarePorts.crioSlot3);
+        SensorBase.setDefaultAnalogModule(Ports.crioSlot1);
+        SensorBase.setDefaultDigitalModule(Ports.crioSlot2);
+        SensorBase.setDefaultSolenoidModule(Ports.crioSlot3);
 
         joyStick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();

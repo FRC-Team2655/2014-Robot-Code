@@ -14,8 +14,8 @@ public class Shooter {
     int timeForShooterToRetract = 250;
     
     public Shooter() {
-        shooterPiston1 = new DoubleSolenoid(HardwarePorts.shooterExtendChannel, HardwarePorts.shooterRetractChannel);
-        shooterPiston2 = new DoubleSolenoid(HardwarePorts.shooterExtendChannel, HardwarePorts.shooterRetractChannel);
+        shooterPiston1 = new DoubleSolenoid(Ports.SolenoidModule.shooterExtendChannel, Ports.SolenoidModule.shooterRetractChannel);
+        shooterPiston2 = new DoubleSolenoid(Ports.SolenoidModule.shooterExtendChannel, Ports.SolenoidModule.shooterRetractChannel);
         //may need to change channels and may need to add spike to conttrol multiple channels
     }
 
