@@ -8,7 +8,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.SensorBase;
 
 public class RobotTemplate extends IterativeRobot {
 
@@ -48,15 +48,18 @@ public class RobotTemplate extends IterativeRobot {
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
     public RobotTemplate() {
+        // not sure this gets called because we have the IterateRobot
+    }
+
+    public void robotInit() {
         joyStick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-    }
-
-    public void robotInit() {
-        //blank for now
-        //Replaced by the Constructor
+        
+        SensorBase.setDefaultAnalogModule(HardwarePorts.crioSlot1);
+        SensorBase.setDefaultDigitalModule(HardwarePorts.crioSlot2);
+        SensorBase.setDefaultSolenoidModule(HardwarePorts.crioSlot3);
     }
 
     public void disabledInit() {
