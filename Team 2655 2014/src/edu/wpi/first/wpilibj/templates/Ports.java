@@ -45,8 +45,7 @@ public class Ports {
         public static int gyroChannel = 1;
         public static int leftRangeFinderPort = 2;
         public static int rightRangeFinderPort = 3;
-        public static int pressureSwitchOnChannel = 4;
-        public static int pressureSwitchOffChannel = 5;
+        public static int pressureSwitchChannel = 4;
 
     }
 

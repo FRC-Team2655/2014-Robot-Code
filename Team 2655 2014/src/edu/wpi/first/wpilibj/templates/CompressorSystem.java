@@ -11,6 +11,6 @@ public class CompressorSystem extends Compressor {
     Compressor ballHandlerCompressor;
 
     public CompressorSystem() {
-        super(Ports.pressureSwitchChannel, Ports.compressorRelayChannel);
+        super(Ports.AnalogModule.pressureSwitchChannel, Ports.DigitalModule.compressorRelayChannel);
     }
 }
