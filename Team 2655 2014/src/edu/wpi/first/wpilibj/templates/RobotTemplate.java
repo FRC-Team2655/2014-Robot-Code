@@ -52,13 +52,13 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void robotInit() {
-        SensorBase.setDefaultAnalogModule(Ports.crioSlot1);
-        SensorBase.setDefaultDigitalModule(Ports.crioSlot2);
-        SensorBase.setDefaultSolenoidModule(Ports.crioSlot3);
+//        SensorBase.setDefaultAnalogModule(Ports.crioSlot1);
+//        SensorBase.setDefaultDigitalModule(Ports.crioSlot2);
+//        SensorBase.setDefaultSolenoidModule(Ports.crioSlot3);
 
         joyStick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
-        ballHandler = new BallHandler();
+//        ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
     }
 
@@ -91,7 +91,7 @@ public class RobotTemplate extends IterativeRobot {
         //Shoot Button -------------------------------------------------------
         if (joyStick.getRawButton(1)) { //Is the Button Pressed?
             if (lastShootButtonState == notPressed) { //Was the last state "Not Pressed?"
-                ballHandler.shootTheBall();// Do said action
+//                ballHandler.shootTheBall();// Do said action
                 lastShootButtonState = pressed;//set the last state to "pressed"
             } else {// So it ISN'T PRESSED!
                 lastShootButtonState = notPressed;//set the last state to "not pressed"
@@ -103,7 +103,7 @@ public class RobotTemplate extends IterativeRobot {
             if (lastCatchButtonState == notPressed) {
 
                 if (catchModeEnabled) {
-                    ballHandler.catchTheBall();
+//                    ballHandler.catchTheBall();
                 }
 
                 lastCatchButtonState = pressed;
@@ -115,7 +115,7 @@ public class RobotTemplate extends IterativeRobot {
         //Load Button --------------------------------------------------------
         if (joyStick.getRawButton(3)) {
             if (lastLoadButtonState == notPressed) {
-                ballHandler.loadTheBall();
+//                ballHandler.loadTheBall();
                 lastLoadButtonState = pressed;
             }
         } else {
@@ -135,7 +135,7 @@ public class RobotTemplate extends IterativeRobot {
         //Poop (Pass) Button -------------------------------------------------
         if (joyStick.getRawButton(5)) {
             if (lastPassButtonState == notPressed) {
-                ballHandler.passTheBall();
+//                ballHandler.passTheBall();
                 lastArmButtonState = pressed;
             }
         } else {
