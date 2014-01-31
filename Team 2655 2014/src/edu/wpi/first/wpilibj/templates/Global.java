@@ -44,22 +44,26 @@ public class Global {
 // Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
     
+// RangeFinder
+    public static double voltagePerInch = 512;
+    
 // smart dash board 
     protected void smartDashBoardVariables() {
-        SmartDashboard.putNumber("speedSlopeMoving" , speedSlopeMoving);
-        SmartDashboard.putNumber("speedSlopeRotate", speedSlopeRotate );
-        SmartDashboard.putNumber("wantedDistanceFromWall", wantedDistanceFromWall);
-        SmartDashboard.putNumber("stereoRangeFinderSeperation", stereoRangeFinderSeperation);
-        SmartDashboard.putNumber("distanceCapPositive", distanceLimitPositive);
-        SmartDashboard.putNumber("distanceCapNegative", distanceLimitNegative);
-        SmartDashboard.putNumber("waitTimeShoot", waitTimeShoot);
-        SmartDashboard.putNumber("waitTimePass", waitTimePass);
-        SmartDashboard.putNumber("timeForShooterToRetract", timeForShooterToRetract);
-        SmartDashboard.putNumber("anchorDropTime", anchorDropTime);
-        SmartDashboard.putNumber("anchorRaiseTime", anchorRaiseTime);
-        SmartDashboard.putNumber("sideArmCloseTime", sideArmCloseTime);
-        SmartDashboard.putNumber("sideArmOpenTime", sideArmOpenTime);
-        SmartDashboard.putNumber("sideArmIdleTime", sideArmIdleTime);
-        SmartDashboard.putNumber("gyroSensitivity", kDefaultVoltsPerDegreePerSecond);
+        SmartDashboard.putNumber("speed Slope Moving" , speedSlopeMoving);
+        SmartDashboard.putNumber("speed Slope Rotate", speedSlopeRotate );
+        SmartDashboard.putNumber("wanted Distance From Wall", wantedDistanceFromWall);
+        SmartDashboard.putNumber("stereo Range Finder Seperation", stereoRangeFinderSeperation);
+        SmartDashboard.putNumber("distance Cap Positive", distanceLimitPositive);
+        SmartDashboard.putNumber("distance Cap Negative", distanceLimitNegative);
+        SmartDashboard.putNumber("wait Time Shoot", waitTimeShoot);
+        SmartDashboard.putNumber("wait Time Pass", waitTimePass);
+        SmartDashboard.putNumber("time For Shooter To Retract", timeForShooterToRetract);
+        SmartDashboard.putNumber("anchor Drop Time", anchorDropTime);
+        SmartDashboard.putNumber("anchor Raise Time", anchorRaiseTime);
+        SmartDashboard.putNumber("side Arm Close Time", sideArmCloseTime);
+        SmartDashboard.putNumber("side Arm Open Time", sideArmOpenTime);
+        SmartDashboard.putNumber("side Arm Idle Time", sideArmIdleTime);
+        SmartDashboard.putNumber("gyro Sensitivity", kDefaultVoltsPerDegreePerSecond);
+        SmartDashboard.putNumber("range Finder Sensitivity", voltagePerInch);
     }
 }
