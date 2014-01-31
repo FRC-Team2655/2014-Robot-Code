@@ -66,8 +66,7 @@ public class AAA_ThingsToDo {
     17. I would like to build a "test harness" to be able to run/debug this
         code before we get hardware. Just need to figure out how to do it.
     
-    18. Need to add Global variable for adjusting the gyro sensitivity.
-        Default is 0.007 (as per 2010 code).
+    
     
     19. 
     

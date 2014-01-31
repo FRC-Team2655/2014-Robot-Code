@@ -40,6 +40,9 @@ public class Global {
     public static int sideArmOpenTime = 100;
     public static int sideArmIdleTime = 100;
     
+// gyro
+    public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
+    
 // smart dash board 
     protected void smartDashBoardVariables() {
         SmartDashboard.putNumber("speedSlopeMoving" , speedSlopeMoving);
@@ -56,5 +59,6 @@ public class Global {
         SmartDashboard.putNumber("sideArmCloseTime", sideArmCloseTime);
         SmartDashboard.putNumber("sideArmOpenTime", sideArmOpenTime);
         SmartDashboard.putNumber("sideArmIdleTime", sideArmIdleTime);
+        SmartDashboard.putNumber("gyroSensitivity", kDefaultVoltsPerDegreePerSecond);
     }
 }
