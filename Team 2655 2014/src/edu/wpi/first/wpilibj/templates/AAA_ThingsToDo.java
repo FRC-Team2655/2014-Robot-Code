@@ -29,8 +29,6 @@ public class AAA_ThingsToDo {
     1. (RobotTemplate) Change "lastLoadButtonState" to none static
        Fix BallHandler to do the right thing
     
-    2. (GlobalVariables) Add comments to describe what each variable means
-    
     3. (HardwarePortsEnum) Add new lines for Module numbers, etc
        we might need to use different constructors in many of the
        classes, especially those things that are NOT on Digital Side car
