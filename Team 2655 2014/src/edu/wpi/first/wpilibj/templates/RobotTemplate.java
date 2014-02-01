@@ -29,6 +29,7 @@ public class RobotTemplate extends IterativeRobot {
     boolean notPressed = false;
 
     DriverButton catchButton;
+    DriverButton loadButton;
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -43,7 +44,8 @@ public class RobotTemplate extends IterativeRobot {
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
 
-        catchButton = new DriverButton(joyStick, 2);
+        catchButton = new DriverButton(joyStick, Global.catchButton);
+        loadButton = new DriverButton(joyStick, Global.loadButton);
 
     }
 
@@ -91,24 +93,17 @@ public class RobotTemplate extends IterativeRobot {
             if (ballHandler.catchIsEnabled() == true) {
                 ballHandler.catchDisable();
             }
-
         }
 
-        //Load Button --------------------------------------------------------
-
-
-        //Arm Button ---------------------------------------------------------
-//        if (joyStick.getRawButton(4)) {
-//            if (lastArmButtonState == notPressed) {
-//                ballHandler.armTheShooter();
-//                lastArmButtonState = pressed;
-//            }
-//        } else {
-//            lastArmButtonState = notPressed;
-//        }
-        //Poop (Pass) Button -------------------------------------------------
-        if (joyStick.getRawButton(Global.poopButton)) {
-            ballHandler.passTheBall();
+        //Load Button
+        if (loadButton.checkAndToggle() == true) {
+            if (ballHandler.loadIsEnabled() == false) {
+                ballHandler.loadEnable();
+            }
+        } else {
+            if (ballHandler.loadIsEnabled() == true) {
+                ballHandler.loadDisable();
+            }
         }
     }
 
@@ -120,6 +115,5 @@ public class RobotTemplate extends IterativeRobot {
         driverStationConsole.println(DriverStationLCD.Line.kUser1, 1, "Left Distance in Inches: " + stereoRangeFinder.getDistanceLeft());
         driverStationConsole.println(DriverStationLCD.Line.kUser2, 1, "Right Distance in Inches: " + stereoRangeFinder.getDistanceRight());
         driverStationConsole.updateLCD();
-
     }
 }
