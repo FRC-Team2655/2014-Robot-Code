@@ -76,5 +76,14 @@ public class BallHandler {
         return false;
     }
     
+    boolean loadEnable () {
+        //temporary
+        return true;
+    }
+    
+    boolean loadDisabled () {
+        //temporary
+        return false;
+    }
 
 }
