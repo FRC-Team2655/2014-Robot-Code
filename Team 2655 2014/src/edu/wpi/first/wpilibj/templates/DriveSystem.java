@@ -6,6 +6,7 @@
 // Author Zephan
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -26,6 +27,18 @@ public class DriveSystem {
         static final int Autonomous = 1;
         static final int Teleop = 2;
         static final int Test = 3;
+    }
+    public class Temperature {
+        AnalogChannel tempSensor;
+        public Temperature(int module, int channel) {
+            tempSensor = new AnalogChannel(module, channel);
+        }
+        // output temperture in C
+        public int temp() {
+            // sensitivity = 9mv/1C, 2.5v = 25C
+            // y = mx + b, m = 10 / 0.9 = 111, b = -277
+            return (int)((tempSensor.getVoltage() * Global.temperatureSlopeCompensation) - 277);
+        }
     }
 
     private class DriveSystemThread extends Thread {

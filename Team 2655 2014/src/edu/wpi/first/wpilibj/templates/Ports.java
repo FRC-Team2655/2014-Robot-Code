@@ -48,6 +48,7 @@ public class Ports {
         public static int rightRangeFinderPort = 3;
         public static int pressureSwitchChannel = 4;
 
+        public static int temperatureChannel = 8;
     }
 
 }

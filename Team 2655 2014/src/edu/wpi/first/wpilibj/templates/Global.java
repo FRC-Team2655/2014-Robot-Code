@@ -49,6 +49,9 @@ public class Global {
 // Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
     
+// Temperature (lives in drive system for now (10/0.9)
+    public static double temperatureSlopeCompensation = 111;
+    
 // RangeFinder
     public static double voltagePerInch = 512;
     
