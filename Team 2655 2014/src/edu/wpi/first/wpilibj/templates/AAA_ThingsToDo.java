@@ -31,6 +31,7 @@ public class AAA_ThingsToDo {
     7.DONE
     10.DONE
     11.DONE
+    12.DONE
     13.DONE
     14.DONE
     16.DONE
@@ -57,10 +58,7 @@ public class AAA_ThingsToDo {
     
     9. Figure out if we could control the CompressorSystem and add code
        to allow the pressure to go lower than the low limit -- we might
-       be able to save some battery power.
-
-     12. (RobotTemplate) IMHO -- don't use constants, define the joystick
-        button numbers in GlobalVariables
+       be able to save some battery power
     
     15. (all) figure out how to measure hardware execution speeds.
         Put code in to turn ON port at the beginning of a section of code

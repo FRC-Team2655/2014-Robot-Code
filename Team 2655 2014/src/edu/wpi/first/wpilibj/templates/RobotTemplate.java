@@ -94,7 +94,7 @@ public class RobotTemplate extends IterativeRobot {
 
         // "Rising Edge" button logic
         //Shoot Button -------------------------------------------------------
-        if (joyStick.getRawButton(1)) { //Is the Button Pressed?
+        if (joyStick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
             if (lastShootButtonState == notPressed) { //Was the last state "Not Pressed?"
                 ballHandler.shootTheBall();// Do said action
                 lastShootButtonState = pressed;//set the last state to "pressed"
@@ -104,7 +104,7 @@ public class RobotTemplate extends IterativeRobot {
         }
 
         //Catch Button -------------------------------------------------------
-        if (joyStick.getRawButton(2)) {
+        if (joyStick.getRawButton(Global.catchButton)) {
             if (lastCatchButtonState == notPressed) {
 
                 if (catchModeEnabled) {
@@ -118,7 +118,7 @@ public class RobotTemplate extends IterativeRobot {
         }
 
         //Load Button --------------------------------------------------------
-        if (joyStick.getRawButton(3)) {
+        if (joyStick.getRawButton(Global.loadButton)) {
             if (lastLoadButtonState == notPressed) {
                 ballHandler.loadTheBall();
                 lastLoadButtonState = pressed;
@@ -137,7 +137,7 @@ public class RobotTemplate extends IterativeRobot {
 //            lastArmButtonState = notPressed;
 //        }
         //Poop (Pass) Button -------------------------------------------------
-        if (joyStick.getRawButton(5)) {
+        if (joyStick.getRawButton(Global.poopButton)) {
             if (lastPassButtonState == notPressed) {
                 ballHandler.passTheBall();
                 lastArmButtonState = pressed;

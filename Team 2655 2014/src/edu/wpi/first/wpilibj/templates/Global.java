@@ -49,6 +49,11 @@ public class Global {
 // RangeFinder
     public static double voltagePerInch = 512;
     
+// Joystick buttons
+    public static int shootButton = 1;
+    public static int catchButton = 2;
+    public static int loadButton = 3;
+    public static int poopButton = 5;
 // smart dash board 
     protected void smartDashBoardVariables() {
         SmartDashboard.putNumber("speed Slope Moving" , speedSlopeMoving);
