@@ -16,8 +16,6 @@ public class BallHandler {
     private Thread loadThread;
     private Thread shootThread;
 
-    boolean loadArmsAreExtended = true;
-    boolean loadIsEnabled = true;
     boolean catchIsEnabled = false;
     int loadMode = loadStates.off;
     boolean shoot = false;
@@ -46,25 +44,24 @@ public class BallHandler {
                         inFeed.on();
                         
                         loadMode = loadStates.off;
-                        loadIsEnabled = true;
                         break;
-                        
+
                     case loadStates.closing:
                         sideArm.close();
                         inFeed.off();
                         
                         loadMode = loadStates.off;
-                        loadIsEnabled = true;
                         break;
-                        
+
                     case loadStates.loaded:
-                        loadIsEnabled = true;
+                        if (ballInMittLimitSwitch.get() == true) {
+                            loadMode = loadStates.closing;
+                        }
                         break;
-                        
+
                     case loadStates.off:
-                        loadIsEnabled = false;
                         break;
-                        
+
                     default:
                         break;
 
@@ -144,14 +141,10 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-
-        loadMode = loadStates.loading;
-
-        if (RobotTemplate.lastLoadButtonState == true) {
-
-            loadMode = loadStates.closing;
-
+        if (ballInMittLimitSwitch.get() == true) {
+            return;
         }
+        loadMode = loadStates.loading;
     }
 
     void passTheBall() {
@@ -188,7 +181,8 @@ public class BallHandler {
 
     public boolean loadIsEnabled() {
 
-        return loadIsEnabled;
+        return (loadMode != loadStates.off);
+
     }
 
 }
