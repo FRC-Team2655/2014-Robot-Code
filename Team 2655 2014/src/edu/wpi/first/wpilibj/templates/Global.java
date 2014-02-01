@@ -54,6 +54,11 @@ public class Global {
     public static int catchButton = 2;
     public static int loadButton = 3;
     public static int poopButton = 5;
+    
+// Limit Switches
+    public static int shooterLimiterSwitchChannel = 8;
+    public static int ballInMittLimitSwitchChannel = 5;
+    
 // smart dash board 
     protected void smartDashBoardVariables() {
         SmartDashboard.putNumber("speed Slope Moving" , speedSlopeMoving);

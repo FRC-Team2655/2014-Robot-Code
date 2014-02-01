@@ -14,11 +14,13 @@ public class BallHandler {
     DigitalInput shooterLimiterSwitch;
 
     private Thread loadThread;
+    private Thread shootThread;
 
     boolean loadArmsAreExtended = true;
     boolean loadIsEnabled = true;
     boolean catchIsEnabled = false;
     int loadMode = loadStates.off;
+    boolean shoot = false;
 
     class loadStates {
 
@@ -71,6 +73,8 @@ public class BallHandler {
         ballHandlerCompressor.start();
         loadThread = new LoadThread();
         loadThread.start();
+        shootThread = new ShootTheBallThread();
+        shootThread.start();
     }
 
     void catchTheBall() {
@@ -83,13 +87,45 @@ public class BallHandler {
 
     }
 
+    void setShoot() {
+        shoot = true;
+    }
+
+    void setDoNotShoot() {
+        shoot = false;
+    }
+
+    private class ShootTheBallThread extends Thread {
+
+        public ShootTheBallThread() {
+        }
+
+        public void run() {
+           try{
+            if (shoot) {
+                anchor.drop();
+                sideArm.open();
+                shooter.shoot();
+                sideArm.close();
+                anchor.raise();
+                setDoNotShoot();
+            }
+            Thread.sleep(1);
+           }catch(Exception e){
+               
+           }
+        }
+    }
+
     void shootTheBall() {
-        anchor.drop();
-        sideArm.open();
-        //need to put the a timer on the verb shoot so i can shoot 
-        shooter.shoot();
-        sideArm.close();
-        anchor.raise();
+        /*       anchor.drop();
+         sideArm.open();
+         //need to put the a timer on the verb shoot so i can shoot 
+         shooter.shoot();
+         sideArm.close();
+         anchor.raise();
+         */setShoot();
+
     }
 
     void loadTheBall() {
@@ -139,4 +175,5 @@ public class BallHandler {
 
         return loadIsEnabled;
     }
+
 }
