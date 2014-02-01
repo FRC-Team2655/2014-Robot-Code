@@ -13,8 +13,8 @@ import com.sun.squawk.util.MathUtils;
  */
 public class StereoRangeFinder {
 
-    RangeFinder left;
-    RangeFinder right;
+    private RangeFinder left;
+    private RangeFinder right;
 
     StereoRangeFinder() {
 
@@ -29,6 +29,16 @@ public class StereoRangeFinder {
 
         // degree = angleInRadians * 180 / PI
         return (int) java.lang.Math.toDegrees(angleInRadians);
+    }
+    
+    public double getDistanceLeft() {
+        
+        return (left.getDistanceInches());
+    }
+    
+    public double getDistanceRight() {
+        
+        return (right.getDistanceInches());
     }
 
     public double getDistanceInches() {
