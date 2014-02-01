@@ -31,9 +31,9 @@ public class TeamDoubleSolenoid {
         }
     }
 
-    public TeamDoubleSolenoid(int module, int forwardChannel, int reverseChannel) {
-        forward = new DigitalOutput(module, forwardChannel);
-        reverse = new DigitalOutput(module, reverseChannel);
+    public TeamDoubleSolenoid(int moduleNumber, int forwardChannel, int reverseChannel) {
+        forward = new DigitalOutput(moduleNumber, forwardChannel);
+        reverse = new DigitalOutput(moduleNumber, reverseChannel);
     }
 
     public void set(final Value value) {
@@ -44,8 +44,8 @@ public class TeamDoubleSolenoid {
                 break;
                 
             case Value.kForward_val:
-                forward.set(true);
                 reverse.set(false);
+                forward.set(true);
                 break;
 
             case Value.kReverse_val:
