@@ -25,6 +25,7 @@ public class DriveSystem {
         static final int Disabled = 0;
         static final int Autonomous = 1;
         static final int Teleop = 2;
+        static final int Test = 3;
     }
 
     private class DriveSystemThread extends Thread {
@@ -44,6 +45,8 @@ public class DriveSystem {
                                 driveStick.getAxis(Joystick.AxisType.kY),
                                 driveStick.getAxis(Joystick.AxisType.kThrottle),
                                 gyro.getAngle() * Global.johnMode);
+                    } else {
+
                     }
 
                     Thread.sleep(100);
@@ -80,6 +83,12 @@ public class DriveSystem {
     public void setTeleop() {
 //  Sets the drive mode to Teleop.        
         driveMode = DriveModeEnum.Teleop;
+
+    }
+
+    public void setTest() {
+//  Sets the drive mode to Teleop.        
+        driveMode = DriveModeEnum.Test;
 
     }
 
