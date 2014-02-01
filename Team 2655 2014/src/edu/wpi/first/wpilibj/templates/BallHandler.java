@@ -42,14 +42,14 @@ public class BallHandler {
                     case loadStates.loading:
                         sideArm.open();
                         inFeed.on();
-                        
-                        loadMode = loadStates.off;
+
+                        loadMode = loadStates.loaded;
                         break;
 
                     case loadStates.closing:
                         sideArm.close();
                         inFeed.off();
-                        
+
                         loadMode = loadStates.off;
                         break;
 
@@ -66,7 +66,7 @@ public class BallHandler {
                         break;
 
                 }
-                Thread.sleep(100);
+                Thread.sleep(Global.loadIdleTime);
             } catch (InterruptedException ex) {
             }
 
@@ -113,19 +113,19 @@ public class BallHandler {
         }
 
         public void run() {
-           try{
-            if (shoot) {
-                anchor.drop();
-                sideArm.open();
-                shooter.shoot();
-                sideArm.close();
-                anchor.raise();
-                setDoNotShoot();
+            try {
+                if (shoot) {
+                    anchor.drop();
+                    sideArm.open();
+                    shooter.shoot();
+                    sideArm.close();
+                    anchor.raise();
+                    setDoNotShoot();
+                }
+                Thread.sleep(1);
+            } catch (Exception e) {
+
             }
-            Thread.sleep(1);
-           }catch(Exception e){
-               
-           }
         }
     }
 
@@ -136,7 +136,8 @@ public class BallHandler {
          shooter.shoot();
          sideArm.close();
          anchor.raise();
-         */setShoot();
+         */
+        setShoot();
 
     }
 
