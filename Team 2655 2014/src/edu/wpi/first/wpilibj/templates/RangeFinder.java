@@ -7,8 +7,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
-import edu.wpi.first.wpilibj.Ultrasonic;
-
 /**
  *
  * @author Josh
@@ -16,14 +14,14 @@ import edu.wpi.first.wpilibj.Ultrasonic;
 public class RangeFinder {
     //Ultrasonic rangeFinder;
     AnalogChannel rangeFinder;
-    final double voltagePerInch = 512;
+    final double convertMultiplier = 104.16;
     
     RangeFinder(int port){
         rangeFinder = new AnalogChannel(port);
     }
     
     double getDistanceInches(){
-        return rangeFinder.getVoltage() / voltagePerInch; ///Get distance in inches.
+        return rangeFinder.getVoltage() * convertMultiplier; ///Get distance in inches.
     }
     double getDistanceFeet(){
         return getDistanceInches() / 12; //Gets distance in inches, then devides by 12. Ergo, Feet.
