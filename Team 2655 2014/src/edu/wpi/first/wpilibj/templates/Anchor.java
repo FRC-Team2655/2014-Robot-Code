@@ -17,6 +17,7 @@ public class Anchor {
     private DoubleSolenoid anchors;
 
 //  You will most likely need a timer.
+    
     public Anchor() {
 
         anchors = new DoubleSolenoid(Ports.SolenoidModule.anchorDropChannel, Ports.SolenoidModule.anchorRaiseChannel);
