@@ -109,10 +109,10 @@ public class RobotTemplate extends IterativeRobot {
 
         //Catch Button -------------------------------------------------------
         if (catchButton.checkAndToggle() == true){
-            if(ballHandler.catchEnabled() == false)
+            if(ballHandler.catchIsEnabled() == false)
                 ballHandler.catchEnable();
         }else{
-            if(ballHandler.catchEnabled() == true)
+            if(ballHandler.catchIsEnabled() == true)
                 ballHandler.catchDisable();
             
         }

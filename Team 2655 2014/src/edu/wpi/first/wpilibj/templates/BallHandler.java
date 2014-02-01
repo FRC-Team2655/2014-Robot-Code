@@ -66,22 +66,22 @@ public class BallHandler {
         sideArm.close();
     }
     
-    boolean catchEnable () {
+    public boolean catchEnable () {
         //temporary
         return true;
     }
     
-    boolean catchDisable () {
+    public boolean catchDisable () {
         //temporary
         return false;
     }
     
-    boolean loadEnable () {
+    public boolean loadEnable () {
         //temporary
         return true;
     }
     
-    boolean loadDisabled () {
+    public boolean loadDisabled () {
         //temporary
         return false;
     }
