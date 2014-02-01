@@ -29,7 +29,7 @@ public class BallHandler {
     void catchTheBall() {
         catchIsEnabled = true;
         loadIsEnabled = false;
-        
+
         sideArm.open();
 
         while (ballInMittLimitSwitch.get() == false) {
@@ -50,7 +50,7 @@ public class BallHandler {
     void loadTheBall() {
         catchIsEnabled = false;
         loadIsEnabled = true;
-        
+
         inFeed.on();
         sideArm.open();
 
@@ -65,24 +65,30 @@ public class BallHandler {
         shooter.pass();
         sideArm.close();
     }
-    
-    public void catchEnable () {
+
+    public void catchEnable() {
+
     }
-    
-    public void catchDisable () {
+
+    public void catchDisable() {
+
     }
-    
-    public boolean catchIsEnabled () {
+
+    public boolean catchIsEnabled() {
+
         return catchIsEnabled;
     }
-    
-    public void loadEnable () {
+
+    public void loadEnable() {
+
     }
-    
-    public void loadDisable () {
+
+    public void loadDisable() {
+
     }
-    
-    public boolean loadIsEnabled () {
+
+    public boolean loadIsEnabled() {
+
         return loadIsEnabled;
     }
 }
