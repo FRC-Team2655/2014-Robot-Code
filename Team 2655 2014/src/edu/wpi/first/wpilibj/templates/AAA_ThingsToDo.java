@@ -26,6 +26,16 @@ public class AAA_ThingsToDo {
     // as well as good coding practices. IMHO of course            //
     /////////////////////////////////////////////////////////////////
     
+    2.DONE
+    6.DONE
+    7.DONE
+    10.DONE
+    13.DONE
+    14.DONE
+    16.DONE
+    18.DONE
+    19.DONE
+    
     1. (RobotTemplate) Change "lastLoadButtonState" to none static
        Fix BallHandler to do the right thing
     
@@ -62,10 +72,6 @@ public class AAA_ThingsToDo {
     
     17. I would like to build a "test harness" to be able to run/debug this
         code before we get hardware. Just need to figure out how to do it.
-    
-    
-    
-    19. 
     
     */
     
