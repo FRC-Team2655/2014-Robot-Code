@@ -56,6 +56,8 @@ public class BallHandler {
                         break;
                         
                     case loadStates.loaded:
+                        loadIsEnabled = true;
+                        break;
                         
                     case loadStates.off:
                         loadIsEnabled = false;
