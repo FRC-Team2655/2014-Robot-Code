@@ -12,6 +12,8 @@ public class BallHandler {
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
     boolean loadArmsAreExtended = true;
+    boolean loadEnabled = true;
+    boolean catchEnabled = false;
 
     public BallHandler() {
         //if we ever add or modify a timer do it in the  class itself
@@ -25,12 +27,15 @@ public class BallHandler {
     }
 
     void catchTheBall() {
+        catchEnabled = true;
+        loadEnabled = false;
+        
         sideArm.open();
 
         while (ballInMittLimitSwitch.get() == false) {
         }
-            sideArm.close();
-        
+        sideArm.close();
+
     }
 
     void shootTheBall() {
@@ -43,19 +48,16 @@ public class BallHandler {
     }
 
     void loadTheBall() {
+        catchEnabled = false;
+        loadEnabled = true;
+        
         inFeed.on();
         sideArm.open();
-        
+
         if (RobotTemplate.lastLoadButtonState == true) {
             inFeed.off();
             sideArm.close();
         }
-    }
-    void loadEnable() {
-        
-    }
-    void loadDisable() {
-        
     }
 
     void passTheBall() {
