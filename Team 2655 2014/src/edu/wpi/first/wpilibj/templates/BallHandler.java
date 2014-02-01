@@ -43,7 +43,9 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-
+        inFeed.on();
+        sideArm.open();
+        
         if (RobotTemplate.lastLoadButtonState == true) {
             inFeed.off();
             sideArm.close();
