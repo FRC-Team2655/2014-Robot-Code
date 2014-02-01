@@ -51,6 +51,12 @@ public class BallHandler {
             sideArm.close();
         }
     }
+    void loadEnabled() {
+        
+    }
+    void loadDisabled() {
+        
+    }
 
     void passTheBall() {
         sideArm.open();
