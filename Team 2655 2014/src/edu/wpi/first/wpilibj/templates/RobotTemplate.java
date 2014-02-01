@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SensorBase;
@@ -17,6 +18,8 @@ public class RobotTemplate extends IterativeRobot {
 
     Joystick joyStick;
 
+    DriverStationLCD driverStationConsole;
+    
     StereoRangeFinder stereoRangeFinder;
 
 //  Variables for the joystick buttons.
@@ -55,7 +58,6 @@ public class RobotTemplate extends IterativeRobot {
 //        SensorBase.setDefaultAnalogModule(Ports.crioSlot1);
 //        SensorBase.setDefaultDigitalModule(Ports.crioSlot2);
 //        SensorBase.setDefaultSolenoidModule(Ports.crioSlot3);
-
         joyStick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
@@ -144,6 +146,11 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void testPeriodic() {
-
+        driverStationConsole.println(1,1, "Left Distance in Inches: " + stereoRangeFinder.getDistanceLeft());
+        driverStationConsole.println(1,1, "Right Distance in Inches: " + stereoRangeFinder.getDistanceRight());
+        driverStationConsole.updateLCD();
+        
+        
+                
     }
 }
