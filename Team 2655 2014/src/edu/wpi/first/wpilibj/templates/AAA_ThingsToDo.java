@@ -37,7 +37,7 @@ public class AAA_ThingsToDo {
     16.DONE
     18.DONE
     19.DONE
-    
+   
     1. (RobotTemplate) Change "lastLoadButtonState" to none static
        Fix BallHandler to do the right thing
     
