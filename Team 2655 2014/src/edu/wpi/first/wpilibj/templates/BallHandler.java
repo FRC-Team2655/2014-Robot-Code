@@ -11,13 +11,52 @@ public class BallHandler {
     Anchor anchor;
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
+    DigitalInput shooterLimiterSwitch;
+
+    private Thread loadThread;
+
     boolean loadArmsAreExtended = true;
     boolean loadIsEnabled = true;
     boolean catchIsEnabled = false;
-    DigitalInput shooterLimiterSwitch;
+    int loadMode = loadStates.off;
 
-    public Anchor getAnchor() {
-        return anchor;
+    class loadStates {
+
+        public static final int off = 0;
+        public static final int loading = 1;
+        public static final int closing = 2;
+
+    }
+
+    private class LoadThread extends Thread {
+
+        public LoadThread() {
+
+        }
+
+        public void run() {
+
+            try {
+                switch (loadMode) {
+                    case loadStates.loading:
+                        sideArm.open();
+                        inFeed.on();
+                        break;
+                    case loadStates.closing:
+                        sideArm.close();
+                        inFeed.off();
+                        break;
+                    case loadStates.off:
+                        break;
+                    default:
+                        break;
+
+                }
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+            }
+
+        }
     }
 
     public BallHandler() {
@@ -30,11 +69,11 @@ public class BallHandler {
         ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
         shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
         ballHandlerCompressor.start();
+        loadThread = new LoadThread();
+        loadThread.start();
     }
 
     void catchTheBall() {
-        catchIsEnabled = true;
-        loadIsEnabled = false;
 
         sideArm.open();
 
@@ -54,15 +93,13 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-        catchIsEnabled = false;
-        loadIsEnabled = true;
 
-        inFeed.on();
-        sideArm.open();
+        loadMode = loadStates.loading;
 
         if (RobotTemplate.lastLoadButtonState == true) {
-            inFeed.off();
-            sideArm.close();
+
+            loadMode = loadStates.closing;
+
         }
     }
 
@@ -71,6 +108,11 @@ public class BallHandler {
         shooter.pass();
         sideArm.close();
     }
+
+    public Anchor getAnchor() {
+        return anchor;
+    }
+    //-------------------------------------------------------------------------------------------//
 
     public void catchEnable() {
 
