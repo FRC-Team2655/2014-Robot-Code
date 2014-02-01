@@ -43,7 +43,7 @@ public class StereoRangeFinder {
 
     public double getDistanceInches() {
         // returns the average distance in inches
-        return (left.getDistanceInches() - right.getDistanceInches()) / 2;
+        return (left.getDistanceInches() + right.getDistanceInches()) / 2;
     }
 
     public double getDistanceFeet() {
