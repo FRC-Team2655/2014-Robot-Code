@@ -30,6 +30,7 @@ public class AAA_ThingsToDo {
     6.DONE
     7.DONE
     10.DONE
+    11.DONE
     13.DONE
     14.DONE
     16.DONE
@@ -57,11 +58,8 @@ public class AAA_ThingsToDo {
     9. Figure out if we could control the CompressorSystem and add code
        to allow the pressure to go lower than the low limit -- we might
        be able to save some battery power.
-    
-    
-    11. (DriveSystem) Fix bug "if (distanceToMoveInFeet > - 5)"
-    
-    12. (RobotTemplate) IMHO -- don't use constants, define the joystick
+
+     12. (RobotTemplate) IMHO -- don't use constants, define the joystick
         button numbers in GlobalVariables
     
     15. (all) figure out how to measure hardware execution speeds.
