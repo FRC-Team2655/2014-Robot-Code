@@ -48,7 +48,6 @@ public class AAA_ThingsToDo {
        to allow the pressure to go lower than the low limit -- we might
        be able to save some battery power.
     
-    10. (DriveSystem) Use HardwarePortsEnums for motor channels
     
     11. (DriveSystem) Fix bug "if (distanceToMoveInFeet > - 5)"
     
