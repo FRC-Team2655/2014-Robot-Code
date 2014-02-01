@@ -30,6 +30,9 @@ public class Global {
     public static int rcMode = 0;
     public static int johnMode = 1;
     
+//  Ball handler
+    public static int loadIdleTime = 100;
+    
 //anchor raise and drop times
     public static int anchorDropTime = 600;
     public static int anchorRaiseTime = 600;
