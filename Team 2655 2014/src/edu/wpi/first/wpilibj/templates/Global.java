@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author bennettlewis
  */
+
+// MUST CHANGE THE VALUES
 public class Global {
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;
@@ -65,5 +67,6 @@ public class Global {
         SmartDashboard.putNumber("side Arm Idle Time", sideArmIdleTime);
         SmartDashboard.putNumber("gyro Sensitivity", kDefaultVoltsPerDegreePerSecond);
         SmartDashboard.putNumber("range Finder Sensitivity", voltagePerInch);
+        SmartDashboard.putNumber("John mode toggle", johnMode);
     }
 }

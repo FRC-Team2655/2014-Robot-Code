@@ -11,7 +11,6 @@ public class BallHandler {
     Anchor anchor;
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
-    private final boolean inMitt = true;
     boolean loadArmsAreExtended = true;
 
     public BallHandler() {
