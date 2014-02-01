@@ -12,7 +12,6 @@ public class BallHandler {
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
     boolean loadArmsAreExtended = true;
-    private final boolean inMitt = true;
 
     public BallHandler() {
         //if we ever add or modify a timer do it in the  class itself
