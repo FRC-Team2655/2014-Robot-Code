@@ -31,25 +31,16 @@ public class DriverButton {
 
     }
 
-    void toggle() {
+    boolean checkAndToggle() {
         if (joystick.getRawButton(buttonNumber)) {
-//Is the Button Pressed?
-            if (lastShootButtonState == notPressed) { //Was the last state "Not Pressed?"
                 if (lastModeState == enabled) {
                     lastModeState = disabled;
                 } else {
                     lastModeState = enabled;
-                }
-                lastShootButtonState = pressed;//set the last state to "pressed"
-
-            } else {// So it ISN'T PRESSED!
-                lastShootButtonState = notPressed;//set the last state to "not pressed"
-
             }
         }
-    }
-    boolean getLastModeState(){
         return lastModeState;
     }
+
 
 }

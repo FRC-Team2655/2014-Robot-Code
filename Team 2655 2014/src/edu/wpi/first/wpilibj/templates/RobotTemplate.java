@@ -47,6 +47,8 @@ public class RobotTemplate extends IterativeRobot {
     boolean armModeDisabled = false;
     boolean loadModeDisabled = false;
     boolean catchModeDisabled = false;
+    
+    DriverButton catchButton;
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -60,6 +62,8 @@ public class RobotTemplate extends IterativeRobot {
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
+        
+        catchButton = new DriverButton(joyStick, 2);
 
     }
 
@@ -104,18 +108,15 @@ public class RobotTemplate extends IterativeRobot {
         }
 
         //Catch Button -------------------------------------------------------
-        if (joyStick.getRawButton(Global.catchButton)) {
-            if (lastCatchButtonState == notPressed) {
-
-                if (catchModeEnabled) {
-                    ballHandler.catchTheBall();
-                }
-
-                lastCatchButtonState = pressed;
-            }
-        } else {
-            lastCatchButtonState = notPressed;
+        if (catchButton.checkAndToggle() == true){
+            if(ballHandler.catchEnabled() == false)
+                ballHandler.catchEnable();
+        }else{
+            if(ballHandler.catchEnabled() == true)
+                ballHandler.catchDisable();
+            
         }
+
 
         //Load Button --------------------------------------------------------
         if (joyStick.getRawButton(Global.loadButton)) {
