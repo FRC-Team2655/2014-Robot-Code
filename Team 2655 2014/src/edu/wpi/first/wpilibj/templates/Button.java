@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.Joystick;
  *
  * @author Josh
  */
-public class DriverButton {
+public class Button {
 
     Joystick joystick;
     int buttonNumber;
@@ -23,7 +23,7 @@ public class DriverButton {
     boolean enabled = true;
     boolean disabled = false;
 
-    DriverButton(Joystick joystickIn, int buttonNumberIn) {
+    Button(Joystick joystickIn, int buttonNumberIn) {
         joystick = joystickIn;
         buttonNumber = buttonNumberIn;
         lastShootButtonState = false;
@@ -31,7 +31,7 @@ public class DriverButton {
 
     }
 
-    boolean checkAndToggle() {
+    boolean ToggleCheck() {
         if (joystick.getRawButton(buttonNumber)) {
                 if (lastModeState == enabled) {
                     lastModeState = disabled;
@@ -41,6 +41,4 @@ public class DriverButton {
         }
         return lastModeState;
     }
-
-
 }

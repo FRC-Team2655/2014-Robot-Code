@@ -28,8 +28,8 @@ public class RobotTemplate extends IterativeRobot {
     boolean pressed = true;
     boolean notPressed = false;
 
-    DriverButton catchButton;
-    DriverButton loadButton;
+    Button catchButton;
+    Button loadButton;
 
     int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
 
@@ -44,8 +44,8 @@ public class RobotTemplate extends IterativeRobot {
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
 
-        catchButton = new DriverButton(joyStick, Global.catchButton);
-        loadButton = new DriverButton(joyStick, Global.loadButton);
+        catchButton = new Button(joyStick, Global.catchButton);
+        loadButton = new Button(joyStick, Global.loadButton);
 
     }
 
@@ -78,34 +78,31 @@ public class RobotTemplate extends IterativeRobot {
     //Frodo = 50pts
     public void teleopPeriodic() {
 
-        // "Rising Edge" button logic
         //Shoot Button -------------------------------------------------------
         if (joyStick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
             ballHandler.shootTheBall();// Do said action
+
         }
 
         //Catch Button -------------------------------------------------------
-        if (catchButton.checkAndToggle() == true) {
-            if (ballHandler.catchIsEnabled() == false) {
-                ballHandler.catchEnable();
-            }
-        } else {
-            if (ballHandler.catchIsEnabled() == true) {
-                ballHandler.catchDisable();
-            }
+        if (catchButton.ToggleCheck() == true) {
+            driveSystem.moveAutonomous(-0.5, 0.0, 0.0);
+//                ballHandler.catchEnable();  
         }
 
-        //Load Button
-        if (loadButton.checkAndToggle() == true) {
-            if (ballHandler.loadIsEnabled() == false) {
-                ballHandler.loadEnable();
-            }
-        } else {
-            if (ballHandler.loadIsEnabled() == true) {
-                ballHandler.loadDisable();
+            //Load Button
+            if (loadButton.ToggleCheck() == true) {
+                if (ballHandler.loadIsEnabled() == false) {
+                    ballHandler.loadEnable();
+                }
+            } else {
+                if (ballHandler.loadIsEnabled() == true) {
+                    ballHandler.loadDisable();
+                }
             }
         }
-    }
+    
+    
 
     public void testInit() {
         driveSystem.setTest();
