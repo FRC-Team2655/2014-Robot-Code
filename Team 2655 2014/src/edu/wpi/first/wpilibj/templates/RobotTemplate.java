@@ -146,8 +146,8 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void testPeriodic() {
-        driverStationConsole.println(1,1, "Left Distance in Inches: " + stereoRangeFinder.getDistanceLeft());
-        driverStationConsole.println(1,1, "Right Distance in Inches: " + stereoRangeFinder.getDistanceRight());
+        driverStationConsole.println(DriverStationLCD.Line.kUser1, 1, "Left Distance in Inches: " + stereoRangeFinder.getDistanceLeft());
+        driverStationConsole.println(DriverStationLCD.Line.kUser2, 1, "Right Distance in Inches: " + stereoRangeFinder.getDistanceRight());
         driverStationConsole.updateLCD();
         
         
