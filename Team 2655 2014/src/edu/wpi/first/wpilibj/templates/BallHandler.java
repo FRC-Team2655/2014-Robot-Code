@@ -51,10 +51,10 @@ public class BallHandler {
             sideArm.close();
         }
     }
-    void loadEnabled() {
+    void loadEnable() {
         
     }
-    void loadDisabled() {
+    void loadDisable() {
         
     }
 
