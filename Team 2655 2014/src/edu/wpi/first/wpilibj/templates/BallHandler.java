@@ -12,8 +12,8 @@ public class BallHandler {
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
     boolean loadArmsAreExtended = true;
-    boolean loadEnabled = true;
-    boolean catchEnabled = false;
+    boolean loadIsEnabled = true;
+    boolean catchIsEnabled = false;
 
     public BallHandler() {
         //if we ever add or modify a timer do it in the  class itself
@@ -27,8 +27,8 @@ public class BallHandler {
     }
 
     void catchTheBall() {
-        catchEnabled = true;
-        loadEnabled = false;
+        catchIsEnabled = true;
+        loadIsEnabled = false;
         
         sideArm.open();
 
@@ -48,8 +48,8 @@ public class BallHandler {
     }
 
     void loadTheBall() {
-        catchEnabled = false;
-        loadEnabled = true;
+        catchIsEnabled = false;
+        loadIsEnabled = true;
         
         inFeed.on();
         sideArm.open();
@@ -66,14 +66,15 @@ public class BallHandler {
         sideArm.close();
     }
     
-    boolean catchEnabled () {
+    boolean catchEnable () {
         //temporary
         return true;
     }
     
-    boolean catchDisabled () {
+    boolean catchDisable () {
         //temporary
         return false;
     }
+    
 
 }
