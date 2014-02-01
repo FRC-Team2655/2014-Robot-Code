@@ -14,6 +14,11 @@ public class BallHandler {
     boolean loadArmsAreExtended = true;
     boolean loadIsEnabled = true;
     boolean catchIsEnabled = false;
+    DigitalInput shooterLimiterSwitch;
+
+    public Anchor getAnchor() {
+        return anchor;
+    }
 
     public BallHandler() {
         //if we ever add or modify a timer do it in the  class itself
@@ -23,6 +28,7 @@ public class BallHandler {
         anchor = new Anchor();
         inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
+        shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
         ballHandlerCompressor.start();
     }
 

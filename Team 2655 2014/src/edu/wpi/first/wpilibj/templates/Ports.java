@@ -26,6 +26,7 @@ public class Ports {
         public static int ballInMittLimitSwitchChannel = 5;
         public static int infeedArmMotorControlChannel = 6;
         public static int compressorRelayChannel = 7;
+        public static int shooterLimiterSwitchChannel = 8;
 
     }
 
