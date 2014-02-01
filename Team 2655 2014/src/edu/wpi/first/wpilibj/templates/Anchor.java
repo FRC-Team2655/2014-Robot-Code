@@ -14,9 +14,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
  */
 public class Anchor {
     
-    DoubleSolenoid anchors;
-    boolean debugRaiseException = false; //if this is true, then any exceptions in this class will be printed
-    //DigitalInput ballInMittLimitSwitch;
+    private DoubleSolenoid anchors;
+    
 //  You will most likely need a timer.
 
     public Anchor() {
