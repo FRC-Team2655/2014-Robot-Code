@@ -27,6 +27,7 @@ public class BallHandler {
         public static final int off = 0;
         public static final int loading = 1;
         public static final int closing = 2;
+        public static final int loaded = 3;
 
     }
 
@@ -43,13 +44,27 @@ public class BallHandler {
                     case loadStates.loading:
                         sideArm.open();
                         inFeed.on();
+                        
+                        loadMode = loadStates.off;
+                        loadIsEnabled = true;
                         break;
+                        
                     case loadStates.closing:
                         sideArm.close();
                         inFeed.off();
+                        
+                        loadMode = loadStates.off;
+                        loadIsEnabled = true;
                         break;
+                        
+                    case loadStates.loaded:
+                        loadIsEnabled = true;
+                        break;
+                        
                     case loadStates.off:
+                        loadIsEnabled = false;
                         break;
+                        
                     default:
                         break;
 
