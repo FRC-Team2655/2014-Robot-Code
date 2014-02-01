@@ -65,5 +65,15 @@ public class BallHandler {
         shooter.pass();
         sideArm.close();
     }
+    
+    boolean catchEnabled () {
+        //temporary
+        return true;
+    }
+    
+    boolean catchDisabled () {
+        //temporary
+        return false;
+    }
 
 }
