@@ -10,11 +10,13 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.SensorBase;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotTemplate extends IterativeRobot {
 
     DriveSystem driveSystem;
     BallHandler ballHandler;
+    Global global;
 
     Joystick joyStick;
 
@@ -43,6 +45,7 @@ public class RobotTemplate extends IterativeRobot {
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
+        global = new Global();
 
         catchButton = new Button(joyStick, Global.catchButton);
         loadButton = new Button(joyStick, Global.loadButton);
@@ -59,15 +62,16 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousInit() {
         driveSystem.setAutonomous();
+        global.smartDashBoardGlobalVariables();
+
     }
 
     public void autonomousPeriodic() {
 
-        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
-        driveSystem.moveDistance(stereoRangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall);
-        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
-        driveSystem.gyro.reset(); // zero the gyro
-
+//        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
+//        driveSystem.moveDistance(stereoRangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall);
+//        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
+//        driveSystem.gyro.reset(); // zero the gyro
     }
 
     public void teleopInit() {
@@ -77,6 +81,11 @@ public class RobotTemplate extends IterativeRobot {
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+
+        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
+        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
+        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
+        SmartDashboard.putNumber("Drive Mode", driveType);
 
         //Shoot Button -------------------------------------------------------
         if (joyStick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
@@ -90,27 +99,23 @@ public class RobotTemplate extends IterativeRobot {
 //                ballHandler.catchEnable();  
         }
 
-            //Load Button
-            if (loadButton.ToggleCheck() == true) {
-                if (ballHandler.loadIsEnabled() == false) {
-                    ballHandler.loadEnable();
-                }
-            } else {
-                if (ballHandler.loadIsEnabled() == true) {
-                    ballHandler.loadDisable();
-                }
+        //Load Button
+        if (loadButton.ToggleCheck() == true) {
+            if (ballHandler.loadIsEnabled() == false) {
+                ballHandler.loadEnable();
+            }
+        } else {
+            if (ballHandler.loadIsEnabled() == true) {
+                ballHandler.loadDisable();
             }
         }
-    
-    
+    }
 
     public void testInit() {
         driveSystem.setTest();
     }
 
     public void testPeriodic() {
-        driverStationConsole.println(DriverStationLCD.Line.kUser1, 1, "Left Distance in Inches: " + stereoRangeFinder.getDistanceLeft());
-        driverStationConsole.println(DriverStationLCD.Line.kUser2, 1, "Right Distance in Inches: " + stereoRangeFinder.getDistanceRight());
-        driverStationConsole.updateLCD();
+
     }
 }

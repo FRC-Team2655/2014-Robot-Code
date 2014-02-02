@@ -62,8 +62,8 @@ public class Global {
     public static int loadButton = 3;
     public static int poopButton = 5;
 
-// smart dash board 
-    protected void smartDashBoardVariables() {
+// Smart Dashboard 
+    public void smartDashBoardGlobalVariables() {
         SmartDashboard.putNumber("speed Slope Moving", speedSlopeMoving);
         SmartDashboard.putNumber("speed Slope Rotate", speedSlopeRotate);
         SmartDashboard.putNumber("wanted Distance From Wall", wantedDistanceFromWall);

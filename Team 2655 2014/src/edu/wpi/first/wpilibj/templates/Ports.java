@@ -32,12 +32,14 @@ public class Ports {
 
     public static class SolenoidModule {
 
-        public static int anchorDropChannel = 1;
-        public static int anchorRaiseChannel = 2;
-        public static int shooterExtendChannel = 3;
-        public static int shooterRetractChannel = 4;
+        public static int leftShooterExtendChannel = 1;
+        public static int leftShooterRetractChannel1 = 2;
+        public static int rightShooterExtendChannel = 3;
+        public static int rightShooterRetractChannel = 4;
         public static int sideArmOpenArmChannel = 5;
         public static int sideArmClosedArmChannel = 6;
+        public static int anchorDropChannel = 7;
+        public static int anchorRaiseChannel = 8;
 
     }
 
