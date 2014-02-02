@@ -10,7 +10,7 @@ public class InFeed {
     public InFeed() {
 //  Make sure to change relays and channels later.
 
-        infeedArmMotorControl = new Relay(Ports.DigitalModule.infeedArmMotorControlChannel);
+        infeedArmMotorControl = new Relay(Ports.crioSlot2,Ports.DigitalModule.infeedArmMotorControlChannel);
 
     }
 

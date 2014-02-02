@@ -4,88 +4,78 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 
 public class SideArms {
-    
 
     DoubleSolenoid sideArms;
-    int sideArmCloseTime = 100;
-    int sideArmOpenTime = 100;
-    int sideArmIdleTime = 100;//this is how long to wait in miliseconds before turning off
+
     int sideArmMode = SideArmStates.noAirState;
     //   boolean debugSideArmThreadException = false;
-    
+
     public Thread thread;
 
     class SideArmStates {
 
         public static final int noAirState = 0;
         public static final int openState = 1;
-        public static final int closeState = 2;        
-        
-
+        public static final int closeState = 2;
     }
-    
-    private class sideArmThread extends Thread{
-        
-        public sideArmThread(){
-            
+
+    private class sideArmThread extends Thread {
+
+        public sideArmThread() {
+
         }
-        
+
         public void run() {
 
-        while (true) {
+            while (true) {
 
-            switch (sideArmMode) {
-                case SideArmStates.openState:
-                    /*set the solenoid to open, wait some time, 
-                     then turn off. next go to no air state*/
-                    sideArms.set(DoubleSolenoid.Value.kForward);
-                    try {
-                        thread.sleep(sideArmOpenTime); //wait for the arm to open
-                    } catch (Exception e) {
-                        /* if (debugSideArmThreadException) { 
-                         e.printStackTrace();
-                         }*/
-                    }
-                    sideArms.set(DoubleSolenoid.Value.kOff);
-                    sideArmMode = SideArmStates.noAirState;
-                    break;
-                case SideArmStates.closeState:
-                    /*set the solenoid to close, wait some time, 
-                     then turn off. next go to no air state*/
+                switch (sideArmMode) {
+                    case SideArmStates.openState:
+                        /*set the solenoid to open, wait some time, 
+                         then turn off. next go to no air state*/
+                        sideArms.set(DoubleSolenoid.Value.kForward);
+                        try {
+                            thread.sleep(Global.sideArmOpenTime); //wait for the arm to open
+                        } catch (Exception e) {
+            
+                        }
+                        sideArms.set(DoubleSolenoid.Value.kOff);
+                        sideArmMode = SideArmStates.noAirState;
+                        break;
+                    case SideArmStates.closeState:
+                        /*set the solenoid to close, wait some time, 
+                         then turn off. next go to no air state*/
 
-                    sideArms.set(DoubleSolenoid.Value.kReverse);
-                    try {
-                        thread.sleep(sideArmCloseTime); //wait for the arm to open
-                    } catch (Exception e) {
-                        /* if (debugSideArmThreadException) { 
-                         e.printStackTrace();
-                         }*/
-                    }
-                    sideArms.set(DoubleSolenoid.Value.kOff);
-                    sideArmMode = SideArmStates.noAirState;
-                    break;
-                case SideArmStates.noAirState:
-// wait some time
+                        sideArms.set(DoubleSolenoid.Value.kReverse);
+                        try {
+                            thread.sleep(Global.sideArmCloseTime); //wait for the arm to open
+                        } catch (Exception e) {
+        
+                        }
+                        sideArms.set(DoubleSolenoid.Value.kOff);
+                        sideArmMode = SideArmStates.noAirState;
+                        break;
+                    case SideArmStates.noAirState:
 
-                    try {
-                        thread.sleep(sideArmIdleTime);
-                    } catch (InterruptedException ex) {
-                        ex.printStackTrace();
-                    }
-                    break;
-                default:
-                    break;
+                        try {
+                            thread.sleep(Global.sideArmIdleTime);
+                        } catch (InterruptedException ex) {
+                  
+                        }
+                        break;
+                    default:
+                        break;
+
+                }
 
             }
-
         }
     }
-    }
-    
+
     public SideArms() {
         thread = new sideArmThread();
         thread.start();
-        sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel,Ports.SolenoidModule.sideArmClosedArmChannel);
+        sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel, Ports.SolenoidModule.sideArmClosedArmChannel);
 //      extendTime = timeToExtend; 
 //      If you add extend time back make sure you add it to the constructor  
 //      Also add this back to the constructor if needed int sidecarModule, and the sidearms =. 
@@ -102,7 +92,5 @@ public class SideArms {
         sideArmMode = SideArmStates.closeState;
 
     }
-
-   
 
 }

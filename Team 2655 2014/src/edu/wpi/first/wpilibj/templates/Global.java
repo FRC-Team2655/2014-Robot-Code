@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -12,27 +11,26 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author bennettlewis
  */
-
 // MUST CHANGE THE VALUES
 public class Global {
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
-    public static double speedSlopeMoving = 0.2;
-    public static double speedSlopeRotate = 0.00555555;
-    
+
+    public static double speedSlopeMoving = 0.2;         // m
+    public static double speedSlopeRotate = 0.00555555;  // m
+
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0;
-    public static int stereoRangeFinderSeperation = 23; // 
+    public static int stereoRangeFinderSeperation = 23;
     public static int waitTimeShoot = 1000;
     public static int waitTimePass = 100;
     public static int timeForShooterToRetract = 250;
 
 //  Drive Modes  
-    public static int rcMode = 0;
-    public static int johnMode = 1;
-    
+    public static int johnMode = 1; // set to 0 to get RC mode
+
 //  Ball handler
     public static int loadIdleTime = 100;
-    
+
 //anchor raise and drop times
     public static int anchorDropTime = 600;
     public static int anchorRaiseTime = 600;
@@ -40,35 +38,34 @@ public class Global {
 // drive system 
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
-    
+
 // side arms
     public static int sideArmCloseTime = 100;
     public static int sideArmOpenTime = 100;
     public static int sideArmIdleTime = 100;
-    
+
 // Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
-    
-// Temperature (lives in drive system for now (10/0.9)
-    public static double temperatureSlopeCompensation = 111;
-    
+
+// Temperature slope m = (9mV/C)
+    // y = mx + b
+    public static double temperatureSlopeCompensation = 111.1111; // m
+    public static double temperatureOffset = (-252.7777);         // b
+
 // RangeFinder
-    public static double voltagePerInch = 512;
-    
+    //public static double voltagePerInch = 512;
+    public static double convertMultiplier = 104.16; // m
+
 // Joystick buttons
     public static int shootButton = 1;
     public static int catchButton = 2;
     public static int loadButton = 3;
     public static int poopButton = 5;
-    
-// Limit Switches
-    public static int shooterLimiterSwitchChannel = 8;
-    public static int ballInMittLimitSwitchChannel = 5;
-    
+
 // smart dash board 
     protected void smartDashBoardVariables() {
-        SmartDashboard.putNumber("speed Slope Moving" , speedSlopeMoving);
-        SmartDashboard.putNumber("speed Slope Rotate", speedSlopeRotate );
+        SmartDashboard.putNumber("speed Slope Moving", speedSlopeMoving);
+        SmartDashboard.putNumber("speed Slope Rotate", speedSlopeRotate);
         SmartDashboard.putNumber("wanted Distance From Wall", wantedDistanceFromWall);
         SmartDashboard.putNumber("stereo Range Finder Seperation", stereoRangeFinderSeperation);
         SmartDashboard.putNumber("distance Cap Positive", distanceLimitPositive);
@@ -82,7 +79,10 @@ public class Global {
         SmartDashboard.putNumber("side Arm Open Time", sideArmOpenTime);
         SmartDashboard.putNumber("side Arm Idle Time", sideArmIdleTime);
         SmartDashboard.putNumber("gyro Sensitivity", kDefaultVoltsPerDegreePerSecond);
-        SmartDashboard.putNumber("range Finder Sensitivity", voltagePerInch);
+        SmartDashboard.putNumber("range Finder Convert multiplier", convertMultiplier);
         SmartDashboard.putNumber("John mode toggle", johnMode);
+        SmartDashboard.putNumber("load Idle Time", loadIdleTime);
+        SmartDashboard.putNumber("temperature Slope Compensation", temperatureSlopeCompensation);
+        SmartDashboard.putNumber("temperature Offset", temperatureOffset);
     }
 }
