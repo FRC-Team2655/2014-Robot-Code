@@ -30,6 +30,7 @@ public class Global {
 
 //  Ball handler
     public static int loadIdleTime = 100;
+    public static int catchIdleTime = 100;
 
 //anchor raise and drop times
     public static int anchorDropTime = 600;
