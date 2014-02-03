@@ -120,10 +120,10 @@ public class BallHandler {
             sideArm = new SideArms();
             anchor = new Anchor();
             inFeed = new InFeed();
-            ballInMittLimitSwitch = new DigitalInput(Ports.crioSlot2, Ports.DigitalModule.ballInMittLimitSwitchChannel);
-            shooterLimiterSwitch = new DigitalInput(Ports.crioSlot2, Ports.DigitalModule.shooterLimiterSwitchChannel);
+            ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
+            shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
             loadThread = new LoadThread();
-            shootThread = new ShootTheBallThread();
+            shootThread = new ShootTheBallCommand();
 
             ballHandlerCompressor.start();
             loadThread.start();
@@ -148,9 +148,9 @@ public class BallHandler {
             shoot = false;
         }
 
-        private class ShootTheBallThread extends Thread {
+        private class ShootTheBallCommand extends Thread {
 
-            public ShootTheBallThread() {
+            public ShootTheBallCommand() {
             }
 
             public void run() {
