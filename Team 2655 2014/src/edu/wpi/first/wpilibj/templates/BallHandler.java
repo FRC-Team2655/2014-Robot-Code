@@ -113,7 +113,7 @@ public class BallHandler {
             }
         }
 
-        public BallHandler() {
+        public void BallHandler() {
             //if we ever add or modify a timer do it in the  class itself
             ballHandlerCompressor = new CompressorSystem();
             shooter = new Shooter();
@@ -228,3 +228,4 @@ public class BallHandler {
         }
 
     }
+}
