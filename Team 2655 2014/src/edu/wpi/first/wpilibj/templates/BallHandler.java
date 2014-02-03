@@ -18,7 +18,7 @@ public class BallHandler {
     private Thread catchThread;
 
     boolean catchIsEnabled = false;
-    int loadMode = loadStates.off;
+    int loadState = loadStates.off;
     int catchState = catchStates.off;
     boolean shoot = false;
 
@@ -78,24 +78,24 @@ public class BallHandler {
             public void run() {
 
                 try {
-                    switch (loadMode) {
+                    switch (loadState) {
                         case loadStates.loading:
                             sideArm.open();
                             inFeed.on();
 
-                            loadMode = loadStates.loaded;
+                            loadState = loadStates.loaded;
                             break;
 
                         case loadStates.closing:
                             sideArm.close();
                             inFeed.off();
 
-                            loadMode = loadStates.off;
+                            loadState = loadStates.off;
                             break;
 
                         case loadStates.loaded:
                             if (ballInMittLimitSwitch.get() == true) {
-                                loadMode = loadStates.closing;
+                                loadState = loadStates.closing;
                             }
                             break;
 
@@ -164,7 +164,7 @@ public class BallHandler {
                         setDoNotShoot();
                     }
                     Thread.sleep(100);
-                } catch (Exception e) {
+                } catch (InterruptedException ex) {
 
                 }
             }
@@ -186,7 +186,7 @@ public class BallHandler {
             if (ballInMittLimitSwitch.get() == true) {
                 return;
             }
-            loadMode = loadStates.loading;
+            loadState = loadStates.loading;
         }
 
         void passTheBall() {
@@ -201,29 +201,29 @@ public class BallHandler {
         //-------------------------------------------------------------------------------------------//
 
         public void catchEnable() {
-
+            catchState = catchStates.opening;
         }
 
         public void catchDisable() {
-
+            catchState = catchStates.closing;
         }
 
         public boolean catchIsEnabled() {
 
-            return catchIsEnabled;
+            return (catchState != catchStates.off);
         }
 
         public void loadEnable() {
-
+            loadState = loadStates.loading;
         }
 
         public void loadDisable() {
-
+            loadState = loadStates.closing;
         }
 
         public boolean loadIsEnabled() {
 
-            return (loadMode != loadStates.off);
+            return (loadState != loadStates.off);
 
         }
 
