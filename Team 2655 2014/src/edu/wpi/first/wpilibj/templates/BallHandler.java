@@ -153,7 +153,6 @@ public class BallHandler {
             m_thread.start();
         }
 
-        
         public Anchor getAnchor() {
             return anchor;
         }
@@ -165,6 +164,7 @@ public class BallHandler {
 
         public void shootTheBall() {
             m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
+            m_thread.start();
         }
 
         public void catchDisable() {
@@ -189,6 +189,5 @@ public class BallHandler {
             return (loadState != loadStates.off);
 
         }
-
     }
 }
