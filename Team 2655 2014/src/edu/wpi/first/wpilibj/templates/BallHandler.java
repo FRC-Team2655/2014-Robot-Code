@@ -2,7 +2,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 
-// edited by Alex and Zephan
+// edited by Alex and Zephan yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 public class BallHandler {
 
     CompressorSystem ballHandlerCompressor;
@@ -150,7 +150,7 @@ public class BallHandler {
 
         void passTheBall() {
             m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
-            ;
+            m_thread.start();
         }
 
         public Anchor getAnchor() {
