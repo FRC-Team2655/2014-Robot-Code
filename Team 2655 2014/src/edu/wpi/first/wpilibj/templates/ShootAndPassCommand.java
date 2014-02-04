@@ -31,13 +31,13 @@ public class ShootAndPassCommand implements Runnable {
         if (m_anchor != null) {
             m_anchor.drop();
             m_sideArm.open();
-            m_shooter.shoot(400);
+            m_shooter.shoot(Global.waitTimeShoot);
             m_sideArm.close();
             m_anchor.raise();
 
         } else {
             m_sideArm.open();
-            m_shooter.shoot(100);
+            m_shooter.shoot(Global.waitTimePass);
             m_sideArm.close();
         }
 
