@@ -16,6 +16,7 @@ public class BallHandler {
     private Thread loadThread;
     private Thread shootThread;
     private Thread catchThread;
+    private Thread m_thread;
 
     boolean catchIsEnabled = false;
     int loadState = loadStates.off;
@@ -64,8 +65,8 @@ public class BallHandler {
 
                 }
                 Thread.sleep(Global.catchIdleTime);
-            } catch(InterruptedException ex) {
-                
+            } catch (InterruptedException ex) {
+
             }
         }
 
@@ -122,9 +123,9 @@ public class BallHandler {
             inFeed = new InFeed();
             ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
             shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
-            loadThread = new LoadThread();
-            shootThread = new ShootTheBallCommand();
 
+            loadThread = new LoadThread();
+            // shootThread = new ShootTheBallCommand();
             ballHandlerCompressor.start();
             loadThread.start();
             shootThread.start();
@@ -140,48 +141,6 @@ public class BallHandler {
 
         }
 
-        void setShoot() {
-            shoot = true;
-        }
-
-        void setDoNotShoot() {
-            shoot = false;
-        }
-
-        private class ShootTheBallCommand extends Thread {
-
-            public ShootTheBallCommand() {
-            }
-
-            public void run() {
-                try {
-                    if (shoot) {
-                        anchor.drop();
-                        sideArm.open();
-                        shooter.shoot();
-                        sideArm.close();
-                        anchor.raise();
-                        setDoNotShoot();
-                    }
-                    Thread.sleep(100);
-                } catch (InterruptedException ex) {
-
-                }
-            }
-        }
-
-        void shootTheBall() {
-            /*       anchor.drop();
-             sideArm.open();
-             //need to put the a timer on the verb shoot so i can shoot 
-             shooter.shoot();
-             sideArm.close();
-             anchor.raise();
-             */
-            setShoot();
-
-        }
-
         void loadTheBall() {
             if (ballInMittLimitSwitch.get() == true) {
                 return;
@@ -190,9 +149,8 @@ public class BallHandler {
         }
 
         void passTheBall() {
-            sideArm.open();
-            shooter.pass();
-            sideArm.close();
+            m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
+            ;
         }
 
         public Anchor getAnchor() {
@@ -202,6 +160,10 @@ public class BallHandler {
 
         public void catchEnable() {
             catchState = catchStates.opening;
+        }
+
+        public void shootTheBall() {
+            m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
         }
 
         public void catchDisable() {
