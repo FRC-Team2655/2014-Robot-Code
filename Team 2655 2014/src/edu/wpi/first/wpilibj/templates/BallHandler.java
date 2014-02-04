@@ -131,7 +131,7 @@ public class BallHandler {
             shootThread.start();
         }
 
-        void catchTheBall() {
+        public void catchTheBall() {
 
             sideArm.open();
 
@@ -141,18 +141,19 @@ public class BallHandler {
 
         }
 
-        void loadTheBall() {
+        public void loadTheBall() {
             if (ballInMittLimitSwitch.get() == true) {
                 return;
             }
             loadState = loadStates.loading;
         }
 
-        void passTheBall() {
+        public void passTheBall() {
             m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
             m_thread.start();
         }
 
+        
         public Anchor getAnchor() {
             return anchor;
         }
