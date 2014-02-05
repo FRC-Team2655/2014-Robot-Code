@@ -17,7 +17,7 @@ public class RobotTemplate extends IterativeRobot {
     DriveSystem driveSystem;
     BallHandler ballHandler;
 
-    Joystick joyStick;
+    Joystick joystick;
 
     DriverStationLCD driverStationConsole;
 
@@ -40,13 +40,13 @@ public class RobotTemplate extends IterativeRobot {
 
     public void robotInit() {
 
-        joyStick = new Joystick(1);
+        joystick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
-        driveSystem = new DriveSystem(joyStick);
+        driveSystem = new DriveSystem(joystick);
 
-        catchButton = new Button(joyStick, Global.catchButton);
-        loadButton = new Button(joyStick, Global.loadButton);
+        catchButton = new Button(joystick, Global.catchButton);
+        loadButton = new Button(joystick, Global.loadButton);
 
     }
 
@@ -86,7 +86,7 @@ public class RobotTemplate extends IterativeRobot {
         SmartDashboard.putNumber("Drive Mode", driveType);
 
         //Shoot Button -------------------------------------------------------
-        if (joyStick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
+        if (joystick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
             ballHandler.shootTheBall();// Do said action
 
         }
