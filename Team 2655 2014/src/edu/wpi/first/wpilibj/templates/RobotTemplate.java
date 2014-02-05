@@ -88,7 +88,6 @@ public class RobotTemplate extends IterativeRobot {
         //Shoot Button -------------------------------------------------------
         if (joystick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
             ballHandler.shootTheBall();// Do said action
-
         }
 
         //Catch Button -------------------------------------------------------
