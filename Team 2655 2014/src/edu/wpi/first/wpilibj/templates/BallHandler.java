@@ -133,12 +133,11 @@ public class BallHandler {
     }
 
     public void catchTheBall() {
-
-        sideArm.open();
-
-        while (ballInMittLimitSwitch.get() == false) {
+        if (ballInMittLimitSwitch.get() == true) {
+            return;
         }
-        sideArm.close();
+        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch));
+        m_thread.start();
 
     }
 
@@ -146,7 +145,8 @@ public class BallHandler {
         if (ballInMittLimitSwitch.get() == true) {
             return;
         }
-        loadState = loadStates.loading;
+        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
+        m_thread.start();
     }
 
     public void passTheBall() {
@@ -192,4 +192,3 @@ public class BallHandler {
 
     }
 }
-
