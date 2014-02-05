@@ -149,36 +149,24 @@ public class BallHandler {
         loadState = loadStates.loading;
     }
 
-<<<<<<< HEAD
     public void passTheBall() {
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
         m_thread.start();
     }
-=======
-        public Anchor getAnchor() {
-            return anchor;
-        }
-        //-------------------------------------------------------------------------------------------//
->>>>>>> 744c80dc6803b32e9d9b1f11f9e436fd39030cd6
 
     public Anchor getAnchor() {
         return anchor;
     }
-    //-------------------------------------------------------------------------------------------//
+        //-------------------------------------------------------------------------------------------//
 
-<<<<<<< HEAD
+    //-------------------------------------------------------------------------------------------//
     public void catchEnable() {
         catchState = catchStates.opening;
     }
-=======
-        public void shootTheBall() {
-            m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
-            m_thread.start();
-        }
->>>>>>> 744c80dc6803b32e9d9b1f11f9e436fd39030cd6
 
     public void shootTheBall() {
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
+        m_thread.start();
     }
 
     public void catchDisable() {
@@ -200,12 +188,8 @@ public class BallHandler {
 
     public boolean loadIsEnabled() {
 
-<<<<<<< HEAD
         return (loadState != loadStates.off);
 
-=======
-        }
->>>>>>> 744c80dc6803b32e9d9b1f11f9e436fd39030cd6
     }
-
 }
+

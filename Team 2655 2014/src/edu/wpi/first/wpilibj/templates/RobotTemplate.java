@@ -16,7 +16,6 @@ public class RobotTemplate extends IterativeRobot {
 
     DriveSystem driveSystem;
     BallHandler ballHandler;
-    Global global;
 
     Joystick joyStick;
 
@@ -45,7 +44,6 @@ public class RobotTemplate extends IterativeRobot {
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joyStick);
-        global = new Global();
 
         catchButton = new Button(joyStick, Global.catchButton);
         loadButton = new Button(joyStick, Global.loadButton);
@@ -62,7 +60,7 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousInit() {
         driveSystem.setAutonomous();
-        global.smartDashBoardGlobalVariables();
+        Global.smartDashBoardGlobalVariables();
 
     }
 
