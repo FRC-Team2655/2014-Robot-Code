@@ -59,8 +59,8 @@ public class Global {
 
 // Joystick buttons
     public static int shootButton = 1;
-    public static int catchButton = 2;
-    public static int loadButton = 3;
+    public static int catchButton = 3;
+    public static int loadButton = 4;
     public static int poopButton = 5;
 
 // Smart Dashboard 
