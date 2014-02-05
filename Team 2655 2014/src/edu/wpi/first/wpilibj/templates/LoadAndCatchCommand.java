@@ -1,0 +1,67 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package edu.wpi.first.wpilibj.templates;
+
+import edu.wpi.first.wpilibj.DigitalInput;
+
+/**
+ *
+ * @author Seth
+ */
+public class LoadAndCatchCommand implements Runnable {
+
+    private InFeed m_loadArm;
+    private SideArms m_sideArm;
+    private DigitalInput ballInMittLimitSwitch;
+
+    // this constructor is used for the load command
+    public LoadAndCatchCommand(SideArms sideArm, InFeed inFeed) {
+        m_sideArm = sideArm;
+        m_loadArm = inFeed;
+
+    }
+
+    // this is the constructer for the catch command
+    public LoadAndCatchCommand(SideArms sideArm) {
+        m_sideArm = sideArm;
+        m_loadArm = null;
+
+    }
+
+    public void run() {
+
+        if (m_loadArm != null) {
+            //Load
+            m_sideArm.open();
+            m_loadArm.on();
+
+            while (ballInMittLimitSwitch.get() != true) {
+                try {
+                    
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    
+                }
+            }
+            m_loadArm.off();
+            m_sideArm.close();
+        } else {
+            //Catch
+            m_sideArm.open();
+
+            while (ballInMittLimitSwitch.get() != true) {
+                try {
+                    
+                    Thread.sleep(100);
+                } catch (InterruptedException ex) {
+                    
+                }
+            }
+            m_sideArm.close();
+        }
+
+    }
+}
