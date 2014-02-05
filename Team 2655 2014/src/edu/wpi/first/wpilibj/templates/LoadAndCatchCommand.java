@@ -18,14 +18,14 @@ public class LoadAndCatchCommand implements Runnable {
     private DigitalInput ballInMittLimitSwitch;
 
     // this constructor is used for the load command
-    public LoadAndCatchCommand(SideArms sideArm, InFeed inFeed) {
+    public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch, InFeed inFeed) {
         m_sideArm = sideArm;
         m_loadArm = inFeed;
 
     }
 
     // this is the constructer for the catch command
-    public LoadAndCatchCommand(SideArms sideArm) {
+    public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch) {
         m_sideArm = sideArm;
         m_loadArm = null;
 
@@ -41,7 +41,7 @@ public class LoadAndCatchCommand implements Runnable {
             while (ballInMittLimitSwitch.get() != true) {
                 try {
                     
-                    Thread.sleep(100);
+                    Thread.sleep(Global.loadIdleTime);
                 } catch (InterruptedException ex) {
                     
                 }
@@ -55,7 +55,7 @@ public class LoadAndCatchCommand implements Runnable {
             while (ballInMittLimitSwitch.get() != true) {
                 try {
                     
-                    Thread.sleep(100);
+                    Thread.sleep(Global.catchIdleTime);
                 } catch (InterruptedException ex) {
                     
                 }
