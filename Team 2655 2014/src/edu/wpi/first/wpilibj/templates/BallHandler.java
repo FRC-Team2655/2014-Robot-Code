@@ -54,7 +54,7 @@ public class BallHandler {
             return;
         }
 
-        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch));
+        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
         m_thread.start();
 
 //        catchState = catchStates.opening;

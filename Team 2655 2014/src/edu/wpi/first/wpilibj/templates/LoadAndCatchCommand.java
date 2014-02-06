@@ -25,43 +25,21 @@ public class LoadAndCatchCommand implements Runnable {
     }
 
     // this is the constructer for the catch command
-    public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch) {
-        m_sideArm = sideArm;
-        m_loadArm = null;
-
-    }
-
     public void run() {
 
-        if (m_loadArm != null) {
-            //Load
-            m_sideArm.open();
-            m_loadArm.on();
+        //Load
+        m_sideArm.open();
+        m_loadArm.on();
 
-            while (ballInMittLimitSwitch.get() != true) {
-                try {
-                    
-                    Thread.sleep(Global.loadIdleTime);
-                } catch (InterruptedException ex) {
-                    
-                }
-            }
-            m_loadArm.off();
-            m_sideArm.close();
-        } else {
-            //Catch
-            m_sideArm.open();
+        while (ballInMittLimitSwitch.get() != true) {
+            try {
+                Thread.sleep(Global.loadIdleTime);
+            } catch (InterruptedException ex) {
 
-            while (ballInMittLimitSwitch.get() != true) {
-                try {
-                    
-                    Thread.sleep(Global.catchIdleTime);
-                } catch (InterruptedException ex) {
-                    
-                }
             }
-            m_sideArm.close();
         }
+        m_loadArm.off();
+        m_sideArm.close();
 
     }
 }
