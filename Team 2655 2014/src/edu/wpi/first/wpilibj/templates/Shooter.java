@@ -17,6 +17,7 @@ public class Shooter {
     }
 
     public void shoot(int extendTime) {
+
         SmartDashboard.putNumber("Shooter has started", 0);
 
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
@@ -41,7 +42,6 @@ public class Shooter {
             shooterPiston2.set(DoubleSolenoid.Value.kOff);
 
             SmartDashboard.putNumber("Shooter has finished", 0);
-
         }
     }
 }

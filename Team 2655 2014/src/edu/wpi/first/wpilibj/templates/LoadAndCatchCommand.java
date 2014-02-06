@@ -21,7 +21,6 @@ public class LoadAndCatchCommand implements Runnable {
     public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch, InFeed inFeed) {
         m_sideArm = sideArm;
         m_loadArm = inFeed;
-
     }
 
     // this is the constructer for the catch command

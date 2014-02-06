@@ -21,11 +21,11 @@ public class Button {
         joystick = joystickIn;
         buttonNumber = buttonNumberIn;
         lastButtonState = false;
-
     }
 
     //The rising edge
     boolean theButtonToggled() {
+        
         if (joystick.getRawButton(buttonNumber)) {
             if (lastButtonState == false) {
                 lastButtonState = true;
@@ -39,6 +39,7 @@ public class Button {
         }
 
     }
+    
     boolean isPressed(){
         return joystick.getRawButton(buttonNumber);
     }

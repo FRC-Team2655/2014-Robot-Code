@@ -9,8 +9,9 @@ public class SideArms {
     DoubleSolenoid sideArms;
 
     int sideArmMode;
-    //   boolean debugSideArmThreadException = false;
+    int timesThreadActivated;
 
+//   boolean debugSideArmThreadException = false;
     private Thread thread;
 
     class SideArmStates {
@@ -27,6 +28,10 @@ public class SideArms {
         }
 
         public void run() {
+
+            timesThreadActivated++;
+
+            SmartDashboard.putNumber("Sidearms has made it to the thread", timesThreadActivated);
 
             switch (sideArmMode) {
                 case SideArmStates.openState:
@@ -66,6 +71,9 @@ public class SideArms {
                     break;
 
             }
+
+            SmartDashboard.putNumber("Sidearms has finished the thread", 0);
+
         }
     }
 
@@ -73,18 +81,18 @@ public class SideArms {
         thread = new sideArmThread();
         sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel, Ports.SolenoidModule.sideArmClosedArmChannel);
         sideArmMode = SideArmStates.noAirState;
-              
+
+        timesThreadActivated = 0;
 //      extendTime = timeToExtend; 
 //      If you add extend time back make sure you add it to the constructor  
 //      Also add this back to the constructor if needed int sidecarModule, and the sidearms =. 
-
     }
 //  Opens the sidearms.
 
     public void open() {
 
         SmartDashboard.putNumber("Sidearms open", 0);
-       
+
         if (thread.isAlive()) {
             SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
             return;
@@ -98,7 +106,7 @@ public class SideArms {
     public void close() {
 
         SmartDashboard.putNumber("Sidearms close", 0);
-       
+
         if (thread.isAlive()) {
             SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
             return;
