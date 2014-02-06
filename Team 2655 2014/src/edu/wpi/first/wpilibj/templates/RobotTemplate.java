@@ -91,13 +91,13 @@ public class RobotTemplate extends IterativeRobot {
         }
 
         //Catch Button -------------------------------------------------------
-        if (catchButton.ToggleCheck() == true) {
+        if (catchButton.theButtonToggled() == true) {
             driveSystem.moveAutonomous(-0.5, 0.0, 0.0);
 //                ballHandler.catchEnable();  
         }
 
         //Load Button
-        if (loadButton.ToggleCheck() == true) {
+        if (loadButton.theButtonToggled() == true) {
             if (ballHandler.loadIsEnabled() == false) {
                 ballHandler.loadEnable();
             }

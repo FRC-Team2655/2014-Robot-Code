@@ -15,30 +15,31 @@ public class Button {
 
     Joystick joystick;
     int buttonNumber;
-    boolean lastShootButtonState;
-    boolean lastModeState;
-
-    boolean notPressed = false;
-    boolean pressed = true;
-    boolean enabled = true;
-    boolean disabled = false;
+    boolean lastButtonState;
 
     Button(Joystick joystickIn, int buttonNumberIn) {
         joystick = joystickIn;
         buttonNumber = buttonNumberIn;
-        lastShootButtonState = false;
-        lastModeState = false;
+        lastButtonState = false;
 
     }
 
-    boolean ToggleCheck() {
+    //The rising edge
+    boolean theButtonToggled() {
         if (joystick.getRawButton(buttonNumber)) {
-                if (lastModeState == enabled) {
-                    lastModeState = disabled;
-                } else {
-                    lastModeState = enabled;
+            if (lastButtonState == true) {
+                lastButtonState = true;
+                return true;
+            } else {
+                return false;
             }
+        } else {
+            lastButtonState = false;
+            return false;
         }
-        return lastModeState;
+
+    }
+    boolean isPressed(){
+        return joystick.getRawButton(buttonNumber);
     }
 }
