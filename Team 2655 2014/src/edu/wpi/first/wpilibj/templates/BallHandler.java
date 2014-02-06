@@ -11,30 +11,10 @@ public class BallHandler {
     Anchor anchor;
     InFeed inFeed;
     DigitalInput ballInMittLimitSwitch;
-    DigitalInput shooterLimiterSwitch;
+    //DigitalInput shooterLimiterSwitch;
 
     Thread m_thread;
 
-    boolean catchIsEnabled = false;
-    int loadState = loadStates.off;
-    int catchState = catchStates.off;
-    boolean shoot = false;
-
-//    class loadStates {
-//
-//        public static final int off = 0;
-//        public static final int loading = 1;
-//        public static final int closing = 2;
-//        public static final int loaded = 3;
-//
-//    }
-//    class catchStates {
-//
-//        public static final int off = 0;
-//        public static final int opening = 1;
-//        public static final int closing = 2;
-//
-//    }
     public void BallHandler() {
         //if we ever add or modify a timer do it in the  class itself
         ballHandlerCompressor = new CompressorSystem();
@@ -43,9 +23,8 @@ public class BallHandler {
         anchor = new Anchor();
         inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
-        shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
+        //shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
 
-        // shootThread = new ShootTheBallCommand();
         ballHandlerCompressor.start();
     }
 
@@ -53,16 +32,20 @@ public class BallHandler {
         if (ballInMittLimitSwitch.get() == true) {
             return;
         }
+        if (m_thread.isAlive()) {
+            return;
+        }
 
         m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
         m_thread.start();
 
-//        catchState = catchStates.opening;
     }
-
 
     public void passTheBall() {
         if (ballInMittLimitSwitch.get() == true) {
+            return;
+        }
+        if (m_thread.isAlive()) {
             return;
         }
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
@@ -73,22 +56,34 @@ public class BallHandler {
         if (ballInMittLimitSwitch.get() == true) {
             return;
         }
+        if (m_thread.isAlive()) {
+            return;
+        }
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
         m_thread.start();
     }
 
     public void catchDisable() {
-        catchState = catchStates.closing;
+        //Experiment with these two methods.
+        if (!m_thread.isAlive()) {
+            return;
+        }
+        //Experiment
+        m_thread.interrupt();
+        //m_thread.notifyAll();
     }
 
     public boolean catchIsEnabled() {
-
-        return (catchState != catchStates.off);
+        //test this
+        //m_thread.equals(this);
+        return m_thread.isAlive();
     }
 
     public void loadEnable() {
-
         if (ballInMittLimitSwitch.get() == true) {
+            return;
+        }
+        if (m_thread.isAlive()) {
             return;
         }
 
@@ -98,12 +93,18 @@ public class BallHandler {
     }
 
     public void loadDisable() {
-        loadState = loadStates.closing;
+        if (!m_thread.isAlive()) {
+            return;
+        }
+        //Experiment with these two methods.
+        //m_thread.interrupt();
+        m_thread.notifyAll();
     }
 
     public boolean loadIsEnabled() {
-
-        return (loadState != loadStates.off);
+        //test this
+        //m_thread.equals(this);
+        return m_thread.isAlive();
 
     }
 }
