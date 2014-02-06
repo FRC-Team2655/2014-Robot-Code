@@ -92,24 +92,22 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
-            timesShootPressed++;
-            SmartDashboard.putNumber("Times shoot pressed", timesShootPressed);
             ballHandler.shootTheBall();// Do said action
         }
 
         //Catch Button -------------------------------------------------------
-        if (catchButton.theButtonToggled() == true) {
+        if (catchButton.theButtonToggled()) {
             driveSystem.moveAutonomous(-0.5, 0.0, 0.0);
 //                ballHandler.catchEnable();  
         }
 
         //Load Button
-        if (loadButton.theButtonToggled() == true) {
-            if (ballHandler.loadIsEnabled() == false) {
+        if (loadButton.theButtonToggled()) {
+            if (!ballHandler.loadIsEnabled()) {
                 ballHandler.loadEnable();
             }
         } else {
-            if (ballHandler.loadIsEnabled() == true) {
+            if (ballHandler.loadIsEnabled()) {
                 ballHandler.loadDisable();
             }
         }
