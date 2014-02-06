@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 // edited by Alex and Zephan yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 public class BallHandler {
@@ -13,6 +14,8 @@ public class BallHandler {
     DigitalInput ballInMittLimitSwitch;
     //DigitalInput shooterLimiterSwitch;
 
+    int timesTriedToActivate;
+
     Thread m_thread;
 
     public void BallHandler() {
@@ -23,6 +26,8 @@ public class BallHandler {
         anchor = new Anchor();
         inFeed = new InFeed();
         ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
+
+        timesTriedToActivate = 0;
         //shooterLimiterSwitch = new DigitalInput(Ports.DigitalModule.shooterLimiterSwitchChannel);
 
         ballHandlerCompressor.start();
@@ -42,10 +47,15 @@ public class BallHandler {
     }
 
     public void passTheBall() {
+       
         if (ballInMittLimitSwitch.get() == true) {
+            SmartDashboard.putNumber("The robot already has a ball in it", 0);
             return;
         }
+        
         if (m_thread.isAlive()) {
+            timesTriedToActivate++;
+            SmartDashboard.putNumber("The Thread is still alive", timesTriedToActivate);
             return;
         }
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));

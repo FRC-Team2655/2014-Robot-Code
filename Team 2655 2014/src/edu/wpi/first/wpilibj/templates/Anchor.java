@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -17,7 +18,6 @@ public class Anchor {
     private DoubleSolenoid anchors;
 
 //  You will most likely need a timer.
-    
     public Anchor() {
 
         anchors = new DoubleSolenoid(Ports.SolenoidModule.anchorDropChannel, Ports.SolenoidModule.anchorRaiseChannel);
@@ -27,11 +27,13 @@ public class Anchor {
     }
 
     void drop() {
+        SmartDashboard.putNumber("Anchors are lowered", 0);
 
         anchors.set(DoubleSolenoid.Value.kForward);
     }
 
     void raise() {
+        SmartDashboard.putNumber("Anchors are raised", 0);
 
         anchors.set(DoubleSolenoid.Value.kReverse);
         try {

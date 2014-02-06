@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -28,7 +29,12 @@ public class ShootAndPassCommand implements Runnable {
 
     public void run() {
 
+        SmartDashboard.putNumber("The Thread has started to run", 0);
+
         if (m_anchor != null) {
+            
+            SmartDashboard.putNumber("The robot is shooting", 0);
+
             m_anchor.drop();
             m_sideArm.open();
             m_shooter.shoot(Global.waitTimeShoot);
@@ -36,6 +42,9 @@ public class ShootAndPassCommand implements Runnable {
             m_anchor.raise();
 
         } else {
+            
+            SmartDashboard.putNumber("The robot is passing", 0);
+
             m_sideArm.open();
             m_shooter.shoot(Global.waitTimePass);
             m_sideArm.close();

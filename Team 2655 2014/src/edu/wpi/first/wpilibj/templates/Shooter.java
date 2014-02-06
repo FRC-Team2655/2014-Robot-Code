@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates;
 // Author Alex Senneville
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter {
 
@@ -16,6 +17,7 @@ public class Shooter {
     }
 
     public void shoot(int extendTime) {
+        SmartDashboard.putNumber("Shooter has started", 0);
 
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
@@ -37,6 +39,9 @@ public class Shooter {
         } finally {
             shooterPiston1.set(DoubleSolenoid.Value.kOff);
             shooterPiston2.set(DoubleSolenoid.Value.kOff);
+
+            SmartDashboard.putNumber("Shooter has finished", 0);
+
         }
     }
 }
