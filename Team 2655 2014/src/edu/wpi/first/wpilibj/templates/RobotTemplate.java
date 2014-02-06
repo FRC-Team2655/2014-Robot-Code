@@ -29,6 +29,9 @@ public class RobotTemplate extends IterativeRobot {
     boolean pressed = true;
     boolean notPressed = false;
 
+    int timesShootPressed;
+
+    Button shootButton;
     Button catchButton;
     Button loadButton;
 
@@ -40,6 +43,8 @@ public class RobotTemplate extends IterativeRobot {
 
     public void robotInit() {
 
+        timesShootPressed = 0;
+
         joystick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
         ballHandler = new BallHandler();
@@ -47,6 +52,7 @@ public class RobotTemplate extends IterativeRobot {
 
         catchButton = new Button(joystick, Global.catchButton);
         loadButton = new Button(joystick, Global.loadButton);
+        shootButton = new Button(joystick, Global.shootButton);
 
     }
 
@@ -80,13 +86,14 @@ public class RobotTemplate extends IterativeRobot {
     //Frodo = 50pts
     public void teleopPeriodic() {
 
-        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
-        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
-        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
-        SmartDashboard.putNumber("Drive Mode", driveType);
-
+//        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
+//        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
+//        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
+//        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
-        if (joystick.getRawButton(Global.shootButton)) { //Is the Button Pressed?
+        if (shootButton.theButtonToggled()) { //Is the Button Pressed?
+            timesShootPressed++;
+            SmartDashboard.putNumber("Times shoot pressed", timesShootPressed);
             ballHandler.shootTheBall();// Do said action
         }
 
