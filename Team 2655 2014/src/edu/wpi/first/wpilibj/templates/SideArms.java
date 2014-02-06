@@ -8,10 +8,10 @@ public class SideArms {
 
     DoubleSolenoid sideArms;
 
-    int sideArmMode = SideArmStates.noAirState;
+    int sideArmMode;
     //   boolean debugSideArmThreadException = false;
 
-    public Thread thread;
+    private Thread thread;
 
     class SideArmStates {
 
@@ -72,6 +72,8 @@ public class SideArms {
     public SideArms() {
         thread = new sideArmThread();
         sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel, Ports.SolenoidModule.sideArmClosedArmChannel);
+        sideArmMode = SideArmStates.noAirState;
+              
 //      extendTime = timeToExtend; 
 //      If you add extend time back make sure you add it to the constructor  
 //      Also add this back to the constructor if needed int sidecarModule, and the sidearms =. 
