@@ -19,7 +19,7 @@ public class RobotTemplate extends IterativeRobot {
     StereoRangeFinder stereoRangeFinder;
 
     Button shootButton;
-    Button catchButton;
+    Button anchorButton;
     Button loadButton;
     Button passButton;
 
@@ -34,11 +34,10 @@ public class RobotTemplate extends IterativeRobot {
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
 
-        catchButton = new Button(joystick, Global.catchButton);
+        anchorButton = new Button(joystick, Global.anchorButton);
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
-
     }
 
     public void disabledInit() {
@@ -82,17 +81,6 @@ public class RobotTemplate extends IterativeRobot {
 
         if (passButton.theButtonToggled()) { //Is the Button Pressed?
             ballHandler.passTheBall();// Do said action
-        }
-
-//Catch Button -------------------------------------------------------
-        if (catchButton.theButtonToggled()) {
-            if (ballHandler.catchIsEnabled() == false) {
-                ballHandler.catchEnable();
-            } else {
-                if (ballHandler.catchIsEnabled()) {
-                    ballHandler.catchDisable();
-                }
-            }
         }
 
         //Load Button
