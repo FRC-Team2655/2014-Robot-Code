@@ -6,11 +6,8 @@
 /*----------------------------------------------------------------------------*/
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.SensorBase;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotTemplate extends IterativeRobot {
 
@@ -19,31 +16,18 @@ public class RobotTemplate extends IterativeRobot {
 
     Joystick joystick;
 
-    DriverStationLCD driverStationConsole;
-
     StereoRangeFinder stereoRangeFinder;
-
-//  Variables for possible button stat
-    public static boolean lastLoadButtonState = false;
-
-    boolean pressed = true;
-    boolean notPressed = false;
-
-    int timesShootPressed;
 
     Button shootButton;
     Button catchButton;
     Button loadButton;
-
-    int driveType; //0 means we will not use the gyro in our drive. 1 means the gyro will be in use during robot drive.
+    Button passButton;
 
     public RobotTemplate() {
         // not sure this gets called because we have the IterateRobot
     }
 
     public void robotInit() {
-
-        timesShootPressed = 0;
 
         joystick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
@@ -53,6 +37,7 @@ public class RobotTemplate extends IterativeRobot {
         catchButton = new Button(joystick, Global.catchButton);
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
+        passButton = new Button(joystick, Global.poopButton);
 
     }
 
@@ -95,20 +80,29 @@ public class RobotTemplate extends IterativeRobot {
             ballHandler.shootTheBall();// Do said action
         }
 
-        //Catch Button -------------------------------------------------------
+        if (passButton.theButtonToggled()) { //Is the Button Pressed?
+            ballHandler.passTheBall();// Do said action
+        }
+
+//Catch Button -------------------------------------------------------
         if (catchButton.theButtonToggled()) {
-            driveSystem.moveAutonomous(-0.5, 0.0, 0.0);
-//                ballHandler.catchEnable();  
+            if (ballHandler.catchIsEnabled() == false) {
+                ballHandler.catchEnable();
+            } else {
+                if (ballHandler.catchIsEnabled()) {
+                    ballHandler.catchDisable();
+                }
+            }
         }
 
         //Load Button
         if (loadButton.theButtonToggled()) {
-            if (!ballHandler.loadIsEnabled()) {
+            if (ballHandler.loadIsEnabled() == false) {
                 ballHandler.loadEnable();
-            }
-        } else {
-            if (ballHandler.loadIsEnabled()) {
-                ballHandler.loadDisable();
+            } else {
+                if (ballHandler.loadIsEnabled()) {
+                    ballHandler.loadDisable();
+                }
             }
         }
     }
