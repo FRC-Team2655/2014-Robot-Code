@@ -1,12 +1,12 @@
 package edu.wpi.first.wpilibj.templates;
 
 // Author Zephan
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Solenoid;
 
 public class InFeed {
 
-    Solenoid inFeedSolenoid;
+    private DoubleSolenoid inFeedSolenoid;
     Relay infeedArmMotorControl;
     
     public int forward = 1;
@@ -18,18 +18,12 @@ public class InFeed {
         infeedArmMotorControl = new Relay(Ports.crioSlot2,Ports.DigitalModule.infeedArmMotorControlChannel);
 
     }
-    
-    void pass() {
-        
-        //inFeedSolenoid.set(true);
-        infeedArmMotorControl.set(Relay.Value.kReverse);
-        
-    }
 
     void on() {
 //  Turns the motors on in the foward direction which should pull the ball in.    
-
+        inFeedSolenoid.set(DoubleSolenoid.Value.kForward);
         infeedArmMotorControl.set(Relay.Value.kOn);
+        inFeedSolenoid.set(DoubleSolenoid.Value.kOff);
     }
 
     void off() {
