@@ -117,4 +117,10 @@ public class BallHandler {
         return m_thread.isAlive();
 
     }
+    public void dropAnchor() {
+        anchor.drop();
+    }
+    public void raiseAnchor() {
+       anchor.raise();
+    }
 }

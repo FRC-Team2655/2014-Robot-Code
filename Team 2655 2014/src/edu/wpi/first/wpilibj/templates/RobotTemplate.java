@@ -22,12 +22,15 @@ public class RobotTemplate extends IterativeRobot {
     Button anchorButton;
     Button loadButton;
     Button passButton;
+    private boolean anchorIsDropped;
 
     public RobotTemplate() {
         // not sure this gets called because we have the IterateRobot
     }
 
     public void robotInit() {
+
+        anchorIsDropped = false;
 
         joystick = new Joystick(1);
         stereoRangeFinder = new StereoRangeFinder();
@@ -91,6 +94,17 @@ public class RobotTemplate extends IterativeRobot {
                 if (ballHandler.loadIsEnabled()) {
                     ballHandler.loadDisable();
                 }
+            }
+        }
+        
+        //Anchor Button
+        if (anchorButton.theButtonToggled()) {
+            if (anchorIsDropped == false) {
+                anchorIsDropped = true;
+                ballHandler.dropAnchor();
+            } else {
+                anchorIsDropped = false;
+                ballHandler.raiseAnchor();
             }
         }
     }
