@@ -96,7 +96,7 @@ public class RobotTemplate extends IterativeRobot {
 
         //Anchor Button
         if (anchorButton.theButtonToggled()) {
-            if (ballHandler.anchorIsDropped() == false) {
+            if (ballHandler.anchorIsUp()) {
                 ballHandler.dropAnchor();
             } else {
                 ballHandler.raiseAnchor();

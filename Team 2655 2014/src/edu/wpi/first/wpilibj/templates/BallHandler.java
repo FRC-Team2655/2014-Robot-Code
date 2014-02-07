@@ -130,7 +130,7 @@ public class BallHandler {
         m_anchorIsDropped = false;
     }
 
-    public boolean anchorIsDropped() {
+    public boolean anchorIsUp() {
         return m_anchorIsDropped;
     }
 }
