@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.DigitalInput;
  */
 public class LoadAndCatchCommand implements Runnable {
 
-    private InFeed m_loadArm;
-    private SideArms m_sideArm;
-    private DigitalInput m_ballInMittLimitSwitch;
+    private final InFeed m_loadArm;
+    private final SideArms m_sideArm;
+    private final DigitalInput m_ballInMittLimitSwitch;
 
     // this constructor is used for the load command
     public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch, InFeed inFeed) {
