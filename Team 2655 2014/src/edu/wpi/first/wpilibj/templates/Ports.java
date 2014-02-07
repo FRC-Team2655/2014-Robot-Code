@@ -42,6 +42,11 @@ public class Ports {
         public static int anchorRaiseChannel = 8;
 
     }
+    
+    public static class SolenoidModule2 {
+        public static int loadArmExtendChannel = 1;
+        public static int loadArmRetractChannel = 2;
+    }
 
     public static class AnalogModule {
 
