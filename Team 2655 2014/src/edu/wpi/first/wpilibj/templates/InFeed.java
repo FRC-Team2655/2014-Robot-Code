@@ -12,36 +12,38 @@ public class InFeed {
     public InFeed() {
 //  Make sure to change relays and channels later.
 
-        infeedArmMotorControl = new Relay(Ports.crioSlot2,Ports.DigitalModule.infeedArmMotorControlChannel);
-        loadArmLift = new DoubleSolenoid(Ports.crioSlot2,Ports.SolenoidModule2.loadArmExtendChannel);
-        loadArmLift = new DoubleSolenoid(Ports.crioSlot2,Ports.SolenoidModule2.loadArmRetractChannel);
+        infeedArmMotorControl = new Relay(Ports.crioSlot2, Ports.DigitalModule.infeedArmMotorControlChannel);
+        loadArmLift = new DoubleSolenoid(Ports.crioSlot2, Ports.SolenoidModule2.loadArmExtendChannel, Ports.SolenoidModule2.loadArmRetractChannel);
 
-        
     }
 
     void on() {
 //  Turns the motors on in the foward direction which should pull the ball in.    
+
+        loadArmLift.set(DoubleSolenoid.Value.kForward);
         try {
-            loadArmLift.set(DoubleSolenoid.Value.kForward);
             Thread.sleep(100);
-            infeedArmMotorControl.set(Relay.Value.kOn);
-            loadArmLift.set(DoubleSolenoid.Value.kOff);
+
         } catch (InterruptedException ex) {
-            
+
         }
+        infeedArmMotorControl.set(Relay.Value.kOn);
+        loadArmLift.set(DoubleSolenoid.Value.kOff);
     }
 
     void off() {
 //  Turns the motors off    
-        
+
+        loadArmLift.set(DoubleSolenoid.Value.kForward);
         try {
-            loadArmLift.set(DoubleSolenoid.Value.kForward);
+
             Thread.sleep(100);
-            infeedArmMotorControl.set(Relay.Value.kOn);
-            loadArmLift.set(DoubleSolenoid.Value.kOff);
+
         } catch (InterruptedException ex) {
-            
+
         }
+        loadArmLift.set(DoubleSolenoid.Value.kOff);
+        infeedArmMotorControl.set(Relay.Value.kOn);
 
     }
 }
