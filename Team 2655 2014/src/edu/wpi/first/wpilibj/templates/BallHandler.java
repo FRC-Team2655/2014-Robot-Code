@@ -109,8 +109,8 @@ public class BallHandler {
             return;
         }
         //Experiment with these two methods.
-        //m_thread.interrupt();
-        m_thread.notifyAll();
+        m_thread.interrupt();
+        //m_thread.notifyAll();
     }
 
     public boolean loadIsEnabled() {

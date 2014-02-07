@@ -21,17 +21,27 @@ public class InFeed {
 
     void on() {
 //  Turns the motors on in the foward direction which should pull the ball in.    
-        loadArmLift.set(DoubleSolenoid.Value.kForward);
-        infeedArmMotorControl.set(Relay.Value.kOn);
-        loadArmLift.set(DoubleSolenoid.Value.kOff);
+        try {
+            loadArmLift.set(DoubleSolenoid.Value.kForward);
+            Thread.sleep(100);
+            infeedArmMotorControl.set(Relay.Value.kOn);
+            loadArmLift.set(DoubleSolenoid.Value.kOff);
+        } catch (InterruptedException ex) {
+            
+        }
     }
 
     void off() {
 //  Turns the motors off    
         
-        loadArmLift.set(DoubleSolenoid.Value.kReverse);
-        infeedArmMotorControl.set(Relay.Value.kOff);
-        loadArmLift.set(DoubleSolenoid.Value.kOff);
+        try {
+            loadArmLift.set(DoubleSolenoid.Value.kForward);
+            Thread.sleep(100);
+            infeedArmMotorControl.set(Relay.Value.kOn);
+            loadArmLift.set(DoubleSolenoid.Value.kOff);
+        } catch (InterruptedException ex) {
+            
+        }
 
     }
 }
