@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  */
 public class RangeFinder {
 
-    AnalogChannel rangeFinder;
+    private final AnalogChannel rangeFinder;
 
     RangeFinder(int port) {
         rangeFinder = new AnalogChannel(Ports.crioSlot1,port);

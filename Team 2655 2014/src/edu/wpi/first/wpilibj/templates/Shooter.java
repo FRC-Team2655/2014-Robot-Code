@@ -7,8 +7,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Shooter {
 
     //keep in mind that i might need to refactor names
-    DoubleSolenoid shooterPiston1;
-    DoubleSolenoid shooterPiston2;
+    private final DoubleSolenoid shooterPiston1;
+    private final DoubleSolenoid shooterPiston2;
 
     public Shooter() {
         shooterPiston1 = new DoubleSolenoid(Ports.SolenoidModule.leftShooterExtendChannel, Ports.SolenoidModule.leftShooterRetractChannel1);

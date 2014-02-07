@@ -11,17 +11,17 @@ import edu.wpi.first.wpilibj.Joystick;
 
 public class RobotTemplate extends IterativeRobot {
 
-    DriveSystem driveSystem;
-    BallHandler ballHandler;
+    private DriveSystem driveSystem;
+    private BallHandler ballHandler;
 
-    Joystick joystick;
+    private Joystick joystick;
 
-    StereoRangeFinder stereoRangeFinder;
+    private StereoRangeFinder stereoRangeFinder;
 
-    Button shootButton;
-    Button anchorButton;
-    Button loadButton;
-    Button passButton;
+    private Button shootButton;
+    private Button anchorButton;
+    private Button loadButton;
+    private Button passButton;
 
     public RobotTemplate() {
         // not sure this gets called because we have the IterateRobot

@@ -12,12 +12,12 @@ import edu.wpi.first.wpilibj.RobotDrive;
 
 public class DriveSystem {
 
-    Joystick driveStick;
-    Gyro gyro;
-    private Thread thread;
-    RobotDrive mainDrive;
+    private final Joystick driveStick;
+    private final Gyro gyro;
+    private final Thread thread;
+    private final RobotDrive mainDrive;
 
-    int driveMode;
+    private int driveMode;
 
     class DriveModeEnum {
 //      Possible states the robot can be in.  

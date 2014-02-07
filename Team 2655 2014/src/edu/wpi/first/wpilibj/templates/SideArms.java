@@ -6,13 +6,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class SideArms {
 
-    DoubleSolenoid sideArms;
+    private final DoubleSolenoid sideArms;
 
-    int sideArmMode;
-    int timesThreadActivated;
+    private int sideArmMode;
+    private int timesThreadActivated;
 
 //   boolean debugSideArmThreadException = false;
-    private Thread thread;
+    private final Thread thread;
 
     class SideArmStates {
 

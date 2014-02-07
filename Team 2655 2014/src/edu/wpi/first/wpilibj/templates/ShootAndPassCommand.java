@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class ShootAndPassCommand implements Runnable {
 
-    private Shooter m_shooter;
-    private SideArms m_sideArm;
-    private Anchor m_anchor;
+    private final Shooter m_shooter;
+    private final SideArms m_sideArm;
+    private final Anchor m_anchor;
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm) {
@@ -19,7 +19,6 @@ public class ShootAndPassCommand implements Runnable {
         m_anchor = null;
     }
 
-    // this costructor is used for the shoot command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor) {
         m_shooter = shooter;
         m_sideArm = sideArm;
@@ -29,12 +28,14 @@ public class ShootAndPassCommand implements Runnable {
 
     public void run() {
 
-        SmartDashboard.putNumber("The Thread has started to run", 0);
+        SmartDashboard.putNumber("The ShootAndPassCommand Thread has started to run", 0);
 
         if (m_anchor != null) {
             
             SmartDashboard.putNumber("The robot is shooting", 0);
 
+            // need to add code here to ensure that
+            // the robot hass stopped moving
             m_anchor.drop();
             m_sideArm.open();
             m_shooter.shoot();

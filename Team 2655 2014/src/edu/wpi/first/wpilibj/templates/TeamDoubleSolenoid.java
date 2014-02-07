@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.DigitalOutput;
  */
 public class TeamDoubleSolenoid {
 
-    DigitalOutput forward;
-    DigitalOutput reverse;
+    private final DigitalOutput forward;
+    private final DigitalOutput reverse;
 
     public static class Value {
 

@@ -13,9 +13,9 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class Button {
 
-    Joystick joystick;
-    int buttonNumber;
-    boolean lastButtonState;
+    private final Joystick joystick;
+    private final int buttonNumber;
+    private boolean lastButtonState;
 
     Button(Joystick joystickIn, int buttonNumberIn) {
         joystick = joystickIn;

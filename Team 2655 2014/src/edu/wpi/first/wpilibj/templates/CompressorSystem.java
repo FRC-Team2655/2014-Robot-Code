@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Compressor;
  */
 public class CompressorSystem extends Compressor {
 
-    Compressor ballHandlerCompressor;
+    private Compressor ballHandlerCompressor;
 
     public CompressorSystem() {
         super(Ports.AnalogModule.pressureSwitchChannel, Ports.DigitalModule.compressorRelayChannel);

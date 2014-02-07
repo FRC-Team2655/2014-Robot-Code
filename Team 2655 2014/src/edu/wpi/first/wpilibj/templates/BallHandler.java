@@ -6,17 +6,17 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // edited by Alex and Zephan yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 public class BallHandler {
 
-    CompressorSystem ballHandlerCompressor;
-    Shooter shooter;
-    SideArms sideArm;
-    Anchor anchor;
-    InFeed inFeed;
-    DigitalInput ballInMittLimitSwitch;
+    private CompressorSystem ballHandlerCompressor;
+    private  Shooter shooter;
+    private SideArms sideArm;
+    private Anchor anchor;
+    private InFeed inFeed;
+    private DigitalInput ballInMittLimitSwitch;
 
     int timesTriedToActivate;
-    boolean m_anchorIsDropped;
+    private boolean m_anchorIsDropped;
 
-    Thread m_thread;
+    private Thread m_thread;
 
     public void BallHandler() {
 

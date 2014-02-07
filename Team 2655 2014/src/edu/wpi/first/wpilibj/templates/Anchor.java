@@ -17,6 +17,8 @@ public class Anchor {
 
     private boolean m_isDropped;
     private final DoubleSolenoid anchors;
+    
+    
     private final DoubleSolenoid.Value DROP = DoubleSolenoid.Value.kForward;
     private final DoubleSolenoid.Value RAISE = DoubleSolenoid.Value.kReverse;
     private final DoubleSolenoid.Value OFF = DoubleSolenoid.Value.kOff;

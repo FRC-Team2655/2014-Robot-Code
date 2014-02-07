@@ -13,8 +13,8 @@ import com.sun.squawk.util.MathUtils;
  */
 public class StereoRangeFinder {
 
-    private RangeFinder left;
-    private RangeFinder right;
+    private final RangeFinder left;
+    private final RangeFinder right;
 
     StereoRangeFinder() {
 
