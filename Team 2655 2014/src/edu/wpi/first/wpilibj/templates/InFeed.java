@@ -22,7 +22,7 @@ public class InFeed {
 
         loadArmLift.set(DoubleSolenoid.Value.kForward);
         try {
-            Thread.sleep(100);
+            Thread.sleep((long) Global.loadArmRaiseTime);
 
         } catch (InterruptedException ex) {
 
@@ -37,7 +37,7 @@ public class InFeed {
         loadArmLift.set(DoubleSolenoid.Value.kForward);
         try {
 
-            Thread.sleep(100);
+            Thread.sleep((long) Global.loadArmRaiseTime);
 
         } catch (InterruptedException ex) {
 
