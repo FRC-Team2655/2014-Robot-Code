@@ -22,7 +22,7 @@ public class InFeed {
 
         loadArmLift.set(DoubleSolenoid.Value.kForward);
         try {
-            Thread.sleep(Global.loadArmRaiseTime);
+            Thread.sleep(Global.loadArmExtendTime);
 
         } catch (InterruptedException ex) {
 
@@ -34,7 +34,7 @@ public class InFeed {
     void off() {
 //  Turns the motors off    
 
-        loadArmLift.set(DoubleSolenoid.Value.kForward);
+        loadArmLift.set(DoubleSolenoid.Value.kReverse);
         try {
 
             Thread.sleep(Global.loadArmRaiseTime);
@@ -43,7 +43,7 @@ public class InFeed {
 
         }
         loadArmLift.set(DoubleSolenoid.Value.kOff);
-        infeedArmMotorControl.set(Relay.Value.kOn);
+        infeedArmMotorControl.set(Relay.Value.kOff);
 
     }
 }

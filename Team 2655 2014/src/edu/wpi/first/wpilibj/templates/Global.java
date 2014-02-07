@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Global {
 //  Variables used in load arm
     public static long loadArmRaiseTime = 100;
+    public static long loadArmExtendTime = 100;
     
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;         // m
