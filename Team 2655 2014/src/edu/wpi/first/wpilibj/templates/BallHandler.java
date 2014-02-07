@@ -15,10 +15,12 @@ public class BallHandler {
     //DigitalInput shooterLimiterSwitch;
 
     int timesTriedToActivate;
+    boolean m_anchorIsDropped;
 
     Thread m_thread;
 
     public void BallHandler() {
+        m_anchorIsDropped = false;
         //if we ever add or modify a timer do it in the  class itself
         ballHandlerCompressor = new CompressorSystem();
         shooter = new Shooter();
@@ -47,12 +49,12 @@ public class BallHandler {
     }
 
     public void passTheBall() {
-       
+
         if (ballInMittLimitSwitch.get() == true) {
             SmartDashboard.putNumber("The robot already has a ball in it", 0);
             return;
         }
-        
+
         if (m_thread.isAlive()) {
             timesTriedToActivate++;
             SmartDashboard.putNumber("The Thread is still alive", timesTriedToActivate);
@@ -117,10 +119,18 @@ public class BallHandler {
         return m_thread.isAlive();
 
     }
+
     public void dropAnchor() {
         anchor.drop();
+        m_anchorIsDropped = true;
     }
+
     public void raiseAnchor() {
-       anchor.raise();
+        anchor.raise();
+        m_anchorIsDropped = false;
+    }
+
+    public boolean anchorIsDropped() {
+        return m_anchorIsDropped;
     }
 }
