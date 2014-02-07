@@ -17,6 +17,9 @@ public class Anchor {
 
     private boolean m_isDropped;
     private final DoubleSolenoid anchors;
+    private final DoubleSolenoid.Value DROP = DoubleSolenoid.Value.kForward;
+    private final DoubleSolenoid.Value RAISE = DoubleSolenoid.Value.kReverse;
+    private final DoubleSolenoid.Value OFF = DoubleSolenoid.Value.kOff;
 
 //  You will most likely need a timer.
     public Anchor() {
@@ -29,23 +32,24 @@ public class Anchor {
     public void drop() {
         SmartDashboard.putNumber("Anchors are lowered", 0);
 
-        anchors.set(DoubleSolenoid.Value.kForward);
+        anchors.set(DROP);
         m_isDropped = true;
     }
 
     public void raise() {
         SmartDashboard.putNumber("Anchors are raised", 0);
 
-        anchors.set(DoubleSolenoid.Value.kReverse);
+        anchors.set(RAISE);
         try {
             wait(Global.anchorRaiseTime);
             //Find if we need to stop the solenoid when it reaches th top position.
         } catch (InterruptedException ex) {
 
         }
-        anchors.set(DoubleSolenoid.Value.kOff);
+        anchors.set(OFF);
         m_isDropped = false;
     }
+
     public boolean anchorIsDropped() {
         return m_isDropped;
     }
