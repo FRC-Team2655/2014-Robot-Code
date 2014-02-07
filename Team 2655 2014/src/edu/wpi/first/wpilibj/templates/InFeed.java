@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.Relay;
 
 public class InFeed {
 
-    private DoubleSolenoid loadArmLift;
+    private final DoubleSolenoid loadArmLift;
     Relay infeedArmMotorControl;
 
     public InFeed() {
