@@ -15,24 +15,25 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Anchor {
 
-    private DoubleSolenoid anchors;
+    private boolean m_isDropped;
+    private final DoubleSolenoid anchors;
 
 //  You will most likely need a timer.
     public Anchor() {
-
+        m_isDropped = false;
         anchors = new DoubleSolenoid(Ports.SolenoidModule.anchorDropChannel, Ports.SolenoidModule.anchorRaiseChannel);
         //ballInMittLimitSwitch = new DigitalInput(1);
 //      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
-
     }
 
-    void drop() {
+    public void drop() {
         SmartDashboard.putNumber("Anchors are lowered", 0);
 
         anchors.set(DoubleSolenoid.Value.kForward);
+        m_isDropped = true;
     }
 
-    void raise() {
+    public void raise() {
         SmartDashboard.putNumber("Anchors are raised", 0);
 
         anchors.set(DoubleSolenoid.Value.kReverse);
@@ -43,5 +44,9 @@ public class Anchor {
 
         }
         anchors.set(DoubleSolenoid.Value.kOff);
+        m_isDropped = false;
+    }
+    public boolean anchorIsDropped() {
+        return m_isDropped;
     }
 }

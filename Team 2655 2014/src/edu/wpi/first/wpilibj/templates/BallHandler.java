@@ -122,15 +122,14 @@ public class BallHandler {
 
     public void dropAnchor() {
         anchor.drop();
-        m_anchorIsDropped = true;
+        
     }
 
     public void raiseAnchor() {
         anchor.raise();
-        m_anchorIsDropped = false;
     }
 
     public boolean anchorIsUp() {
-        return m_anchorIsDropped;
+        return !anchor.anchorIsDropped();
     }
 }
