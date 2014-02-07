@@ -37,7 +37,7 @@ public class ShootAndPassCommand implements Runnable {
 
             m_anchor.drop();
             m_sideArm.open();
-            m_shooter.shoot(Global.waitTimeShoot);
+            m_shooter.shoot();
             m_sideArm.close();
             m_anchor.raise();
 
@@ -46,7 +46,7 @@ public class ShootAndPassCommand implements Runnable {
             SmartDashboard.putNumber("The robot is passing", 0);
 
             m_sideArm.open();
-            m_shooter.shoot(Global.waitTimePass);
+            m_shooter.pass();
             m_sideArm.close();
         }
 

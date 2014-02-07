@@ -16,9 +16,19 @@ public class Shooter {
         //may need to change channels and may need to add spike to conttrol multiple channels
     }
 
-    public void shoot(int extendTime) {
+    public void pass() {
+        SmartDashboard.putNumber("Passing has started", 0);
+        shootPass(Global.waitTimePass);
+        SmartDashboard.putNumber("Passing has finished", 0);
+    }
 
+    public void shoot() {
         SmartDashboard.putNumber("Shooter has started", 0);
+        shootPass(Global.waitTimeShoot);
+        SmartDashboard.putNumber("Shooter has finished", 0);
+    }
+
+    private void shootPass(int extendTime) {
 
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
@@ -41,7 +51,6 @@ public class Shooter {
             shooterPiston1.set(DoubleSolenoid.Value.kOff);
             shooterPiston2.set(DoubleSolenoid.Value.kOff);
 
-            SmartDashboard.putNumber("Shooter has finished", 0);
         }
     }
 }

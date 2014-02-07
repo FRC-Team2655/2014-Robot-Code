@@ -15,12 +15,14 @@ public class LoadAndCatchCommand implements Runnable {
 
     private InFeed m_loadArm;
     private SideArms m_sideArm;
-    private DigitalInput ballInMittLimitSwitch;
+    private DigitalInput m_ballInMittLimitSwitch;
 
     // this constructor is used for the load command
     public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch, InFeed inFeed) {
         m_sideArm = sideArm;
         m_loadArm = inFeed;
+        m_ballInMittLimitSwitch = ballInMittLimitSwitch;
+
     }
 
     // this is the constructer for the catch command
@@ -30,8 +32,14 @@ public class LoadAndCatchCommand implements Runnable {
         m_sideArm.open();
         m_loadArm.on();
 
-        while (ballInMittLimitSwitch.get() != true) {
+        while (m_ballInMittLimitSwitch.get() != true) {
             try {
+                // need to rename time to something like
+                // poll ball in mitt switch wait timer
+                //
+                // maybe we could use yield() instead of sleep
+                // but, idk how to interrupt a thread from
+                // user intput
                 Thread.sleep(Global.loadIdleTime);
             } catch (InterruptedException ex) {
 
