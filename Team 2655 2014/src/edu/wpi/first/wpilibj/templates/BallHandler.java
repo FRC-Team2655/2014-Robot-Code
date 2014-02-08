@@ -18,7 +18,7 @@ public class BallHandler {
 
     private Thread m_thread;
 
-    public void BallHandler() {
+    public BallHandler() {
 
         //if we ever add or modify a timer do it in the  class itself
         ballHandlerCompressor = new CompressorSystem();
@@ -42,6 +42,7 @@ public class BallHandler {
             return;
         }
         m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
+
         m_thread.start();
     }
 
@@ -76,8 +77,13 @@ public class BallHandler {
 //            return;
 //        }
         SmartDashboard.putNumber("Thread should start", 0);
-      
+
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
+        
+        SmartDashboard.putString("anchor", String.valueOf(anchor));
+        SmartDashboard.putString("sideArm", String.valueOf(sideArm));
+        SmartDashboard.putString("shooter", String.valueOf(shooter));
+
         m_thread.start();
     }
 

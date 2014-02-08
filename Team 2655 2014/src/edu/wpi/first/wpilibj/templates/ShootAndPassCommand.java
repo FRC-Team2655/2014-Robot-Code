@@ -8,9 +8,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class ShootAndPassCommand implements Runnable {
 
-    private final Shooter m_shooter;
-    private final SideArms m_sideArm;
-    private final Anchor m_anchor;
+    private Shooter m_shooter;
+    private SideArms m_sideArm;
+    private Anchor m_anchor;
+    
+    
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm) {
@@ -27,7 +29,7 @@ public class ShootAndPassCommand implements Runnable {
     }
 
     public void run() {
-
+        
         SmartDashboard.putNumber("The ShootAndPassCommand Thread has started to run", 0);
 
         if (m_anchor != null) {
