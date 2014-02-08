@@ -33,7 +33,7 @@ public class Shooter {
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
         try {
-            wait(extendTime);// Wait until piston completly extends
+            Thread.sleep(extendTime);// Wait until piston completly extends
         } catch (InterruptedException e) {
 
         } finally {
@@ -44,7 +44,7 @@ public class Shooter {
 
         // Wait until piston completly retracts.
         try {
-            wait(Global.timeForShooterToRetract);
+            Thread.sleep(Global.timeForShooterToRetract);
         } catch (InterruptedException e) {
 
         } finally {

@@ -43,7 +43,7 @@ public class Anchor {
 
         anchors.set(RAISE);
         try {
-            wait(Global.anchorRaiseTime);
+            Thread.sleep(Global.anchorRaiseTime);
             //Find if we need to stop the solenoid when it reaches th top position.
         } catch (InterruptedException ex) {
 
