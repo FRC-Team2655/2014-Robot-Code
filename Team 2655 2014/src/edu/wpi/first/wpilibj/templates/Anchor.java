@@ -16,7 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Anchor {
 
     private boolean m_isDropped;
-    private  DoubleSolenoid anchors;
+    private final DoubleSolenoid anchors;
     
     
     private final DoubleSolenoid.Value DROP = DoubleSolenoid.Value.kForward;

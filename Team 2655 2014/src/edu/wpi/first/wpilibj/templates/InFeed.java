@@ -6,14 +6,14 @@ import edu.wpi.first.wpilibj.Relay;
 
 public class InFeed {
 
-    private final DoubleSolenoid loadArmLift;
+    private final TeamDoubleSolenoid loadArmLift;
     private final Relay infeedArmMotorControl;
 
     public InFeed() {
 //  Make sure to change relays and channels later.
 
         infeedArmMotorControl = new Relay(Ports.DigitalModule.infeedArmMotorControlChannel);
-        loadArmLift = new DoubleSolenoid(Ports.SolenoidModule2.loadArmExtendChannel, Ports.SolenoidModule2.loadArmRetractChannel);
+        loadArmLift = new TeamDoubleSolenoid(Ports.SolenoidModule2.loadArmExtendChannel, Ports.SolenoidModule2.loadArmRetractChannel);
 
     }
 

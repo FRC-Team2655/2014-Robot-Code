@@ -14,7 +14,6 @@ public class BallHandler {
     private final DigitalInput ballInMittLimitSwitch;
 
     int timesTriedToActivate;
-    private final boolean m_anchorIsDropped;
 
     private Thread m_thread;
 
@@ -28,7 +27,7 @@ public class BallHandler {
         inFeed = new InFeed();
 
         ballInMittLimitSwitch = new DigitalInput(Ports.DigitalModule.ballInMittLimitSwitchChannel);
-        m_anchorIsDropped = false;
+
         ballHandlerCompressor.start();
 
         timesTriedToActivate = 0;
@@ -79,7 +78,7 @@ public class BallHandler {
         SmartDashboard.putNumber("Thread should start", 0);
 
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
-        
+
         SmartDashboard.putString("anchor", String.valueOf(anchor));
         SmartDashboard.putString("sideArm", String.valueOf(sideArm));
         SmartDashboard.putString("shooter", String.valueOf(shooter));
