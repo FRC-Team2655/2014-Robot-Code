@@ -5,7 +5,8 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.DigitalOutput;
+import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
+import edu.wpi.first.wpilibj.Relay;
 
 /**
  *
@@ -13,46 +14,31 @@ import edu.wpi.first.wpilibj.DigitalOutput;
  */
 public class TeamDoubleSolenoid {
 
-    private final DigitalOutput forward;
-    private final DigitalOutput reverse;
-
-    public static class Value {
-
-        public final int value;
-        public static final int kOff_val = 0;
-        public static final int kForward_val = 1;
-        public static final int kReverse_val = 2;
-        public static final Value kOff = new Value(kOff_val);
-        public static final Value kForward = new Value(kForward_val);
-        public static final Value kReverse = new Value(kReverse_val);
-
-        private Value(int value) {
-            this.value = value;
-        }
-    }
+    private final Relay forward;
+    private final Relay reverse;
 
     public TeamDoubleSolenoid(int moduleNumber, int forwardChannel, int reverseChannel) {
-        forward = new DigitalOutput(moduleNumber, forwardChannel);
-        reverse = new DigitalOutput(moduleNumber, reverseChannel);
-        forward.set(false);
-        reverse.set(false);
+        forward = new Relay(moduleNumber, forwardChannel);
+        reverse = new Relay(moduleNumber, reverseChannel);
+        forward.set(Relay.Value.kOff);
+        reverse.set(Relay.Value.kOff);
     }
 
     public void set(final Value value) {
         switch (value.value) {
             case Value.kOff_val:
-                forward.set(false);
-                reverse.set(false);
+                forward.set(Relay.Value.kOff);
+                reverse.set(Relay.Value.kOff);
                 break;
 
             case Value.kForward_val:
-                reverse.set(false);
-                forward.set(true);
+                reverse.set(Relay.Value.kOff);
+                forward.set(Relay.Value.kForward);
                 break;
 
             case Value.kReverse_val:
-                forward.set(false);
-                reverse.set(true);
+                forward.set(Relay.Value.kOff);
+                reverse.set(Relay.Value.kForward);
                 break;
             default:
         }
