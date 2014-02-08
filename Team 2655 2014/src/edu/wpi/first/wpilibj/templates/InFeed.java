@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.Relay;
 public class InFeed {
 
     private final TeamDoubleSolenoid loadArmLift;
-    private final Relay infeedArmMotorControl;
+    private final Relay infeedArmMotor;
 
     public InFeed() {
 //  Make sure to change relays and channels later.
 
-        infeedArmMotorControl = new Relay(Ports.DigitalModule.infeedArmMotorControlChannel);
-        loadArmLift = new TeamDoubleSolenoid(Ports.SolenoidModule2.loadArmExtendChannel, Ports.SolenoidModule2.loadArmRetractChannel);
+        infeedArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
+        loadArmLift = new TeamDoubleSolenoid(Ports.loadArmExtendChannel, Ports.loadArmRetractChannel);
 
     }
 
@@ -27,7 +27,7 @@ public class InFeed {
         } catch (InterruptedException ex) {
 
         }
-        infeedArmMotorControl.set(Relay.Value.kOn);
+        infeedArmMotor.set(Relay.Value.kOn);
         loadArmLift.set(DoubleSolenoid.Value.kOff);
     }
 
@@ -43,7 +43,7 @@ public class InFeed {
 
         }
         loadArmLift.set(DoubleSolenoid.Value.kOff);
-        infeedArmMotorControl.set(Relay.Value.kOff);
+        infeedArmMotor.set(Relay.Value.kOff);
 
     }
 }

@@ -16,7 +16,7 @@ public class Temperature {
     private static AnalogChannel tempSensor;
 
     public Temperature() {
-        tempSensor = new AnalogChannel(Ports.crioSlot1, Ports.AnalogModule.temperatureChannel);
+        tempSensor = new AnalogChannel(Ports.temperatureChannel);
     }
 
     public int celcius() {

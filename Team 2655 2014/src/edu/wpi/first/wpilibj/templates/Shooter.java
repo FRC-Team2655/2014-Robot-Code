@@ -11,8 +11,8 @@ public class Shooter {
     private final DoubleSolenoid shooterPiston2;
 
     public Shooter() {
-        shooterPiston1 = new DoubleSolenoid(Ports.SolenoidModule.leftShooterExtendChannel, Ports.SolenoidModule.leftShooterRetractChannel1);
-        shooterPiston2 = new DoubleSolenoid(Ports.SolenoidModule.rightShooterExtendChannel, Ports.SolenoidModule.rightShooterRetractChannel);
+        shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel1);
+        shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
         //may need to change channels and may need to add spike to conttrol multiple channels
     }
 

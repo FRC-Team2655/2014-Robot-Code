@@ -9,7 +9,7 @@ public class SideArms {
     private final DoubleSolenoid sideArms;
 
     public SideArms() {
-        sideArms = new DoubleSolenoid(Ports.SolenoidModule.sideArmOpenArmChannel, Ports.SolenoidModule.sideArmClosedArmChannel); 
+        sideArms = new DoubleSolenoid(Ports.sideArmOpenArmChannel, Ports.sideArmClosedArmChannel); 
     }
 //  Opens the sidearms.
 

@@ -16,7 +16,7 @@ public class RangeFinder {
     private final AnalogChannel rangeFinder;
 
     RangeFinder(int port) {
-        rangeFinder = new AnalogChannel(Ports.crioSlot1,port);
+        rangeFinder = new AnalogChannel(port);
     }
 
     double getDistanceInches() {

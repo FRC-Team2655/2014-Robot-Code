@@ -26,9 +26,7 @@ public class Anchor {
 //  You will most likely need a timer.
     public Anchor() {
         m_isDropped = false;
-        anchors = new DoubleSolenoid(Ports.SolenoidModule.anchorDropChannel, Ports.SolenoidModule.anchorRaiseChannel);
-        //ballInMittLimitSwitch = new DigitalInput(1);
-//      anchors.set(DoubleSolenoid.Value.kOff); - Double checking if anchors are off?
+        anchors = new DoubleSolenoid(Ports.anchorDropChannel, Ports.anchorRaiseChannel);
     }
 
     public void drop() {

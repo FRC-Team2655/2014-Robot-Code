@@ -60,10 +60,10 @@ public class DriveSystem {
 
     public DriveSystem(Joystick driveStick) {
         this.driveStick = driveStick;
-        gyro = new Gyro(Ports.AnalogModule.gyroChannel);
+        gyro = new Gyro(Ports.gyroChannel);
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
-        mainDrive = new RobotDrive(Ports.DigitalModule.frontLeftMotorChannel, Ports.DigitalModule.frontRightMotorChannel, Ports.DigitalModule.backLeftMotorChannel, Ports.DigitalModule.backRightMotorChannel);
+        mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backLeftMotorChannel, Ports.backRightMotorChannel);
         thread = new DriveSystemThread();
         thread.start();
     }
