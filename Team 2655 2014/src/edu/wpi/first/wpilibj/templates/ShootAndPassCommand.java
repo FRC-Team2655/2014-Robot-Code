@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class ShootAndPassCommand implements Runnable {
 
-    private Shooter m_shooter;
-    private SideArms m_sideArm;
-    private Anchor m_anchor;
+    private final Shooter m_shooter;
+    private final SideArms m_sideArm;
+    private final Anchor m_anchor;
     
     
 

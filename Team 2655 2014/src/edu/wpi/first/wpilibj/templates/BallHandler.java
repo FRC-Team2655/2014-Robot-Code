@@ -6,15 +6,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // edited by Alex and Zephan yay!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
 public class BallHandler {
 
-    private CompressorSystem ballHandlerCompressor;
-    private Shooter shooter;
-    private SideArms sideArm;
-    private Anchor anchor;
-    private InFeed inFeed;
-    private DigitalInput ballInMittLimitSwitch;
+    private final CompressorSystem ballHandlerCompressor;
+    private final Shooter shooter;
+    private final SideArms sideArm;
+    private final Anchor anchor;
+    private final InFeed inFeed;
+    private final DigitalInput ballInMittLimitSwitch;
 
     int timesTriedToActivate;
-    private boolean m_anchorIsDropped;
+    private final boolean m_anchorIsDropped;
 
     private Thread m_thread;
 
@@ -35,12 +35,12 @@ public class BallHandler {
     }
 
     public void catchEnable() {
-        if (ballInMittLimitSwitch.get() == true) {
-            return;
-        }
-        if (m_thread.isAlive()) {
-            return;
-        }
+//        if (ballInMittLimitSwitch.get() == true) {
+//            return;
+//        }
+//        if (m_thread.isAlive()) {
+//            return;
+//        }
         m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
 
         m_thread.start();
@@ -48,16 +48,16 @@ public class BallHandler {
 
     public void passTheBall() {
 
-        if (ballInMittLimitSwitch.get() == true) {
-            SmartDashboard.putNumber("The robot already has a ball in it", 0);
-            return;
-        }
-
-        if (m_thread.isAlive()) {
-            timesTriedToActivate++;
-            SmartDashboard.putNumber("The Thread is still alive", timesTriedToActivate);
-            return;
-        }
+//        if (ballInMittLimitSwitch.get() == true) {
+//            SmartDashboard.putNumber("The robot already has a ball in it", 0);
+//            return;
+//        }
+//
+//        if (m_thread.isAlive()) {
+//            timesTriedToActivate++;
+//            SmartDashboard.putNumber("The Thread is still alive", timesTriedToActivate);
+//            return;
+//        }
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
         m_thread.start();
     }
