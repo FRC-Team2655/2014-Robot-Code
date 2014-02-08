@@ -28,7 +28,7 @@ public final class Ports {
 
     // solenoids
     public final static int leftShooterExtendChannel = Ports.SM.ch1;
-    public final static int leftShooterRetractChannel1 = Ports.SM.ch2;
+    public final static int leftShooterRetractChannel = Ports.SM.ch2;
     public final static int rightShooterExtendChannel = Ports.SM.ch3;
     public final static int rightShooterRetractChannel = Ports.SM.ch4;
     public final static int sideArmOpenArmChannel = Ports.SM.ch5;
@@ -38,8 +38,8 @@ public final class Ports {
 
     // analog
     public final static int gyroChannel = Ports.AM.ch1;
-    public final static int leftRangeFinderPort = Ports.AM.ch2;
-    public final static int rightRangeFinderPort = Ports.AM.ch3;
+    public final static int leftRangeFinderChannel = Ports.AM.ch2;
+    public final static int rightRangeFinderChannel = Ports.AM.ch3;
     public final static int pressureSwitchChannel = Ports.AM.ch4;
     // ch5-ch7 not used right now
     public final static int temperatureChannel = Ports.AM.ch8;
