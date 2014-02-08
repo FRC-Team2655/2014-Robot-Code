@@ -93,10 +93,10 @@ public class SideArms {
 
         SmartDashboard.putNumber("Sidearms open", 0);
 
-        if (thread.isAlive()) {
-            SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
-            return;
-        }
+//        if (thread.isAlive()) {
+//            SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
+//            return;
+//        }
 
         sideArmMode = SideArmStates.openState;
         thread.start();
@@ -107,10 +107,10 @@ public class SideArms {
 
         SmartDashboard.putNumber("Sidearms close", 0);
 
-        if (thread.isAlive()) {
-            SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
-            return;
-        }
+//        if (thread.isAlive()) {
+//            SmartDashboard.putNumber("Something is trying to run the sidearm thread(close and open) at the same time. You have a problem :(", 0);
+//            return;
+//        }
 
         sideArmMode = SideArmStates.closeState;
         thread.start();

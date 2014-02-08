@@ -31,7 +31,7 @@ public class ShootAndPassCommand implements Runnable {
         SmartDashboard.putNumber("The ShootAndPassCommand Thread has started to run", 0);
 
         if (m_anchor != null) {
-            
+
             SmartDashboard.putNumber("The robot is shooting", 0);
 
             // need to add code here to ensure that
@@ -43,12 +43,18 @@ public class ShootAndPassCommand implements Runnable {
             m_anchor.raise();
 
         } else {
-            
+
             SmartDashboard.putNumber("The robot is passing", 0);
 
             m_sideArm.open();
+            SmartDashboard.putNumber("The robot has opened the arms", 0);
+
             m_shooter.pass();
+            SmartDashboard.putNumber("The robot has passed", 0);
+
             m_sideArm.close();
+            SmartDashboard.putNumber("The robot closed the arms", 0);
+
         }
 
     }

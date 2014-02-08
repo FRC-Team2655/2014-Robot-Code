@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class BallHandler {
 
     private CompressorSystem ballHandlerCompressor;
-    private  Shooter shooter;
+    private Shooter shooter;
     private SideArms sideArm;
     private Anchor anchor;
     private InFeed inFeed;
@@ -62,12 +62,21 @@ public class BallHandler {
     }
 
     public void shootTheBall() {
-        if (ballInMittLimitSwitch.get() == true) {
-            return;
-        }
-        if (m_thread.isAlive()) {
-            return;
-        }
+
+        SmartDashboard.putNumber("Robot Shoots the ball", 0);
+
+//        if (ballInMittLimitSwitch.get() == true) {
+//            SmartDashboard.putNumber("The robot already has a ball in it", 0);
+//
+//            return;
+//        }
+//        if (m_thread.isAlive()) {
+//            SmartDashboard.putNumber("Thread is still active", 0);
+//
+//            return;
+//        }
+        SmartDashboard.putNumber("Thread should start", 0);
+      
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
         m_thread.start();
     }

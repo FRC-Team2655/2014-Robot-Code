@@ -8,6 +8,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class RobotTemplate extends IterativeRobot {
 
@@ -76,6 +77,9 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
+          
+            SmartDashboard.putNumber("Button 1 has been pressed", 0);
+
             ballHandler.shootTheBall();// Do said action
         }
 
