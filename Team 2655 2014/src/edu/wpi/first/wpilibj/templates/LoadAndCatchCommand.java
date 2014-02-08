@@ -6,6 +6,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -27,13 +28,16 @@ public class LoadAndCatchCommand implements Runnable {
 
     // this is the constructer for the catch command
     public void run() {
+        SmartDashboard.putNumber("Load thread has made it to run", 0);
 
         //Load
         m_sideArm.open();
         m_loadArm.on();
 
-        while (m_ballInMittLimitSwitch.get() != true) {
+        while (m_ballInMittLimitSwitch.get() != Global.BALLINMITT) {
             try {
+                SmartDashboard.putNumber("Inside while loop", 0);
+
                 // need to rename time to something like
                 // poll ball in mitt switch wait timer
                 //
@@ -45,6 +49,8 @@ public class LoadAndCatchCommand implements Runnable {
 
             }
         }
+        SmartDashboard.putNumber("Out of while loop", 0);
+
         m_loadArm.off();
         m_sideArm.close();
 

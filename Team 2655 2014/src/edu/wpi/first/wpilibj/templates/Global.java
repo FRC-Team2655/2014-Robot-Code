@@ -65,6 +65,8 @@ public class Global {
     public static int anchorButton = 3;
     public static int loadButton = 4;
     public static int poopButton = 5;
+    
+    public final static boolean BALLINMITT = false; // Logic is reversed
 
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {

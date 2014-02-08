@@ -51,7 +51,7 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousInit() {
         driveSystem.setAutonomous();
-        Global.smartDashBoardGlobalVariables();
+//      Global.smartDashBoardGlobalVariables();
 
     }
 
@@ -77,7 +77,7 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
-          
+
             SmartDashboard.putNumber("Button 1 has been pressed", 0);
 
             ballHandler.shootTheBall();// Do said action
@@ -89,7 +89,11 @@ public class RobotTemplate extends IterativeRobot {
 
         //Load Button
         if (loadButton.theButtonToggled()) {
+            SmartDashboard.putNumber("Button 4 has been pressed", 0);
+
             if (ballHandler.loadIsEnabled() == false) {
+                SmartDashboard.putNumber("Load enabled", 0);
+
                 ballHandler.loadEnable();
             } else {
                 if (ballHandler.loadIsEnabled()) {
