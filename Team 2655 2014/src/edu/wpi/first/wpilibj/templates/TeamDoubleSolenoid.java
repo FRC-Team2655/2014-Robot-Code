@@ -23,6 +23,12 @@ public class TeamDoubleSolenoid {
         forward.set(Relay.Value.kOff);
         reverse.set(Relay.Value.kOff);
     }
+    public TeamDoubleSolenoid( int forwardChannel, int reverseChannel) {
+        forward = new Relay(forwardChannel);
+        reverse = new Relay(reverseChannel);
+        forward.set(Relay.Value.kOff);
+        reverse.set(Relay.Value.kOff);
+    }
 
     public void set(final Value value) {
         switch (value.value) {
