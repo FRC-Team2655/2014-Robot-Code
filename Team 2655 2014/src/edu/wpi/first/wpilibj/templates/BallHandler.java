@@ -19,16 +19,14 @@ public class BallHandler {
 
     public BallHandler() {
 
-        //if we ever add or modify a timer do it in the  class itself
         ballHandlerCompressor = new CompressorSystem();
         shooter = new Shooter();
         sideArm = new SideArms();
         anchor = new Anchor();
         inFeed = new InFeed();
         m_thread = new Thread();
-
         ballInMittDetector = new BallInMittDetector();
-
+        
         ballHandlerCompressor.start();
 
         timesTriedToActivate = 0;
