@@ -14,39 +14,39 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 // MUST CHANGE THE VALUES
 public class Global {
 //  Variables used in load arm
-    public static long loadArmRaiseTime = 100;
-    public static long loadArmExtendTime = 100;
+    public static long loadArmRaiseTime = 100; // ms
+    public static long loadArmExtendTime = 100; // ms
     
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;         // m
     public static double speedSlopeRotate = 0.00555555;  // m
 
 //  THese are the variable used in shooting
-    public static double wantedDistanceFromWall = 10.0;
-    public static int stereoRangeFinderSeperation = 23;
-    public static int waitTimeShoot = 101;
-    public static int waitTimePass = 100;
-    public static int timeForShooterToRetract = 100;
+    public static double wantedDistanceFromWall = 10.0; // feet
+    public static int stereoRangeFinderSeperation = 23; // inches
+    public static int waitTimeShoot = 101; // ms, must be larter than waitTimePass
+    public static int waitTimePass = 100; // ms
+    public static int timeForShooterToRetract = 100; // ms
 
 //  Drive Modes  
     public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
-    public static int loadIdleTime = 100;
-    public static int catchIdleTime = 100;
+    public static int loadIdleTime = 100; // ms
+    public static int catchIdleTime = 100; // ms
 
 //  anchor raise and drop times
-    public static int anchorDropTime = 100;
-    public static int anchorRaiseTime = 100;
+    public static int anchorDropTime = 100; // ms
+    public static int anchorRaiseTime = 100; // ms
 
 //  drive system 
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
 
 //  side arms
-    public static int sideArmCloseTime = 100;
-    public static int sideArmOpenTime = 100;
-    public static int sideArmIdleTime = 100;
+    public static int sideArmCloseTime = 100; // ms
+    public static int sideArmOpenTime = 100; // ms
+    public static int sideArmIdleTime = 100; // ms
 
 //  Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
@@ -67,9 +67,9 @@ public class Global {
     public static int poopButton = 5;
     
     public final static int wantedBallDistance = 15; // inches
-    public static double measuredTimeInAccelerationMeasurement;
-    public static double k_timeInAccelerationMeasurement = 10; // milliseconds
-    public static double massOfBall;
+    public static double measuredTimeInAccelerationMeasurement; // micro seconds
+    public static double k_timeInAccelerationMeasurement = 10; // micro seconds
+    public static double massOfBall; // units ?
 
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
