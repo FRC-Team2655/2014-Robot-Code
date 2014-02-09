@@ -16,12 +16,11 @@ public class Shooter {
     private int m_x1, m_x2, m_x3;
     private double m_v1, m_v2, m_v3;
 
-    private Encoder shooterPosition;
+    private final Encoder shooterPosition;
 
     public Shooter() {
         shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel);
         shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
-        //may need to change channels and may need to add spike to conttrol multiple channels
 
         shooterPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel);
     }
