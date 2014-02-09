@@ -3,6 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 // Author Zephan Editor Seth
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Timer;
 
 public class InFeed {
 
@@ -21,12 +22,9 @@ public class InFeed {
 //  Turns the motors on in the foward direction which should pull the ball in.    
 
         loadArmLift.set(DoubleSolenoid.Value.kForward);
-        try {
-            Thread.sleep(Global.loadArmExtendTime);
+        
+        Timer.delay(Global.loadArmExtendTime);
 
-        } catch (InterruptedException ex) {
-
-        }
         infeedArmMotor.set(Relay.Value.kOn);
         loadArmLift.set(DoubleSolenoid.Value.kOff);
     }
@@ -35,13 +33,9 @@ public class InFeed {
 //  Turns the motors off    
 
         loadArmLift.set(DoubleSolenoid.Value.kReverse);
-        try {
+        
+        Timer.delay(Global.loadArmRaiseTime);
 
-            Thread.sleep(Global.loadArmRaiseTime);
-
-        } catch (InterruptedException ex) {
-
-        }
         loadArmLift.set(DoubleSolenoid.Value.kOff);
         infeedArmMotor.set(Relay.Value.kOff);
 

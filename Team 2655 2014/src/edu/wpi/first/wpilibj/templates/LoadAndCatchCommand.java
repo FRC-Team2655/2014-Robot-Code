@@ -5,6 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -34,19 +35,15 @@ public class LoadAndCatchCommand implements Runnable {
         m_loadArm.on();
 
         while (!m_ballInMittLimitSwitch.ballInMitt()) {
-            try {
-                SmartDashboard.putNumber("Inside while loop", 0);
+            // SmartDashboard.putNumber("Inside while loop", 0);
 
-                // need to rename time to something like
-                // poll ball in mitt switch wait timer
-                //
-                // maybe we could use yield() instead of sleep
-                // but, idk how to interrupt a thread from
-                // user intput
-                Thread.sleep(Global.loadIdleTime);
-            } catch (InterruptedException ex) {
-
-            }
+            // need to rename time to something like
+            // poll ball in mitt switch wait timer
+            //
+            // maybe we could use yield() instead of sleep
+            // but, idk how to interrupt a thread from
+            // user intput
+            Timer.delay(Global.loadIdleTime);
         }
         SmartDashboard.putNumber("Out of while loop", 0);
 

@@ -12,10 +12,28 @@ package edu.wpi.first.wpilibj.templates;
 public final class Ports {
 
     // PWM channels
+        // motor controls
     public final static int frontLeftMotorChannel = Ports.DSCPWM.ch1;
     public final static int backLeftMotorChannel = Ports.DSCPWM.ch2;
     public final static int frontRightMotorChannel = Ports.DSCPWM.ch3;
     public final static int backRightMotorChannel = Ports.DSCPWM.ch4;
+
+        // shooter angle sensor
+    public final static int shooterRotationAChannel = Ports.DSCPWM.ch5;
+    public final static int shooterRotationBChannel = Ports.DSCPWM.ch6;
+
+        // rotation speed sensors for front wheels
+    public final static int frontLeftMotorRotationAChannel = Ports.DSCPWM.ch7;
+    public final static int frontLeftMotorRotationBChannel = Ports.DSCPWM.ch8;
+    public final static int frontRightMotorRotationAChannel = Ports.DSCPWM.ch9;
+    public final static int frontRightMotorRotationBChannel = Ports.DSCPWM.ch10;
+
+        // rotation speed sensors for back wheels
+    // DONT HAVE ENOUGH PWM CHANNELS FOR ALL 4 WHEELS
+//    public final static int backLeftMotorRotationAChannel = Ports.DSCPWM.ch11;
+//    public final static int backLeftMotorRotationBChannel = Ports.DSCPWM.ch12;
+//    public final static int backRightMotorRotationAChannel = Ports.DSCPWM.ch13;
+//    public final static int backRightMotorRotationBChannel = Ports.DSCPWM.ch14;
 
     // DIO
     public final static int ballInMittLimitSwitchChannel = Ports.DSCDIO.ch1;
@@ -44,7 +62,6 @@ public final class Ports {
     // ch5-ch7 not used right now
     public final static int temperatureChannel = Ports.AM.ch8;
 
-    
     // part of Digital Side Car
     public final static class DSCRelay {
 

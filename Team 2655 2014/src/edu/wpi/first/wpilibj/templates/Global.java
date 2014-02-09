@@ -24,7 +24,7 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0;
     public static int stereoRangeFinderSeperation = 23;
-    public static int waitTimeShoot = 100;
+    public static int waitTimeShoot = 101;
     public static int waitTimePass = 100;
     public static int timeForShooterToRetract = 100;
 
@@ -66,8 +66,10 @@ public class Global {
     public static int loadButton = 4;
     public static int poopButton = 5;
     
-    public final static boolean BALLINMITT = false; // Logic is reversed
     public final static int wantedBallDistance = 15; // inches
+    public static double measuredTimeInAccelerationMeasurement;
+    public static double k_timeInAccelerationMeasurement = 10; // milliseconds
+    public static double massOfBall;
 
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
@@ -91,5 +93,7 @@ public class Global {
         SmartDashboard.putNumber("load Idle Time", loadIdleTime);
         SmartDashboard.putNumber("temperature Slope Compensation", temperatureSlopeCompensation);
         SmartDashboard.putNumber("temperature Offset", temperatureOffset);
+        SmartDashboard.putNumber("Time in measureAcceleration(): ", measuredTimeInAccelerationMeasurement);
+        //SmartDashboard.putNumber("k time in acceleration measurement",k_timeInAccelerationMeasurement)
     }
 }

@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -17,8 +18,7 @@ public class Anchor {
 
     private boolean m_isDropped;
     private final DoubleSolenoid anchors;
-    
-    
+
     private final DoubleSolenoid.Value DROP = DoubleSolenoid.Value.kForward;
     private final DoubleSolenoid.Value RAISE = DoubleSolenoid.Value.kReverse;
     private final DoubleSolenoid.Value OFF = DoubleSolenoid.Value.kOff;
@@ -40,12 +40,9 @@ public class Anchor {
         SmartDashboard.putNumber("Anchors are raised", 0);
 
         anchors.set(RAISE);
-        try {
-            Thread.sleep(Global.anchorRaiseTime);
-            //Find if we need to stop the solenoid when it reaches th top position.
-        } catch (InterruptedException ex) {
+        
+        Timer.delay(Global.anchorRaiseTime);
 
-        }
         anchors.set(OFF);
         m_isDropped = false;
     }
