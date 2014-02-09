@@ -24,9 +24,9 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0;
     public static int stereoRangeFinderSeperation = 23;
-    public static int waitTimeShoot = 1000;
+    public static int waitTimeShoot = 100;
     public static int waitTimePass = 100;
-    public static int timeForShooterToRetract = 250;
+    public static int timeForShooterToRetract = 100;
 
 //  Drive Modes  
     public static int johnMode = 1; // set to 0 to get RC mode
@@ -36,8 +36,8 @@ public class Global {
     public static int catchIdleTime = 100;
 
 //  anchor raise and drop times
-    public static int anchorDropTime = 600;
-    public static int anchorRaiseTime = 600;
+    public static int anchorDropTime = 100;
+    public static int anchorRaiseTime = 100;
 
 //  drive system 
     public static int distanceLimitPositive = 5;
@@ -67,6 +67,7 @@ public class Global {
     public static int poopButton = 5;
     
     public final static boolean BALLINMITT = false; // Logic is reversed
+    public final static int wantedBallDistance = 15; // inches
 
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {

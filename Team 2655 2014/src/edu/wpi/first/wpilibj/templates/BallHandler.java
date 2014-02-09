@@ -11,7 +11,7 @@ public class BallHandler {
     private final SideArms sideArm;
     private final Anchor anchor;
     private final InFeed inFeed;
-    private final DigitalInput ballInMittLimitSwitch;
+    private final BallInMittDetector ballInMittDetector;
 
     int timesTriedToActivate;
 
@@ -27,7 +27,7 @@ public class BallHandler {
         inFeed = new InFeed();
         m_thread = new Thread();
 
-        ballInMittLimitSwitch = new DigitalInput(Ports.ballInMittLimitSwitchChannel);
+        ballInMittDetector = new BallInMittDetector();
 
         ballHandlerCompressor.start();
 
@@ -36,7 +36,7 @@ public class BallHandler {
 
     public void passTheBall() {
 
-        if (ballInMittLimitSwitch.get() != Global.BALLINMITT) {
+        if (! ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
             return;
         }
@@ -47,7 +47,7 @@ public class BallHandler {
             return;
         }
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm));
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm),"ShootAndPass");
         m_thread.start();
     }
 
@@ -55,7 +55,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("Robot Shoots the ball", 0);
 
-        if (ballInMittLimitSwitch.get() != Global.BALLINMITT) {
+        if (! ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
 
             return;
@@ -69,7 +69,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("Thread should start", 0);
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor));
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor),"ShootAndPass");
 
         m_thread.start();
     }
@@ -77,7 +77,7 @@ public class BallHandler {
     public void loadEnable() {
         SmartDashboard.putNumber("Checking limit switch", 0);
 
-        if (ballInMittLimitSwitch.get() == Global.BALLINMITT) {
+        if ( ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot already has a ball in it", 0);
 
             return;
@@ -88,7 +88,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("The load thread shouldn run", 0);
 
-        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittLimitSwitch, inFeed));
+        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittDetector, inFeed),"LoadAndCatch");
         m_thread.start();
     }
 

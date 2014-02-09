@@ -17,7 +17,7 @@ public class RobotTemplate extends IterativeRobot {
 
     private Joystick joystick;
 
-    private StereoRangeFinder stereoRangeFinder;
+    private RangeFinder rangeFinder;
 
     private Button shootButton;
     private Button anchorButton;
@@ -31,7 +31,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
 
         joystick = new Joystick(1);
-        stereoRangeFinder = new StereoRangeFinder();
+        rangeFinder = new RangeFinder(Ports.rangeFinderChannel);
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
 
@@ -57,9 +57,9 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousPeriodic() {
 
-//        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
-//        driveSystem.moveDistance(stereoRangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall);
-//        driveSystem.rotate(-stereoRangeFinder.degreesOffset());
+//        
+//        driveSystem.moveDistance((rangeFinder.getDistanceInches()/12) - Global.wantedDistanceFromWall);
+//        
 //        driveSystem.gyro.reset(); // zero the gyro
     }
 

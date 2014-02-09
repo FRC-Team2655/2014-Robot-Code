@@ -5,7 +5,6 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -16,10 +15,10 @@ public class LoadAndCatchCommand implements Runnable {
 
     private final InFeed m_loadArm;
     private final SideArms m_sideArm;
-    private final DigitalInput m_ballInMittLimitSwitch;
+    private final BallInMittDetector m_ballInMittLimitSwitch;
 
     // this constructor is used for the load command
-    public LoadAndCatchCommand(SideArms sideArm, DigitalInput ballInMittLimitSwitch, InFeed inFeed) {
+    public LoadAndCatchCommand(SideArms sideArm, BallInMittDetector ballInMittLimitSwitch, InFeed inFeed) {
         m_sideArm = sideArm;
         m_loadArm = inFeed;
         m_ballInMittLimitSwitch = ballInMittLimitSwitch;
@@ -34,7 +33,7 @@ public class LoadAndCatchCommand implements Runnable {
         m_sideArm.open();
         m_loadArm.on();
 
-        while (m_ballInMittLimitSwitch.get() != Global.BALLINMITT) {
+        while (!m_ballInMittLimitSwitch.ballInMitt()) {
             try {
                 SmartDashboard.putNumber("Inside while loop", 0);
 
