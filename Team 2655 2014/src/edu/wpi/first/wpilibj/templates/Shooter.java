@@ -12,7 +12,7 @@ public class Shooter {
     //keep in mind that i might need to refactor names
     private final DoubleSolenoid shooterPiston1;
     private final DoubleSolenoid shooterPiston2;
-    private double m_t1, m_t2, m_t3, m_tstart, m_tend;
+    private double m_t1, m_t2, m_t3;
     private int m_x1, m_x2, m_x3;
     private double m_v1, m_v2, m_v3;
 
@@ -37,14 +37,17 @@ public class Shooter {
         SmartDashboard.putNumber("Shooter has finished", 0);
     }
 
-    private void measureAcceleration() {
+    // return value is how much time we took
+    // in micro seconds
+    private double measureAcceleration() {
 
         // FPGA Time returns time in micro seconds
-        m_tstart = Utility.getFPGATime();
+        long start = Utility.getFPGATime();
 
         // f = m * a
         // need to add rotation sensor positions
         shooterPosition.start();
+        shooterPosition.reset();
 
         m_x1 = shooterPosition.getRaw();
         m_t1 = Utility.getFPGATime();
@@ -59,7 +62,8 @@ public class Shooter {
 
         shooterPosition.stop();
 
-        m_tend = Utility.getFPGATime();
+        // return time in milliseconds
+        return (Utility.getFPGATime() - start) * 1000;
 
     }
 
@@ -74,16 +78,20 @@ public class Shooter {
 
     private void shootPass(int extendTime) {
 
+        
         // start firing
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
+//        double xTime = 0;
+//        if ( extendTime == Global.waitTimeShoot) {
+//            // shoot mode
+//
+//            xTime = measureAcceleration();
+//
+//            Timer.delay(extendTime - xTime);
+//        } else
+        {
 
-        if (Global.waitTimeShoot == extendTime) {
-            // shoot mode
-            measureAcceleration();
-            Timer.delay(extendTime - (m_tend - m_tstart));
-        } else {
-            // pass mode
             Timer.delay(extendTime);
         }
 
@@ -100,9 +108,9 @@ public class Shooter {
 
         // do a few calculations to figure weight of ball
         // useful later to calculate trajectory
-        if (Global.waitTimeShoot == extendTime) {
-            Global.measuredTimeInAccelerationMeasurement = (m_tend - m_tstart);
-            Global.massOfBall = calculateMass();
-        }
+//        if (extendTime == Global.waitTimeShoot) {
+//            Global.measuredTimeInAccelerationMeasurement = xTime;
+//            Global.massOfBall = calculateMass();
+//        }
     }
 }
