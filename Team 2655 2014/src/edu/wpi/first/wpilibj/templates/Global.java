@@ -23,30 +23,30 @@ public class Global {
 
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet
-    public static int stereoRangeFinderSeperation = 23; // inches
-    public static int waitTimeShoot = 101; // ms, must be larter than waitTimePass
-    public static int waitTimePass = 100; // ms
-    public static int timeForShooterToRetract = 100; // ms
+    public static long stereoRangeFinderSeperation = 23; // inches
+    public static long waitTimeShoot = 101; // ms, must be larter than waitTimePass
+    public static long waitTimePass = 100; // ms
+    public static long timeForShooterToRetract = 100; // ms
 
 //  Drive Modes  
     public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
-    public static double loadIdleTime = 100;// ms
-    public static int catchIdleTime = 100; // ms
+    public static long loadIdleTime = 100;// ms
+    public static long catchIdleTime = 100; // ms
 
 //  anchor raise and drop times
-    public static int anchorDropTime = 100; // ms
-    public static int anchorRaiseTime = 100; // ms
+    public static long anchorDropTime = 100; // ms
+    public static long anchorRaiseTime = 100; // ms
 
 //  drive system 
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
 
 //  side arms
-    public static int sideArmCloseTime = 100; // ms
-    public static int sideArmOpenTime = 100; // ms
-    public static int sideArmIdleTime = 100; // ms
+    public static long sideArmCloseTime = 100; // ms
+    public static long sideArmOpenTime = 100; // ms
+    public static long sideArmIdleTime = 100; // ms
 
 //  Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
