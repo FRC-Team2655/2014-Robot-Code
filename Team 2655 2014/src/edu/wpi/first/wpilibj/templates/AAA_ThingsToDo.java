@@ -71,9 +71,6 @@ public class AAA_ThingsToDo {
        Need to add a variable for "b" (y offset). Hopefully the "m" slope
        is already a variable.
     
-
-    8. (all) Need to update User's Manual -- there have been lots of changes
-       lately.
     
     9. Figure out if we could control the CompressorSystem and add code
        to allow the pressure to go lower than the low limit -- we might
