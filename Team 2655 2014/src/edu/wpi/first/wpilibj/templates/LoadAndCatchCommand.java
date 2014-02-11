@@ -34,8 +34,8 @@ public class LoadAndCatchCommand implements Runnable {
         m_sideArm.open();
         m_loadArm.on();
 
-        while (!m_ballInMittLimitSwitch.ballInMitt()) {
-            // SmartDashboard.putNumber("Inside while loop", 0);
+        while (m_ballInMittLimitSwitch.ballInMitt() == false) {
+             SmartDashboard.putNumber("Inside while loop", 0);
 
             // need to rename time to something like
             // poll ball in mitt switch wait timer

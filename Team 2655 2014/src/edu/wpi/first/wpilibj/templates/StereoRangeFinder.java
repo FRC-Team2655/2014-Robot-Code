@@ -22,7 +22,7 @@ public class StereoRangeFinder {
 
         // this class is not used now
         left = new RangeFinder(Ports.rangeFinderChannel);
-        right = new RangeFinder(Ports.BallInMittChannel);
+        right = new RangeFinder(Ports.ballInMittChannel);
     }
 
     public int degreesOffset() {

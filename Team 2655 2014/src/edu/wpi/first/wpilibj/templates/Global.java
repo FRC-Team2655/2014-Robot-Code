@@ -32,7 +32,7 @@ public class Global {
     public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
-    public static int loadIdleTime = 100; // ms
+    public static double loadIdleTime = 0.5;// sec
     public static int catchIdleTime = 100; // ms
 
 //  anchor raise and drop times

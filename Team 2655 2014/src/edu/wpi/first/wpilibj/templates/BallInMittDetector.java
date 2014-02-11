@@ -5,7 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-//import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /**
  *
@@ -13,16 +13,17 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class BallInMittDetector {
 
-    private final RangeFinder rangeFinder;
-    //private final DigitalInput ballInMitt;
-
+//    private final RangeFinder rangeFinder;
+    private final DigitalInput ballInMitt;
+    private final boolean BALLINMITT = false;
+    
     public BallInMittDetector() {
-        rangeFinder = new RangeFinder(Ports.BallInMittChannel);
-        //ballInMitt = new DigitalInput(Ports.BallInMittChannel);
+//        rangeFinder = new RangeFinder(Ports.BallInMittChannel);
+        ballInMitt = new DigitalInput(Ports.ballInMittChannel);
     }
 
     public boolean ballInMitt() {
-        //return ballInMitt.get() == true;
-        return rangeFinder.getDistanceInches() < Global.wantedBallDistance;
+        return ballInMitt.get() == BALLINMITT;
+//        return rangeFinder.getDistanceInches() < Global.wantedBallDistance;
     }
 }
