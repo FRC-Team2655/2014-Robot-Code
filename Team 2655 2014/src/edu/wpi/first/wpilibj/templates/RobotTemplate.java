@@ -57,10 +57,14 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousPeriodic() {
 
-//        
-//        driveSystem.moveDistance((rangeFinder.getDistanceInches()/12) - Global.wantedDistanceFromWall);
-//        
-//        driveSystem.gyro.reset(); // zero the gyro
+        if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
+            
+            driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
+            
+        } else {
+            ballHandler.shootTheBall();
+        }
+
     }
 
     public void teleopInit() {
