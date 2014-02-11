@@ -76,7 +76,7 @@ public class Shooter {
         return 0.0;
     }
 
-    private void shootPass(int extendTime) {
+    private void shootPass(long extendTime) {
 
         
         // start firing

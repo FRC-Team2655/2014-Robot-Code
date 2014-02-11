@@ -11,7 +11,7 @@ package edu.wpi.first.wpilibj.templates;
  * @author magic_000
  */
 public class TeamTimer {
-      public static void delay(final int milliseconds) {
+      public static void delay(final long milliseconds) {
         try {
             Thread.sleep(milliseconds);
         } catch (final InterruptedException e) {
