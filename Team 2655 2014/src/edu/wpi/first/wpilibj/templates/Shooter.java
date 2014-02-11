@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj.Utility;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -52,11 +52,11 @@ public class Shooter {
         m_x1 = shooterPosition.getRaw();
         m_t1 = Utility.getFPGATime();
 
-        Timer.delay(5);
+        TeamTimer.delay(5);
         m_x2 = shooterPosition.getRaw();
         m_t2 = Utility.getFPGATime();
 
-        Timer.delay(5);
+        TeamTimer.delay(5);
         m_x3 = shooterPosition.getRaw();
         m_t3 = Utility.getFPGATime();
 
@@ -92,7 +92,7 @@ public class Shooter {
 //        } else
         {
 
-            Timer.delay(extendTime);
+            TeamTimer.delay(extendTime);
         }
 
         // start retracting
@@ -100,7 +100,7 @@ public class Shooter {
         shooterPiston2.set(DoubleSolenoid.Value.kReverse);
 
         // Wait until piston completly retracts.
-        Timer.delay(Global.timeForShooterToRetract);
+        TeamTimer.delay(Global.timeForShooterToRetract);
 
         // Now stop wasting air
         shooterPiston1.set(DoubleSolenoid.Value.kOff);

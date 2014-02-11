@@ -7,7 +7,6 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -41,7 +40,7 @@ public class Anchor {
 
         anchors.set(RAISE);
         
-        Timer.delay(Global.anchorRaiseTime);
+        TeamTimer.delay(Global.anchorRaiseTime);
 
         anchors.set(OFF);
         m_isDropped = false;

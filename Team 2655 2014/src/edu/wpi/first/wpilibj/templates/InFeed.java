@@ -3,7 +3,7 @@ package edu.wpi.first.wpilibj.templates;
 // Author Zephan Editor Seth
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
-import edu.wpi.first.wpilibj.Timer;
+
 
 public class InFeed {
 
@@ -23,7 +23,7 @@ public class InFeed {
 
         loadArmLift.set(DoubleSolenoid.Value.kForward);
         
-        Timer.delay(Global.loadArmExtendTime);
+        TeamTimer.delay(Global.loadArmExtendTime);
 
         infeedArmMotor.set(Relay.Value.kOn);
         loadArmLift.set(DoubleSolenoid.Value.kOff);
@@ -34,7 +34,7 @@ public class InFeed {
 
         loadArmLift.set(DoubleSolenoid.Value.kReverse);
         
-        Timer.delay(Global.loadArmRaiseTime);
+        TeamTimer.delay(Global.loadArmRaiseTime);
 
         loadArmLift.set(DoubleSolenoid.Value.kOff);
         infeedArmMotor.set(Relay.Value.kOff);

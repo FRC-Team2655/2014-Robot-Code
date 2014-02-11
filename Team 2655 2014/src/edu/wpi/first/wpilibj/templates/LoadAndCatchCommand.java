@@ -5,7 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Timer;
+
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -43,7 +43,7 @@ public class LoadAndCatchCommand implements Runnable {
             // maybe we could use yield() instead of sleep
             // but, idk how to interrupt a thread from
             // user intput
-            Timer.delay(Global.loadIdleTime);
+            TeamTimer.delay(Global.loadIdleTime);
         }
         SmartDashboard.putNumber("Out of while loop", 0);
 
