@@ -5,7 +5,6 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -34,9 +33,9 @@ public class LoadAndCatchCommand implements Runnable {
         m_sideArm.open();
         m_loadArm.on();
 
-        while (m_ballInMittLimitSwitch.ballInMitt() == false) {
-             SmartDashboard.putNumber("Inside while loop", 0);
-
+        while (m_ballInMittLimitSwitch.ballInMitt() == false && Global.STOP == false) {
+            SmartDashboard.putNumber("Inside while loop", 0);
+            
             // need to rename time to something like
             // poll ball in mitt switch wait timer
             //
@@ -46,9 +45,11 @@ public class LoadAndCatchCommand implements Runnable {
             TeamTimer.delay(Global.loadIdleTime);
         }
         SmartDashboard.putNumber("Out of while loop", 0);
-
+        
         m_loadArm.off();
         m_sideArm.close();
+        
+        Global.STOP = false;
 
     }
 }

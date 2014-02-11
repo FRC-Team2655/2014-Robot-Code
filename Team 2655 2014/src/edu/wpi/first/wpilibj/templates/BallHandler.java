@@ -25,7 +25,7 @@ public class BallHandler {
         inFeed = new InFeed();
         m_thread = new Thread();
         ballInMittDetector = new BallInMittDetector();
-        
+
         ballHandlerCompressor.start();
 
         timesTriedToActivate = 0;
@@ -33,7 +33,7 @@ public class BallHandler {
 
     public void passTheBall() {
 
-        if (! ballInMittDetector.ballInMitt()) {
+        if (!ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
             return;
         }
@@ -44,7 +44,7 @@ public class BallHandler {
             return;
         }
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm),"ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm), "ShootAndPass");
         m_thread.start();
     }
 
@@ -52,7 +52,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("Robot Shoots the ball", 0);
 
-        if (! ballInMittDetector.ballInMitt()) {
+        if (!ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
 
             return;
@@ -66,7 +66,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("Thread should start", 0);
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor),"ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor), "ShootAndPass");
 
         m_thread.start();
     }
@@ -74,7 +74,7 @@ public class BallHandler {
     public void loadEnable() {
         SmartDashboard.putNumber("Checking limit switch", 0);
 
-        if ( ballInMittDetector.ballInMitt()) {
+        if (ballInMittDetector.ballInMitt()) {
             SmartDashboard.putNumber("The robot already has a ball in it", 0);
 
             return;
@@ -85,15 +85,23 @@ public class BallHandler {
 
         SmartDashboard.putNumber("The load thread shouldn run", 0);
 
-        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittDetector, inFeed),"LoadAndCatch");
+        m_thread = new Thread(new LoadAndCatchCommand(sideArm, ballInMittDetector, inFeed), "LoadAndCatch");
         m_thread.start();
     }
 
     public void loadDisable() {
+        SmartDashboard.putNumber("Made it to loadDisable", 0);
+
         if (!m_thread.isAlive()) {
+            SmartDashboard.putNumber("Thread is already alive", 0);
             return;
         }
-        m_thread.interrupt();
+
+        SmartDashboard.putNumber("Trys to disable load", 0);
+//        m_thread.interrupt();
+        Global.STOP = true;
+        SmartDashboard.putNumber("Made it past thread.interrupt", 0);
+
     }
 
     public boolean loadIsEnabled() {

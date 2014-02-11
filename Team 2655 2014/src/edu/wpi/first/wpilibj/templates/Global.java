@@ -71,6 +71,8 @@ public class Global {
     public static double k_timeInAccelerationMeasurement = 10; // micro seconds
     public static double massOfBall; // units ?
 
+    public static boolean STOP = false;
+    
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
         SmartDashboard.putNumber("speed Slope Moving", speedSlopeMoving);
