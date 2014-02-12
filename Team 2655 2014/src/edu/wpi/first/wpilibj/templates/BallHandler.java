@@ -14,6 +14,8 @@ public class BallHandler {
 
     private Thread m_thread;
 
+    private int airTankRefreshWait = 0;
+
     public BallHandler() {
 
         ballHandlerCompressor = new CompressorSystem();
@@ -116,8 +118,11 @@ public class BallHandler {
     }
 
     public void getPressure() {
+        airTankRefreshWait++;
 
-        SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.tankPressure.getVoltage());
-
+        if (airTankRefreshWait == 100) {
+            SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.tankPressure.getVoltage());
+            airTankRefreshWait = 0;
+        }
     }
 }

@@ -57,10 +57,12 @@ public class RobotTemplate extends IterativeRobot {
 
     public void autonomousPeriodic() {
 
+        ballHandler.getPressure();
+
         if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
-            
+
             driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
-            
+
         } else {
             ballHandler.shootTheBall();
         }
@@ -74,8 +76,8 @@ public class RobotTemplate extends IterativeRobot {
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+        ballHandler.getPressure();
 
-        
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
 //        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
