@@ -36,8 +36,10 @@ public final class Ports {
     public final static int backRightMotorRotationBChannel = Ports.DSCDIO.ch10;
 
     // DIO
-    public final static int ballInMittChannel = Ports.DSCDIO.ch11;
+    public final static int ballInMittChannel = Ports.DSCDIO.ch1;
+    public final static int pressureSwitchChannel = Ports.DSCDIO.ch2;
 
+    
     // Relays
     public final static int infeedArmMotorControlChannel = Ports.DSCRelay.ch2;
     public final static int compressorRelayChannel = Ports.DSCRelay.ch1;
@@ -57,8 +59,6 @@ public final class Ports {
     // analog
     public final static int gyroChannel = Ports.AM.ch1;
     public final static int rangeFinderChannel = Ports.AM.ch2;
- // public final static int ballInMittChannel = Ports.AM.ch3;
-    public final static int pressureSwitchChannel = Ports.AM.ch4;
     // ch5-ch7 not used right now
     public final static int temperatureChannel = Ports.AM.ch8;
 
