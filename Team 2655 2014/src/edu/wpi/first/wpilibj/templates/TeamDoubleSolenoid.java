@@ -17,13 +17,6 @@ public class TeamDoubleSolenoid {
     private final Relay forward;
     private final Relay reverse;
 
-    public TeamDoubleSolenoid(int moduleNumber, int forwardChannel, int reverseChannel) {
-        forward = new Relay(moduleNumber, forwardChannel);
-        reverse = new Relay(moduleNumber, reverseChannel);
-        forward.set(Relay.Value.kOff);
-        reverse.set(Relay.Value.kOff);
-    }
-
     public TeamDoubleSolenoid(int forwardChannel, int reverseChannel) {
         forward = new Relay(forwardChannel);
         reverse = new Relay(reverseChannel);
