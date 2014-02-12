@@ -17,6 +17,9 @@ public class CompressorSystem extends Compressor {
     }
 
     public double getPressure() {
-        return tankPressure.getVoltage();
+//      Y = MX + B
+//      B = -27.75
+//      M = 43.5
+        return (43.5 * tankPressure.getVoltage() - 27.75);
     }
 }
