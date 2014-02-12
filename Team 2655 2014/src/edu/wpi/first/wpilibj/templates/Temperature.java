@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 
 /**
  *
- * @author magic_000
+ * @author psiSlopeagic_000
  */
 public class Temperature {
 

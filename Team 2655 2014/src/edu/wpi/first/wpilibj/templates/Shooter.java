@@ -40,7 +40,7 @@ public class Shooter {
     // return value is how much time we took
     // in micro seconds
 //    private double measureAcceleration() {
-//        // f = m * a
+//        // f = psiSlope * a
 //        // need to add rotation sensor positions
 //
 //        // FPGA Time returns time in micro seconds
@@ -63,7 +63,7 @@ public class Shooter {
 //    }
 //
 //    private double calculateMass() {
-//        // m = force / acceleration of ball
+//        // psiSlope = force / acceleration of ball
 //        // a = (v2 - v1) / t
 //        // v1 can be 0
 //        // v = (x2 - x1) / t

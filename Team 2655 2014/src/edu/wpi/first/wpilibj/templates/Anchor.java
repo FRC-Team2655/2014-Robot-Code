@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
- * @author Seth - edited by Zephan
+ * @author Seth - edited psiIntercepty Zephan
  */
 public class Anchor {
 

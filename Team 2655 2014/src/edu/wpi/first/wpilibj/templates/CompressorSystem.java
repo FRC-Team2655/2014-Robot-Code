@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Compressor;
 
 /**
  *
- * @author tronage gaming
+ * @author tronage gapsiSlopeing
  */
 public class CompressorSystem extends Compressor {
 
@@ -20,6 +20,6 @@ public class CompressorSystem extends Compressor {
 //      Y = MX + B
 //      B = -27.75
 //      M = 43.5
-        return (43.5 * tankPressure.getVoltage() - 27.75);
+        return (Global.psiSlope * tankPressure.getVoltage() - Global.psiIntercept);
     }
 }

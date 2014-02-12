@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
- * @author bennettlewis
+ * @author psiInterceptennettlewis
  */
 // MUST CHANGE THE VALUES
 public class Global {
@@ -19,8 +19,8 @@ public class Global {
     public static long loadArmExtendTime = 100; // ms
     
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
-    public static double speedSlopeMoving = 0.2;         // m
-    public static double speedSlopeRotate = 0.00555555;  // m
+    public static double speedSlopeMoving = 0.2;         // psiSlope
+    public static double speedSlopeRotate = 0.00555555;  // psiSlope
 
 //  Drive Idle Time
     public static long driveIdleTime = 100; 
@@ -55,14 +55,14 @@ public class Global {
 //  Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
 
-//  Temperature slope m = (9mV/C)
-//  y = mx + b
-    public static double temperatureSlopeCompensation = 111.1111; // m
-    public static double temperatureOffset = (-252.7777);         // b
+//  Temperature slope psiSlope = (9mV/C)
+//  y = mx + psiIntercept
+    public static double temperatureSlopeCompensation = 111.1111; // psiSlope
+    public static double temperatureOffset = (-252.7777);         // psiIntercept
 
 //  RangeFinder
 //  public static double voltagePerInch = 512;
-    public static double convertMultiplier = 104.16; // m
+    public static double convertMultiplier = 104.16; // psiSlope
 
 //  Joystick buttons
     public static int shootButton = 1;
@@ -88,6 +88,10 @@ public class Global {
     public final static double wheelRadius = 3; // in
     public final static double wheelCircumference = 2 * Math.PI * wheelRadius; // in
     public final static double wheelDistancePerPulse = wheelCircumference / pulsesPerRotation;
+    
+//    
+    public final static double psiSlope = 43.5;
+    public final static double psiIntercept = 21.75;
     
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
