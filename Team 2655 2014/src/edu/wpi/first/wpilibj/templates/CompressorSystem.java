@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.Compressor;
  */
 public class CompressorSystem extends Compressor {
 
-    private AnalogChannel tankPressure;
+    private final AnalogChannel tankPressure;
 
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorRelayChannel);
