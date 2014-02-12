@@ -44,7 +44,7 @@ public class LoadAndCatchCommand implements Runnable {
                 // maybe we could use yield() instead of sleep
                 // but, idk how to interrupt a thread from
                 // user intput
-                Thread.sleep(100);
+                Thread.sleep(Global.loadIdleTime);
             }
         } catch (InterruptedException e) {
 

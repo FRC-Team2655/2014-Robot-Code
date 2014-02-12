@@ -21,6 +21,9 @@ public class Global {
     public static double speedSlopeMoving = 0.2;         // m
     public static double speedSlopeRotate = 0.00555555;  // m
 
+//  Drive Idle Time
+    public static long driveIdleTime = 100; 
+    
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet
     public static long stereoRangeFinderSeperation = 23; // inches

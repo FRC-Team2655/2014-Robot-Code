@@ -49,7 +49,7 @@ public class DriveSystem {
 
                     }
 
-                    Thread.sleep(100);
+                    Thread.sleep(Global.driveIdleTime);
                 } catch (InterruptedException ex) {
                 }
 
