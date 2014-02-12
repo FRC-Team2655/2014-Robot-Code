@@ -24,6 +24,7 @@ public class LoadAndCatchCommand implements Runnable {
         m_ballInMittLimitSwitch = ballInMittLimitSwitch;
 
     }
+    int counter = 0;
 
     // this is the constructer for the catch command
     public void run() {
@@ -33,23 +34,28 @@ public class LoadAndCatchCommand implements Runnable {
         m_sideArm.open();
         m_loadArm.on();
 
-        while (m_ballInMittLimitSwitch.ballInMitt() == false && Global.STOP == false) {
-            SmartDashboard.putNumber("Inside while loop", 0);
-            
-            // need to rename time to something like
-            // poll ball in mitt switch wait timer
-            //
-            // maybe we could use yield() instead of sleep
-            // but, idk how to interrupt a thread from
-            // user intput
-            TeamTimer.delay(Global.loadIdleTime);
+        try {
+            while (m_ballInMittLimitSwitch.ballInMitt() == false) {
+                SmartDashboard.putNumber("Inside while loop", 0);
+
+                // need to rename time to something like
+                // poll ball in mitt switch wait timer
+                //
+                // maybe we could use yield() instead of sleep
+                // but, idk how to interrupt a thread from
+                // user intput
+                Thread.sleep(100);
+            }
+        } catch (InterruptedException e) {
+
+            SmartDashboard.putNumber("Interrupt has been activated", ++counter);
+
         }
+
         SmartDashboard.putNumber("Out of while loop", 0);
-        
+
         m_loadArm.off();
         m_sideArm.close();
-        
-        Global.STOP = false;
 
     }
 }

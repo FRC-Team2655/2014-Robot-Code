@@ -98,8 +98,7 @@ public class BallHandler {
         }
 
         SmartDashboard.putNumber("Trys to disable load", 0);
-//        m_thread.interrupt();
-        Global.STOP = true;
+        m_thread.interrupt();
         SmartDashboard.putNumber("Made it past thread.interrupt", 0);
 
     }
