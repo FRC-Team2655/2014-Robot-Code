@@ -117,7 +117,7 @@ public class BallHandler {
 
     public void getPressure() {
 
-        SmartDashboard.putNumber("Button 1 has been pressed", ballHandlerCompressor.tankPressure.getVoltage());
+        SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.tankPressure.getVoltage());
 
     }
 }

@@ -83,7 +83,7 @@ public class RobotTemplate extends IterativeRobot {
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
 
-            SmartDashboard.putNumber("Tank PSI", 0);
+            SmartDashboard.putNumber("Button 1 has been pressed", 0);
 
             ballHandler.shootTheBall();// Do said action
         }
