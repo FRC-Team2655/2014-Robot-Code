@@ -75,6 +75,7 @@ public class RobotTemplate extends IterativeRobot {
     //Frodo = 50pts
     public void teleopPeriodic() {
 
+        
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
 //        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
@@ -82,7 +83,7 @@ public class RobotTemplate extends IterativeRobot {
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
 
-            SmartDashboard.putNumber("Button 1 has been pressed", 0);
+            SmartDashboard.putNumber("Tank PSI", 0);
 
             ballHandler.shootTheBall();// Do said action
         }

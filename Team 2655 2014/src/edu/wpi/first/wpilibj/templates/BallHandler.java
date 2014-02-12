@@ -12,8 +12,6 @@ public class BallHandler {
     private final InFeed inFeed;
     private final BallInMittDetector ballInMittDetector;
 
-    int timesTriedToActivate;
-
     private Thread m_thread;
 
     public BallHandler() {
@@ -28,7 +26,6 @@ public class BallHandler {
 
         ballHandlerCompressor.start();
 
-        timesTriedToActivate = 0;
     }
 
     public void passTheBall() {
@@ -39,8 +36,7 @@ public class BallHandler {
         }
 
         if (m_thread.isAlive()) {
-            timesTriedToActivate++;
-            SmartDashboard.putNumber("The Thread is still alive", timesTriedToActivate);
+            SmartDashboard.putNumber("The Thread is still alive", 0);
             return;
         }
 
@@ -117,5 +113,11 @@ public class BallHandler {
 
     public boolean anchorIsUp() {
         return !anchor.anchorIsDropped();
+    }
+
+    public void getPressure() {
+
+        SmartDashboard.putNumber("Button 1 has been pressed", ballHandlerCompressor.tankPressure.getVoltage());
+
     }
 }

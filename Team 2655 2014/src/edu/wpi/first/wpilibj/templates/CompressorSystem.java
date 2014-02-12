@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Compressor;
 
 /**
@@ -8,7 +9,10 @@ import edu.wpi.first.wpilibj.Compressor;
  */
 public class CompressorSystem extends Compressor {
 
+    public AnalogChannel tankPressure;
+
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorRelayChannel);
+        tankPressure = new AnalogChannel(Ports.airTankPressureSensor);
     }
 }
