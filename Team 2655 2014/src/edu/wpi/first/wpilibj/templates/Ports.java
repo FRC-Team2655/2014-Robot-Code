@@ -60,6 +60,7 @@ public final class Ports {
     public final static int gyroChannel = Ports.AM.ch1;
     public final static int rangeFinderChannel = Ports.AM.ch2;
     public final static int airTankPressureSensor = Ports.AM.ch3;
+    public final static int infeedBallDetectChannel = Ports.AM.ch4;
     // ch5-ch7 not used right now
     public final static int temperatureChannel = Ports.AM.ch8;
 

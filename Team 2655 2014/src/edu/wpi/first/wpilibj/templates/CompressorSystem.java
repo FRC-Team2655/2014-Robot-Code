@@ -18,8 +18,8 @@ public class CompressorSystem extends Compressor {
 
     public double getPressure() {
 //      Y = MX + B
-//      B = -27.75
+//      B = -21.75
 //      M = 43.5
-        return (Global.psiSlope * tankPressure.getVoltage() - Global.psiIntercept);
+        return (Global.psiSlope * tankPressure.getVoltage() + Global.psiIntercept);
     }
 }
