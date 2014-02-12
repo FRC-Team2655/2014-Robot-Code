@@ -121,7 +121,7 @@ public class BallHandler {
         airTankRefreshWait++;
 
         if (airTankRefreshWait == 100) {
-            SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.tankPressure.getVoltage());
+            SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.getPressure());
             airTankRefreshWait = 0;
         }
     }
