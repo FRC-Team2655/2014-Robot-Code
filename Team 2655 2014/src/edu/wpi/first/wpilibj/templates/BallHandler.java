@@ -117,7 +117,7 @@ public class BallHandler {
         return !anchor.anchorIsDropped();
     }
 
-    public void getPressure() {
+    public void displayPressure() {
         airTankRefreshWait++;
 
         if (airTankRefreshWait == 100) {
