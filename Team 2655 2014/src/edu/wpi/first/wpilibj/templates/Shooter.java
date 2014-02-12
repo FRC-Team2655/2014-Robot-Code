@@ -1,10 +1,10 @@
 package edu.wpi.first.wpilibj.templates;
 // Author Alex Senneville
 
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 
-import edu.wpi.first.wpilibj.Utility;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class Shooter {
@@ -12,17 +12,17 @@ public class Shooter {
     //keep in mind that i might need to refactor names
     private final DoubleSolenoid shooterPiston1;
     private final DoubleSolenoid shooterPiston2;
-    private double m_t1, m_t2, m_t3;
-    private int m_x1, m_x2, m_x3;
-    private double m_v1, m_v2, m_v3;
-
     private final Encoder shooterPosition;
 
+//    private final double[] m_t = new double[10];
+//    private final int[] m_x= new int[10];
+//    private final double[] m_v= new double[10];
     public Shooter() {
         shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel);
         shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
 
-        shooterPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel);
+        shooterPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k2X);
+        shooterPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
     }
 
     public void pass() {
@@ -39,46 +39,39 @@ public class Shooter {
 
     // return value is how much time we took
     // in micro seconds
-    private double measureAcceleration() {
-
-        // FPGA Time returns time in micro seconds
-        long start = Utility.getFPGATime();
-
-        // f = m * a
-        // need to add rotation sensor positions
-        shooterPosition.start();
-        shooterPosition.reset();
-
-        m_x1 = shooterPosition.getRaw();
-        m_t1 = Utility.getFPGATime();
-
-        TeamTimer.delay(5);
-        m_x2 = shooterPosition.getRaw();
-        m_t2 = Utility.getFPGATime();
-
-        TeamTimer.delay(5);
-        m_x3 = shooterPosition.getRaw();
-        m_t3 = Utility.getFPGATime();
-
-        shooterPosition.stop();
-
-        // return time in milliseconds
-        return (Utility.getFPGATime() - start) * 1000;
-
-    }
-
-    private double calculateMass() {
-        // m = force / acceleration of ball
-        // a = (v2 - v1) / t
-        // v1 can be 0
-        // v = (x2 - x1) / t
-        // force = pressure * area of piston(s)
-        return 0.0;
-    }
-
+//    private double measureAcceleration() {
+//        // f = m * a
+//        // need to add rotation sensor positions
+//
+//        // FPGA Time returns time in micro seconds
+//        long start = Utility.getFPGATime();
+//        shooterPosition.reset();
+//        shooterPosition.start();
+//
+//        for (int i = 0; i < m_x.length; i++) {
+//            m_x[i] = shooterPosition.getRaw();
+//            m_t[1] = Utility.getFPGATime();
+//            TeamTimer.delay(5);
+//        }
+//
+//        shooterPosition.stop();
+//
+//        // get the current position
+//        int x = shooterPosition.get();
+//        // return time in milliseconds
+//        return (Utility.getFPGATime() - start) * 1000;
+//    }
+//
+//    private double calculateMass() {
+//        // m = force / acceleration of ball
+//        // a = (v2 - v1) / t
+//        // v1 can be 0
+//        // v = (x2 - x1) / t
+//        // force = pressure * area of piston(s)
+//        return 0.0;
+//    }
     private void shootPass(long extendTime) {
 
-        
         // start firing
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);

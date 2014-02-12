@@ -5,6 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
+import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -73,6 +74,20 @@ public class Global {
     public static double measuredTimeInAccelerationMeasurement; // micro seconds
     public static double k_timeInAccelerationMeasurement = 10; // micro seconds
     public static double massOfBall; // units ?
+    
+    // encoder constants (assuming ALL the encoders are the same
+    public final static int pulsesPerRotation = 250; // unitless
+    
+    // shooter constants
+    public final static boolean reverseShooterRotation = false;
+    public final static double shooterArmRadius = 8; // in -- just a guess
+    public final static double shooterCircumference = 2 * Math.PI * shooterArmRadius; // in
+    public final static double shooterRadiansPerPulse =  2 * Math.PI / pulsesPerRotation;
+    
+    // wheel encoder constants (assuming all the same type of encoder)
+    public final static double wheelRadius = 3; // in
+    public final static double wheelCircumference = 2 * Math.PI * wheelRadius; // in
+    public final static double wheelDistancePerPulse = wheelCircumference / pulsesPerRotation;
     
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {

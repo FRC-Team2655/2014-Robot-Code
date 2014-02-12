@@ -6,6 +6,7 @@
 // Author Zephan
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -16,6 +17,12 @@ public class DriveSystem {
     private final Gyro gyro;
     private final Thread thread;
     private final RobotDrive mainDrive;
+    
+    // wheel encoders -- nothing implemented yet
+//    private final Encoder leftFrontWheelEncoder;
+//    private final Encoder rightFrontWheelEncoder;
+//    private final Encoder leftRearWheelEncoder;
+//    private final Encoder rightRearWheelEncoder;
 
     private int driveMode;
 
@@ -64,6 +71,12 @@ public class DriveSystem {
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
         mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backLeftMotorChannel, Ports.backRightMotorChannel);
+
+//        leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
+//        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
+//        leftRearWheelEncoder = new Encoder(Ports.backLeftMotorRotationAChannel, Ports.backLeftMotorRotationBChannel);
+//        rightRearWheelEncoder = new Encoder(Ports.backRightMotorRotationAChannel, Ports.backRightMotorRotationBChannel);
+
         thread = new DriveSystemThread();
         thread.start();
     }
