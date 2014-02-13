@@ -15,25 +15,27 @@ import edu.wpi.first.wpilibj.tables.ITable;
  */
 public class BallInMittDetector implements LiveWindowSendable {
 
-//    private final RangeFinder rangeFinder;
+    private final RangeFinder rangeFinder;
     private final DigitalInput ballInMitt;
     private final boolean BALLINMITT = false;
 
     public BallInMittDetector() {
-//        rangeFinder = new RangeFinder(Ports.BallInMittChannel);
+        rangeFinder = new RangeFinder(Ports.ballInMittAChannel);
         ballInMitt = new DigitalInput(Ports.ballInMittChannel);
     }
 
     public boolean ballInMitt() {
-        return ballInMitt.get() == BALLINMITT;
-//        return rangeFinder.getDistanceInches() < Global.wantedBallDistance;
+        return ballInMitt.get() == BALLINMITT
+                || rangeFinder.getDistanceInches() < Global.wantedBallDistance;
     }
 
     private ITable m_table;
 
     public void updateTable() {
         if (m_table != null) {
-            m_table.putBoolean("Ball In Mitt is ", ballInMitt());
+            m_table.putBoolean("Ball In Mitt is", ballInMitt());
+            m_table.putBoolean("Ball In Mitt DIO", ballInMitt.get());
+            m_table.putNumber("Ball In Mitt rangefinder (in)", rangeFinder.getDistanceInches());
         }
     }
 
