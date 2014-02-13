@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveSystem {
 
     private final Joystick driveStick;
-    private final Gyro gyro; // TODO -- need to test this, might need calibration
+    private final Gyro gyro; // TODO test / calibrate gyro
     private final Thread thread;
     private final RobotDrive mainDrive;
     
