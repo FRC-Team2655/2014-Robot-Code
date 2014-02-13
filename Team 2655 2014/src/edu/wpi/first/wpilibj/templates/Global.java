@@ -5,7 +5,6 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import com.sun.squawk.util.MathUtils;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -14,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 // MUST CHANGE THE VALUES
 public class Global {
+    
 //  Variables used in load arm
     public static long loadArmRaiseTime = 100; // ms
     public static long loadArmExtendTime = 100; // ms
@@ -57,22 +57,25 @@ public class Global {
 
 //  Temperature slope psiSlope = (9mV/C)
 //  y = mx + psiIntercept
-    public static double temperatureSlopeCompensation = 111.1111; // psiSlope
-    public static double temperatureOffset = (-252.7777);         // psiIntercept
+    public final static double temperatureSlopeCompensation = 111.1111; // psiSlope
+    public final static double temperatureOffset = (-252.7777);         // psiIntercept
 
 //  RangeFinder
 //  public static double voltagePerInch = 512;
-    public static double convertMultiplier = 104.16; // psiSlope
+    public final static double convertMultiplier = 104.16; // psiSlope
 
 //  Joystick buttons
-    public static int shootButton = 1;
-    public static int anchorButton = 3;
-    public static int loadButton = 4;
-    public static int poopButton = 5;
+    public final static int shootButton = 1;
+    public final static int anchorButton = 3;
+    public final static int loadButton = 4;
+    public final static int poopButton = 5;
     
+    // ball in mitt constants
     public final static int wantedBallDistance = 15; // inches
+    
+    // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds
-    public static double k_timeInAccelerationMeasurement = 10; // micro seconds
+    public final static double k_timeInAccelerationMeasurement = 10; // micro seconds
     public static double massOfBall; // units ?
     
     // encoder constants (assuming ALL the encoders are the same
@@ -84,14 +87,18 @@ public class Global {
     public final static double shooterCircumference = 2 * Math.PI * shooterArmRadius; // in
     public final static double shooterRadiansPerPulse =  2 * Math.PI / pulsesPerRotation;
     
-    // wheel encoder constants (assuming all the same type of encoder)
+    // wheel encoder constants
     public final static double wheelRadius = 3; // in
     public final static double wheelCircumference = 2 * Math.PI * wheelRadius; // in
     public final static double wheelDistancePerPulse = wheelCircumference / pulsesPerRotation;
     
-//    
+    // compressor constants
     public final static double psiSlope = 43.5;
-    public final static double psiIntercept = (-21.75);
+    public final static double psiIntercept = (-21.75); // b
+    
+    // current sensor constants
+    public final static double mvPerAmp = 14.705; // 1 / 68mv/A
+    public final static double mvPerAmpIntercept = 0; // b
     
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
@@ -109,13 +116,13 @@ public class Global {
         SmartDashboard.putNumber("side Arm Close Time", sideArmCloseTime);
         SmartDashboard.putNumber("side Arm Open Time", sideArmOpenTime);
         SmartDashboard.putNumber("side Arm Idle Time", sideArmIdleTime);
-        SmartDashboard.putNumber("gyro Sensitivity", kDefaultVoltsPerDegreePerSecond);
+        //SmartDashboard.putNumber("gyro Sensitivity", kDefaultVoltsPerDegreePerSecond);
         SmartDashboard.putNumber("range Finder Convert multiplier", convertMultiplier);
         SmartDashboard.putNumber("John mode toggle", johnMode);
         SmartDashboard.putNumber("load Idle Time", loadIdleTime);
         SmartDashboard.putNumber("temperature Slope Compensation", temperatureSlopeCompensation);
         SmartDashboard.putNumber("temperature Offset", temperatureOffset);
-        SmartDashboard.putNumber("Time in measureAcceleration(): ", measuredTimeInAccelerationMeasurement);
+        //SmartDashboard.putNumber("Time in measureAcceleration(): ", measuredTimeInAccelerationMeasurement);
         //SmartDashboard.putNumber("k time in acceleration measurement",k_timeInAccelerationMeasurement)
     }
 }

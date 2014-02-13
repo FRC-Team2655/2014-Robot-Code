@@ -6,27 +6,32 @@
 // Author Zephan
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+import edu.wpi.first.wpilibj.tables.ITable;
 
-public class DriveSystem {
+public class DriveSystem implements LiveWindowSendable {
 
     private final Joystick driveStick;
     private final Gyro gyro; // TODO test / calibrate gyro
     private final Thread thread;
     private final RobotDrive mainDrive;
-    
+
     // TODO implement wheel encoders for wheel speed
 //    private final Encoder leftFrontWheelEncoder;
 //    private final Encoder rightFrontWheelEncoder;
 //    private final Encoder leftRearWheelEncoder;
 //    private final Encoder rightRearWheelEncoder;
     
-    // TODO could use current sensors on motors to measure current used
-
+      // TODO enable CurrentSensor in DriveSystem when hardware is available 
+//    private final CurrentSensor frontRightCurrentSensor;
+//    private final CurrentSensor frontLeftCurrentSensor;
+//    private final CurrentSensor backRightCurrentSensor;
+//    private final CurrentSensor backLeftCurrentSensor;
     private int driveMode;
+
 
     class DriveModeEnum {
 //      Possible states the robot can be in.  
@@ -78,6 +83,11 @@ public class DriveSystem {
 //        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
 //        leftRearWheelEncoder = new Encoder(Ports.backLeftMotorRotationAChannel, Ports.backLeftMotorRotationBChannel);
 //        rightRearWheelEncoder = new Encoder(Ports.backRightMotorRotationAChannel, Ports.backRightMotorRotationBChannel);
+
+//        frontRightCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.frontRightMotorCurrentChannel);
+//        frontLeftCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.frontLeftMotorCurrentChannel);
+//        backRightCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.backRightMotorCurrentChannel);
+//        backLeftCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.backLeftMotorCurrentChannel);
 
         thread = new DriveSystemThread();
         thread.start();
@@ -144,6 +154,35 @@ public class DriveSystem {
 
         rotateToDegree((int) (gyro.getAngle() + degree));
 
+    }
+    private ITable m_table;
+    public void updateTable() {
+        if (m_table != null) {
+            m_table.getNumber("Gyro Angle",gyro.getAngle());
+//            m_table.getNumber("RF Current",frontRightCurrentSensor.getCurrent());
+//            m_table.getNumber("LF Current",frontLeftCurrentSensor.getCurrent());
+//            m_table.getNumber("RR Current",backRightCurrentSensor.getCurrent());
+//            m_table.getNumber("LR Current",backLeftCurrentSensor.getCurrent());
+        }
+    }
+
+    public void startLiveWindowMode() {
+    }
+
+    public void stopLiveWindowMode() {
+    }
+
+    public void initTable(ITable arg0) {
+        m_table= arg0;
+        updateTable();
+    }
+
+    public ITable getTable() {
+        return m_table;
+    }
+
+    public String getSmartDashboardType() {
+        return "DriveSystem";
     }
 
 }

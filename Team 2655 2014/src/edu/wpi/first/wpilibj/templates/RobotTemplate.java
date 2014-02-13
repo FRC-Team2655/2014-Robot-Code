@@ -8,11 +8,12 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.ITable;
 
 // TODO make software test harness (this is not trivial by the way)
-
-public class RobotTemplate extends IterativeRobot {
+public class RobotTemplate extends IterativeRobot implements LiveWindowSendable {
 
     private DriveSystem driveSystem;
     private BallHandler ballHandler;
@@ -25,6 +26,11 @@ public class RobotTemplate extends IterativeRobot {
     private Button anchorButton;
     private Button loadButton;
     private Button passButton;
+//    private CurrentSensor crioCurrentSensor;
+//    private CurrentSensor dscCurrentSensor;
+
+    // TODO enable cRIO CurrentSensor in RobotTemplate when hardware is available 
+    // TODO enable DSC CurrentSensor in RobotTemplate when hardware is available 
 
     public RobotTemplate() {
         // not sure this gets called because we have the IterateRobot
@@ -41,6 +47,10 @@ public class RobotTemplate extends IterativeRobot {
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
+
+//        crioCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.crioCurrentChannel);
+//        dscCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.dscCurrentChannel);
+
     }
 
     public void disabledInit() {
@@ -62,9 +72,8 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousPeriodic() {
 
         ballHandler.displayPressure();
-        
-        // TODO add code for camera hot zone detection
 
+        // TODO add code for camera hot zone detection
         if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
 
             driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
@@ -88,6 +97,7 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
 //        SmartDashboard.putNumber("Drive Mode", driveType);
+        
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
 
@@ -132,4 +142,37 @@ public class RobotTemplate extends IterativeRobot {
     public void testPeriodic() {
         ballHandler.displayPressure();
     }
+
+    //
+    // LIveWindows support code
+    //
+    private ITable m_table;
+
+    public void updateTable() {
+        if (m_table != null) {
+//            m_table.putNumber("DSC Current", dscCurrentSensor.getCurrent());
+//            m_table.putNumber("cRIO Current", crioCurrentSensor.getCurrent());
+            m_table.putNumber("Range finder (ft)", rangeFinder.getDistanceFeet());
+        }
+    }
+
+    public void startLiveWindowMode() {
+    }
+
+    public void stopLiveWindowMode() {
+    }
+
+    public void initTable(ITable arg0) {
+        m_table = arg0;
+        updateTable();
+    }
+
+    public ITable getTable() {
+        return m_table;
+    }
+
+    public String getSmartDashboardType() {
+        return "Robby The Robot";
+    }
+
 }
