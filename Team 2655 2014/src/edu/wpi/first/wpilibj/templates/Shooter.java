@@ -4,15 +4,17 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.tables.ITable;
 
-public class Shooter {
+public class Shooter implements LiveWindowSendable {
 
     //keep in mind that i might need to refactor names
     private final DoubleSolenoid shooterPiston1;
     private final DoubleSolenoid shooterPiston2;
-    private final Encoder shooterPosition;
+    private final Encoder shooterArmPosition;
 
 //    private final double[] m_t = new double[10];
 //    private final int[] m_x= new int[10];
@@ -21,8 +23,10 @@ public class Shooter {
         shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel);
         shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
 
-        shooterPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k2X);
-        shooterPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
+        shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
+        shooterArmPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
+        shooterArmPosition.reset();
+        shooterArmPosition.start(); // start at zero
     }
 
     public void pass() {
@@ -105,5 +109,34 @@ public class Shooter {
 //            Global.measuredTimeInAccelerationMeasurement = xTime;
 //            Global.massOfBall = calculateMass();
 //        }
+    }
+    
+    /*
+    * The following routines support Live Windows
+    */
+    private ITable m_table;
+
+    public void updateTable() {
+        if (m_table != null) {
+            m_table.putNumber("Shooter Arm Angle", shooterArmPosition.getRaw());
+        }
+    }
+
+    public void startLiveWindowMode() { /* empty for now */ }
+
+    public void stopLiveWindowMode() { /* empty for now */ }
+
+    public void initTable(ITable subtable) {
+        m_table = subtable;
+        updateTable();
+    }
+
+    public ITable getTable() {
+        return m_table;
+    }
+
+    public String getSmartDashboardType() {
+
+        return "Shooter" + shooterArmPosition.getSmartDashboardType();
     }
 }
