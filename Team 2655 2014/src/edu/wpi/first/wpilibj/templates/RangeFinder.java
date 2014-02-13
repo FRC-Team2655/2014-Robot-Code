@@ -22,6 +22,7 @@ public class RangeFinder implements LiveWindowSendable {
     }
 
     double getDistanceInches() {
+        // TODO figure out how to smooth range finder distances
         return rangeFinder.getVoltage() * Global.convertMultiplier; ///Get distance in inches.
     }
 

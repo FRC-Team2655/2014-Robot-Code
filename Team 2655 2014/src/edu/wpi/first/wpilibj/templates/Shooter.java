@@ -23,6 +23,7 @@ public class Shooter implements LiveWindowSendable {
         shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel);
         shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
 
+        // TODO finish shooter arm sensor code (angle, angular position, velocity, acceleration
         shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
         shooterArmPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
         shooterArmPosition.reset();

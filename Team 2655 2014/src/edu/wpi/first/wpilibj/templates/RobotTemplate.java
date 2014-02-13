@@ -10,6 +10,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+// TODO make software test harness (this is not trivial by the way)
+
 public class RobotTemplate extends IterativeRobot {
 
     private DriveSystem driveSystem;
@@ -60,6 +62,8 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousPeriodic() {
 
         ballHandler.displayPressure();
+        
+        // TODO add code for camera hot zone detection
 
         if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
 

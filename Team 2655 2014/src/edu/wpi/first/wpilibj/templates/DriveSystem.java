@@ -14,15 +14,17 @@ import edu.wpi.first.wpilibj.RobotDrive;
 public class DriveSystem {
 
     private final Joystick driveStick;
-    private final Gyro gyro;
+    private final Gyro gyro; // TODO -- need to test this, might need calibration
     private final Thread thread;
     private final RobotDrive mainDrive;
     
-    // wheel encoders -- nothing implemented yet
+    // TODO implement wheel encoders for wheel speed
 //    private final Encoder leftFrontWheelEncoder;
 //    private final Encoder rightFrontWheelEncoder;
 //    private final Encoder leftRearWheelEncoder;
 //    private final Encoder rightRearWheelEncoder;
+    
+    // TODO could use current sensors on motors to measure current used
 
     private int driveMode;
 
