@@ -25,11 +25,7 @@ public class DriveSystem implements LiveWindowSendable {
 //    private final Encoder leftRearWheelEncoder;
 //    private final Encoder rightRearWheelEncoder;
     
-      // TODO enable CurrentSensor in DriveSystem when hardware is available 
-//    private final CurrentSensor frontRightCurrentSensor;
-//    private final CurrentSensor frontLeftCurrentSensor;
-//    private final CurrentSensor backRightCurrentSensor;
-//    private final CurrentSensor backLeftCurrentSensor;
+
     private int driveMode;
 
 
@@ -84,10 +80,6 @@ public class DriveSystem implements LiveWindowSendable {
 //        leftRearWheelEncoder = new Encoder(Ports.backLeftMotorRotationAChannel, Ports.backLeftMotorRotationBChannel);
 //        rightRearWheelEncoder = new Encoder(Ports.backRightMotorRotationAChannel, Ports.backRightMotorRotationBChannel);
 
-//        frontRightCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.frontRightMotorCurrentChannel);
-//        frontLeftCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.frontLeftMotorCurrentChannel);
-//        backRightCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.backRightMotorCurrentChannel);
-//        backLeftCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.backLeftMotorCurrentChannel);
 
         thread = new DriveSystemThread();
         thread.start();
@@ -159,10 +151,6 @@ public class DriveSystem implements LiveWindowSendable {
     public void updateTable() {
         if (m_table != null) {
             m_table.getNumber("Gyro Angle",gyro.getAngle());
-//            m_table.getNumber("RF Current",frontRightCurrentSensor.getCurrent());
-//            m_table.getNumber("LF Current",frontLeftCurrentSensor.getCurrent());
-//            m_table.getNumber("RR Current",backRightCurrentSensor.getCurrent());
-//            m_table.getNumber("LR Current",backLeftCurrentSensor.getCurrent());
         }
     }
 

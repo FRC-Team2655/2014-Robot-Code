@@ -138,6 +138,6 @@ public class Shooter implements LiveWindowSendable {
 
     public String getSmartDashboardType() {
 
-        return "Shooter" + shooterArmPosition.getSmartDashboardType();
+        return "Shooter";
     }
 }

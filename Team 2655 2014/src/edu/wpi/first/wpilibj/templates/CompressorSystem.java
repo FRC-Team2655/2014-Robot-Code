@@ -11,14 +11,11 @@ import edu.wpi.first.wpilibj.tables.ITable;
 public class CompressorSystem extends Compressor {
 
     private final AnalogChannel tankPressure;
-//    TODO enable CurrentSensor in CompressorSystem when hardware is available 
-//    private final CurrentSensor currentSensor;
 
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorRelayChannel);
         tankPressure = new AnalogChannel(Ports.airTankPressureSensor);
 
-//        currentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.compressorMotorCurrentChannel);
     }
 
     // TODO measure air use, can we set lower "on" limit lower to reduce compressor starts?
@@ -29,10 +26,6 @@ public class CompressorSystem extends Compressor {
 //      M = 43.5
         return (Global.psiSlope * tankPressure.getVoltage() + Global.psiIntercept);
     }
-
-//    public double getCurrent() {
-//        return currentSensor.getCurrent();
-//    }
 
     private ITable m_table;
 

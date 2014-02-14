@@ -48,9 +48,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
 
-//        crioCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.crioCurrentChannel);
-//        dscCurrentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.dscCurrentChannel);
-
     }
 
     public void disabledInit() {
@@ -85,12 +82,16 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     }
 
     public void teleopInit() {
+        
+        Global.smartDashBoardGlobalVariables();
+        
         driveSystem.setTeleop();
     }
 
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+        Global.smartDashBoardGlobalVariables();
         ballHandler.displayPressure();
 
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
