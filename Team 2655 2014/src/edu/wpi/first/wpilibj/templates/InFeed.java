@@ -1,26 +1,26 @@
 package edu.wpi.first.wpilibj.templates;
 
 // Author Zephan Editor Seth
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
 
 public class InFeed {
 
-    private final TeamDoubleSolenoid loadArmLift;
-    private final Relay infeedArmMotor;
+    private final Relay loadArmLift;
+    private final Relay loadArmMotor;
 
     // define a couple of constants
-    private final DoubleSolenoid.Value DROPARMS = DoubleSolenoid.Value.kForward;
-    private final DoubleSolenoid.Value LIFTARMS = DoubleSolenoid.Value.kReverse;
-    private final DoubleSolenoid.Value LIFTOFF = DoubleSolenoid.Value.kOff;
+    private final Relay.Value DROPARMS = Relay.Value.kForward;
+    private final Relay.Value LIFTARMS = Relay.Value.kReverse;
+    private final Relay.Value LIFTOFF = Relay.Value.kOff;
+
     private final Relay.Value MOTOR_ON = Relay.Value.kOn;
     private final Relay.Value MOTOR_OFF = Relay.Value.kOff;
     private final long DROPARM_TIMER = Global.loadArmExtendTime;
     private final long LIFTARM_TIMER = Global.loadArmRaiseTime;
 
     public InFeed() {
-        infeedArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
-        loadArmLift = new TeamDoubleSolenoid(Ports.loadArmExtendChannel, Ports.loadArmRetractChannel);
+        loadArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
+        loadArmLift = new Relay(Ports.loadArmLiftChannel);
     }
 
     // drop the arms
@@ -28,12 +28,12 @@ public class InFeed {
     void on() {
 
         loadArmLift.set(DROPARMS); // turn air on to put arms down
-
+        
         TeamTimer.delay(DROPARM_TIMER);
-
-        infeedArmMotor.set(MOTOR_ON); // turn motors on
-
+        
         loadArmLift.set(LIFTOFF); // turn air off
+        
+        loadArmMotor.set(MOTOR_ON); // turn motors on
     }
 
     // lift the arms (and ball maybe)
@@ -46,7 +46,7 @@ public class InFeed {
 
         loadArmLift.set(LIFTOFF); // turn air off
 
-        infeedArmMotor.set(MOTOR_OFF); // turn motors off
+        loadArmMotor.set(MOTOR_OFF); // turn motors off
 
     }
 }

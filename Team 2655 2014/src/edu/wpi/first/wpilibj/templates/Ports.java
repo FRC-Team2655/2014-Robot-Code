@@ -40,10 +40,10 @@ public final class Ports {
 //    public final static int unusedDIOChannel_14 = Ports.DSCDIO.ch14;
     
     // Digital SideCar Relays
-    public final static int compressorRelayChannel = Ports.DSCRelay.ch1;
+    public final static int compressorMotorControlChannel = Ports.DSCRelay.ch1;
     public final static int infeedArmMotorControlChannel = Ports.DSCRelay.ch2;
-    public final static int loadArmExtendChannel = Ports.DSCRelay.ch3;
-    public final static int loadArmRetractChannel = Ports.DSCRelay.ch4;
+    public final static int loadArmLiftChannel = Ports.DSCRelay.ch3;
+    public final static int anchorControlChannel = Ports.DSCRelay.ch4;
 //    public final static int unusedRelayChannel_5 = Ports.DSCRelay.ch5;
 //    public final static int unusedRelayChannel_6 = Ports.DSCRelay.ch6;
 //    public final static int unusedRelayChannel_7 = Ports.DSCRelay.ch7;
@@ -56,8 +56,8 @@ public final class Ports {
     public final static int rightShooterRetractChannel = Ports.SM.ch4;
     public final static int sideArmOpenArmChannel = Ports.SM.ch5;
     public final static int sideArmClosedArmChannel = Ports.SM.ch6;
-    public final static int anchorDropChannel = Ports.SM.ch7;
-    public final static int anchorRaiseChannel = Ports.SM.ch8;
+ //   public final static int anchorDropChannel = Ports.SM.ch7;
+   // public final static int anchorRaiseChannel = Ports.SM.ch8;
 
     // Analog Module 1
     public final static int gyroChannel = Ports.AM.ch1;

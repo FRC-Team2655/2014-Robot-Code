@@ -7,6 +7,7 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -16,16 +17,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Anchor {
 
     private boolean m_isDropped;
-    private final DoubleSolenoid anchors;
 
-    private final DoubleSolenoid.Value DROP = DoubleSolenoid.Value.kForward;
-    private final DoubleSolenoid.Value RAISE = DoubleSolenoid.Value.kReverse;
-    private final DoubleSolenoid.Value OFF = DoubleSolenoid.Value.kOff;
+    private final Relay anchors;
 
-//  You will most likely need a timer.
+    private final Relay.Value DROP = Relay.Value.kForward;
+    private final Relay.Value OFF = Relay.Value.kOff;
+
     public Anchor() {
         m_isDropped = false;
-        anchors = new DoubleSolenoid(Ports.anchorDropChannel, Ports.anchorRaiseChannel);
+        anchors = new Relay(Ports.anchorControlChannel);
     }
 
     public void drop() {
@@ -37,10 +37,6 @@ public class Anchor {
 
     public void raise() {
         SmartDashboard.putNumber("Anchors are raised", 0);
-
-        anchors.set(RAISE);
-        
-        TeamTimer.delay(Global.anchorRaiseTime);
 
         anchors.set(OFF);
         m_isDropped = false;
