@@ -4,14 +4,11 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
 
-
 public class InFeed {
 
     private final TeamDoubleSolenoid loadArmLift;
     private final Relay infeedArmMotor;
-    private final RangeFinder rangeFinder;
-    //TODO -- try to automagically raise arms if we "see" a ball
-    
+
     // define a couple of constants
     private final DoubleSolenoid.Value DROPARMS = DoubleSolenoid.Value.kForward;
     private final DoubleSolenoid.Value LIFTARMS = DoubleSolenoid.Value.kReverse;
@@ -20,16 +17,10 @@ public class InFeed {
     private final Relay.Value MOTOR_OFF = Relay.Value.kOff;
     private final long DROPARM_TIMER = Global.loadArmExtendTime;
     private final long LIFTARM_TIMER = Global.loadArmRaiseTime;
-    
-    // need to figure out how to use range finder to
-    // run in feed system in a smart way.
-    
-    public InFeed() {
-//  Make sure to change relays and channels later.
 
+    public InFeed() {
         infeedArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
         loadArmLift = new TeamDoubleSolenoid(Ports.loadArmExtendChannel, Ports.loadArmRetractChannel);
-        rangeFinder = new RangeFinder(Ports.infeedBallDetectChannel);
     }
 
     // drop the arms
@@ -37,11 +28,11 @@ public class InFeed {
     void on() {
 
         loadArmLift.set(DROPARMS); // turn air on to put arms down
-        
+
         TeamTimer.delay(DROPARM_TIMER);
 
         infeedArmMotor.set(MOTOR_ON); // turn motors on
-        
+
         loadArmLift.set(LIFTOFF); // turn air off
     }
 
@@ -50,11 +41,11 @@ public class InFeed {
     void off() {
 
         loadArmLift.set(LIFTARMS); // turn air on to lift arms
-        
+
         TeamTimer.delay(LIFTARM_TIMER);
 
         loadArmLift.set(LIFTOFF); // turn air off
-        
+
         infeedArmMotor.set(MOTOR_OFF); // turn motors off
 
     }

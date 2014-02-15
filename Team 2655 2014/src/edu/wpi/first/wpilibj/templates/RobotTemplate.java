@@ -39,7 +39,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     public void robotInit() {
 
         joystick = new Joystick(1);
-        rangeFinder = new RangeFinder(Ports.rangeFinderChannel);
+        rangeFinder = new RangeFinder(Ports.frontRangeFinderChannel);
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
 

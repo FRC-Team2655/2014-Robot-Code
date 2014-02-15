@@ -14,7 +14,7 @@ public class CompressorSystem extends Compressor {
 
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorRelayChannel);
-        tankPressure = new AnalogChannel(Ports.airTankPressureSensor);
+        tankPressure = new AnalogChannel(Ports.airTankPressureSensorChannel);
 
     }
 

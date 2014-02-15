@@ -13,16 +13,19 @@ import com.sun.squawk.util.MathUtils;
  */
 // this class is not used now
 //
+// not used
 public class StereoRangeFinder {
 
     private final RangeFinder left;
     private final RangeFinder right;
 
-    StereoRangeFinder() {
+    public StereoRangeFinder() {
 
         // this class is not used now
-        left = new RangeFinder(Ports.rangeFinderChannel);
-        right = new RangeFinder(Ports.ballInMittChannel);
+        left = new RangeFinder(Ports.frontRangeFinderChannel);
+        
+        // not used
+        right = new RangeFinder(1); // Ports.ballInMittChannel);
     }
 
     public int degreesOffset() {

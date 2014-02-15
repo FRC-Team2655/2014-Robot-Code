@@ -70,7 +70,7 @@ public class Global {
     public final static int poopButton = 5;
 
     // ball in mitt constants
-    public final static int wantedBallDistance = 15; // inches
+    public final static int wantedBallDistance = 10; // inches
 
     // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds
