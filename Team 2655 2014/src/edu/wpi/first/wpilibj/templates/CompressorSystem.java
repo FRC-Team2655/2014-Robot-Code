@@ -2,6 +2,8 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.tables.ITable;
 
 /**
@@ -15,7 +17,7 @@ public class CompressorSystem extends Compressor {
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorMotorControlChannel);
         tankPressure = new AnalogChannel(Ports.airTankPressureSensorChannel);
-
+        LiveWindow.addSensor("CompressorSystem","tankPresssure" , tankPressure);
     }
 
     // TODO measure air use, can we set lower "on" limit lower to reduce compressor starts?

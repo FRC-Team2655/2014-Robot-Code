@@ -106,7 +106,8 @@ public class Global {
         
         SmartDashboard.putNumber("wait Time Shoot (put)", waitTimeShoot);
         
-        waitTimePass = (long) SmartDashboard.getNumber("wait Time Pass", waitTimePass);
+        SmartDashboard.putNumber("wait Time Pass", waitTimePass);
+        
         timeForShooterToRetract = (long) SmartDashboard.getNumber("time For Shooter To Retract", timeForShooterToRetract);
         anchorDropTime = (long) SmartDashboard.getNumber("anchor Drop Time", anchorDropTime);
         anchorRaiseTime = (long) SmartDashboard.getNumber("anchor Raise Time", anchorRaiseTime);

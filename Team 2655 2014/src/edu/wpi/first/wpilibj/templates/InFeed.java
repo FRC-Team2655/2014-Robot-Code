@@ -13,7 +13,7 @@ public class InFeed {
     private final Relay.Value LIFTARMS = Relay.Value.kReverse;
     private final Relay.Value LIFTOFF = Relay.Value.kOff;
 
-    private final Relay.Value MOTOR_ON = Relay.Value.kOn;
+    private final Relay.Value MOTOR_ON = Relay.Value.kForward;
     private final Relay.Value MOTOR_OFF = Relay.Value.kOff;
     private final long DROPARM_TIMER = Global.loadArmExtendTime;
     private final long LIFTARM_TIMER = Global.loadArmRaiseTime;
@@ -33,7 +33,7 @@ public class InFeed {
         
         loadArmLift.set(LIFTOFF); // turn air off
         
-        loadArmMotor.set(MOTOR_ON); // turn motors on
+        loadArmMotor.set(MOTOR_ON); // turn motors on in forward direction
     }
 
     // lift the arms (and ball maybe)
