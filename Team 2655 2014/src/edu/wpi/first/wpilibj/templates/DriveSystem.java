@@ -6,6 +6,8 @@
 // Author Zephan
 package edu.wpi.first.wpilibj.templates;
 
+import com.sun.squawk.util.MathUtils;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -20,14 +22,12 @@ public class DriveSystem implements LiveWindowSendable {
     private final RobotDrive mainDrive;
 
     // TODO implement wheel encoders for wheel speed
-//    private final Encoder leftFrontWheelEncoder;
-//    private final Encoder rightFrontWheelEncoder;
-//    private final Encoder leftRearWheelEncoder;
-//    private final Encoder rightRearWheelEncoder;
-    
+    private final Encoder leftFrontWheelEncoder;
+    private final Encoder rightFrontWheelEncoder;
+    private final Encoder leftRearWheelEncoder;
+    private final Encoder rightRearWheelEncoder;
 
     private int driveMode;
-
 
     class DriveModeEnum {
 //      Possible states the robot can be in.  
@@ -75,12 +75,21 @@ public class DriveSystem implements LiveWindowSendable {
         driveMode = DriveModeEnum.Disabled;
         mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backLeftMotorChannel, Ports.backRightMotorChannel);
 
-//        leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
-//        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
-//        leftRearWheelEncoder = new Encoder(Ports.backLeftMotorRotationAChannel, Ports.backLeftMotorRotationBChannel);
-//        rightRearWheelEncoder = new Encoder(Ports.backRightMotorRotationAChannel, Ports.backRightMotorRotationBChannel);
+        leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
+        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
+        leftRearWheelEncoder = new Encoder(Ports.backLeftMotorRotationAChannel, Ports.backLeftMotorRotationBChannel);
+        rightRearWheelEncoder = new Encoder(Ports.backRightMotorRotationAChannel, Ports.backRightMotorRotationBChannel);
 
+        leftFrontWheelEncoder.setDistancePerPulse(Global.wheelDistancePerPulse);
+        rightFrontWheelEncoder.setDistancePerPulse(Global.wheelDistancePerPulse);
+        leftRearWheelEncoder.setDistancePerPulse(Global.wheelDistancePerPulse);
+        rightRearWheelEncoder.setDistancePerPulse(Global.wheelDistancePerPulse);
 
+        leftFrontWheelEncoder.start();
+        rightFrontWheelEncoder.start();
+        leftRearWheelEncoder.start();
+        rightRearWheelEncoder.start();
+        
         thread = new DriveSystemThread();
         thread.start();
     }
@@ -148,9 +157,14 @@ public class DriveSystem implements LiveWindowSendable {
 
     }
     private ITable m_table;
+
     public void updateTable() {
         if (m_table != null) {
-            m_table.getNumber("Gyro Angle",gyro.getAngle());
+            m_table.putNumber("Gyro Angle", gyro.getAngle());
+            m_table.putNumber("LF RPM", leftFrontWheelEncoder.getRate());
+            m_table.putNumber("RF RPM", rightFrontWheelEncoder.getRate());
+            m_table.putNumber("LR RPM", leftRearWheelEncoder.getRate());
+            m_table.putNumber("RR RPM", rightRearWheelEncoder.getRate());
         }
     }
 
@@ -161,7 +175,7 @@ public class DriveSystem implements LiveWindowSendable {
     }
 
     public void initTable(ITable arg0) {
-        m_table= arg0;
+        m_table = arg0;
         updateTable();
     }
 
