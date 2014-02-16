@@ -18,8 +18,8 @@ public class InFeed {
     public InFeed() {
         loadArmLift = new DoubleSolenoid(Ports.liftArmExtendChannel, Ports.liftArmRetractChannel);
 
-        leftLoadArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
-        rightLoadArmMotor = new Relay(Ports.infeedArmMotorControlChannel);
+        leftLoadArmMotor = new Relay(Ports.infeedLeftArmMotorControlChannel);
+        rightLoadArmMotor = new Relay(Ports.infeedRightArmMotorControlChannel);
 
     }
 
