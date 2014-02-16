@@ -28,7 +28,7 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet
     public static long stereoRangeFinderSeperation = 23; // inches
-    public static long waitTimeShoot = 1000; // ms, must be larter than waitTimePass
+    public static long waitTimeShoot = 1000; // ms
     public static long waitTimePass = 1000; // ms
     public static long timeForShooterToRetract = 250; // ms
 

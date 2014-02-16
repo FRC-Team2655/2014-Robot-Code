@@ -72,6 +72,7 @@ public class DriveSystem implements LiveWindowSendable {
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
         mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.backLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backRightMotorChannel);
+        mainDrive.setSensitivity(0.25);
 
         leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
         rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
