@@ -42,56 +42,13 @@ public class Shooter implements LiveWindowSendable {
         SmartDashboard.putNumber("Shooter has finished", 0);
     }
 
-    // return value is how much time we took
-    // in micro seconds
-//    private double measureAcceleration() {
-//        // f = psiSlope * a
-//        // need to add rotation sensor positions
-//
-//        // FPGA Time returns time in micro seconds
-//        long start = Utility.getFPGATime();
-//        shooterPosition.reset();
-//        shooterPosition.start();
-//
-//        for (int i = 0; i < m_x.length; i++) {
-//            m_x[i] = shooterPosition.getRaw();
-//            m_t[1] = Utility.getFPGATime();
-//            TeamTimer.delay(5);
-//        }
-//
-//        shooterPosition.stop();
-//
-//        // get the current position
-//        int x = shooterPosition.get();
-//        // return time in milliseconds
-//        return (Utility.getFPGATime() - start) * 1000;
-//    }
-//
-//    private double calculateMass() {
-//        // psiSlope = force / acceleration of ball
-//        // a = (v2 - v1) / t
-//        // v1 can be 0
-//        // v = (x2 - x1) / t
-//        // force = pressure * area of piston(s)
-//        return 0.0;
-//    }
     private void shootPass(long extendTime) {
 
         // start firing
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
-//        double xTime = 0;
-//        if ( extendTime == Global.waitTimeShoot) {
-//            // shoot mode
-//
-//            xTime = measureAcceleration();
-//
-//            Timer.delay(extendTime - xTime);
-//        } else
-        {
 
             TeamTimer.delay(extendTime);
-        }
 
         // start retracting
         shooterPiston1.set(DoubleSolenoid.Value.kReverse);
@@ -104,17 +61,9 @@ public class Shooter implements LiveWindowSendable {
         shooterPiston1.set(DoubleSolenoid.Value.kOff);
         shooterPiston2.set(DoubleSolenoid.Value.kOff);
 
-        // do a few calculations to figure weight of ball
-        // useful later to calculate trajectory
-//        if (extendTime == Global.waitTimeShoot) {
-//            Global.measuredTimeInAccelerationMeasurement = xTime;
-//            Global.massOfBall = calculateMass();
 //        }
     }
-    
-    /*
-    * The following routines support Live Windows
-    */
+
     private ITable m_table;
 
     public void updateTable() {

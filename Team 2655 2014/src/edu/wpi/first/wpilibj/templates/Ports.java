@@ -29,16 +29,12 @@ public final class Ports {
     public final static int frontRightMotorRotationBChannel = Ports.DSCDIO.ch3;
     public final static int frontLeftMotorRotationAChannel = Ports.DSCDIO.ch4;
     public final static int frontLeftMotorRotationBChannel = Ports.DSCDIO.ch5;
-    public final static int backRightMotorRotationAChannel = Ports.DSCDIO.ch6;
-    public final static int backRightMotorRotationBChannel = Ports.DSCDIO.ch7;
-    public final static int backLeftMotorRotationAChannel = Ports.DSCDIO.ch8;
-    public final static int backLeftMotorRotationBChannel = Ports.DSCDIO.ch9;
-    public final static int shooterRotationAChannel = Ports.DSCDIO.ch10;
-    public final static int shooterRotationBChannel = Ports.DSCDIO.ch11;
+    public final static int shooterRotationAChannel = Ports.DSCDIO.ch6;
+    public final static int shooterRotationBChannel = Ports.DSCDIO.ch7;
 //    public final static int ballInMittChannel = Ports.DSCDIO.ch12;
 //    public final static int unusedDIOChannel_13 = Ports.DSCDIO.ch13;
 //    public final static int unusedDIOChannel_14 = Ports.DSCDIO.ch14;
-    
+
     // Digital SideCar Relays
     public final static int compressorMotorControlChannel = Ports.DSCRelay.ch1;
     public final static int infeedArmMotorControlChannel = Ports.DSCRelay.ch2;
@@ -56,8 +52,8 @@ public final class Ports {
     public final static int rightShooterRetractChannel = Ports.SM.ch4;
     public final static int sideArmOpenArmChannel = Ports.SM.ch5;
     public final static int sideArmClosedArmChannel = Ports.SM.ch6;
- //   public final static int anchorDropChannel = Ports.SM.ch7;
-   // public final static int anchorRaiseChannel = Ports.SM.ch8;
+    public final static int liftArmExtendChannel = Ports.SM.ch7;
+    public final static int liftArmRetractChannel = Ports.SM.ch8;
 
     // Analog Module 1
     public final static int gyroChannel = Ports.AM.ch1;
@@ -79,10 +75,8 @@ public final class Ports {
 //    public final static int crioCurrentChannel = Ports.AM.ch6;
 //    public final static int dscCurrentChannel = Ports.AM.ch7;
 //    public final static int unusedAMChannel_8 = Ports.AM.ch8;
-    
 //    public final static int AnalogModule1 = Ports.cRIOModule.module1;
 //    public final static int AnalogModule2 = Ports.cRIOModule.module2;
-    
     // Module Numbers
     public final static class cRIOModule {
 

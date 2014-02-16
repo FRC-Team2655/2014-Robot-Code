@@ -113,7 +113,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
         //Load Button
         if (loadButton.theButtonToggled()) {
-            SmartDashboard.putNumber("Button 4 has been pressed", 0);
+            SmartDashboard.putNumber("Button 3 has been pressed", 0);
 
             if (ballHandler.loadIsEnabled() == false) {
                 SmartDashboard.putNumber("Load enabled", 0);

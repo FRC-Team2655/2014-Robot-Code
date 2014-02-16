@@ -15,8 +15,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Global {
 
 //  Variables used in load arm
-    public static long loadArmRaiseTime = 100; // ms
-    public static long loadArmExtendTime = 100; // ms
+    public static long loadArmRaiseTime = 1000; // ms
+    public static long loadArmExtendTime = 1000; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;         // psiSlope
@@ -28,9 +28,9 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet
     public static long stereoRangeFinderSeperation = 23; // inches
-    public static long waitTimeShoot = 100; // ms, must be larter than waitTimePass
-    public static long waitTimePass = 100; // ms
-    public static long timeForShooterToRetract = 100; // ms
+    public static long waitTimeShoot = 1000; // ms, must be larter than waitTimePass
+    public static long waitTimePass = 1000; // ms
+    public static long timeForShooterToRetract = 250; // ms
 
 //  Drive Modes  
     public static int johnMode = 1; // set to 0 to get RC mode
@@ -38,17 +38,13 @@ public class Global {
 //  Ball handler
     public static long loadIdleTime = 100;// ms
 
-//  anchor raise and drop times
-    public static long anchorDropTime = 100; // ms
-    public static long anchorRaiseTime = 100; // ms
-
 //  drive system 
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
 
 //  side arms
-    public static long sideArmCloseTime = 100; // ms
-    public static long sideArmOpenTime = 100; // ms
+    public static long sideArmCloseTime = 1000; // ms
+    public static long sideArmOpenTime = 1000; // ms
     public static long sideArmIdleTime = 100; // ms
 
 //  Gyro
@@ -65,8 +61,8 @@ public class Global {
 
 //  Joystick buttons
     public final static int shootButton = 1;
-    public final static int anchorButton = 3;
-    public final static int loadButton = 4;
+    public final static int loadButton = 3;
+    public final static int anchorButton = 4;
     public final static int poopButton = 5;
 
     // ball in mitt constants
@@ -102,19 +98,5 @@ public class Global {
 //  Smart Dashboard 
     public static void smartDashBoardGlobalVariables() {
 
-        waitTimeShoot = (long) SmartDashboard.getNumber("wait Time Shoot (get)", waitTimeShoot);
-        
-        SmartDashboard.putNumber("wait Time Shoot (put)", waitTimeShoot);
-        
-        SmartDashboard.putNumber("wait Time Pass", waitTimePass);
-        
-        timeForShooterToRetract = (long) SmartDashboard.getNumber("time For Shooter To Retract", timeForShooterToRetract);
-        anchorDropTime = (long) SmartDashboard.getNumber("anchor Drop Time", anchorDropTime);
-        anchorRaiseTime = (long) SmartDashboard.getNumber("anchor Raise Time", anchorRaiseTime);
-        sideArmCloseTime = (long) SmartDashboard.getNumber("side Arm Close Time", sideArmCloseTime);
-        sideArmOpenTime = (long) SmartDashboard.getNumber("side Arm Open Time", sideArmOpenTime);
-        sideArmIdleTime = (long) SmartDashboard.getNumber("side Arm Idle Time", sideArmIdleTime);
-        loadIdleTime = (long) SmartDashboard.getNumber("load Idle Time", loadIdleTime);
-        johnMode = (int) SmartDashboard.getNumber("John Mode", Global.johnMode);
     }
 }

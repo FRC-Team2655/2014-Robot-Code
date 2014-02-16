@@ -24,7 +24,6 @@ public class LoadAndCatchCommand implements Runnable {
         m_ballInMittLimitSwitch = ballInMittLimitSwitch;
 
     }
-    int counter = 0;
 
     // this is the constructer for the catch command
     public void run() {
@@ -47,12 +46,7 @@ public class LoadAndCatchCommand implements Runnable {
                 Thread.sleep(Global.loadIdleTime);
             }
         } catch (InterruptedException e) {
-
-            SmartDashboard.putNumber("Interrupt has been activated", ++counter);
-
         }
-
-        SmartDashboard.putNumber("Out of while loop", 0);
 
         m_loadArm.off();
         m_sideArm.close();
