@@ -38,7 +38,7 @@ public final class Ports {
     // Digital SideCar Relays
     public final static int compressorMotorControlChannel = Ports.DSCRelay.ch1;
     public final static int infeedRightArmMotorControlChannel = Ports.DSCRelay.ch2;
-    public final static int infeedLeftArmMotorControlChannel = Ports.DSCRelay.ch3;
+    public final static int infeedLeftArmMotorControlChannel = Ports.DSCRelay.ch8;
     public final static int anchorControlChannel = Ports.DSCRelay.ch4;
 //    public final static int unusedRelayChannel_5 = Ports.DSCRelay.ch5;
 //    public final static int unusedRelayChannel_6 = Ports.DSCRelay.ch6;

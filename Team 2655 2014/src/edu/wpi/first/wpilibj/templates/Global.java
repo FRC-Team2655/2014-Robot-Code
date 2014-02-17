@@ -4,9 +4,6 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 /**
  *
  * @author psiInterceptennettlewis
@@ -15,8 +12,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Global {
 
 //  Variables used in load arm
-    public static long loadArmRaiseTime = 1000; // ms
-    public static long loadArmExtendTime = 1000; // ms
+    public static long loadArmRaiseTime = 250; // ms
+    public static long loadArmExtendTime = 250; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.2;         // psiSlope
@@ -28,24 +25,24 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet
     public static long stereoRangeFinderSeperation = 23; // inches
-    public static long waitTimeShoot = 1000; // ms
-    public static long waitTimePass = 1000; // ms
-    public static long timeForShooterToRetract = 250; // ms
+    public static long waitTimeShoot = 500; // ms
+    public static long waitTimePass = 500; // ms
+    public static long timeForShooterToRetract = 10; // ms
 
 //  Drive Modes  
-    public static int johnMode = 1; // set to 0 to get RC mode
+    public static int johnMode = 0; // set to 0 to get RC mode
 
 //  Ball handler
-    public static long loadIdleTime = 100;// ms
+    public static long loadIdleTime = 50;// ms
 
 //  drive system 
     public static int distanceLimitPositive = 5;
     public static int distanceLimitNegative = -5;
 
 //  side arms
-    public static long sideArmCloseTime = 1000; // ms
-    public static long sideArmOpenTime = 1000; // ms
-    public static long sideArmIdleTime = 100; // ms
+    public static long sideArmCloseTime = 250; // ms
+    public static long sideArmOpenTime = 250; // ms
+    public static long sideArmIdleTime = 10; // ms
 
 //  Gyro
     public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
@@ -61,12 +58,12 @@ public class Global {
 
 //  Joystick buttons
     public final static int shootButton = 1;
-    public final static int loadButton = 3;
+    public final static int loadButton = 2;
     public final static int anchorButton = 4;
     public final static int poopButton = 5;
 
     // ball in mitt constants
-    public final static int wantedBallDistance = 10; // inches
+    public final static int wantedBallDistance = 20; // inches
 
     // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds

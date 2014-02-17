@@ -42,7 +42,7 @@ public class BallHandler {
             return;
         }
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm), "ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, inFeed), "ShootAndPass");
         m_thread.start();
     }
 
@@ -64,7 +64,7 @@ public class BallHandler {
 
         SmartDashboard.putNumber("Thread should start", 0);
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor), "ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed), "ShootAndPass");
 
         m_thread.start();
     }

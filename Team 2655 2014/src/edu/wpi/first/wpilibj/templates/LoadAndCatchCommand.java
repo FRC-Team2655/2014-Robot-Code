@@ -35,20 +35,16 @@ public class LoadAndCatchCommand implements Runnable {
 
         try {
             while (m_ballInMittLimitSwitch.ballInMitt() == false) {
-                SmartDashboard.putNumber("Inside while loop", 0);
-
-                // need to rename time to something like
-                // poll ball in mitt switch wait timer
-                //
-                // maybe we could use yield() instead of sleep
-                // but, idk how to interrupt a thread from
-                // user intput
                 Thread.sleep(Global.loadIdleTime);
             }
         } catch (InterruptedException e) {
         }
 
         m_loadArm.off();
+        m_sideArm.close();
+        TeamTimer.delay(250);
+        m_sideArm.open();
+        TeamTimer.delay(1000);
         m_sideArm.close();
 
     }

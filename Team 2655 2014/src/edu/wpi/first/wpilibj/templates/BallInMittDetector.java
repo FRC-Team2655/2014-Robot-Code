@@ -6,6 +6,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
 /**
@@ -16,14 +17,15 @@ public class BallInMittDetector implements LiveWindowSendable {
 
     private final RangeFinder rangeFinder;
  //   private final DigitalInput ballInMitt;
-  //  private final boolean BALLINMITT = false;
+    //  private final boolean BALLINMITT = false;
 
     public BallInMittDetector() {
         rangeFinder = new RangeFinder(Ports.ballInMittRangeFinderChannel);
-       // ballInMitt = new DigitalInput(Ports.ballInMittChannel);
+        // ballInMitt = new DigitalInput(Ports.ballInMittChannel);
     }
 
     public boolean ballInMitt() {
+        SmartDashboard.putNumber("RangeFinder BIM Inches", rangeFinder.getDistanceInches());
 //        return ballInMitt.get() == BALLINMITT;
         return rangeFinder.getDistanceInches() < Global.wantedBallDistance;
     }
@@ -33,7 +35,7 @@ public class BallInMittDetector implements LiveWindowSendable {
     public void updateTable() {
         if (m_table != null) {
             m_table.putBoolean("Ball In Mitt is", ballInMitt());
-          //  m_table.putBoolean("Ball In Mitt DIO", ballInMitt.get());
+            //  m_table.putBoolean("Ball In Mitt DIO", ballInMitt.get());
             m_table.putNumber("Ball In Mitt rangefinder (in)", rangeFinder.getDistanceInches());
         }
     }

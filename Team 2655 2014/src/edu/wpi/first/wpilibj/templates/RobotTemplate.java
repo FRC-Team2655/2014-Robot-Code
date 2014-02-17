@@ -31,7 +31,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
     // TODO enable cRIO CurrentSensor in RobotTemplate when hardware is available 
     // TODO enable DSC CurrentSensor in RobotTemplate when hardware is available 
-
     public RobotTemplate() {
         // not sure this gets called because we have the IterateRobot
     }
@@ -72,9 +71,9 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
         // TODO add code for camera hot zone detection
         if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
-
             driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
-
+        } else if (rangeFinder.getDistanceFeet() < Global.wantedDistanceFromWall) {
+            driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
         } else {
             ballHandler.shootTheBall();
         }
@@ -82,15 +81,17 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     }
 
     public void teleopInit() {
-        
+
         Global.smartDashBoardGlobalVariables();
-        
+
         driveSystem.setTeleop();
     }
 
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+        SmartDashboard.putNumber("RangeFinder Inches", rangeFinder.getDistanceInches());
+
         Global.smartDashBoardGlobalVariables();
         ballHandler.displayPressure();
 
@@ -98,7 +99,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 //        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
 //        SmartDashboard.putNumber("Drive Mode", driveType);
-        
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
 
@@ -113,7 +113,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
         //Load Button
         if (loadButton.theButtonToggled()) {
-            SmartDashboard.putNumber("Button 3 has been pressed", 0);
+            SmartDashboard.putNumber("Button 2 has been pressed", 0);
 
             if (ballHandler.loadIsEnabled() == false) {
                 SmartDashboard.putNumber("Load enabled", 0);

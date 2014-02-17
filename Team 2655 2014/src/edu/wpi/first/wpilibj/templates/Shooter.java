@@ -43,12 +43,14 @@ public class Shooter implements LiveWindowSendable {
     }
 
     private void shootPass(long extendTime) {
+       
+        TeamTimer.delay(2000);
 
         // start firing
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
 
-            TeamTimer.delay(extendTime);
+        TeamTimer.delay(extendTime);
 
         // start retracting
         shooterPiston1.set(DoubleSolenoid.Value.kReverse);
