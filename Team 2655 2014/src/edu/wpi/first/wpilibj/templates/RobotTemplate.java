@@ -23,12 +23,14 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     private RangeFinder rangeFinder;
 
     private Button shootButton;
-    private Button anchorButton;
+    private Button driveModeButton;
     private Button loadButton;
     private Button passButton;
+    private int button1Counter;
+    private int button2Counter;
+
 //    private CurrentSensor crioCurrentSensor;
 //    private CurrentSensor dscCurrentSensor;
-
     // TODO enable cRIO CurrentSensor in RobotTemplate when hardware is available 
     // TODO enable DSC CurrentSensor in RobotTemplate when hardware is available 
     public RobotTemplate() {
@@ -42,10 +44,13 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
 
-        anchorButton = new Button(joystick, Global.anchorButton);
+        driveModeButton = new Button(joystick, Global.driveModeButton);
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
+
+        button1Counter = 0;
+        button2Counter = 0;
 
     }
 
@@ -101,8 +106,9 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
+            button1Counter++;
 
-            SmartDashboard.putNumber("Button 1 has been pressed", 0);
+            SmartDashboard.putNumber("Button 1 has been pressed this many times:", button1Counter);
 
             ballHandler.shootTheBall();// Do said action
         }
@@ -113,7 +119,8 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
         //Load Button
         if (loadButton.theButtonToggled()) {
-            SmartDashboard.putNumber("Button 2 has been pressed", 0);
+            button2Counter++;
+            SmartDashboard.putNumber("Button 2 has been pressed this many times:", button2Counter);
 
             if (ballHandler.loadIsEnabled() == false) {
                 SmartDashboard.putNumber("Load enabled", 0);
@@ -127,12 +134,13 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         }
 
         //Anchor Button
-        if (anchorButton.theButtonToggled()) {
-            if (ballHandler.anchorIsUp()) {
-                ballHandler.dropAnchor();
+        if (driveModeButton.theButtonToggled()) {
+            if (Global.johnMode == 1) {
+                Global.johnMode = 0;
             } else {
-                ballHandler.raiseAnchor();
+                Global.johnMode = 1;
             }
+            SmartDashboard.putNumber("DriveMode:(0 = R/C Mode 1 = John Mode)", Global.johnMode);
         }
     }
 

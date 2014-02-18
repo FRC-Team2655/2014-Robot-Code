@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package edu.wpi.first.wpilibj.templates;
+
 /**
  *
  * @author psiInterceptennettlewis
@@ -28,9 +29,10 @@ public class Global {
     public static long waitTimeShoot = 500; // ms
     public static long waitTimePass = 500; // ms
     public static long timeForShooterToRetract = 10; // ms
+    public static long settleTime = 250;
 
 //  Drive Modes  
-    public static int johnMode = 0; // set to 0 to get RC mode
+    public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
     public static long loadIdleTime = 50;// ms
@@ -59,11 +61,11 @@ public class Global {
 //  Joystick buttons
     public final static int shootButton = 1;
     public final static int loadButton = 2;
-    public final static int anchorButton = 4;
-    public final static int poopButton = 5;
+    public final static int poopButton = 3;
+    public final static int driveModeButton = 8;
 
     // ball in mitt constants
-    public final static int wantedBallDistance = 20; // inches
+    public final static int wantedBallDistance = 15; // inches
 
     // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds

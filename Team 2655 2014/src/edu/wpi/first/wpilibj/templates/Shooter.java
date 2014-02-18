@@ -5,8 +5,6 @@ import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
 public class Shooter implements LiveWindowSendable {
@@ -31,20 +29,16 @@ public class Shooter implements LiveWindowSendable {
     }
 
     public void pass() {
-        SmartDashboard.putNumber("Passing has started", 0);
         shootPass(Global.waitTimePass);
-        SmartDashboard.putNumber("Passing has finished", 0);
     }
 
     public void shoot() {
-        SmartDashboard.putNumber("Shooter has started", 0);
         shootPass(Global.waitTimeShoot);
-        SmartDashboard.putNumber("Shooter has finished", 0);
     }
 
     private void shootPass(long extendTime) {
        
-        TeamTimer.delay(2000);
+        TeamTimer.delay(500);
 
         // start firing
         shooterPiston1.set(DoubleSolenoid.Value.kForward);

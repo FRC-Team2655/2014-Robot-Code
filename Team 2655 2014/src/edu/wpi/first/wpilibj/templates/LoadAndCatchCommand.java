@@ -5,12 +5,6 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
-/**
- *
- * @author Seth
- */
 public class LoadAndCatchCommand implements Runnable {
 
     private final InFeed m_loadArm;
@@ -27,8 +21,6 @@ public class LoadAndCatchCommand implements Runnable {
 
     // this is the constructer for the catch command
     public void run() {
-        SmartDashboard.putNumber("Load thread has made it to run", 0);
-
         //Load
         m_sideArm.open();
         m_loadArm.on();
@@ -42,9 +34,9 @@ public class LoadAndCatchCommand implements Runnable {
 
         m_loadArm.off();
         m_sideArm.close();
-        TeamTimer.delay(250);
+        TeamTimer.delay(Global.settleTime);
         m_sideArm.open();
-        TeamTimer.delay(1000);
+        TeamTimer.delay(Global.settleTime);
         m_sideArm.close();
 
     }
