@@ -22,9 +22,9 @@ public class TeamJoystick extends Joystick {
     private final boolean DESENSITIZE_ENABLED = true;
 
     // change these to increase/decrease sensitivity
-    private final double twistSensitiviy = 1;
-    private final double xSensitiviy = 1;
-    private final double ySensitiviy = 1;
+    private final double twistSensitiviy = 0.75;
+    private final double xSensitiviy = 0.75;
+    private final double ySensitiviy = 0.75;
 
     // change these to increase/decrease the deadzone
     // right now its set to about 1/10 th dead zone.
