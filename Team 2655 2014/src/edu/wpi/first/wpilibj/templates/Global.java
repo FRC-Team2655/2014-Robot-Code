@@ -32,7 +32,7 @@ public class Global {
     public static long settleTime = 250;
 
 //  Drive Modes  
-    public static int johnMode = 1; // set to 0 to get RC mode
+    public static int johnMode = 0; // set to 0 to get RC mode
 
 //  Ball handler
     public static long loadIdleTime = 50;// ms

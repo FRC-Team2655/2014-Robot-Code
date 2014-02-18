@@ -65,7 +65,7 @@ public class DriveSystem implements LiveWindowSendable {
 
     }
 
-    public DriveSystem(Joystick driveStick) {
+    public DriveSystem(TeamJoystick driveStick) {
         this.driveStick = driveStick;
         gyro = new Gyro(Ports.gyroChannel);
         gyro.reset();
