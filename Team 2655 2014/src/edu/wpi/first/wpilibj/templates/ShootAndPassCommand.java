@@ -1,4 +1,5 @@
 package edu.wpi.first.wpilibj.templates;
+
 /**
  *
  * @author Alex Senneville
@@ -40,8 +41,10 @@ public class ShootAndPassCommand implements Runnable {
 //            m_anchor.raise();
 
         } else {
+            m_inFeed.lowerArms();
             m_sideArm.open();
-            m_shooter.pass();
+            m_inFeed.liftArms();
+            TeamTimer.delay(500);
             m_sideArm.close();
         }
 

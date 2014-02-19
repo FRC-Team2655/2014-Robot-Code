@@ -44,7 +44,7 @@ public class TeamJoystick extends Joystick {
     }
 
     public double getZ(Hand hand) {
-        double m = super.getZ();  // super.getTwist();
+        double m = super.getZ(hand);  // super.getTwist();
         SmartDashboard.putNumber("get twist / throttle -- Over ride works", m);
         if (!DESENSITIZE_ENABLED) {
             return m;

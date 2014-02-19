@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.tables.ITable;
 
 public class DriveSystem implements LiveWindowSendable {
 
-    private final Joystick driveStick;
+    private final TeamJoystick driveStick;
     private final Gyro gyro; // TODO test / calibrate gyro
     private final Thread thread;
     private final RobotDrive mainDrive;
@@ -81,7 +81,7 @@ public class DriveSystem implements LiveWindowSendable {
 
         leftFrontWheelEncoder.start();
         rightFrontWheelEncoder.start();
-        
+
         thread = new DriveSystemThread();
         thread.start();
     }
@@ -147,6 +147,10 @@ public class DriveSystem implements LiveWindowSendable {
 
         rotateToDegree((int) (gyro.getAngle() + degree));
 
+    }
+
+    public void calibrateGyro() {
+        gyro.reset();
     }
     private ITable m_table;
 
