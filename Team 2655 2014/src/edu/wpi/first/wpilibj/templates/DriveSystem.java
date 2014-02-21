@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
 
 public class DriveSystem implements LiveWindowSendable {
@@ -23,6 +24,8 @@ public class DriveSystem implements LiveWindowSendable {
     // TODO implement wheel encoders for wheel speed
     private final Encoder leftFrontWheelEncoder;
     private final Encoder rightFrontWheelEncoder;
+
+    private int gyroCounter = 0;
 
     private int driveMode;
 
@@ -151,6 +154,15 @@ public class DriveSystem implements LiveWindowSendable {
 
     public void calibrateGyro() {
         gyro.reset();
+    }
+
+    public void outputGyro() {
+        gyroCounter++;
+
+        if (gyroCounter == 100) {
+            gyroCounter = 0;
+            SmartDashboard.putNumber("Gyro Angle:", gyro.getAngle());
+        }
     }
     private ITable m_table;
 

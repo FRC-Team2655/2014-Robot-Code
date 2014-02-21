@@ -83,6 +83,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
             driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
         } else {
             ballHandler.shootTheBall();
+            TeamTimer.delay(10000);
         }
 
     }
@@ -98,8 +99,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     //Frodo = 50pts
     public void teleopPeriodic() {
         SmartDashboard.putNumber("RangeFinder Inches", rangeFinder.getDistanceInches());
-
-        Global.smartDashBoardGlobalVariables();
+        driveSystem.outputGyro();
         ballHandler.displayPressure();
 
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
