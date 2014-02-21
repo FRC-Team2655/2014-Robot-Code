@@ -98,9 +98,12 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+//      These display smartdashboard values  
         SmartDashboard.putNumber("RangeFinder Inches", rangeFinder.getDistanceInches());
+        SmartDashboard.putNumber("RangeFinder Feet", rangeFinder.getDistanceFeet());
         driveSystem.outputGyro();
         ballHandler.displayPressure();
+//        
 
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
 //        SmartDashboard.putNumber("RangeFinder Feet", stereoRangeFinder.getDistanceFeet());

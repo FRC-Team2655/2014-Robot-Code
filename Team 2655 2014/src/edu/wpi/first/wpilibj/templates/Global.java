@@ -17,7 +17,7 @@ public class Global {
     public static long loadArmExtendTime = 250; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
-    public static double speedSlopeMoving = 0.2;         // psiSlope
+    public static double speedSlopeMoving = 0.1;         // psiSlope
     public static double speedSlopeRotate = 0.00555555;  // psiSlope
 
 //  Drive Idle Time

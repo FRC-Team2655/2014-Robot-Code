@@ -147,9 +147,7 @@ public class DriveSystem implements LiveWindowSendable {
     }
 
     public void rotate(int degree) { // Used only in autonomous
-
         rotateToDegree((int) (gyro.getAngle() + degree));
-
     }
 
     public void calibrateGyro() {
