@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
-import com.sun.squawk.util.MathUtils;
 
 // TODO make software test harness (this is not trivial by the way)
 public class RobotTemplate extends IterativeRobot implements LiveWindowSendable {
@@ -75,7 +74,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     public void autonomousPeriodic() {
         double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
         ballHandler.displayPressure();
-        
+
         if (Math.abs(needToMoveDistance) > 0.5) {
             driveSystem.moveDistance(needToMoveDistance);
         } else {
@@ -95,7 +94,10 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
+        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
+
 //      These display smartdashboard values  
+        SmartDashboard.putNumber("Need to move", needToMoveDistance);
         SmartDashboard.putNumber("RangeFinder Inches", rangeFinder.getDistanceInches());
         SmartDashboard.putNumber("RangeFinder Feet", rangeFinder.getDistanceFeet());
         driveSystem.outputGyro();

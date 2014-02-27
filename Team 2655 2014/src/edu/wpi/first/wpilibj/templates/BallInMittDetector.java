@@ -27,7 +27,7 @@ public class BallInMittDetector implements LiveWindowSendable {
     public boolean ballInMitt() {
         SmartDashboard.putNumber("RangeFinder BIM Inches", rangeFinder.getDistanceInches());
 //        return ballInMitt.get() == BALLINMITT;
-        return rangeFinder.getDistanceInches() < Global.wantedBallDistance;
+        return rangeFinder.getDistanceInches() < Global.wantedBallDistanceFeet;
     }
 
     private ITable m_table;
