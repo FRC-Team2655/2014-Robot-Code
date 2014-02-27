@@ -56,7 +56,7 @@ public class InFeed {
 
     }
 
-    void lowerArms() {
+    void lowerArm() {
         loadArmLift.set(DROP_ARMS); // turn air on to put arms down
 
         TeamTimer.delay(Global.loadArmExtendTime);

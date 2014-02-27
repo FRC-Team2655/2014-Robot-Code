@@ -28,6 +28,7 @@ public class Global {
     public static long stereoRangeFinderSeperation = 23; // inches
     public static long waitTimeShoot = 2000; // ms
     public static long waitTimePass = 500; // ms
+    public static long waitTimeCharge = 3000;
     public static long timeForShooterToRetract = 10; // ms
     public static long settleTime = 250;
 

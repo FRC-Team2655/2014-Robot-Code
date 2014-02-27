@@ -28,36 +28,20 @@ public class Shooter implements LiveWindowSendable {
         shooterArmPosition.start(); // start at zero
     }
 
-    public void pass() {
-        shootPass(Global.waitTimePass);
-    }
-
-    public void shoot() {
-        shootPass(Global.waitTimeShoot);
-    }
-
-    private void shootPass(long extendTime) {
-       
-        TeamTimer.delay(500);
-
-        // start firing
+    public void charge() {
         shooterPiston1.set(DoubleSolenoid.Value.kForward);
         shooterPiston2.set(DoubleSolenoid.Value.kForward);
+    }
 
-        TeamTimer.delay(extendTime);
-
-        // start retracting
+    public void retract() {
         shooterPiston1.set(DoubleSolenoid.Value.kReverse);
         shooterPiston2.set(DoubleSolenoid.Value.kReverse);
+        TeamTimer.delay(Global.waitTimeShoot);
+    }
 
-        // Wait until piston completly retracts.
-        TeamTimer.delay(Global.timeForShooterToRetract);
-
-        // Now stop wasting air
+    public void shooterOff() {
         shooterPiston1.set(DoubleSolenoid.Value.kOff);
         shooterPiston2.set(DoubleSolenoid.Value.kOff);
-
-//        }
     }
 
     private ITable m_table;

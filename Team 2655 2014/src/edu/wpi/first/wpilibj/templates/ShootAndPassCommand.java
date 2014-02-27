@@ -33,15 +33,21 @@ public class ShootAndPassCommand implements Runnable {
             // need to add code here to ensure that
             // the robot hass stopped moving
 //            m_anchor.drop();
-            m_inFeed.lowerArms();
+            m_shooter.charge();
+            TeamTimer.delay(Global.waitTimeCharge);
             m_sideArm.open();
-            m_shooter.shoot();
+            m_inFeed.lowerArm();
+            TeamTimer.delay(Global.waitTimeShoot);
+            m_shooter.shooterOff();
+            TeamTimer.delay(250);
+            m_shooter.retract();
+            m_shooter.shooterOff();
             m_inFeed.liftArms();
             m_sideArm.close();
 //            m_anchor.raise();
 
         } else {
-            m_inFeed.lowerArms();
+            m_inFeed.lowerArm();
             m_sideArm.open();
             m_inFeed.liftArms();
             TeamTimer.delay(500);
