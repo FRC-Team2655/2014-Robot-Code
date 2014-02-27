@@ -98,7 +98,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
 //      These display smartdashboard values  
         SmartDashboard.putNumber("Need to move", needToMoveDistance);
-        SmartDashboard.putNumber("RangeFinder Inches", rangeFinder.getDistanceInches());
         SmartDashboard.putNumber("RangeFinder Feet", rangeFinder.getDistanceFeet());
         driveSystem.outputGyro();
         ballHandler.displayPressure();
