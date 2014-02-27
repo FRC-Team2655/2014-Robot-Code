@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author Seth - edited psiIntercepty Zephan
  */
-public class Anchor {
+public class Anchor implements Runnable {
 
     private final DoubleSolenoid anchor;
 
@@ -24,10 +24,26 @@ public class Anchor {
     public void drop() {
         SmartDashboard.putNumber("Anchors are lowered", 0);
         anchor.set(DoubleSolenoid.Value.kForward);
+
     }
 
     public void raise() {
         SmartDashboard.putNumber("Anchors are raised", 0);
+        anchor.set(DoubleSolenoid.Value.kReverse);
+        TeamTimer.delay(Global.anchorRaiseTime);
+        anchor.set(DoubleSolenoid.Value.kOff);
+    }
+
+    public void run() {
+        anchor.set(DoubleSolenoid.Value.kForward);
+        
+        try {
+            while (true) {
+                Thread.sleep(Global.driveIdleTime);
+            }
+        } catch (InterruptedException e) {
+        }
+        
         anchor.set(DoubleSolenoid.Value.kReverse);
         TeamTimer.delay(Global.anchorRaiseTime);
         anchor.set(DoubleSolenoid.Value.kOff);

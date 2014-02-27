@@ -25,6 +25,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     private Button driveModeButton;
     private Button loadButton;
     private Button passButton;
+    private Button anchorButton;
     private Button calibrateGyroButton;
     private int button1Counter;
     private int button2Counter;
@@ -48,6 +49,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
+        anchorButton = new Button(joystick, Global.anchorButton);
         calibrateGyroButton = new Button(joystick, Global.calibrateGyroButton);
 
         button1Counter = 0;
@@ -136,6 +138,16 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         }
 
         //Anchor Button
+        if (anchorButton.theButtonToggled()) {
+             if (ballHandler.anchorIsEnabled() == false) {
+                 ballHandler.lowerAnchor();
+            } else {
+                if (ballHandler.anchorIsEnabled()) {
+                    ballHandler.raiseAnchor();
+                }
+            }
+        }
+//      Drive Mode Toggle  
         if (driveModeButton.theButtonToggled()) {
             if (Global.johnMode == 1) {
                 Global.johnMode = 0;
