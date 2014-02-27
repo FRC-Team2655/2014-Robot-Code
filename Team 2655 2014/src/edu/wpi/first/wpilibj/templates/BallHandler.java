@@ -34,10 +34,10 @@ public class BallHandler {
 
     public void passTheBall() {
 
-        if (!ballInMittDetector.ballInMitt()) {
-            SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
-            return;
-        }
+//        if (!ballInMittDetector.ballInMitt()) {
+//            SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
+//            return;
+//        }
 
         if (m_thread.isAlive()) {
             threadFailTimes++;
@@ -50,11 +50,11 @@ public class BallHandler {
     }
 
     public void shootTheBall() {
-        if (!ballInMittDetector.ballInMitt()) {
-            SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
-
-            return;
-        }
+//        if (!ballInMittDetector.ballInMitt()) {
+//            SmartDashboard.putNumber("The robot doesn't have a ball in it", 0);
+//
+//            return;
+//        }
 
         if (m_thread.isAlive()) {
             threadFailTimes++;
@@ -67,11 +67,11 @@ public class BallHandler {
     }
 
     public void loadEnable() {
-        if (ballInMittDetector.ballInMitt()) {
-            SmartDashboard.putNumber("The robot already has a ball in it", 0);
-
-            return;
-        }
+//        if (ballInMittDetector.ballInMitt()) {
+//            SmartDashboard.putNumber("The robot already has a ball in it", 0);
+//
+//            return;
+//        }
         if (m_thread.isAlive()) {
             threadFailTimes++;
             SmartDashboard.putNumber("The Robot is still doing something or just finished", threadFailTimes);
@@ -95,18 +95,6 @@ public class BallHandler {
 
     public boolean loadIsEnabled() {
         return m_thread.isAlive();
-    }
-
-    public void dropAnchor() {
-        anchor.drop();
-    }
-
-    public void raiseAnchor() {
-        anchor.raise();
-    }
-
-    public boolean anchorIsUp() {
-        return !anchor.anchorIsDropped();
     }
 
     public void displayPressure() {

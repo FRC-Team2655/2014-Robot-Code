@@ -22,6 +22,9 @@ public class Global {
 
 //  Drive Idle Time
     public static long driveIdleTime = 100;
+    
+//  Variables used for anchors
+    public static long anchorRaiseTime = 250;
 
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 10.0; // feet

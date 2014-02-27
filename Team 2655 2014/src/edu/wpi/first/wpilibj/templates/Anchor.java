@@ -7,7 +7,6 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -16,33 +15,21 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Anchor {
 
-    private boolean m_isDropped;
-
-    private final Relay anchors;
-
-    private final Relay.Value DROP = Relay.Value.kForward;
-    private final Relay.Value OFF = Relay.Value.kOff;
+    private final DoubleSolenoid anchor;
 
     public Anchor() {
-        m_isDropped = false;
-        anchors = new Relay(Ports.anchorControlChannel);
+        anchor = new DoubleSolenoid(Ports.anchorExtendChannel, Ports.anchorRetractChannel);
     }
 
     public void drop() {
         SmartDashboard.putNumber("Anchors are lowered", 0);
-
-        anchors.set(DROP);
-        m_isDropped = true;
+        anchor.set(DoubleSolenoid.Value.kForward);
     }
 
     public void raise() {
         SmartDashboard.putNumber("Anchors are raised", 0);
-
-        anchors.set(OFF);
-        m_isDropped = false;
-    }
-
-    public boolean anchorIsDropped() {
-        return m_isDropped;
+        anchor.set(DoubleSolenoid.Value.kReverse);
+        TeamTimer.delay(Global.anchorRaiseTime);
+        anchor.set(DoubleSolenoid.Value.kOff);
     }
 }

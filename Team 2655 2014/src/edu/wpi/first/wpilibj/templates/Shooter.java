@@ -10,17 +10,14 @@ import edu.wpi.first.wpilibj.tables.ITable;
 public class Shooter implements LiveWindowSendable {
 
     //keep in mind that i might need to refactor names
-    private final DoubleSolenoid shooterPiston1;
-    private final DoubleSolenoid shooterPiston2;
+    private final DoubleSolenoid shooterPiston;
     private final Encoder shooterArmPosition;
 
 //    private final double[] m_t = new double[10];
 //    private final int[] m_x= new int[10];
 //    private final double[] m_v= new double[10];
     public Shooter() {
-        shooterPiston1 = new DoubleSolenoid(Ports.leftShooterExtendChannel, Ports.leftShooterRetractChannel);
-        shooterPiston2 = new DoubleSolenoid(Ports.rightShooterExtendChannel, Ports.rightShooterRetractChannel);
-
+        shooterPiston = new DoubleSolenoid(Ports.ShooterExtendChannel, Ports.ShooterRetractChannel);
         // TODO finish shooter arm sensor code (angle, angular position, velocity, acceleration
         shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
         shooterArmPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
@@ -29,19 +26,16 @@ public class Shooter implements LiveWindowSendable {
     }
 
     public void charge() {
-        shooterPiston1.set(DoubleSolenoid.Value.kForward);
-        shooterPiston2.set(DoubleSolenoid.Value.kForward);
+        shooterPiston.set(DoubleSolenoid.Value.kForward);
     }
 
     public void retract() {
-        shooterPiston1.set(DoubleSolenoid.Value.kReverse);
-        shooterPiston2.set(DoubleSolenoid.Value.kReverse);
+        shooterPiston.set(DoubleSolenoid.Value.kReverse);
         TeamTimer.delay(Global.waitTimeShoot);
     }
 
     public void shooterOff() {
-        shooterPiston1.set(DoubleSolenoid.Value.kOff);
-        shooterPiston2.set(DoubleSolenoid.Value.kOff);
+        shooterPiston.set(DoubleSolenoid.Value.kOff);
     }
 
     private ITable m_table;
