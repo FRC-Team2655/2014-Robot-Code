@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
+import com.sun.squawk.util.MathUtils;
 
 // TODO make software test harness (this is not trivial by the way)
 public class RobotTemplate extends IterativeRobot implements LiveWindowSendable {
@@ -72,14 +73,11 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     }
 
     public void autonomousPeriodic() {
-
+        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
         ballHandler.displayPressure();
-
-        // TODO add code for camera hot zone detection
-        if (rangeFinder.getDistanceFeet() > Global.wantedDistanceFromWall) {
-            driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
-        } else if (rangeFinder.getDistanceFeet() < Global.wantedDistanceFromWall) {
-            driveSystem.moveDistance((rangeFinder.getDistanceFeet()) - Global.wantedDistanceFromWall);
+        
+        if (Math.abs(needToMoveDistance) > 0.5) {
+            driveSystem.moveDistance(needToMoveDistance);
         } else {
             ballHandler.shootTheBall();
             TeamTimer.delay(10000);
@@ -113,7 +111,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
             button1Counter++;
 
             SmartDashboard.putNumber("Button 1 has been pressed this many times:", button1Counter);
-
             ballHandler.shootTheBall();// Do said action
         }
 

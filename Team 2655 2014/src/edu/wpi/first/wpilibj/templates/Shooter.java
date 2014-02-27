@@ -27,6 +27,7 @@ public class Shooter implements LiveWindowSendable {
 
     public void charge() {
         shooterPiston.set(DoubleSolenoid.Value.kForward);
+        TeamTimer.delay(Global.waitTimeCharge);
     }
 
     public void retract() {

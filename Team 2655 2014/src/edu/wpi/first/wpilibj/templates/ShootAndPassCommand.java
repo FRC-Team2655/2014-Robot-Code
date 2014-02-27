@@ -34,7 +34,6 @@ public class ShootAndPassCommand implements Runnable {
             // the robot hass stopped moving
             m_anchor.drop();
             m_shooter.charge();
-            TeamTimer.delay(Global.waitTimeCharge);
             m_sideArm.open();
             m_inFeed.lowerArm();
             TeamTimer.delay(Global.waitTimeShoot);
