@@ -30,13 +30,10 @@ public class InFeed {
     // drop the arms
     // turn on the motors
     void on() {
-
         loadArmLift.set(DROP_ARMS); // turn air on to put arms down
-
         TeamTimer.delay(Global.loadArmExtendTime);
-
+        
         loadArmLift.set(AIR_OFF); // turn air off
-
         leftLoadArmMotor.set(MOTOR_FORWARD); // turn motors on in forward direction
         rightLoadArmMotor.set(MOTOR_FORWARD);
     }
@@ -44,31 +41,23 @@ public class InFeed {
     // lift the arms (and ball maybe)
     // turn off the motor
     void off() {
-
         leftLoadArmMotor.set(MOTOR_OFF); // turn motors off
         rightLoadArmMotor.set(MOTOR_OFF);
-
+        
         loadArmLift.set(LIFT_ARMS); // turn air on to lift arms
-
         TeamTimer.delay(Global.loadArmRaiseTime);
-
         loadArmLift.set(AIR_OFF); // turn air off
-
     }
 
     void lowerArm() {
         loadArmLift.set(DROP_ARMS); // turn air on to put arms down
-
         TeamTimer.delay(Global.loadArmExtendTime);
-
         loadArmLift.set(AIR_OFF); // turn air off
     }
 
        void liftArms() {
         loadArmLift.set(LIFT_ARMS); // turn air on to put arms down
-
         TeamTimer.delay(Global.loadArmExtendTime);
-
         loadArmLift.set(AIR_OFF); // turn air off
     }
 }

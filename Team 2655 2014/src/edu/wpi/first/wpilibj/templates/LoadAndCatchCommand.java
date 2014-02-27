@@ -34,10 +34,5 @@ public class LoadAndCatchCommand implements Runnable {
 
         m_loadArm.off();
         m_sideArm.close();
-        TeamTimer.delay(Global.settleTime);
-        m_sideArm.open();
-        TeamTimer.delay(Global.settleTime);
-        m_sideArm.close();
-
     }
 }

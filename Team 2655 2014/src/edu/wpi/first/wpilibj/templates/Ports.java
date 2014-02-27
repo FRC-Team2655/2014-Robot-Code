@@ -46,10 +46,10 @@ public final class Ports {
 //    public final static int unusedRelayChannel_8 = Ports.DSCRelay.ch8;
 
     // solenoid module 1
-    public final static int ShooterExtendChannel = Ports.SM.ch1;
-    public final static int ShooterRetractChannel = Ports.SM.ch2;
-    public final static int anchorExtendChannel = Ports.SM.ch3;
-    public final static int anchorRetractChannel = Ports.SM.ch4;
+    public final static int anchorExtendChannel = Ports.SM.ch1;
+    public final static int anchorRetractChannel = Ports.SM.ch2;
+    public final static int ShooterExtendChannel = Ports.SM.ch3;
+    public final static int ShooterRetractChannel = Ports.SM.ch4;
     public final static int sideArmOpenArmChannel = Ports.SM.ch5;
     public final static int sideArmClosedArmChannel = Ports.SM.ch6;
     public final static int liftArmExtendChannel = Ports.SM.ch7;
