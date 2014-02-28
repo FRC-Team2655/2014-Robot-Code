@@ -27,10 +27,11 @@ public class Anchor {
         SmartDashboard.putNumber("Anchors are lowered", 0);
         anchor.set(DoubleSolenoid.Value.kForward);
         isDropped = true;
-
     }
 
     public void raise() {
+        anchor.set(DoubleSolenoid.Value.kReverse);
+        TeamTimer.delay(20);
         anchor.set(DoubleSolenoid.Value.kOff);
         isDropped = false;
     }

@@ -71,7 +71,7 @@ public class Global {
     public final static int driveModeButton = 8;
 
     // ball in mitt constants
-    public final static int wantedBallDistanceFeet = 7;
+    public final static int wantedBallDistanceFeet = 20;
 
     // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds
