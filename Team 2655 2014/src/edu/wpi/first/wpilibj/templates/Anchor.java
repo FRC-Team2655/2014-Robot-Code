@@ -13,39 +13,30 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  *
  * @author Seth - edited psiIntercepty Zephan
  */
-public class Anchor implements Runnable {
+public class Anchor {
 
     private final DoubleSolenoid anchor;
+    private boolean isDropped;
 
     public Anchor() {
         anchor = new DoubleSolenoid(Ports.anchorExtendChannel, Ports.anchorRetractChannel);
+        isDropped = false;
     }
 
     public void drop() {
         SmartDashboard.putNumber("Anchors are lowered", 0);
         anchor.set(DoubleSolenoid.Value.kForward);
+        isDropped = true;
 
     }
 
     public void raise() {
-        SmartDashboard.putNumber("Anchors are raised", 0);
-        anchor.set(DoubleSolenoid.Value.kReverse);
-        TeamTimer.delay(Global.anchorRaiseTime);
         anchor.set(DoubleSolenoid.Value.kOff);
+        isDropped = false;
     }
 
-    public void run() {
-        anchor.set(DoubleSolenoid.Value.kForward);
-        
-        try {
-            while (true) {
-                Thread.sleep(Global.driveIdleTime);
-            }
-        } catch (InterruptedException e) {
-        }
-        
-        anchor.set(DoubleSolenoid.Value.kReverse);
-        TeamTimer.delay(Global.anchorRaiseTime);
-        anchor.set(DoubleSolenoid.Value.kOff);
+    public boolean isDown() {
+        return isDropped;
     }
+
 }

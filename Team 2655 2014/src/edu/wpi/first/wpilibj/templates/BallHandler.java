@@ -92,31 +92,19 @@ public class BallHandler {
     }
 
     public void lowerAnchor() {
-        if (m_thread.isAlive()) {
-            threadFailTimes++;
-            SmartDashboard.putNumber("The Robot is still doing something or just finished", threadFailTimes);
-            return;
-        }
-        
-        m_thread = new Thread(new Anchor());
-        anchor.run();
+        anchor.drop();
     }
 
     public void raiseAnchor() {
-        if (!m_thread.isAlive()) {
-            threadFailTimes++;
-            SmartDashboard.putNumber("Load is already disabled", threadFailTimes);
-            return;
-        }
-        m_thread.interrupt();
+        anchor.raise();
     }
 
     public boolean loadIsEnabled() {
         return m_thread.isAlive();
     }
 
-    public boolean anchorIsEnabled() {
-        return m_thread.isAlive();
+    public boolean anchorIsDown() {
+        return anchor.isDown();
     }
 
     public void displayPressure() {

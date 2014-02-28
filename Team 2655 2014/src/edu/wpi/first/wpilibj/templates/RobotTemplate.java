@@ -131,20 +131,16 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
                 ballHandler.loadEnable();
             } else {
-                if (ballHandler.loadIsEnabled()) {
-                    ballHandler.loadDisable();
-                }
+                ballHandler.loadDisable();
             }
         }
 
         //Anchor Button
         if (anchorButton.theButtonToggled()) {
-             if (ballHandler.anchorIsEnabled() == false) {
-                 ballHandler.lowerAnchor();
+            if (!ballHandler.anchorIsDown()) {
+                ballHandler.lowerAnchor();
             } else {
-                if (ballHandler.anchorIsEnabled()) {
-                    ballHandler.raiseAnchor();
-                }
+                ballHandler.raiseAnchor();
             }
         }
 //      Drive Mode Toggle  
