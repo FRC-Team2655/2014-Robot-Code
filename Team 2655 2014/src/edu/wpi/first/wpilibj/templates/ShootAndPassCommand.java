@@ -40,8 +40,7 @@ public class ShootAndPassCommand implements Runnable {
             m_shooter.shooterOff();
             TeamTimer.delay(250);
             m_shooter.retract();
-            m_shooter.shooterOff();
-            TeamTimer.delay(2000);
+            TeamTimer.delay(1500);
             m_inFeed.liftArms();
             m_sideArm.close();
             m_anchor.raise();

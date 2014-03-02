@@ -32,6 +32,13 @@ public class BallHandler {
 
     }
 
+    public void reset() {
+        raiseAnchor();
+        shooter.retract();
+        inFeed.liftArms();
+        closeSideArms();
+    }
+
     public void passTheBall() {
 
 //        if (!ballInMittDetector.ballInMitt()) {

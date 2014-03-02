@@ -60,7 +60,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
         button1Counter = 0;
         button2Counter = 0;
-
+        ballHandler.reset();
     }
 
     public void disabledInit() {
