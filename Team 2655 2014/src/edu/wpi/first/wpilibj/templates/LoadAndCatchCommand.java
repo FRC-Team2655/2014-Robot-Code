@@ -26,7 +26,7 @@ public class LoadAndCatchCommand implements Runnable {
         m_loadArm.on();
 
         try {
-            while (m_ballInMittLimitSwitch.ballInMitt() == false) {
+            while (true) {
                 Thread.sleep(Global.loadIdleTime);
             }
         } catch (InterruptedException e) {

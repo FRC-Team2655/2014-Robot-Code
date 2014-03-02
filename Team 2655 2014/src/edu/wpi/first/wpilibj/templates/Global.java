@@ -27,7 +27,7 @@ public class Global {
     public static long anchorRaiseTime = 250;
 
 //  THese are the variable used in shooting
-    public static double wantedDistanceFromWall = 10.0; // feet
+    public static double wantedDistanceFromWall = 4; // feet
     public static long stereoRangeFinderSeperation = 23; // inches
     public static long waitTimeShoot = 2000; // ms
     public static long waitTimePass = 250; // ms
@@ -36,7 +36,7 @@ public class Global {
     public static long settleTime = 250;
 
 //  Drive Modes  
-    public static int johnMode = 0; // set to 0 to get RC mode
+    public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
     public static long loadIdleTime = 50;// ms
@@ -67,11 +67,12 @@ public class Global {
     public final static int loadButton = 2;
     public final static int poopButton = 3;
     public final static int anchorButton = 4;
+    public final static int sideArmsButton = 5;
     public final static int calibrateGyroButton = 7;
     public final static int driveModeButton = 8;
 
     // ball in mitt constants
-    public final static int wantedBallDistanceFeet = 20;
+    public final static int wantedBallDistanceInches = 10;
 
     // ball mass calculation constants
     public static double measuredTimeInAccelerationMeasurement; // micro seconds

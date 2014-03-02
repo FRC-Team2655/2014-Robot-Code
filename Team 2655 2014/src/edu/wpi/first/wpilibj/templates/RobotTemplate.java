@@ -7,6 +7,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.tables.ITable;
@@ -26,9 +27,12 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     private Button loadButton;
     private Button passButton;
     private Button anchorButton;
+    private Button sideArmsButton;
     private Button calibrateGyroButton;
     private int button1Counter;
     private int button2Counter;
+
+    Timer autonomousTimer;
 
 //    private CurrentSensor crioCurrentSensor;
 //    private CurrentSensor dscCurrentSensor;
@@ -44,12 +48,14 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         rangeFinder = new RangeFinder(Ports.frontRangeFinderChannel);
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
+        autonomousTimer = new Timer();
 
         driveModeButton = new Button(joystick, Global.driveModeButton);
         loadButton = new Button(joystick, Global.loadButton);
         shootButton = new Button(joystick, Global.shootButton);
         passButton = new Button(joystick, Global.poopButton);
         anchorButton = new Button(joystick, Global.anchorButton);
+        sideArmsButton = new Button(joystick, Global.sideArmsButton);
         calibrateGyroButton = new Button(joystick, Global.calibrateGyroButton);
 
         button1Counter = 0;
@@ -68,22 +74,29 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
     }
 
     public void autonomousInit() {
+        driveSystem.calibrateGyro();
         driveSystem.setAutonomous();
-//      Global.smartDashBoardGlobalVariables();
-
+        autonomousTimer.reset();
+        autonomousTimer.start();
     }
 
     public void autonomousPeriodic() {
-        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
-        ballHandler.displayPressure();
-
-        if (Math.abs(needToMoveDistance) > 0.5) {
-            driveSystem.moveDistance(needToMoveDistance);
+        if (autonomousTimer.get() <= 3.5) {
+            driveSystem.moveAutonomous(0.25, 0, 0);
         } else {
             ballHandler.shootTheBall();
             TeamTimer.delay(10000);
         }
 
+//        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
+//        ballHandler.displayPressure();
+//
+//        if (Math.abs(needToMoveDistance) > 0.5) {
+//            driveSystem.moveDistance(needToMoveDistance);
+//        } else {
+//            ballHandler.shootTheBall();
+//            TeamTimer.delay(10000);
+//        }
     }
 
     public void teleopInit() {
@@ -143,15 +156,22 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
                 ballHandler.raiseAnchor();
             }
         }
-//      Drive Mode Toggle  
-        if (driveModeButton.theButtonToggled()) {
-            if (Global.johnMode == 1) {
-                Global.johnMode = 0;
+        if (sideArmsButton.theButtonToggled()) {
+            if (!ballHandler.sideArmsAreDown()) {
+                ballHandler.openSideArms();
             } else {
-                Global.johnMode = 1;
+                ballHandler.closeSideArms();
             }
-            SmartDashboard.putNumber("DriveMode:(0 = R/C Mode 1 = John Mode)", Global.johnMode);
         }
+//      Drive Mode Toggle  
+//        if (driveModeButton.theButtonToggled()) {
+//            if (Global.johnMode == 1) {
+//                Global.johnMode = 0;
+//            } else {
+//                Global.johnMode = 1;
+//            }
+//            SmartDashboard.putNumber("DriveMode:(0 = R/C Mode 1 = John Mode)", Global.johnMode);
+//        }
         if (calibrateGyroButton.theButtonToggled()) {
             driveSystem.calibrateGyro();
         }
