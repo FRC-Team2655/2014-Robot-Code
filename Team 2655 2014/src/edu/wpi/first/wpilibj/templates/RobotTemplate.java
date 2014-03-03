@@ -84,6 +84,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         if (autonomousTimer.get() <= 3.5) {
             driveSystem.moveAutonomous(0.25, 0, 0);
         } else {
+            driveSystem.rotateToDegree(0);
             ballHandler.shootTheBall();
             TeamTimer.delay(10000);
         }

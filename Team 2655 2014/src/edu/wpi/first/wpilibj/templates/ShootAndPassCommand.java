@@ -10,6 +10,7 @@ public class ShootAndPassCommand implements Runnable {
     private final SideArms m_sideArm;
     private final Anchor m_anchor;
     private final InFeed m_inFeed;
+    private final Rotation m_rotate;
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, InFeed inFeed) {
@@ -17,21 +18,21 @@ public class ShootAndPassCommand implements Runnable {
         m_sideArm = sideArm;
         m_inFeed = inFeed;
         m_anchor = null;
+        m_rotate = null;
     }
 
-    public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed) {
+    public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed, Rotation rotation) {
         m_shooter = shooter;
         m_sideArm = sideArm;
         m_anchor = anchor;
         m_inFeed = inFeed;
-
+        m_rotate = rotation;
     }
 
     public void run() {
 
         if (m_anchor != null) {
-            // need to add code here to ensure that
-            // the robot hass stopped moving
+            m_rotate.faceForward();
             m_anchor.drop();
             m_shooter.charge();
             m_sideArm.open();
@@ -44,7 +45,6 @@ public class ShootAndPassCommand implements Runnable {
             m_inFeed.liftArms();
             m_sideArm.close();
             m_anchor.raise();
-
         } else {
             m_sideArm.open();
             m_inFeed.lowerArm();

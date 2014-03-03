@@ -74,7 +74,6 @@ public class DriveSystem implements LiveWindowSendable {
         gyro.reset();
         driveMode = DriveModeEnum.Disabled;
         mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.backLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backRightMotorChannel);
-        mainDrive.setSensitivity(0.25);
 
         leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
         rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
@@ -87,6 +86,19 @@ public class DriveSystem implements LiveWindowSendable {
 
         thread = new DriveSystemThread();
         thread.start();
+    }
+
+    public DriveSystem() {
+        driveStick = null;
+        mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.backLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backRightMotorChannel);
+
+        gyro = new Gyro(Ports.gyroChannel);
+        gyro.reset();
+
+        leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
+        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
+
+        thread = null;
     }
 
     public void setDisabled() {
@@ -142,8 +154,11 @@ public class DriveSystem implements LiveWindowSendable {
 //      while (gyro.getAngle() != degree) {
         rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
 
-        moveAutonomous(0, 0, rotationSpeed);
+        while (Math.abs(rotationSpeed) > 0.0999999) {
+            rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
 
+            moveAutonomous(0, 0, rotationSpeed);
+        }
     }
 
     public void rotate(int degree) { // Used only in autonomous
