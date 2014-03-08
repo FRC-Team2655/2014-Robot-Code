@@ -10,7 +10,6 @@ public class BallHandler {
     private final SideArms sideArm;
     private final Anchor anchor;
     private final InFeed inFeed;
-    private final Rotation rotation;
     private final BallInMittDetector ballInMittDetector;
 
     private Thread m_thread;
@@ -25,7 +24,6 @@ public class BallHandler {
         sideArm = new SideArms();
         anchor = new Anchor();
         inFeed = new InFeed();
-        rotation = new Rotation();
         m_thread = new Thread();
         ballInMittDetector = new BallInMittDetector();
         threadFailTimes = 0;
@@ -69,7 +67,7 @@ public class BallHandler {
             SmartDashboard.putNumber("The Robot is still doing something or just finished", threadFailTimes);
             return;
         }
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed, rotation), "ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed), "ShootAndPass");
 
         m_thread.start();
     }
@@ -97,6 +95,10 @@ public class BallHandler {
             return;
         }
         m_thread.interrupt();
+    }
+
+    public void armTheShooter() {
+        shooter.charge();
     }
 
     public void lowerAnchor() {

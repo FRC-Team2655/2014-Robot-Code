@@ -10,11 +10,9 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
-import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.ITable;
 
-public class DriveSystem implements LiveWindowSendable {
+public class DriveSystem {
 
     private final TeamJoystick driveStick;
     private final Gyro gyro; // TODO test / calibrate gyro
@@ -88,19 +86,6 @@ public class DriveSystem implements LiveWindowSendable {
         thread.start();
     }
 
-    public DriveSystem() {
-        driveStick = null;
-        mainDrive = new RobotDrive(Ports.frontLeftMotorChannel, Ports.backLeftMotorChannel, Ports.frontRightMotorChannel, Ports.backRightMotorChannel);
-
-        gyro = new Gyro(Ports.gyroChannel);
-        gyro.reset();
-
-        leftFrontWheelEncoder = new Encoder(Ports.frontLeftMotorRotationAChannel, Ports.frontLeftMotorRotationBChannel);
-        rightFrontWheelEncoder = new Encoder(Ports.frontRightMotorRotationAChannel, Ports.frontRightMotorRotationBChannel);
-
-        thread = null;
-    }
-
     public void setDisabled() {
 //  Sets the drive mode to Disabled.        
         driveMode = DriveModeEnum.Disabled;
@@ -146,18 +131,16 @@ public class DriveSystem implements LiveWindowSendable {
     }
 
     public void rotateToDegree(int degree) { // Turns the robot to the degree that is passed into it. 
+        double rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
 
-        double rotationSpeed;
 //      The robot should turn faster the further it is away from it's goal so
 //      to find that we use the equation of a straight line which is Y = MX + B.
 //      M = 1/180 X = gyro.getAngle() - degree B = 0
 //      while (gyro.getAngle() != degree) {
-        rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
-
         while (Math.abs(rotationSpeed) > 0.0999999) {
-            rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
-
             moveAutonomous(0, 0, rotationSpeed);
+
+            rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
         }
     }
 
@@ -176,34 +159,6 @@ public class DriveSystem implements LiveWindowSendable {
             gyroCounter = 0;
             SmartDashboard.putNumber("Gyro Angle:", gyro.getAngle());
         }
-    }
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-            m_table.putNumber("Gyro Angle", gyro.getAngle());
-            m_table.putNumber("LF RPM", leftFrontWheelEncoder.getRate());
-            m_table.putNumber("RF RPM", rightFrontWheelEncoder.getRate());
-        }
-    }
-
-    public void startLiveWindowMode() {
-    }
-
-    public void stopLiveWindowMode() {
-    }
-
-    public void initTable(ITable arg0) {
-        m_table = arg0;
-        updateTable();
-    }
-
-    public ITable getTable() {
-        return m_table;
-    }
-
-    public String getSmartDashboardType() {
-        return "DriveSystem";
     }
 
 }

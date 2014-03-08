@@ -10,7 +10,6 @@ public class ShootAndPassCommand implements Runnable {
     private final SideArms m_sideArm;
     private final Anchor m_anchor;
     private final InFeed m_inFeed;
-    private final Rotation m_rotate;
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, InFeed inFeed) {
@@ -18,38 +17,34 @@ public class ShootAndPassCommand implements Runnable {
         m_sideArm = sideArm;
         m_inFeed = inFeed;
         m_anchor = null;
-        m_rotate = null;
     }
 
-    public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed, Rotation rotation) {
+    public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed) {
         m_shooter = shooter;
         m_sideArm = sideArm;
         m_anchor = anchor;
         m_inFeed = inFeed;
-        m_rotate = rotation;
     }
 
     public void run() {
 
         if (m_anchor != null) {
-            m_shooter.charge();
-            m_rotate.faceForward();
             m_anchor.drop();
             m_sideArm.open();
-            m_inFeed.lowerArm();
+            TeamTimer.delay(Global.waitTimeCharge);
+            m_inFeed.lowerArm(); // Shoots
             TeamTimer.delay(Global.waitTimeShoot);
             m_shooter.shooterOff();
             TeamTimer.delay(250);
-            m_shooter.retract();
-            TeamTimer.delay(1500);
+            m_shooter.retract(); // 1.5 sec delay
+            m_anchor.raise();
             m_inFeed.liftArms();
             m_sideArm.close();
-            m_anchor.raise();
         } else {
             m_sideArm.open();
             m_inFeed.lowerArm();
             m_shooter.pass();
-            TeamTimer.delay(2000);
+            TeamTimer.delay(1500);
             m_inFeed.liftArms();
             m_sideArm.close();
         }

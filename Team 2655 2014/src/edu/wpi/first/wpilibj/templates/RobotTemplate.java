@@ -128,6 +128,8 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
             button1Counter++;
 
             SmartDashboard.putNumber("Button 1 has been pressed this many times:", button1Counter);
+            ballHandler.armTheShooter();
+            driveSystem.rotateToDegree(0);
             ballHandler.shootTheBall();// Do said action
         }
 
