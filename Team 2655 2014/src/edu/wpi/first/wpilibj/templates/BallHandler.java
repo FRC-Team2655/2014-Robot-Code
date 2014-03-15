@@ -98,7 +98,7 @@ public class BallHandler {
     }
 
     public void armTheShooter() {
-        shooter.charge();
+        shooter.shoot();
     }
 
     public void lowerAnchor() {

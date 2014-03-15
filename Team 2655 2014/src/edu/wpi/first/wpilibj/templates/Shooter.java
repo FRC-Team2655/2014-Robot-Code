@@ -25,11 +25,17 @@ public class Shooter implements LiveWindowSendable {
         shooterArmPosition.start(); // start at zero
     }
 
-    public void charge() {
+    public void shoot() {
         shooterPiston.set(DoubleSolenoid.Value.kForward);
+        TeamTimer.delay(Global.waitTimeShoot);
+
+        shooterPiston.set(DoubleSolenoid.Value.kReverse);
+        TeamTimer.delay(Global.waitTimeShoot);
+
+        shooterPiston.set(DoubleSolenoid.Value.kOff);
     }
 
-    public void retract() {
+    public void retract() {// Used in reseting the robot during power on.
         shooterPiston.set(DoubleSolenoid.Value.kReverse);
         TeamTimer.delay(1500);
         shooterPiston.set(DoubleSolenoid.Value.kOff);

@@ -24,7 +24,6 @@ public class Anchor {
     }
 
     public void drop() {
-        SmartDashboard.putNumber("Anchors are lowered", 0);
         anchor.set(DoubleSolenoid.Value.kForward);
         isDropped = true;
     }

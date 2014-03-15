@@ -29,17 +29,13 @@ public class ShootAndPassCommand implements Runnable {
     public void run() {
 
         if (m_anchor != null) {
-            m_anchor.drop();
+//          m_anchor.drop();
             m_sideArm.open();
-            TeamTimer.delay(Global.waitTimeCharge);
-            m_inFeed.lowerArm(); // Shoots
-            TeamTimer.delay(Global.waitTimeShoot);
-            m_shooter.shooterOff();
-            TeamTimer.delay(250);
-            m_shooter.retract(); // 1.5 sec delay
-            m_anchor.raise();
+            m_inFeed.lowerArm();
+            m_shooter.shoot();            
             m_inFeed.liftArms();
             m_sideArm.close();
+            
         } else {
             m_sideArm.open();
             m_inFeed.lowerArm();

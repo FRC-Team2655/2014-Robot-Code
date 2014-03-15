@@ -127,8 +127,8 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
         if (shootButton.theButtonToggled()) { //Is the Button Pressed?
             button1Counter++;
 
-            SmartDashboard.putNumber("Button 1 has been pressed this many times:", button1Counter);
-            ballHandler.armTheShooter();
+            SmartDashboard.putNumber("You have shot this many times:", button1Counter);
+//          ballHandler.armTheShooter();
             driveSystem.rotateToDegree(0);
             ballHandler.shootTheBall();// Do said action
         }

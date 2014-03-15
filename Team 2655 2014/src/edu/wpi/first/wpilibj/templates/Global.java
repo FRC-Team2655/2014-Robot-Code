@@ -13,8 +13,8 @@ package edu.wpi.first.wpilibj.templates;
 public class Global {
 
 //  Variables used in load arm
-    public static long loadArmRaiseTime = 250; // ms
-    public static long loadArmExtendTime = 250; // ms
+    public static long loadArmRaiseTime = 100; // ms
+    public static long loadArmExtendTime = 100; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public static double speedSlopeMoving = 0.1;         // psiSlope
@@ -29,7 +29,7 @@ public class Global {
 //  THese are the variable used in shooting
     public static double wantedDistanceFromWall = 4; // feet
     public static long stereoRangeFinderSeperation = 23; // inches
-    public static long waitTimeShoot = 2000; // ms
+    public static long waitTimeShoot = 250; // ms
     public static long waitTimePass = 250; // ms
     public static long waitTimeCharge = 1000;
     public static long timeForShooterToRetract = 10; // ms
@@ -46,8 +46,8 @@ public class Global {
     public static int distanceLimitNegative = -5;
 
 //  side arms
-    public static long sideArmCloseTime = 250; // ms
-    public static long sideArmOpenTime = 250; // ms
+    public static long sideArmCloseTime = 100; // ms
+    public static long sideArmOpenTime = 100; // ms
     public static long sideArmIdleTime = 10; // ms
 
 //  Gyro
