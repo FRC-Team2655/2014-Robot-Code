@@ -36,7 +36,7 @@ public class ShootAndPassCommand implements Runnable {
 
             // SHOOT
             // turn solenoids ON in parallel
-            m_anchor.rawDrop();
+//            m_anchor.rawDrop();
             m_sideArm.rawOpen();
             m_inFeed.rawLower();
             // total time = 0'ish
@@ -48,7 +48,7 @@ public class ShootAndPassCommand implements Runnable {
             }
             // total time = 100ms
             // turn all solenoids OFF
-            m_anchor.rawOff();
+//            m_anchor.rawOff();
             m_sideArm.rawOff();
             m_inFeed.rawOff();
             // total  time = 100ms
@@ -73,7 +73,7 @@ public class ShootAndPassCommand implements Runnable {
             //
             m_timer.reset();
 
-            m_shooter.rawRetract();
+//            m_shooter.rawRetract();
             m_anchor.rawRaise();
             m_sideArm.rawClose();
             m_inFeed.rawRaise();
@@ -91,7 +91,7 @@ public class ShootAndPassCommand implements Runnable {
             //
             // turn all solenoids OFF
             //
-            m_anchor.rawOff();
+//            m_anchor.rawOff();
             m_sideArm.rawOff();
             m_inFeed.rawOff();
             m_shooter.rawOff();
