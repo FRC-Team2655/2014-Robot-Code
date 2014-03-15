@@ -23,10 +23,10 @@ public class Shooter {
 
     public void shoot() {
         shooterPiston.set(DoubleSolenoid.Value.kForward);
-        TeamTimer.delay(Global.waitTimeShoot);
+        TeamTimer.delay(Global.shooterShootTime);
 
         shooterPiston.set(DoubleSolenoid.Value.kReverse);
-        TeamTimer.delay(Global.waitTimeShoot);
+        TeamTimer.delay(Global.shooterShootTime);
 
         shooterPiston.set(DoubleSolenoid.Value.kOff);
     }
