@@ -43,7 +43,7 @@ public class ShootAndPassCommand implements Runnable {
 
             m_timer.start();
             // wait till everything is ready before turning solenoids off
-            while (m_timer.get() < Math.max(Global.anchorDropTime, Math.max(Global.sideArmOpenTime, Global.loadArmExtendTime))) {
+            while (m_timer.get() < Math.max(Global.sideArmOpenTime, Global.loadArmExtendTime)) {
                 TeamTimer.delay(5);
             }
             // total time = 100ms
@@ -80,7 +80,7 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time = 350'ish
             // wait till everything is ready before turn all solenoids off
-            while (m_timer.get() < Math.max(Global.timeForShooterToRetract, Math.max(Global.anchorRaiseTime, Math.max(Global.sideArmCloseTime, Global.loadArmRaiseTime)))) {
+            while (m_timer.get() < Math.max(Global.timeForShooterToRetract, Math.max(Global.sideArmCloseTime, Global.loadArmRaiseTime))) {
                 TeamTimer.delay(5);
             }
             // how long does it take to raise the anchors ? 250ms ?????
