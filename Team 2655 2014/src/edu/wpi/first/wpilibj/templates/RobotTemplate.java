@@ -8,12 +8,10 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.ITable;
 
 // TODO make software test harness (this is not trivial by the way)
-public class RobotTemplate extends IterativeRobot implements LiveWindowSendable {
+public class RobotTemplate extends IterativeRobot {
 
     private DriveSystem driveSystem;
     private BallHandler ballHandler;
@@ -102,7 +100,7 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
     public void teleopInit() {
 
-        Global.smartDashBoardGlobalVariables();
+        //Global.smartDashBoardGlobalVariables();
 
         driveSystem.setTeleop();
     }
@@ -186,38 +184,6 @@ public class RobotTemplate extends IterativeRobot implements LiveWindowSendable 
 
     public void testPeriodic() {
         ballHandler.displayPressure();
-    }
-
-    //
-    // LIveWindows support code
-    //
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-//            m_table.putNumber("DSC Current", dscCurrentSensor.getCurrent());
-//            m_table.putNumber("cRIO Current", crioCurrentSensor.getCurrent());
-            m_table.putNumber("Range finder (ft)", rangeFinder.getDistanceFeet());
-        }
-    }
-
-    public void startLiveWindowMode() {
-    }
-
-    public void stopLiveWindowMode() {
-    }
-
-    public void initTable(ITable arg0) {
-        m_table = arg0;
-        updateTable();
-    }
-
-    public ITable getTable() {
-        return m_table;
-    }
-
-    public String getSmartDashboardType() {
-        return "Robby The Robot";
     }
 
 }

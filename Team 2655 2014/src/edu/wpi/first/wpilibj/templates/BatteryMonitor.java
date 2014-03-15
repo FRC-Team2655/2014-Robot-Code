@@ -5,14 +5,11 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
-import edu.wpi.first.wpilibj.tables.ITable;
-
 /**
  *
  * @author magic_000
  */
-public class BatteryMonitor implements LiveWindowSendable {
+public class BatteryMonitor {
 
 //    private CurrentSensor crioCurrentSensor;
 //    private CurrentSensor dscCurrentSensor;
@@ -31,39 +28,6 @@ public class BatteryMonitor implements LiveWindowSendable {
 //        currentSensor = new CurrentSensor(Ports.cRIOModule.module2, Ports.compressorMotorCurrentChannel);
 //        LiveWindow.addSensor("BatteryMonitor",, this);
 //        LiveWindow.addSensor(null, null, this);
-    }
-
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-//            m_table.putNumber("FR", frontRightCurrentSensor.getCurrent());
-//            m_table.putNumber("FL", frontLeftCurrentSensor.getCurrent());
-//            m_table.putNumber("BR", backRightCurrentSensor.getCurrent());
-//            m_table.putNumber("BL", backLeftCurrentSensor.getCurrent());
-//            m_table.putNumber("CC", crioCurrentSensor.getCurrent());
-//            m_table.putNumber("DC", dscCurrentSensor.getCurrent());
-//            m_table.putNumber("Comp", compressorCurrentSensor.getCurrent());
-        }
-    }
-
-    public void startLiveWindowMode() {
-    }
-
-    public void stopLiveWindowMode() {
-    }
-
-    public void initTable(ITable arg0) {
-        m_table = arg0;
-        updateTable();
-    }
-
-    public ITable getTable() {
-        return m_table;
-    }
-
-    public String getSmartDashboardType() {
-        return "Battery Monitor";
     }
 
 }

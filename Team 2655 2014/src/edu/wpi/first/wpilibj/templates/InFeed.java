@@ -17,7 +17,7 @@ public class InFeed {
     private final DoubleSolenoid.Value LIFT_ARMS = DoubleSolenoid.Value.kReverse;
 
     private final Relay.Value MOTOR_FORWARD = Relay.Value.kForward;
-    private final Relay.Value MOTOR_REVERSE = Relay.Value.kReverse;
+//    private final Relay.Value MOTOR_REVERSE = Relay.Value.kReverse;
     private final Relay.Value MOTOR_OFF = Relay.Value.kOff;
 
     public InFeed() {
@@ -29,10 +29,10 @@ public class InFeed {
 
     // drop the arms
     // turn on the motors
-    void on() {
+    public void on() {
         loadArmLift.set(DROP_ARMS); // turn air on to put arms down
         TeamTimer.delay(Global.loadArmExtendTime);
-        
+
         loadArmLift.set(AIR_OFF); // turn air off
         leftLoadArmMotor.set(MOTOR_FORWARD); // turn motors on in forward direction
         rightLoadArmMotor.set(MOTOR_FORWARD);
@@ -40,24 +40,47 @@ public class InFeed {
 
     // lift the arms (and ball maybe)
     // turn off the motor
-    void off() {
+    public void off() {
         leftLoadArmMotor.set(MOTOR_OFF); // turn motors off
         rightLoadArmMotor.set(MOTOR_OFF);
-        
+
         loadArmLift.set(LIFT_ARMS); // turn air on to lift arms
         TeamTimer.delay(Global.loadArmRaiseTime);
         loadArmLift.set(AIR_OFF); // turn air off
     }
 
-    void lowerArm() {
+    public void lowerArm() {
         loadArmLift.set(DROP_ARMS); // turn air on to put arms down
         TeamTimer.delay(Global.loadArmExtendTime);
         loadArmLift.set(AIR_OFF); // turn air off
     }
 
-       void liftArms() {
+    public void liftArms() {
         loadArmLift.set(LIFT_ARMS); // turn air on to put arms down
         TeamTimer.delay(Global.loadArmExtendTime);
         loadArmLift.set(AIR_OFF); // turn air off
     }
+
+    public void rawLower() {
+        loadArmLift.set(DROP_ARMS);
+    }
+
+    public void rawRaise() {
+        loadArmLift.set(LIFT_ARMS);
+    }
+
+    public void rawOff() {
+        loadArmLift.set(AIR_OFF);
+    }
+
+    public void rawMotorsOff() {
+        leftLoadArmMotor.set(MOTOR_OFF); // turn motors off
+        rightLoadArmMotor.set(MOTOR_OFF);
+    }
+
+    public void rawMotorsOn() {
+        rightLoadArmMotor.set(MOTOR_FORWARD);
+        leftLoadArmMotor.set(MOTOR_FORWARD);
+    }
+
 }

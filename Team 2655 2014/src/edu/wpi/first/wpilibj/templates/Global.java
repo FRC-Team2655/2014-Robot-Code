@@ -13,45 +13,46 @@ package edu.wpi.first.wpilibj.templates;
 public class Global {
 
 //  Variables used in load arm
-    public static long loadArmRaiseTime = 100; // ms
-    public static long loadArmExtendTime = 100; // ms
+    public final static long loadArmRaiseTime = 100; // ms
+    public final static long loadArmExtendTime = 100; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
-    public static double speedSlopeMoving = 0.1;         // psiSlope
-    public static double speedSlopeRotate = 0.00555555;  // psiSlope
+    public final static double speedSlopeMoving = 0.1;         // psiSlope
+    public final static double speedSlopeRotate = 0.00555555;  // psiSlope
 
 //  Drive Idle Time
-    public static long driveIdleTime = 100;
-    
+    public final static long driveIdleTime = 100;
+
 //  Variables used for anchors
-    public static long anchorRaiseTime = 250;
+    public final static long anchorRaiseTime = 250;
+    public final static long anchorDropTime = 100; // ms
 
 //  THese are the variable used in shooting
-    public static double wantedDistanceFromWall = 4; // feet
-    public static long stereoRangeFinderSeperation = 23; // inches
-    public static long waitTimeShoot = 250; // ms
-    public static long waitTimePass = 250; // ms
-    public static long waitTimeCharge = 1000;
-    public static long timeForShooterToRetract = 10; // ms
-    public static long settleTime = 250;
+    public final static double wantedDistanceFromWall = 4; // feet
+    public final static long stereoRangeFinderSeperation = 23; // inches
+    public final static long waitTimeShoot = 250; // ms
+    public final static long waitTimePass = 250; // ms
+    public final static long waitTimeCharge = 1000;
+    public final static long timeForShooterToRetract = 10; // ms
+    public final static long settleTime = 250;
 
 //  Drive Modes  
     public static int johnMode = 1; // set to 0 to get RC mode
 
 //  Ball handler
-    public static long loadIdleTime = 50;// ms
+    public final static long loadIdleTime = 50;// ms
 
 //  drive system 
-    public static int distanceLimitPositive = 5;
-    public static int distanceLimitNegative = -5;
+    public final static int distanceLimitPositive = 5;
+    public final static int distanceLimitNegative = -5;
 
 //  side arms
-    public static long sideArmCloseTime = 100; // ms
-    public static long sideArmOpenTime = 100; // ms
-    public static long sideArmIdleTime = 10; // ms
+    public final static long sideArmCloseTime = 100; // ms
+    public final static long sideArmOpenTime = 100; // ms
+    public final static long sideArmIdleTime = 10; // ms
 
 //  Gyro
-    public static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
+    public final static double kDefaultVoltsPerDegreePerSecond = .007;// gyro sensitivity
 
 //  Temperature slope psiSlope = (9mV/C)
 //  y = mx + psiIntercept
@@ -102,7 +103,7 @@ public class Global {
     public final static double mvPerAmpIntercept = 0; // b
 
 //  Smart Dashboard 
-    public static void smartDashBoardGlobalVariables() {
-
-    }
+//    public static void smartDashBoardGlobalVariables() {
+//
+//    }
 }

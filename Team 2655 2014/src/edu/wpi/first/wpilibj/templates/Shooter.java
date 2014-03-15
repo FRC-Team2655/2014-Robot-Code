@@ -7,11 +7,11 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.tables.ITable;
 
-public class Shooter implements LiveWindowSendable {
+public class Shooter {
 
     //keep in mind that i might need to refactor names
     private final DoubleSolenoid shooterPiston;
-    private final Encoder shooterArmPosition;
+//    private final Encoder shooterArmPosition;
 
 //    private final double[] m_t = new double[10];
 //    private final int[] m_x= new int[10];
@@ -19,10 +19,10 @@ public class Shooter implements LiveWindowSendable {
     public Shooter() {
         shooterPiston = new DoubleSolenoid(Ports.ShooterExtendChannel, Ports.ShooterRetractChannel);
         // TODO finish shooter arm sensor code (angle, angular position, velocity, acceleration
-        shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
-        shooterArmPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
-        shooterArmPosition.reset();
-        shooterArmPosition.start(); // start at zero
+//        shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
+//        shooterArmPosition.setDistancePerPulse(Global.shooterRadiansPerPulse);
+//        shooterArmPosition.reset();
+//        shooterArmPosition.start(); // start at zero
     }
 
     public void shoot() {
@@ -55,29 +55,16 @@ public class Shooter implements LiveWindowSendable {
         shooterPiston.set(DoubleSolenoid.Value.kOff);
     }
 
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-            m_table.putNumber("Shooter Arm Angle", shooterArmPosition.getRaw());
-        }
+    public void rawExtend() {
+        shooterPiston.set(DoubleSolenoid.Value.kForward);
     }
 
-    public void startLiveWindowMode() { /* empty for now */ }
-
-    public void stopLiveWindowMode() { /* empty for now */ }
-
-    public void initTable(ITable subtable) {
-        m_table = subtable;
-        updateTable();
+    public void rawRetract() {
+        shooterPiston.set(DoubleSolenoid.Value.kReverse);
     }
 
-    public ITable getTable() {
-        return m_table;
+    public void rawOff() {
+        shooterPiston.set(DoubleSolenoid.Value.kOff);
     }
 
-    public String getSmartDashboardType() {
-
-        return "Shooter";
-    }
 }

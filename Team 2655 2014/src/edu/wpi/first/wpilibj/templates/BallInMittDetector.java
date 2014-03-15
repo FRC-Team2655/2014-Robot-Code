@@ -13,10 +13,10 @@ import edu.wpi.first.wpilibj.tables.ITable;
  *
  * @author magic_000
  */
-public class BallInMittDetector implements LiveWindowSendable {
+public class BallInMittDetector {
 
     private final RangeFinder rangeFinder;
- //   private final DigitalInput ballInMitt;
+    //   private final DigitalInput ballInMitt;
     //  private final boolean BALLINMITT = false;
 
     public BallInMittDetector() {
@@ -30,30 +30,4 @@ public class BallInMittDetector implements LiveWindowSendable {
         return rangeFinder.getDistanceInches() < Global.wantedBallDistanceInches;
     }
 
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-            m_table.putBoolean("Ball In Mitt is", ballInMitt());
-            //  m_table.putBoolean("Ball In Mitt DIO", ballInMitt.get());
-            m_table.putNumber("Ball In Mitt rangefinder (in)", rangeFinder.getDistanceInches());
-        }
-    }
-
-    public void startLiveWindowMode() { /* nothing to do here */ }
-
-    public void stopLiveWindowMode() { /* nothing to do here */ }
-
-    public void initTable(ITable subtable) {
-        m_table = subtable;
-        updateTable();
-    }
-
-    public ITable getTable() {
-        return m_table;
-    }
-
-    public String getSmartDashboardType() {
-        return "BallInMittDetector";
-    }
 }

@@ -8,7 +8,6 @@ public class SideArms {
     private final DoubleSolenoid sideArms;
     private boolean isOpen;
 
-
     public SideArms() {
         sideArms = new DoubleSolenoid(Ports.sideArmOpenArmChannel, Ports.sideArmClosedArmChannel);
         isOpen = false;
@@ -30,6 +29,20 @@ public class SideArms {
 
     public boolean sideArmState() {
         return isOpen;
+    }
+
+    public void rawOpen() {
+        sideArms.set(DoubleSolenoid.Value.kForward);
+        isOpen = true;
+    }
+
+    public void rawClose() {
+        sideArms.set(DoubleSolenoid.Value.kReverse);
+        isOpen = false;
+    }
+
+    public void rawOff() {
+        sideArms.set(DoubleSolenoid.Value.kOff);
     }
 
 }

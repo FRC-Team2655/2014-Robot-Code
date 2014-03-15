@@ -39,4 +39,18 @@ public class Anchor {
         return isDropped;
     }
 
+    public void rawDrop() {
+        anchor.set(DoubleSolenoid.Value.kForward);
+        isDropped = true;
+    }
+
+    public void rawRaise() {
+        anchor.set(DoubleSolenoid.Value.kReverse);
+        isDropped = false;
+    }
+
+    public void rawOff() {
+        anchor.set(DoubleSolenoid.Value.kOff);
+    }
+
 }
