@@ -1,11 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 // Author Alex Senneville
 
-import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
-import edu.wpi.first.wpilibj.tables.ITable;
 
 public class Shooter {
 

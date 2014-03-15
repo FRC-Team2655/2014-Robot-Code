@@ -12,7 +12,7 @@ public class ShootAndPassCommand implements Runnable {
     private final SideArms m_sideArm;
     private final Anchor m_anchor;
     private final InFeed m_inFeed;
-    private Timer t;
+    private Timer m_timer;
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, InFeed inFeed) {
@@ -20,7 +20,7 @@ public class ShootAndPassCommand implements Runnable {
         m_sideArm = sideArm;
         m_inFeed = inFeed;
         m_anchor = null;
-        Timer t = new Timer();
+        m_timer = new Timer();
     }
 
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed) {
@@ -41,9 +41,9 @@ public class ShootAndPassCommand implements Runnable {
             m_inFeed.rawLower();
             // total time = 0'ish
 
-            t.start();
+            m_timer.start();
             // wait till everything is ready before turning solenoids off
-            while (t.get() < Math.max(Global.anchorDropTime, Math.max(Global.sideArmOpenTime, Global.loadArmExtendTime))) {
+            while (m_timer.get() < Math.max(Global.anchorDropTime, Math.max(Global.sideArmOpenTime, Global.loadArmExtendTime))) {
                 TeamTimer.delay(5);
             }
             // total time = 100ms
@@ -58,12 +58,12 @@ public class ShootAndPassCommand implements Runnable {
             // the main shooting time
             //
             //
-            t.reset();
+            m_timer.reset();
             m_shooter.rawExtend();
             // we could start letting out anchor air at the same time
 
             // wait for it, wait for it
-            while (t.get() < Global.waitTimeShoot) {
+            while (m_timer.get() < Global.waitTimeShoot) {
                 TeamTimer.delay(5);
             }
 
@@ -71,7 +71,7 @@ public class ShootAndPassCommand implements Runnable {
             //
             // start pulling it all back together
             //
-            t.reset();
+            m_timer.reset();
 
             m_shooter.rawRetract();
             m_anchor.rawRaise();
@@ -80,7 +80,7 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time = 350'ish
             // wait till everything is ready before turn all solenoids off
-            while (t.get() < Math.max(Global.timeForShooterToRetract, Math.max(Global.anchorRaiseTime, Math.max(Global.sideArmCloseTime, Global.loadArmRaiseTime)))) {
+            while (m_timer.get() < Math.max(Global.timeForShooterToRetract, Math.max(Global.anchorRaiseTime, Math.max(Global.sideArmCloseTime, Global.loadArmRaiseTime)))) {
                 TeamTimer.delay(5);
             }
             // how long does it take to raise the anchors ? 250ms ?????
@@ -102,7 +102,7 @@ public class ShootAndPassCommand implements Runnable {
             m_sideArm.open();
             m_inFeed.lowerArm();
             m_shooter.pass();
-            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here
+            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here ??
             m_inFeed.liftArms();
             m_sideArm.close();
         }

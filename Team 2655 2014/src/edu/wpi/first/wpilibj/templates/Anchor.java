@@ -7,7 +7,6 @@ package edu.wpi.first.wpilibj.templates;
 
  //import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *

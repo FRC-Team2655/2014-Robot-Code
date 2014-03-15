@@ -5,9 +5,7 @@
  */
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.livewindow.LiveWindowSendable;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj.tables.ITable;
 
 /**
  *
