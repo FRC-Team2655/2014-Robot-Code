@@ -15,6 +15,7 @@ public class Global {
 //  Variables used in load arm
     public final static long inFeedRaiseTime = 100; // ms
     public final static long inFeedLowerTime = 100; // ms
+    public final static long inFeedPartialLowerTime = 50; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public final static double speedSlopeMoving = 0.1;         // psiSlope
@@ -49,6 +50,7 @@ public class Global {
 //  side arms
     public final static long sideArmCloseTime = 100; // ms
     public final static long sideArmOpenTime = 100; // ms
+    public final static long sideArmPartialOpenTime = 50; // ms
     public final static long sideArmIdleTime = 10; // ms
 
 //  Gyro

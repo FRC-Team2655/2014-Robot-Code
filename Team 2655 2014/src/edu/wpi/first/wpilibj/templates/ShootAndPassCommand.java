@@ -33,22 +33,26 @@ public class ShootAndPassCommand implements Runnable {
     public void run() {
 
         if (m_anchor != null) {
+            //
+            // SHOOT THE BALL
+            //
 
-            // SHOOT
+            // TODO : test this open delay -- they don't have to open all the way
+            // so I put in a partial time. better to have an angle encoder but
+            // a programmer's gotta do what he's gotta do
+            double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
+            double shootDelay = Global.shooterShootTime;
+            double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
+            
+            m_timer.start();
             // turn solenoids ON in parallel
-//            m_anchor.rawDrop(); // anchors not used during shoot
             m_sideArm.rawOpen();
             m_inFeed.rawLower();
-            // total time = 0'ish
-
-            m_timer.start();
             // wait till everything is ready before turning solenoids off
-            while (m_timer.get() < Math.max(Global.sideArmOpenTime, Global.inFeedLowerTime)) {
-                TeamTimer.delay(5);
-            }
+            TeamTimer.delay((long) (openDelay - m_timer.get()));
+
             // total time = 100ms
             // turn all solenoids OFF
-//            m_anchor.rawOff();
             m_sideArm.rawOff();
             m_inFeed.rawOff();
             // total  time = 100ms
@@ -59,44 +63,34 @@ public class ShootAndPassCommand implements Runnable {
             //
             //
             m_timer.reset();
+            
             m_shooter.rawExtend();
-            // we could start letting out anchor air at the same time
+            TeamTimer.delay((long) (shootDelay - m_timer.get()));
 
-            // wait for it, wait for it
-            while (m_timer.get() < Global.shooterShootTime) {
-                TeamTimer.delay(5);
-            }
-
-            // total time = 100 + 250 = 350
-            //
+            // total time = 100 + 250 = 350           
+            
             // start pulling it all back together
             //
             m_timer.reset();
 
             m_shooter.rawRetract();
-//            m_anchor.rawRaise();
             m_sideArm.rawClose();
             m_inFeed.rawRaise();
 
             // total time = 350'ish
             // wait till everything is ready before turn all solenoids off
-            while (m_timer.get() < Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime))) {
-                TeamTimer.delay(5);
-            }
-            // how long does it take to raise the anchors ? 250ms ?????
+            TeamTimer.delay((long) (retractDelay - m_timer.get()));
 
             //
             // total time = 450 (no anchors)
             //
             // turn all solenoids OFF
             //
-//            m_anchor.rawOff();
             m_sideArm.rawOff();
             m_inFeed.rawOff();
             m_shooter.rawOff();
 
             // total time about 450ms
-            
         } else { // PASS
 
             m_sideArm.open();
