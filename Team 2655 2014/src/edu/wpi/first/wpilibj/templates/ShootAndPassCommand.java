@@ -92,13 +92,64 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time about 450ms
         } else { // PASS
+            
+            double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
+            double shootDelay = Global.shooterPassTime;
+            double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
+            
+            m_timer.start();
+            // turn solenoids ON in parallel
+            m_sideArm.rawOpen();
+            m_inFeed.rawLower();
+            // wait till everything is ready before turning solenoids off
+            TeamTimer.delay((long) (openDelay - m_timer.get()));
 
-            m_sideArm.open();
-            m_inFeed.lowerArm();
-            m_shooter.pass();
-            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here ??
-            m_inFeed.liftArms();
-            m_sideArm.close();
+            // total time = 100ms
+            // turn all solenoids OFF
+            m_sideArm.rawOff();
+            m_inFeed.rawOff();
+            // total  time = 100ms
+
+            //
+            //
+            // the main shooting time
+            //
+            //
+            m_timer.reset();
+            
+            m_shooter.rawExtend();
+            TeamTimer.delay((long) (shootDelay - m_timer.get()));
+
+            // total time = 100 + 250 = 350           
+            
+            // start pulling it all back together
+            //
+            m_timer.reset();
+
+            m_shooter.rawRetract();
+            m_sideArm.rawClose();
+            m_inFeed.rawRaise();
+
+            // total time = 350'ish
+            // wait till everything is ready before turn all solenoids off
+            TeamTimer.delay((long) (retractDelay - m_timer.get()));
+
+            //
+            // total time = 450 (no anchors)
+            //
+            // turn all solenoids OFF
+            //
+            m_sideArm.rawOff();
+            m_inFeed.rawOff();
+            m_shooter.rawOff();
+
+//            Old code
+//            m_sideArm.open();
+//            m_inFeed.lowerArm();
+//            m_shooter.pass();
+//            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here ??
+//            m_inFeed.liftArms();
+//            m_sideArm.close();
         }
     }
 

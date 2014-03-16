@@ -49,10 +49,10 @@ public class Shooter {
 
     public void pass() {
         shooterPiston.set(EXTEND);
-        TeamTimer.delay(Global.waitTimePass);
+        TeamTimer.delay(Global.shooterPassTime);
 
         shooterPiston.set(RETRACT);
-        TeamTimer.delay(Global.waitTimePass);
+        TeamTimer.delay(Global.shooterRetractTime);
 
         shooterPiston.set(AIR_OFF);
     }
