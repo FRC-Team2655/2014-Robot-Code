@@ -32,7 +32,7 @@ public class Global {
     public final static double wantedDistanceFromWall = 4; // feet
     public final static long stereoRangeFinderSeperation = 23; // inches
     public final static long shooterShootTime = 250; // ms
-    public final static long shooterPassTime = 250; // ms
+    public final static long shooterPassTime = 100; // ms
     public final static long waitTimeCharge = 1000;
     public final static long shooterRetractTime = 10; // ms
     public final static long settleTime = 250;

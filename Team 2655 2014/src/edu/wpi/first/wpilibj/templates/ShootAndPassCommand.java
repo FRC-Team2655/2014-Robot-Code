@@ -43,7 +43,7 @@ public class ShootAndPassCommand implements Runnable {
             double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
             double shootDelay = Global.shooterShootTime;
             double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
-            
+
             m_timer.start();
             // turn solenoids ON in parallel
             m_sideArm.rawOpen();
@@ -53,10 +53,7 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time = 100ms
             // turn all solenoids OFF
-            m_sideArm.rawOff();
-            m_inFeed.rawOff();
             // total  time = 100ms
-
             //
             //
             // the main shooting time
@@ -64,11 +61,15 @@ public class ShootAndPassCommand implements Runnable {
             //
             m_timer.reset();
             
-            m_shooter.rawExtend();
+            //start shooting before we turn off the other two
+            m_shooter.rawExtend(); // trickky code here
+
+            m_sideArm.rawOff();
+            m_inFeed.rawOff();
+            
             TeamTimer.delay((long) (shootDelay - m_timer.get()));
 
             // total time = 100 + 250 = 350           
-            
             // start pulling it all back together
             //
             m_timer.reset();
@@ -92,11 +93,11 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time about 450ms
         } else { // PASS
-            
+
             double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
             double shootDelay = Global.shooterPassTime;
             double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
-            
+
             m_timer.start();
             // turn solenoids ON in parallel
             m_sideArm.rawOpen();
@@ -106,10 +107,7 @@ public class ShootAndPassCommand implements Runnable {
 
             // total time = 100ms
             // turn all solenoids OFF
-            m_sideArm.rawOff();
-            m_inFeed.rawOff();
             // total  time = 100ms
-
             //
             //
             // the main shooting time
@@ -117,11 +115,17 @@ public class ShootAndPassCommand implements Runnable {
             //
             m_timer.reset();
             
+            //start passing before we turn off the other two
+            // might as well save even a bit more time here too
+            
             m_shooter.rawExtend();
+            
+            m_sideArm.rawOff();
+            m_inFeed.rawOff();
+
             TeamTimer.delay((long) (shootDelay - m_timer.get()));
 
             // total time = 100 + 250 = 350           
-            
             // start pulling it all back together
             //
             m_timer.reset();
@@ -142,34 +146,6 @@ public class ShootAndPassCommand implements Runnable {
             m_sideArm.rawOff();
             m_inFeed.rawOff();
             m_shooter.rawOff();
-
-//            Old code
-//            m_sideArm.open();
-//            m_inFeed.lowerArm();
-//            m_shooter.pass();
-//            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here ??
-//            m_inFeed.liftArms();
-//            m_sideArm.close();
         }
     }
-
-//    public void run() {
-//
-//        if (m_anchor != null) {
-//            m_anchor.drop();
-//            m_sideArm.open();
-//            m_inFeed.lowerArm();
-//            m_shooter.shoot();
-//            m_inFeed.liftArms();
-//            m_sideArm.close();
-//        } else {
-//            // pass only
-//            m_sideArm.open();
-//            m_inFeed.lowerArm();
-//            m_shooter.pass();
-//            TeamTimer.delay(1500); /// WOW 1.5 seconds wait here
-//            m_inFeed.liftArms();
-//            m_sideArm.close();
-//        }
-//    }
 }
