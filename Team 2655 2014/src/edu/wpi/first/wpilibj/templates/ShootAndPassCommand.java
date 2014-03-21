@@ -1,6 +1,7 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -12,15 +13,16 @@ public class ShootAndPassCommand implements Runnable {
     private final SideArms m_sideArm;
     private final Anchor m_anchor;
     private final InFeed m_inFeed;
-    private Timer m_timer;
+    private final Timer m_timer;
 
     // this constructor is used for the pass command
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, InFeed inFeed) {
-        m_shooter = shooter;
-        m_sideArm = sideArm;
-        m_inFeed = inFeed;
-        m_anchor = null;
-        m_timer = new Timer();
+        this(shooter,sideArm,null,inFeed);
+//        m_shooter = shooter;
+//        m_sideArm = sideArm;
+//        m_inFeed = inFeed;
+//        m_anchor = null;
+//        m_timer = new Timer();
     }
 
     public ShootAndPassCommand(Shooter shooter, SideArms sideArm, Anchor anchor, InFeed inFeed) {
@@ -28,6 +30,7 @@ public class ShootAndPassCommand implements Runnable {
         m_sideArm = sideArm;
         m_anchor = anchor;
         m_inFeed = inFeed;
+        m_timer = new Timer();
     }
 
     public void run() {
@@ -36,68 +39,75 @@ public class ShootAndPassCommand implements Runnable {
             //
             // SHOOT THE BALL
             //
+            SmartDashboard.putNumber("The robot has made it to the shoot thread", 0);
 
-            // TODO : test this open delay -- they don't have to open all the way
-            // so I put in a partial time. better to have an angle encoder but
-            // a programmer's gotta do what he's gotta do
             double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
             double shootDelay = Global.shooterShootTime;
-            double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
+            double retractDelay = Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime);
+            double shooterRetractDelay = Global.shooterRetractTime;
 
+            m_timer.reset();
             m_timer.start();
-            // turn solenoids ON in parallel
+
+            m_shooter.rawExtend(); // CHARGE up the shooter pistons
+//            m_anchor.rawDrop();
             m_sideArm.rawOpen();
-            m_inFeed.rawLower();
-            // wait till everything is ready before turning solenoids off
+
+            // wait until anchors are down
+            // wait until sideamrs are open
+            // shooter is still CHARGING....
             TeamTimer.delay((long) (openDelay - m_timer.get()));
 
-            // total time = 100ms
-            // turn all solenoids OFF
-            // total  time = 100ms
-            //
-            //
-            // the main shooting time
-            //
-            //
-            m_timer.reset();
-            
-            //start shooting before we turn off the other two
-            m_shooter.rawExtend(); // trickky code here
-
+            // anchors and sidearms are far enough, stop them
+//            m_anchor.rawOff();
             m_sideArm.rawOff();
-            m_inFeed.rawOff();
-            
+
             TeamTimer.delay((long) (shootDelay - m_timer.get()));
+
+            // ok -- shooter is CHARGED enough, shoot the bloody thing            
+            m_inFeed.rawLower(); // unlatch the shooter
+
+            m_timer.reset();
+
+            TeamTimer.delay((long) (openDelay - m_timer.get()));
 
             // total time = 100 + 250 = 350           
             // start pulling it all back together
-            //
-            m_timer.reset();
-
+            m_inFeed.rawOff();
             m_shooter.rawRetract();
-            m_sideArm.rawClose();
-            m_inFeed.rawRaise();
+//            m_anchor.rawRaise();
+
+            m_timer.reset();
 
             // total time = 350'ish
             // wait till everything is ready before turn all solenoids off
-            TeamTimer.delay((long) (retractDelay - m_timer.get()));
+            TeamTimer.delay((long) (shooterRetractDelay - m_timer.get()));
 
             //
             // total time = 450 (no anchors)
             //
             // turn all solenoids OFF
             //
+//            m_anchor.rawOff();
+            m_inFeed.rawRaise();
+            m_sideArm.rawClose();
+
+            TeamTimer.delay((long) (retractDelay - m_timer.get()));
+
             m_sideArm.rawOff();
             m_inFeed.rawOff();
-            m_shooter.rawOff();
 
+            m_timer.stop();
+//            m_shooter.rawOff();
             // total time about 450ms
         } else { // PASS
 
             double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
-            double shootDelay = Global.shooterPassTime;
-            double retractDelay = Math.max(Global.shooterRetractTime, Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime));
+            double passDelay = Global.shooterPassTime;
+            double shooterRetractDelay = Global.shooterRetractTime;
+            double retractDelay = Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime);
 
+            m_timer.reset();
             m_timer.start();
             // turn solenoids ON in parallel
             m_sideArm.rawOpen();
@@ -114,38 +124,43 @@ public class ShootAndPassCommand implements Runnable {
             //
             //
             m_timer.reset();
-            
+
             //start passing before we turn off the other two
             // might as well save even a bit more time here too
-            
-            m_shooter.rawExtend();
-            
+            m_shooter.rawExtend(); // start the PASS
+
             m_sideArm.rawOff();
             m_inFeed.rawOff();
 
-            TeamTimer.delay((long) (shootDelay - m_timer.get()));
+            TeamTimer.delay((long) (passDelay - m_timer.get()));
 
             // total time = 100 + 250 = 350           
             // start pulling it all back together
             //
             m_timer.reset();
 
-            m_shooter.rawRetract();
-            m_sideArm.rawClose();
-            m_inFeed.rawRaise();
+            m_shooter.rawRetract(); // end of PASS, turns the air off
+            //let arms start to come back
 
             // total time = 350'ish
             // wait till everything is ready before turn all solenoids off
-            TeamTimer.delay((long) (retractDelay - m_timer.get()));
+            TeamTimer.delay((long) (shooterRetractDelay - m_timer.get()));
 
             //
             // total time = 450 (no anchors)
             //
             // turn all solenoids OFF
             //
+            m_sideArm.rawClose();
+            m_inFeed.rawRaise();
+
+            TeamTimer.delay((long) (retractDelay - m_timer.get()));
+
             m_sideArm.rawOff();
             m_inFeed.rawOff();
-            m_shooter.rawOff();
+
+            m_timer.stop();
+//            m_shooter.rawOff();
         }
     }
 }

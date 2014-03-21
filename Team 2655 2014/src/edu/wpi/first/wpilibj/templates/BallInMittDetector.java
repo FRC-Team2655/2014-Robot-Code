@@ -28,4 +28,8 @@ public class BallInMittDetector {
         return rangeFinder.getDistanceInches() < Global.wantedBallDistanceInches;
     }
 
+    public void displayBallInMitt() {
+        SmartDashboard.putNumber("RangeFinder BIM Inches", rangeFinder.getDistanceInches());
+    }
+
 }

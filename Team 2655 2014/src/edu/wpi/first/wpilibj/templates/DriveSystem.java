@@ -142,6 +142,9 @@ public class DriveSystem {
 
             rotationSpeed = (gyro.getAngle() - degree) * Global.speedSlopeRotate;
         }
+
+        moveAutonomous(0, 0, 0);
+
     }
 
     public void rotate(int degree) { // Used only in autonomous
@@ -152,12 +155,13 @@ public class DriveSystem {
         gyro.reset();
     }
 
-    public void outputGyro() {
+    public void displayGyro() {
         gyroCounter++;
 
         if (gyroCounter == 100) {
             gyroCounter = 0;
             SmartDashboard.putNumber("Gyro Angle:", gyro.getAngle());
+            SmartDashboard.putNumber("Gyro Data(For use with progress bar)", gyro.getAngle());
         }
     }
 

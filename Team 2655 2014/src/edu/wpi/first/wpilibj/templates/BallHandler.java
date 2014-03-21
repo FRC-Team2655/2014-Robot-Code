@@ -51,7 +51,7 @@ public class BallHandler {
             return;
         }
 
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, inFeed), "ShootAndPass");
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, inFeed));
         m_thread.start();
     }
 
@@ -67,7 +67,8 @@ public class BallHandler {
             SmartDashboard.putNumber("The Robot is still doing something or just finished", threadFailTimes);
             return;
         }
-        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed), "ShootAndPass");
+        
+        m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed));
 
         m_thread.start();
     }
@@ -136,5 +137,9 @@ public class BallHandler {
             SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.getPressure());
             airTankRefreshWait = 0;
         }
+    }
+
+    public void displayBallInMitt() {
+        ballInMittDetector.displayBallInMitt();
     }
 }

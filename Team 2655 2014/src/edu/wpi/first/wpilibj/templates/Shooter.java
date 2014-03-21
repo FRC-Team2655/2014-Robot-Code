@@ -1,21 +1,21 @@
 package edu.wpi.first.wpilibj.templates;
 // Author Alex Senneville
 
-import edu.wpi.first.wpilibj.CounterBase;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
-import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Solenoid;
 
 public class Shooter {
 
-    private final DoubleSolenoid shooterPiston;
+    private final Solenoid shooterExtend1;
+    private final Solenoid shooterExtend2;
 
 //    private final Encoder shooterArmPosition;
-    private final DoubleSolenoid.Value EXTEND = DoubleSolenoid.Value.kForward;
-    private final DoubleSolenoid.Value AIR_OFF = DoubleSolenoid.Value.kOff;
-    private final DoubleSolenoid.Value RETRACT = DoubleSolenoid.Value.kReverse;
+    private final boolean EXTEND = true;
+    private final boolean AIR_OFF = false;
+    private final boolean RETRACT = true;
 
     public Shooter() {
-        shooterPiston = new DoubleSolenoid(Ports.ShooterExtendChannel, Ports.ShooterRetractChannel);
+        shooterExtend1 = new Solenoid(Ports.ShooterExtend1Channel);
+        shooterExtend2 = new Solenoid(Ports.ShooterExtend2Channel);
 
         // TODO finish shooter arm sensor code (angle, angular position, velocity, acceleration
 //        shooterArmPosition = new Encoder(Ports.shooterRotationAChannel, Ports.shooterRotationBChannel, Global.reverseShooterRotation, CounterBase.EncodingType.k4X);
@@ -25,52 +25,53 @@ public class Shooter {
     }
 
     public void shoot() {
-        shooterPiston.set(EXTEND);
-        
+        shooterExtend1.set(EXTEND);
+
         // TODO when we get shoot encoder uncomment the next lines
         // need to figure out how many pulses is the right shoot angle
         //while (shooterArmPosition.get() < Global.wantedShooterEndAngle) {};
         // also don't need the time delay in the next line.
         TeamTimer.delay(Global.shooterShootTime);
 
-        shooterPiston.set(RETRACT);
-        //while (shooterArmPosition.get() < 10) {};        
-        // don't forget to uncomment out the following delay
+        shooterExtend1.set(AIR_OFF); // Turns the shooter solenoid off and turns the retract on.
+        shooterExtend2.set(RETRACT);
+
         TeamTimer.delay(Global.shooterShootTime);
 
-        shooterPiston.set(AIR_OFF);
+        shooterExtend2.set(AIR_OFF);
     }
 
     public void retract() {// Used in reseting the robot during power on.
-        shooterPiston.set(RETRACT);
-        TeamTimer.delay(1500);
-        shooterPiston.set(AIR_OFF);
+        shooterExtend1.set(AIR_OFF); // Makes sure that the extend was not open.
+        shooterExtend2.set(AIR_OFF);
+
+//        shooterRetractSolenoid.set(RETRACT);
+//        TeamTimer.delay(1500);
     }
 
     public void pass() {
-        shooterPiston.set(EXTEND);
+        shooterExtend1.set(EXTEND);
         TeamTimer.delay(Global.shooterPassTime);
 
-        shooterPiston.set(RETRACT);
+        shooterExtend1.set(RETRACT);
         TeamTimer.delay(Global.shooterRetractTime);
 
-        shooterPiston.set(AIR_OFF);
-    }
-
-    public void shooterOff() {
-        shooterPiston.set(AIR_OFF);
+        shooterExtend1.set(AIR_OFF);
     }
 
     public void rawExtend() {
-        shooterPiston.set(EXTEND);
+        shooterExtend1.set(EXTEND);
+        shooterExtend2.set(EXTEND);
     }
 
     public void rawRetract() {
-        shooterPiston.set(RETRACT);
+        shooterExtend1.set(AIR_OFF);
+        shooterExtend2.set(AIR_OFF);
     }
 
-    public void rawOff() {
-        shooterPiston.set(AIR_OFF);
-    }
+//    public void rawOff() {
+//        shooterExtend1.set(AIR_OFF);
+//        shooterExtend2.set(AIR_OFF);
+//    }
 
 }

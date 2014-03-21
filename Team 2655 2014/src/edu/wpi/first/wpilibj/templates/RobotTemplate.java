@@ -62,7 +62,6 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void disabledInit() {
-
         driveSystem.setDisabled();
     }
 
@@ -79,11 +78,12 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-        if (autonomousTimer.get() <= 3.5) {
+        if (autonomousTimer.get() <= 3) {
             driveSystem.moveAutonomous(0.25, 0, 0);
         } else {
-            driveSystem.rotateToDegree(0);
+//            driveSystem.rotateToDegree(0);   
             ballHandler.shootTheBall();
+            autonomousTimer.stop();
             TeamTimer.delay(10000);
         }
 
@@ -99,22 +99,21 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void teleopInit() {
-
-        //Global.smartDashBoardGlobalVariables();
-
+        //Global.smartDashBoardGlobalVariables();       
         driveSystem.setTeleop();
     }
 
     //Gandalf = 100pts
     //Frodo = 50pts
     public void teleopPeriodic() {
-        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
+//        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
 
 //      These display smartdashboard values  
-        SmartDashboard.putNumber("Need to move", needToMoveDistance);
+//        SmartDashboard.putNumber("Need to move", needToMoveDistance);
         SmartDashboard.putNumber("RangeFinder Feet", rangeFinder.getDistanceFeet());
-        driveSystem.outputGyro();
+        driveSystem.displayGyro();
         ballHandler.displayPressure();
+        ballHandler.displayBallInMitt();
 //        
 
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
@@ -127,7 +126,7 @@ public class RobotTemplate extends IterativeRobot {
 
             SmartDashboard.putNumber("You have shot this many times:", button1Counter);
 //          ballHandler.armTheShooter();
-            driveSystem.rotateToDegree(0);
+//            driveSystem.rotateToDegree(0);
             ballHandler.shootTheBall();// Do said action
         }
 
