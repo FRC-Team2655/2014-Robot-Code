@@ -2,6 +2,7 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.tables.ITable;
 
@@ -16,7 +17,7 @@ public class CompressorSystem extends Compressor {
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorMotorControlChannel);
         tankPressure = new AnalogChannel(Ports.airTankPressureSensorChannel);
-        LiveWindow.addSensor("CompressorSystem","tankPresssure" , tankPressure);
+
     }
 
     // TODO measure air use, can we set lower "on" limit lower to reduce compressor starts?
@@ -28,29 +29,20 @@ public class CompressorSystem extends Compressor {
         return (Global.psiSlope * tankPressure.getVoltage() + Global.psiIntercept);
     }
 
-    private ITable m_table;
-
-    public void updateTable() {
-        if (m_table != null) {
-            m_table.putNumber("Pressure", getPressure());
-//            m_table.putNumber("Current", getCurrent());
+    public void setRelayValue(Relay.Value relayValue) {
+        if (enabled() != true) {
+            super.setRelayValue(Relay.Value.kOff);
+            return;
         }
-    }
 
-    public void startLiveWindowMode() { /* empty */ }
+        if (getPressure() < Global.wantedMinimumPSI) {
+            relayValue = Relay.Value.kOn;
+        }
 
-    public void stopLiveWindowMode() { /* empty */ }
-
-    public void initTable(ITable arg0) {
-        m_table = arg0;
-        updateTable();
-    }
-
-    public ITable getTable() {
-        return m_table;
-    }
-
-    public String getSmartDashboardType() {
-        return "CompressorSystem";
+//        if (getPressure() >= 119) {
+//            relayValue = Relay.Value.kOff;
+//        }
+        
+        super.setRelayValue(relayValue);
     }
 }
