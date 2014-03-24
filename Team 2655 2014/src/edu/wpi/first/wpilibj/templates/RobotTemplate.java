@@ -78,7 +78,7 @@ public class RobotTemplate extends IterativeRobot {
     }
 
     public void autonomousPeriodic() {
-        if (autonomousTimer.get() <= 3) {
+        if (autonomousTimer.get() <= 3.5) {
             driveSystem.moveAutonomous(0.25, 0, 0);
         } else {
 //            driveSystem.rotateToDegree(0);   

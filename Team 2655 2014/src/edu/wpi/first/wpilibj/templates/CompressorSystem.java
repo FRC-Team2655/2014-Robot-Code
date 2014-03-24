@@ -13,11 +13,12 @@ import edu.wpi.first.wpilibj.tables.ITable;
 public class CompressorSystem extends Compressor {
 
     private final AnalogChannel tankPressure;
+    private boolean needAir;
 
     public CompressorSystem() {
         super(Ports.pressureSwitchChannel, Ports.compressorMotorControlChannel);
         tankPressure = new AnalogChannel(Ports.airTankPressureSensorChannel);
-
+        needAir = true;
     }
 
     // TODO measure air use, can we set lower "on" limit lower to reduce compressor starts?
@@ -34,15 +35,30 @@ public class CompressorSystem extends Compressor {
             super.setRelayValue(Relay.Value.kOff);
             return;
         }
-
-        if (getPressure() < Global.wantedMinimumPSI) {
-            relayValue = Relay.Value.kOn;
+        // if pressure switch says "low" then turn it on
+        if (getPressureSwitchValue() == false) {
+            super.setRelayValue(Relay.Value.kOn);
+            return;
         }
 
-//        if (getPressure() >= 119) {
+        if (needAir) {
+            relayValue = Relay.Value.kOn;
+            if (getPressure() >= 115) {
+                needAir = false;
+                relayValue = Relay.Value.kOff;
+            }
+        } else {
+            relayValue = Relay.Value.kOff;
+            if (getPressure() < 105) {
+                needAir = true;
+                relayValue = Relay.Value.kOn;
+            }
+        }
+//        if (getPressure() < 115 || getPressureSwitchValue() == false) {
+//            relayValue = Relay.Value.kOn;
+//        } else if (getPressure() >= 119) {
 //            relayValue = Relay.Value.kOff;
 //        }
-        
         super.setRelayValue(relayValue);
     }
 }
