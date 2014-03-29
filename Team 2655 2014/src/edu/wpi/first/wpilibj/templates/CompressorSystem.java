@@ -43,7 +43,7 @@ public class CompressorSystem extends Compressor {
 
         if (needAir) {
             relayValue = Relay.Value.kOn;
-            if (getPressure() >= 115) {
+            if (getPressure() >= 110) {
                 needAir = false;
                 relayValue = Relay.Value.kOff;
             }
