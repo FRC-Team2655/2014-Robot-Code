@@ -2,15 +2,23 @@ package edu.wpi.first.wpilibj.templates;
 
 // Author Bennett
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Relay;
 
 public class SideArms {
 
     private final DoubleSolenoid sideArms;
     private boolean isOpen;
+    private final Relay testLight;
+
+    private int counter;
 
     public SideArms() {
         sideArms = new DoubleSolenoid(Ports.sideArmOpenArmChannel, Ports.sideArmClosedArmChannel);
         isOpen = false;
+        testLight = new Relay(Ports.testLightChannel);
+        counter = 0;
+        testLight.set(Relay.Value.kOn);
+        testLight.set(Relay.Value.kOff);
     }
 
     public void open() {
@@ -33,6 +41,7 @@ public class SideArms {
 
     public void rawOpen() {
         sideArms.set(DoubleSolenoid.Value.kForward);
+        testLight.set(Relay.Value.kOn);
         isOpen = true;
     }
 
@@ -43,6 +52,12 @@ public class SideArms {
 
     public void rawOff() {
         sideArms.set(DoubleSolenoid.Value.kOff);
+        if (counter >= 1) {
+            testLight.set(Relay.Value.kOff);
+            counter = 0;
+        } else {
+            counter++;
+        }
     }
 
 }

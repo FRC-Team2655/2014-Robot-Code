@@ -16,6 +16,7 @@ public class BallHandler {
 
     private int airTankRefreshWait = 0;
     private int threadFailTimes;
+    private boolean shootingAirPressure;
 
     public BallHandler() {
 
@@ -27,6 +28,7 @@ public class BallHandler {
         m_thread = new Thread();
         ballInMittDetector = new BallInMittDetector();
         threadFailTimes = 0;
+        shootingAirPressure = false;
 
         ballHandlerCompressor.start();
 
@@ -67,7 +69,7 @@ public class BallHandler {
             SmartDashboard.putNumber("The Robot is still doing something or just finished", threadFailTimes);
             return;
         }
-        
+
         m_thread = new Thread(new ShootAndPassCommand(shooter, sideArm, anchor, inFeed));
 
         m_thread.start();
@@ -137,6 +139,15 @@ public class BallHandler {
             SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.getPressure());
             airTankRefreshWait = 0;
         }
+    }
+
+    public boolean checkAirPressure() {
+        if (ballHandlerCompressor.getPressure() > 90) {
+            shootingAirPressure = true;
+        } else {
+            shootingAirPressure = false;
+        }
+        return shootingAirPressure;
     }
 
     public void displayBallInMitt() {

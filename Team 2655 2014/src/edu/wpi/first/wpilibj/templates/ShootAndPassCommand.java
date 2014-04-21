@@ -49,9 +49,9 @@ public class ShootAndPassCommand implements Runnable {
             m_timer.reset();
             m_timer.start();
 
+            m_sideArm.rawOpen();
             m_shooter.rawExtend(); // CHARGE up the shooter pistons
 //            m_anchor.rawDrop();
-            m_sideArm.rawOpen();
 
             // wait until anchors are down
             // wait until sideamrs are open
@@ -156,8 +156,8 @@ public class ShootAndPassCommand implements Runnable {
 
             TeamTimer.delay((long) (retractDelay - m_timer.get()));
 
-            m_sideArm.rawOff();
             m_inFeed.rawOff();
+            m_sideArm.rawOff();
 
             m_timer.stop();
 //            m_shooter.rawOff();

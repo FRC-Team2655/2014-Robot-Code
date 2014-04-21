@@ -40,11 +40,12 @@ public final class Ports {
     public final static int infeedRightArmMotorControlChannel = Ports.DSCRelay.ch2;
     public final static int infeedLeftArmMotorControlChannel = Ports.DSCRelay.ch8;
     public final static int anchorControlChannel = Ports.DSCRelay.ch4;
-//    public final static int unusedRelayChannel_5 = Ports.DSCRelay.ch5;
+    public final static int testLightChannel = Ports.DSCRelay.ch5;
+    
+//    public final static int unusedRelayChannel_8 = Ports.DSCRelay.ch3;
 //    public final static int unusedRelayChannel_6 = Ports.DSCRelay.ch6;
 //    public final static int unusedRelayChannel_7 = Ports.DSCRelay.ch7;
-//    public final static int unusedRelayChannel_8 = Ports.DSCRelay.ch8;
-
+    
     // solenoid module 1
     public final static int anchorExtendChannel = Ports.SM.ch1;
     public final static int anchorRetractChannel = Ports.SM.ch2;
@@ -60,7 +61,7 @@ public final class Ports {
     public final static int frontRangeFinderChannel = Ports.AM.ch2;
     public final static int ballInMittRangeFinderChannel = Ports.AM.ch3;
     public final static int airTankPressureSensorChannel = Ports.AM.ch4;
-//    public final static int unusedAMChannel_5 = Ports.AM.ch5;
+    public final static int lightSensorChannel = Ports.AM.ch5;
 //    public final static int unusedAMChannel_6 = Ports.AM.ch6;
 //    public final static int unusedAMChannel_7 = Ports.AM.ch7;
     public final static int temperatureChannel = Ports.AM.ch8;

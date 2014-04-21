@@ -15,6 +15,7 @@ public class RobotTemplate extends IterativeRobot {
 
     private DriveSystem driveSystem;
     private BallHandler ballHandler;
+    private LightSensor lightSensor;
 
     private TeamJoystick joystick;
 
@@ -29,6 +30,11 @@ public class RobotTemplate extends IterativeRobot {
     private Button calibrateGyroButton;
     private int button1Counter;
     private int button2Counter;
+
+    private final boolean isNotInGoal = false;
+    private final boolean neededShootPressure = true;
+
+    private boolean hasShot;
 
     Timer autonomousTimer;
 
@@ -46,6 +52,7 @@ public class RobotTemplate extends IterativeRobot {
         rangeFinder = new RangeFinder(Ports.frontRangeFinderChannel);
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
+        lightSensor = new LightSensor();
         autonomousTimer = new Timer();
 
         driveModeButton = new Button(joystick, Global.driveModeButton);
@@ -59,6 +66,8 @@ public class RobotTemplate extends IterativeRobot {
         button1Counter = 0;
         button2Counter = 0;
         ballHandler.reset();
+
+        hasShot = false;
     }
 
     public void disabledInit() {
@@ -80,13 +89,15 @@ public class RobotTemplate extends IterativeRobot {
     public void autonomousPeriodic() {
         if (autonomousTimer.get() <= 3.5) {
             driveSystem.moveAutonomous(0.25, 0, 0);
-        } else {
+        } else if (autonomousTimer.get() >= 3.5 && lightSensor.isGoalHot() == isNotInGoal) {
+            TeamTimer.delay(1500);
+        } else if (hasShot == false && ballHandler.checkAirPressure() == neededShootPressure) {
 //            driveSystem.rotateToDegree(0);   
             ballHandler.shootTheBall();
             autonomousTimer.stop();
-            TeamTimer.delay(10000);
+            hasShot = true;
+        } else {
         }
-
 //        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
 //        ballHandler.displayPressure();
 //
@@ -101,6 +112,7 @@ public class RobotTemplate extends IterativeRobot {
     public void teleopInit() {
         //Global.smartDashBoardGlobalVariables();       
         driveSystem.setTeleop();
+        hasShot = false;
     }
 
     //Gandalf = 100pts
@@ -110,7 +122,6 @@ public class RobotTemplate extends IterativeRobot {
 
 //      These display smartdashboard values  
 //        SmartDashboard.putNumber("Need to move", needToMoveDistance);
-        SmartDashboard.putNumber("RangeFinder Feet", rangeFinder.getDistanceFeet());
         driveSystem.displayGyro();
         ballHandler.displayPressure();
         ballHandler.displayBallInMitt();
@@ -121,7 +132,7 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
-        if (shootButton.theButtonToggled()) { //Is the Button Pressed?
+        if (shootButton.theButtonToggled() && ballHandler.checkAirPressure() == neededShootPressure) { //Is the Button Pressed?
             button1Counter++;
 
             SmartDashboard.putNumber("You have shot this many times:", button1Counter);
