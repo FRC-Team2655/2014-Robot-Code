@@ -141,13 +141,8 @@ public class BallHandler {
         }
     }
 
-    public boolean checkAirPressure() {
-        if (ballHandlerCompressor.getPressure() >= 90) {
-            shootingAirPressure = true;
-        } else {
-            shootingAirPressure = false;
-        }
-        return shootingAirPressure;
+    public boolean checkNeededAirPressureToShoot() {
+        return ballHandlerCompressor.getPressure() >= 75;
     }
 
     public void displayBallInMitt() {

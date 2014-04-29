@@ -15,7 +15,7 @@ public class Global {
 //  Variables used in load arm
     public final static long inFeedRaiseTime = 100; // ms
     public final static long inFeedLowerTime = 100; // ms
-    public final static long inFeedPartialLowerTime = 250; // ms
+    public final static long inFeedPartialLowerTime = 500; // ms
 
 //  This number is used when the moveTo method calculates the speed that the robot needs to move at.  
     public final static double speedSlopeMoving = 0.1;         // psiSlope
@@ -31,7 +31,7 @@ public class Global {
 //  THese are the variable used in shooting
     public final static double wantedDistanceFromWall = 4; // feet
     public final static long stereoRangeFinderSeperation = 23; // inches
-    public final static long shooterShootTime = 600; // ms
+    public final static long shooterShootTime = 500; // ms
     public final static long shooterPassTime = 200; // ms
     public final static long waitTimeCharge = 1000;
     public final static long shooterRetractTime = 1500; // ms
@@ -50,7 +50,7 @@ public class Global {
 //  side arms
     public final static long sideArmCloseTime = 100; // ms
     public final static long sideArmOpenTime = 100; // ms
-    public final static long sideArmPartialOpenTime = 250; // ms
+    public final static long sideArmPartialOpenTime = 300; // ms
     public final static long sideArmIdleTime = 10; // ms
 
 //  Gyro
@@ -59,7 +59,7 @@ public class Global {
 //  Temperature slope psiSlope = (9mV/C)
 //  y = mx + psiIntercept
     public final static double temperatureSlopeCompensation = 111.1111; // psiSlope
-    public final static double temperatureOffset = (-252.7777);         // psiIntercept
+    public final static double temperatureOffset = (-252.7777);         // psiIntercept 
 
 //  RangeFinder
 //  public static double voltagePerInch = 512;

@@ -21,11 +21,7 @@ public class LightSensor {
 
     public boolean isGoalHot() {
         // TODO figure out how to smooth range finder distances
-        if (lightSensor.getVoltage() > 2) {
-            return true; ///Get distance in inches
-        } else {
-            return false;
-        }
+        return (lightSensor.getVoltage() > 2);
     }
 
 }

@@ -32,7 +32,6 @@ public class RobotTemplate extends IterativeRobot {
     private int button2Counter;
 
     private final boolean isNotInGoal = false;
-    private final boolean neededShootPressure = true;
 
     private boolean hasShot;
 
@@ -84,19 +83,21 @@ public class RobotTemplate extends IterativeRobot {
         driveSystem.setAutonomous();
         autonomousTimer.reset();
         autonomousTimer.start();
+        hasShot = false;
     }
 
     public void autonomousPeriodic() {
         if (autonomousTimer.get() <= 3.5) {
-            driveSystem.moveAutonomous(0.25, 0, 0);
-        } else if (autonomousTimer.get() >= 3.5 && lightSensor.isGoalHot() == isNotInGoal) {
-            TeamTimer.delay(1500);
-        } else if (hasShot == false && ballHandler.checkAirPressure() == neededShootPressure) {
-//            driveSystem.rotateToDegree(0);   
-            ballHandler.shootTheBall();
-            autonomousTimer.stop();
-            hasShot = true;
+            driveSystem.moveAutonomous(0.25, 0, 0); //first variable is speed. mess with it when needed (Bennett)
         } else {
+            if (autonomousTimer.get() < 5 && lightSensor.isGoalHot() == isNotInGoal) {
+                TeamTimer.delay(1500);
+            } else if (hasShot == false && ballHandler.checkNeededAirPressureToShoot()) {
+//            driveSystem.rotateToDegree(0);   
+                ballHandler.shootTheBall();
+                autonomousTimer.stop();
+                hasShot = true;
+            }
         }
 //        double needToMoveDistance = rangeFinder.getDistanceFeet() - Global.wantedDistanceFromWall;
 //        ballHandler.displayPressure();
@@ -132,7 +133,7 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Gyro Angle", driveSystem.gyro.getAngle());
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
-        if (shootButton.theButtonToggled() && ballHandler.checkAirPressure() == neededShootPressure) { //Is the Button Pressed?
+        if (shootButton.theButtonToggled() && ballHandler.checkNeededAirPressureToShoot()) { //Is the Button Pressed?
             button1Counter++;
 
             SmartDashboard.putNumber("You have shot this many times:", button1Counter);

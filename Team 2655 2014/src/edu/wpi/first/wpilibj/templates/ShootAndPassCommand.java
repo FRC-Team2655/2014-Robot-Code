@@ -41,10 +41,11 @@ public class ShootAndPassCommand implements Runnable {
             //
             SmartDashboard.putNumber("The robot has made it to the shoot thread", 0);
 
-            double openDelay = Math.max(Global.sideArmPartialOpenTime, Global.inFeedPartialLowerTime);
+            double openDelay = Global.sideArmPartialOpenTime;
             double shootDelay = Global.shooterShootTime;
             double retractDelay = Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime);
             double shooterRetractDelay = Global.shooterRetractTime;
+            double inFeedLowerDelay = Global.inFeedPartialLowerTime;
 
             m_timer.reset();
             m_timer.start();
@@ -69,7 +70,7 @@ public class ShootAndPassCommand implements Runnable {
 
             m_timer.reset();
 
-            TeamTimer.delay((long) (openDelay - m_timer.get()));
+            TeamTimer.delay((long) (inFeedLowerDelay - m_timer.get()));
 
             // total time = 100 + 250 = 350           
             // start pulling it all back together
