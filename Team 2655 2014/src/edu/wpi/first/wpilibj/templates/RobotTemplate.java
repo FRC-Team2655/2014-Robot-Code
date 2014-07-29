@@ -18,6 +18,7 @@ public class RobotTemplate extends IterativeRobot {
     private LightSensor lightSensor;
 
     private TeamJoystick joystick;
+    private TeamJoystick xbox;
 
     private RangeFinder rangeFinder;
 
@@ -48,6 +49,7 @@ public class RobotTemplate extends IterativeRobot {
     public void robotInit() {
 
         joystick = new TeamJoystick(1);
+        xbox = new TeamJoystick(2);
         rangeFinder = new RangeFinder(Ports.frontRangeFinderChannel);
         ballHandler = new BallHandler();
         driveSystem = new DriveSystem(joystick);
@@ -55,11 +57,11 @@ public class RobotTemplate extends IterativeRobot {
         autonomousTimer = new Timer();
 
         driveModeButton = new Button(joystick, Global.driveModeButton);
-        loadButton = new Button(joystick, Global.loadButton);
-        shootButton = new Button(joystick, Global.shootButton);
-        passButton = new Button(joystick, Global.poopButton);
+        loadButton = new Button(xbox, Global.loadButton);
+        shootButton = new Button(xbox, Global.shootButton);
+        passButton = new Button(xbox, Global.poopButton);
         anchorButton = new Button(joystick, Global.anchorButton);
-        sideArmsButton = new Button(joystick, Global.sideArmsButton);
+        sideArmsButton = new Button(xbox, Global.sideArmsButton);
         calibrateGyroButton = new Button(joystick, Global.calibrateGyroButton);
 
         button1Counter = 0;

@@ -22,7 +22,7 @@ public class TeamJoystick extends Joystick {
     private final boolean DESENSITIZE_ENABLED = true;
 
     // change these to increase/decrease sensitivity
-    private final double zSensitiviy = 0.50;
+    private final double zSensitiviy = 0.65;
     private final double xSensitiviy = 0.75;
     private final double ySensitiviy = 0.75;
     private final double throttleSensitiviy = 0.75;

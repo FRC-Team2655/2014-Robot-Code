@@ -66,13 +66,15 @@ public class Global {
     public final static double convertMultiplier = 104.16; // psiSlope
 
 //  Joystick buttons
-    public final static int shootButton = 1;
-    public final static int loadButton = 2;
-    public final static int poopButton = 3;
     public final static int anchorButton = 4;
-    public final static int sideArmsButton = 5;
     public final static int calibrateGyroButton = 7;
     public final static int driveModeButton = 8;
+
+//  Xbox Buttons
+    public final static int sideArmsButton = 2;
+    public final static int loadButton = 3;
+    public final static int poopButton = 5;
+    public final static int shootButton = 6;
 
     // ball in mitt constants
     public final static int wantedBallDistanceInches = 10;

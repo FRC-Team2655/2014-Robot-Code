@@ -8,7 +8,6 @@ package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Gyro;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -49,11 +48,11 @@ public class DriveSystem {
                 try {
                     if (driveMode == DriveModeEnum.Teleop) {
                         // If the robot is in teleop it will accept input from the joysticks.
-//                        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(TeamJoystick.AxisType.kX),
-//                                driveStick.getAxis(TeamJoystick.AxisType.kY),
-//                                driveStick.getAxis(TeamJoystick.AxisType.kZ),
-//                                gyro.getAngle() * Global.johnMode);
-                        mainDrive.arcadeDrive(driveStick.getAxis(TeamJoystick.AxisType.kY), driveStick.getAxis(TeamJoystick.AxisType.kZ));
+                        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(TeamJoystick.AxisType.kX),
+                                driveStick.getAxis(TeamJoystick.AxisType.kY),
+                                driveStick.getAxis(TeamJoystick.AxisType.kZ),
+                                gyro.getAngle() * Global.johnMode);
+//                        mainDrive.arcadeDrive(driveStick.getAxis(TeamJoystick.AxisType.kZ), driveStick.getAxis(TeamJoystick.AxisType.kY));
 
                     } else {
 
