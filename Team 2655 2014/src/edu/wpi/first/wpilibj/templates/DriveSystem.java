@@ -48,12 +48,11 @@ public class DriveSystem {
                 try {
                     if (driveMode == DriveModeEnum.Teleop) {
                         // If the robot is in teleop it will accept input from the joysticks.
-                        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(TeamJoystick.AxisType.kX),
-                                driveStick.getAxis(TeamJoystick.AxisType.kY),
-                                driveStick.getAxis(TeamJoystick.AxisType.kZ),
-                                gyro.getAngle() * Global.johnMode);
-//                        mainDrive.arcadeDrive(driveStick.getAxis(TeamJoystick.AxisType.kZ), driveStick.getAxis(TeamJoystick.AxisType.kY));
-
+//                        mainDrive.mecanumDrive_Cartesian(driveStick.getAxis(TeamJoystick.AxisType.kX),
+//                                driveStick.getAxis(TeamJoystick.AxisType.kY),
+//                                driveStick.getAxis(TeamJoystick.AxisType.kZ),
+//                                gyro.getAngle() * Global.johnMode);
+                        mainDrive.arcadeDrive(driveStick.getAxis(TeamJoystick.AxisType.kZ), driveStick.getAxis(TeamJoystick.AxisType.kY));
                     } else {
 
                     }

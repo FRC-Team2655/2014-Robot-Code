@@ -137,12 +137,13 @@ public class BallHandler {
 
         if (airTankRefreshWait == 100) {
             SmartDashboard.putNumber("Tank PSI", ballHandlerCompressor.getPressure());
+            SmartDashboard.putNumber("Tank PSI Raw Data", ballHandlerCompressor.getPressure());
             airTankRefreshWait = 0;
         }
     }
 
     public boolean checkNeededAirPressureToShoot() {
-        return ballHandlerCompressor.getPressure() >= 75;
+        return ballHandlerCompressor.getPressure() >= 80;
     }
 
     public void displayBallInMitt() {

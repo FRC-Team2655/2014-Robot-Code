@@ -1,7 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -39,8 +38,6 @@ public class ShootAndPassCommand implements Runnable {
             //
             // SHOOT THE BALL
             //
-            SmartDashboard.putNumber("The robot has made it to the shoot thread", 0);
-
             double openDelay = Global.sideArmPartialOpenTime;
             double shootDelay = Global.shooterShootTime;
             double retractDelay = Math.max(Global.sideArmCloseTime, Global.inFeedRaiseTime);

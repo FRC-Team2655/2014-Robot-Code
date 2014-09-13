@@ -29,7 +29,6 @@ public class RobotTemplate extends IterativeRobot {
     private Button anchorButton;
     private Button sideArmsButton;
     private Button calibrateGyroButton;
-    private int button1Counter;
     private int button2Counter;
 
     private final boolean isNotInGoal = false;
@@ -64,7 +63,6 @@ public class RobotTemplate extends IterativeRobot {
         sideArmsButton = new Button(xbox, Global.sideArmsButton);
         calibrateGyroButton = new Button(joystick, Global.calibrateGyroButton);
 
-        button1Counter = 0;
         button2Counter = 0;
         ballHandler.reset();
 
@@ -127,7 +125,7 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Need to move", needToMoveDistance);
         driveSystem.displayGyro();
         ballHandler.displayPressure();
-        ballHandler.displayBallInMitt();
+//        ballHandler.displayBallInMitt();
 //        
 
 //        SmartDashboard.putNumber("RangeFinder Inches", stereoRangeFinder.getDistanceInches());
@@ -136,9 +134,6 @@ public class RobotTemplate extends IterativeRobot {
 //        SmartDashboard.putNumber("Drive Mode", driveType);
         //Shoot Button -------------------------------------------------------
         if (shootButton.theButtonToggled() && ballHandler.checkNeededAirPressureToShoot()) { //Is the Button Pressed?
-            button1Counter++;
-
-            SmartDashboard.putNumber("You have shot this many times:", button1Counter);
 //          ballHandler.armTheShooter();
 //            driveSystem.rotateToDegree(0);
             ballHandler.shootTheBall();// Do said action
@@ -150,12 +145,7 @@ public class RobotTemplate extends IterativeRobot {
 
         //Load Button
         if (loadButton.theButtonToggled()) {
-            button2Counter++;
-            SmartDashboard.putNumber("Button 2 has been pressed this many times:", button2Counter);
-
             if (ballHandler.loadIsEnabled() == false) {
-                SmartDashboard.putNumber("Load enabled", 0);
-
                 ballHandler.loadEnable();
             } else {
                 ballHandler.loadDisable();
